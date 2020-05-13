@@ -1,0 +1,41 @@
+Source: dosbox-staging
+Section: otherosfs
+Priority: optional
+Maintainer: Feignint <37488595+FeignInt@users.noreply.github.com>
+Homepage: https://dosbox-staging.github.io/about/
+Build-Depends: debhelper-compat (= 12), libsdl2-dev, libsdl2-net-dev,
+ libasound2-dev, libopusfile-dev, libpng-dev, libncurses-dev | libncurses5-dev
+Standards-Version: 4.4.1
+Vcs-Git: https://github.com/dosbox-staging/dosbox-staging.git
+Vcs-Browser: https://github.com/dosbox-staging/dosbox-staging/
+Rules-Requires-Root: no
+
+Package: dosbox-staging
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: dosbox
+Description: x86 emulator for DOS-era video games
+ dosbox-staging is an attempt to revitalize DOSBox's
+ development process. It's not a rewrite, but a continuation
+ and improvement on the existing DOSBox codebase while
+ leveraging modern development tools and practices.
+ .
+ Yes I did copypasta that from the about page
+
+Package: dosbox-staging-debug
+Architecture: any
+Multi-Arch: foreign
+Depends: ${shlibs:Depends}, ${misc:Depends}, dosbox-staging (= ${binary:Version})
+Conflicts: dosbox-debug
+Description: x86 emulator with DOS - debugger
+ DOSBox is a x86 emulator with Tandy/Hercules/CGA/EGA/VGA/SVGA graphics,
+ sound and DOS. It's been designed to run old DOS games on platforms that
+ don't support it.
+ .
+ The following legacy sound devices are emulated: PC Speaker, Creative
+ CMS/Gameblaster, Tandy 3 voice, Adlib, Sound Blaster Pro/16,
+ Disney Soundsource and a Gravis Ultrasound. MPU-401 is forwarded to
+ the host.
+ .
+ This package contains the DOSBox debugger.

@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+export DEB_CPPFLAGS_MAINT_APPEND=-D_FILE_OFFSET_BITS=64
+
+%:
+	dh $@
+
+override_dh_auto_clean:
+	dh_auto_clean -Bbuild-release
+	dh_auto_clean -Bbuild-debug
+
+override_dh_auto_configure:
+	dh_auto_configure -Bbuild-release
+	dh_auto_configure -Bbuild-debug -- --enable-debug=heavy
+
+override_dh_auto_build:
+	dh_auto_build -Bbuild-release
+	dh_auto_build -Bbuild-debug
+
+override_dh_auto_install:
+	dh_auto_install -Bbuild-debug
+	mv debian/tmp/usr/bin/dosbox debian/tmp/usr/bin/dosbox-debug
+	dh_auto_install -Bbuild-release
