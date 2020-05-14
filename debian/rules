@@ -21,3 +21,11 @@ override_dh_auto_install:
 	dh_auto_install -Bbuild-debug
 	mv debian/tmp/usr/bin/dosbox debian/tmp/usr/bin/dosbox-debug
 	dh_auto_install -Bbuild-release
+	# Try in install .desktop and icons
+	# but ignore errors
+	install -DT -m 644 $(CURDIR)/contrib/linux/dosbox-staging.desktop \
+	 $(CURDIR)/debian/tmp/usr/share/applications/dosbox-staging.desktop || true
+	cd $(CURDIR)/contrib/icons && \
+	  <Makefile sed -E \
+		 's|(install( [[:graph:]]+){4} +)|\1$(CURDIR)/debian/tmp/usr/share/|' \
+		 | make -f - hicolor && make clean || true
