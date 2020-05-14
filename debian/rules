@@ -1,5 +1,5 @@
 #!/usr/bin/make -f
-
+include /usr/share/dpkg/pkg-info.mk
 export DEB_CPPFLAGS_MAINT_APPEND=-D_FILE_OFFSET_BITS=64
 
 %:
@@ -10,6 +10,10 @@ override_dh_auto_clean:
 	dh_auto_clean -Bbuild-debug
 
 override_dh_auto_configure:
+	# re-set version string, useful for gbp snapshot builds
+	sed -E 's/(AC_INIT.+,[[]?)[^])]+/\1$(DEB_VERSION)/' configure.ac \
+	  | autoconf -o configure -
+	#
 	dh_auto_configure -Bbuild-release
 	dh_auto_configure -Bbuild-debug -- --enable-debug=heavy
 
