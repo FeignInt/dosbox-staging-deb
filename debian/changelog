@@ -1,0 +1,18 @@
+dosbox-staging (0.75.0~rc1-1) unstable; urgency=medium
+
+  * New upstream release:
+  - https://dosbox-staging.github.io/v0-75-0-rc1/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sat, 23 May 2020 05:42:58 +0100
+
+dosbox-staging (0.74.99-1) unstable; urgency=medium
+
+  * UNRELEASED
+
+  * debian/*: Add Packaging for Debian
+  * debian/rules: Add .desktop and hicolor icons.
+  * debian/rules: force version string to $(DEB_VERSION).
+  * debian/gbp.conf: Add per-branch gbp config
+  * debian/docs: Include README documents
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sat, 23 May 2020 05:40:52 +0100
