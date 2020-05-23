@@ -1,3 +1,10 @@
+dosbox-staging (0.75.1-1) unstable; urgency=medium
+
+  * New upstream release: (Fixes: #385)
+  - https://github.com/dosbox-staging/dosbox-staging/pull/387
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sat, 23 May 2020 06:20:10 +0100
+
 dosbox-staging (0.75.0-1) unstable; urgency=medium
 
   * New upstream release:
