@@ -1,3 +1,10 @@
+dosbox-staging (0.75.0-1) unstable; urgency=medium
+
+  * New upstream release:
+  - https://dosbox-staging.github.io/v0-75-0/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sat, 23 May 2020 06:08:41 +0100
+
 dosbox-staging (0.75.0~rc1-1) unstable; urgency=medium
 
   * New upstream release:
