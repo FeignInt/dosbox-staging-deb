@@ -8,8 +8,70 @@ _dosbox()
   # see:
   #     declare -f _init_completion
 
+  case "$cur" in
+    -*) _dosbox_options
+      return;;
+     *) # hint at "-"
+        # <dir|dos_exe(s)>
+      return;;
+  esac
+}
+_dosbox_options()
+{
+  COMPREPLY=($(
+    compgen -W '
+      -version
+      -editconf_program
+      -opencaptures_program
+      -printconf
+      -eraseconf
+      -resetconf
+      -erasemapper
+      -resetmapper
+      -fullscreen
+      -startmapper
+      -noautoexec
+      -securemode
+      -userconf
+      -scaler_scaler
+      -forcescaler_scaler
+      -conf_configfile
+      -lang_langfile
+      -machine_machinetype
+      -socket_socketnumber
+      -c_command
+      -exit
+      __file_exe_bat_dir
+      ' -- $cur ))
+  return
+###
+#   _* suffix is just placeholder, so I don't forget they need a new lising.
+###
+### These are exclusive
+# -version -printconf -eraseconf -resetconf -erasemapper -resetmapper
+# hide if we already have flags.
+#
+# as above, but present editor / media viewer _program
+# -editconf_program -opencaptures_program
+##
+# __file__ could be .exe, .bat, .com, or a dir
+# I guess the dir should be at populated
+# Unless a floppy/cd is to be mounted
+# can it appear anywhere or must it be last?
+# I'm over thinking that right now, move on...
+###
+# -c, can be repeated..
+# this one will be fun to populate, start with just the basics
+###
+# -conf can be repeated,
+# -userconf, only once? it is godlike in anycase.
+# both should be followed by a file (.conf)
+###
+# -forcescaler , once and should also hide -scaler
+###
 
 }
+
 complete -F _dosbox fake_dosbox
 #FIXME fake_dosbox just for testing, strip fake_
 
