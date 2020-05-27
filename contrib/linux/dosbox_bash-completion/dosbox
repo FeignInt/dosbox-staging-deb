@@ -1,0 +1,27 @@
+# dosbox(1) completion
+# vim: st=2:sw=2:et:ai:ft=bash
+
+_dosbox()
+{
+  local cur prev words cword split
+  _init_completion -s || return
+  # see:
+  #     declare -f _init_completion
+
+
+}
+complete -F _dosbox fake_dosbox
+#FIXME fake_dosbox just for testing, strip fake_
+
+# 
+# from man via (COLUMNS=9001 man dosbox | sed -E "s/^[ ]+( dosbox [[-][^ ].+)/#\1/p" -n )
+
+# dosbox [-fullscreen] [-startmapper] [-noautoexec] [-securemode] [-userconf] [-scaler scaler] [-forcescaler scaler] [-conf configfile] [-lang langfile] [-machine machinetype] [-socket socketnumber] [-c command] [-exit] [file]
+# dosbox -version
+# dosbox -editconf program
+# dosbox -opencaptures program
+# dosbox -printconf
+# dosbox -eraseconf
+# dosbox -resetconf
+# dosbox -erasemapper
+# dosbox -resetmapper
