@@ -8,26 +8,49 @@ _dosbox()
   # see:
   #     declare -f _init_completion
 
-  case "$cur" in
-    -*) _dosbox_options
-      return;;
-     *) # hint at "-"
-        # <dir|dos_exe(s)>
-      return;;
+  case "$prev" in
+      -editconf)
+        _list_native_programs get_editors
+        return;;
+      -opencaptures)
+        _list_native_programs get_view_media
+        return;;
   esac
+
+  _exclusive_opt_check ||
+  case "$cur" in
+    -*)
+        _dosbox_options
+        return;;
+     *)
+        # hint at "-"
+        # <dir|dos_exe(s)>
+        return;;
+  esac
+}
+_exclusive_opt_check()
+{
+  local _exclusive_opts
+  _exclusive_opts="-(version|opencaptures|(print|erase|reset|edit)(conf|mapper))"
+  # There is no -printmapper, but if there were I guess it would be exclusive.
+
+  [[ ${words[1]} =~ ^$_exclusive_opts$ ]]
+  return
+}
+_list_native_programs()
+{
+  local -n _prog_type=$1
+  local -a get_editors=( $EDITOR vim nano )
+  local -a get_view_media=( $BROWSER firefox mpv pcmanfm pcmanfm-qt )
+  #TODO populate above with suitable programs
+  local prog
+  COMPREPLY=($( compgen -W '$( type -P "${_prog_type[@]}")' -- $cur ))
+  return
 }
 _dosbox_options()
 {
   COMPREPLY=($(
     compgen -W '
-      -version
-      -editconf_program
-      -opencaptures_program
-      -printconf
-      -eraseconf
-      -resetconf
-      -erasemapper
-      -resetmapper
       -fullscreen
       -startmapper
       -noautoexec
@@ -43,17 +66,26 @@ _dosbox_options()
       -exit
       __file_exe_bat_dir
       ' -- $cur ))
+
+  # The below are exclusive options
+  # ignore them if other flags given earlier
+  [[ $cword -gt 1 ]] ||
+  COMPREPLY+=($(
+    compgen -W '
+      -version
+      -editconf
+      -opencaptures
+      -printconf
+      -eraseconf
+      -resetconf
+      -erasemapper
+      -resetmapper
+      ' -- $cur ))
   return
+}
 ###
 #   _* suffix is just placeholder, so I don't forget they need a new lising.
 ###
-### These are exclusive
-# -version -printconf -eraseconf -resetconf -erasemapper -resetmapper
-# hide if we already have flags.
-#
-# as above, but present editor / media viewer _program
-# -editconf_program -opencaptures_program
-##
 # __file__ could be .exe, .bat, .com, or a dir
 # I guess the dir should be at populated
 # Unless a floppy/cd is to be mounted
@@ -70,7 +102,7 @@ _dosbox_options()
 # -forcescaler , once and should also hide -scaler
 ###
 
-}
+
 
 complete -F _dosbox fake_dosbox
 #FIXME fake_dosbox just for testing, strip fake_
