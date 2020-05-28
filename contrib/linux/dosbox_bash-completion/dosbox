@@ -81,6 +81,14 @@ _dosbox_options()
       -erasemapper
       -resetmapper
       ' -- $cur ))
+  local i _filter
+  for (( i = 1 ; i < $(( ${#words[@]} - 1 )) ; i++ ))
+  do
+    [[ ${words[i]} =~ ^-(c|conf)$ ]] ||
+      _filter+=${words[i]/%/|}
+  done
+  [[ $_filter ]] &&
+    COMPREPLY=($(compgen -W "${COMPREPLY[*]#@(${_filter%|})}" -- "$cur" ))
   return
 }
 ###
