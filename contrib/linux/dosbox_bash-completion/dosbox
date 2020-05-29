@@ -6,7 +6,7 @@ _dosbox()
   local cur prev words cword split
   _init_completion -s || return
 
-  local -a _main_opts _repeat_opts _exclu_opts _editconf _opencaptures
+  local -a _main_opts _repeat_opts _exclu_opts _opencaptures
   local -a _machine _conf_dirs _scaler
 
   local -n _forcescaler=_scaler
@@ -18,8 +18,6 @@ _dosbox()
 
      _exclu_opts=( --version --editconf -opencaptures --printconf -eraseconf   )
     _exclu_opts+=( -resetconf -erasemapper -resetmapper                        )
-
-       _editconf=( $EDITOR vim nano                                            )
 
    _opencaptures=( $BROWSER firefox mpv pcmanfm pcmanfm-qt                     )
 
@@ -36,7 +34,7 @@ _dosbox()
   case "$prev" in
                        -conf) _list_conf_files
                               return;;
-   -@(editconf|opencaptures)) _list_native_programs   _${prev:1}
+               -opencaptures) _list_native_programs   _${prev:1}
                               return;;
     -?(force)scaler|-machine) _list_function          _${prev:1}
                               return;;
