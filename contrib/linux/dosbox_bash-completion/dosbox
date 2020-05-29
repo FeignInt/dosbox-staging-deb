@@ -6,29 +6,31 @@ _dosbox()
   local cur prev words cword split
   _init_completion -s || return
 
-  local -a _main_opts _exclusive_opts _repeat_opts _machinetypes
+  local -a _main_opts _repeat_opts _exclu_opts _conf_editor _media_browser
+  local -a _machine
 
-      _main_opts=( -fullscreen -startmapper -noautoexec -securemode -userconf )
-     _main_opts+=( -scaler -forcescaler -lang -machine -socket -exit          )
+      _main_opts=( -fullscreen -startmapper -noautoexec -securemode -userconf  )
+     _main_opts+=( -scaler -forcescaler -lang -machine -socket -exit           )
 
-    _repeat_opts=( -c -conf                                                   )
+    _repeat_opts=( -c -conf                                                    )
 
-     _exclu_opts=( -version -editconf -opencaptures -printconf -eraseconf     )
-    _exclu_opts+=( -resetconf -erasemapper -resetmapper                       )
+     _exclu_opts=( -version -editconf -opencaptures -printconf -eraseconf      )
+    _exclu_opts+=( -resetconf -erasemapper -resetmapper                        )
 
-   _machinetypes=( hercules cga tandy pcjr ega vgaonly svga_s3 svga_et3000    )
-  _machinetypes+=( svga_et4000 svga_paradise vesa_nolfb vesa_oldvbe           )
+    _conf_editor=( $EDITOR vim nano                                            )
+
+  _media_browser=( $BROWSER firefox mpv pcmanfm pcmanfm-qt                     )
+
+        _machine=( hercules cga tandy pcjr ega vgaonly svga_s3 svga_et3000     )
+       _machine+=( svga_et4000 svga_paradise vesa_nolfb vesa_oldvbe            )
 
   case "$prev" in
-      -editconf)
-        _list_native_programs get_editors
-        return;;
-      -opencaptures)
-        _list_native_programs get_view_media
-        return;;
-      -machine)
-        COMPREPLY=($( compgen -W "${_machinetypes[*]}" -- "$cur" ))
-        return;;
+        -editconf) _list_native_programs _conf_editor
+                   return;;
+    -opencaptures) _list_native_programs _media_browser
+                   return;;
+         -machine) COMPREPLY=($( compgen -W "${_machine[*]}" -- "$cur" ))
+                   return;;
   esac
 
   [[ ${words[@]} =~ [\ ](${_exclu_opts[*]}) ]] ||
@@ -36,8 +38,7 @@ _dosbox()
     -*)
         _dosbox_options
         return;;
-     *)
-        # hint at "-"
+     *) # hint at "-"
         # <dir|dos_exe(s)>
         return;;
   esac
@@ -45,8 +46,6 @@ _dosbox()
 _list_native_programs()
 {
   local -n _prog_type=$1
-  local -a get_editors=( $EDITOR vim nano )
-  local -a get_view_media=( $BROWSER firefox mpv pcmanfm pcmanfm-qt )
   #TODO populate above with suitable programs
   local prog
   COMPREPLY=($( compgen -W '$( type -P "${_prog_type[@]}")' -- $cur ))
