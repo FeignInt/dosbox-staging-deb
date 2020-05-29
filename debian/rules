@@ -1,6 +1,12 @@
 #!/usr/bin/make -f
 include /usr/share/dpkg/pkg-info.mk
+include /usr/share/dpkg/vendor.mk
 export DEB_CPPFLAGS_MAINT_APPEND=-D_FILE_OFFSET_BITS=64
+
+export CODENAME=$(shell sed -n "s/VERSION_CODENAME=//p" /etc/os-release)
+ifeq ($(DEB_VENDOR)$(CODENAME),Debian)
+	export CODENAME=unstable
+endif
 
 %:
 	dh $@
@@ -33,3 +39,6 @@ override_dh_auto_install:
 	  <Makefile sed -E \
 		 's|(install( [[:graph:]]+){4} +)|\1$(CURDIR)/debian/tmp/usr/share/|' \
 		 | make -f - hicolor && make clean || true
+
+override_dh_gencontrol:
+	dh_gencontrol -- -DDistribution=$(CODENAME)
