@@ -31,7 +31,7 @@ _dosbox()
         return;;
   esac
 
-  _exclusive_opt_check ||
+  [[ ${words[@]} =~ [\ ](${_exclu_opts[*]}) ]] ||
   case "$cur" in
     -*)
         _dosbox_options
@@ -41,14 +41,6 @@ _dosbox()
         # <dir|dos_exe(s)>
         return;;
   esac
-}
-_exclusive_opt_check()
-{
-  local _exclusive_opts
-  _exclusive_opts="-(version|opencaptures|(print|erase|reset|edit)(conf|mapper))"
-  # There is no -printmapper, but if there were I guess it would be exclusive.
-
-  [[ ${words[1]} =~ ^$_exclusive_opts$ ]]
 }
 _list_native_programs()
 {
