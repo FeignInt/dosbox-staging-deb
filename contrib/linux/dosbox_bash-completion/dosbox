@@ -7,7 +7,7 @@ _dosbox()
   _init_completion -s || return
 
   local -a _main_opts _repeat_opts _exclu_opts _conf_editor _media_browser
-  local -a _machine
+  local -a _machine _conf_dirs
 
       _main_opts=( -fullscreen -startmapper -noautoexec -securemode -userconf  )
      _main_opts+=( -scaler -forcescaler -lang -machine -socket -exit           )
@@ -24,12 +24,17 @@ _dosbox()
         _machine=( hercules cga tandy pcjr ega vgaonly svga_s3 svga_et3000     )
        _machine+=( svga_et4000 svga_paradise vesa_nolfb vesa_oldvbe            )
 
+      _conf_dirs=( $XDG_CONFIG_HOME/dosbox/                                    )
+
+
   case "$prev" in
         -editconf) _list_native_programs _conf_editor
                    return;;
     -opencaptures) _list_native_programs _media_browser
                    return;;
          -machine) COMPREPLY=($( compgen -W "${_machine[*]}" -- "$cur" ))
+                   return;;
+            -conf) _list_conf_files
                    return;;
   esac
 
@@ -42,6 +47,25 @@ _dosbox()
         # <dir|dos_exe(s)>
         return;;
   esac
+}
+_list_conf_files()
+{
+  local i
+  COMPREPLY=($( compgen -W '$(
+  for i in ${!_conf_dirs[@]}
+  do
+    compgen -G "${_conf_dirs[i]}*[.]@(conf|CONF)"
+  done
+  compgen -G "*[.]@(conf|CONF)"
+  compgen -G "${cur}*[.]@(conf|CONF)" )' -- "$cur" ))
+  local _filter
+  for (( i = 1 ; i < $(( ${#words[@]} - 1 )) ; i++ ))
+  do
+    [[ ${words[i]} =~ ^(${COMPREPLY[*]})$ ]] &&
+      _filter+=${words[i]/%/|}
+  done
+  [[ $_filter ]] &&
+    COMPREPLY=($(compgen -W "${COMPREPLY[*]#@(${_filter%|})}" -- "$cur" ))
 }
 _list_native_programs()
 {
