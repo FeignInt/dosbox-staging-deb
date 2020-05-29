@@ -6,6 +6,16 @@ _dosbox()
   local cur prev words cword split
   _init_completion -s || return
 
+  local -a _main_opts _exclusive_opts _repeat_opts _machinetypes
+
+   _main_opts=( -fullscreen -startmapper -noautoexec -securemode -userconf )
+  _main_opts+=( -scaler -forcescaler -lang -machine -socket -exit )
+
+  _repeat_opts=( -c -conf )
+
+   _exclu_opts=( -version -editconf -opencaptures -printconf -eraseconf )
+  _exclu_opts+=( -resetconf -erasemapper -resetmapper )
+
   case "$prev" in
       -editconf)
         _list_native_programs get_editors
@@ -45,39 +55,14 @@ _list_native_programs()
 }
 _dosbox_options()
 {
-  COMPREPLY=($(
-    compgen -W '
-      -fullscreen
-      -startmapper
-      -noautoexec
-      -securemode
-      -userconf
-      -scaler
-      -forcescaler
-      -conf
-      -lang
-      -machine
-      -socket
-      -c_command
-      -exit
-      ' -- $cur ))
+  COMPREPLY=($( compgen -W "${_main_opts[*]} ${_repeat_opts[*]}" -- $cur ))
 
   [[ $cword -gt 1 ]] ||
-  COMPREPLY+=($(
-    compgen -W '
-      -version
-      -editconf
-      -opencaptures
-      -printconf
-      -eraseconf
-      -resetconf
-      -erasemapper
-      -resetmapper
-      ' -- $cur ))
+  COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- $cur ))
   local i _filter
   for (( i = 1 ; i < $(( ${#words[@]} - 1 )) ; i++ ))
   do
-    [[ ${words[i]} =~ ^-(c|conf)$ ]] ||
+    [[ ${words[i]} =~ ^(${_repeat_opts[*]})$ ]] ||
       _filter+=${words[i]/%/|}
   done
   [[ $_filter ]] &&
