@@ -8,13 +8,16 @@ _dosbox()
 
   local -a _main_opts _exclusive_opts _repeat_opts _machinetypes
 
-   _main_opts=( -fullscreen -startmapper -noautoexec -securemode -userconf )
-  _main_opts+=( -scaler -forcescaler -lang -machine -socket -exit )
+      _main_opts=( -fullscreen -startmapper -noautoexec -securemode -userconf )
+     _main_opts+=( -scaler -forcescaler -lang -machine -socket -exit          )
 
-  _repeat_opts=( -c -conf )
+    _repeat_opts=( -c -conf                                                   )
 
-   _exclu_opts=( -version -editconf -opencaptures -printconf -eraseconf )
-  _exclu_opts+=( -resetconf -erasemapper -resetmapper )
+     _exclu_opts=( -version -editconf -opencaptures -printconf -eraseconf     )
+    _exclu_opts+=( -resetconf -erasemapper -resetmapper                       )
+
+   _machinetypes=( hercules cga tandy pcjr ega vgaonly svga_s3 svga_et3000    )
+  _machinetypes+=( svga_et4000 svga_paradise vesa_nolfb vesa_oldvbe           )
 
   case "$prev" in
       -editconf)
@@ -22,6 +25,9 @@ _dosbox()
         return;;
       -opencaptures)
         _list_native_programs get_view_media
+        return;;
+      -machine)
+        COMPREPLY=($( compgen -W "${_machinetypes[*]}" -- "$cur" ))
         return;;
   esac
 
