@@ -6,7 +6,7 @@ _dosbox()
   local cur prev words cword split
   _init_completion -s || return
 
-  local -a _main_opts _repeat_opts _exclu_opts _conf_editor _media_browser
+  local -a _main_opts _repeat_opts _exclu_opts _editconf _opencaptures
   local -a _machine _conf_dirs _scaler
 
   local -n _forcescaler=_scaler
@@ -19,9 +19,9 @@ _dosbox()
      _exclu_opts=( -version -editconf -opencaptures -printconf -eraseconf      )
     _exclu_opts+=( -resetconf -erasemapper -resetmapper                        )
 
-    _conf_editor=( $EDITOR vim nano                                            )
+       _editconf=( $EDITOR vim nano                                            )
 
-  _media_browser=( $BROWSER firefox mpv pcmanfm pcmanfm-qt                     )
+   _opencaptures=( $BROWSER firefox mpv pcmanfm pcmanfm-qt                     )
 
         _machine=( hercules cga tandy pcjr ega vgaonly svga_s3 svga_et3000     )
        _machine+=( svga_et4000 svga_paradise vesa_nolfb vesa_oldvbe            )
@@ -34,16 +34,12 @@ _dosbox()
 
 
   case "$prev" in
-        -editconf) _list_native_programs _conf_editor
-                   return;;
-    -opencaptures) _list_native_programs _media_browser
-                   return;;
-         -machine) COMPREPLY=($( compgen -W "${_machine[*]}" -- "$cur" ))
-                   return;;
-            -conf) _list_conf_files
-                   return;;
-  -?(force)scaler) _list_function _${prev:1}
-                   return;;
+                       -conf) _list_conf_files
+                              return;;
+   -@(editconf|opencaptures)) _list_native_programs   _${prev:1}
+                              return;;
+    -?(force)scaler|-machine) _list_function          _${prev:1}
+                              return;;
   esac
 
   [[ ${words[@]} =~ [\ ](${_exclu_opts[*]}) ]] ||
