@@ -16,7 +16,7 @@ _dosbox()
 
     _repeat_opts=( -c -conf                                                    )
 
-     _exclu_opts=( -version -editconf -opencaptures -printconf -eraseconf      )
+     _exclu_opts=( --version --editconf -opencaptures --printconf -eraseconf   )
     _exclu_opts+=( -resetconf -erasemapper -resetmapper                        )
 
        _editconf=( $EDITOR vim nano                                            )
