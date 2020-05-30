@@ -6,6 +6,8 @@ _dosbox()
   local cur prev words cword split
   _init_completion -s || return
 
+  local IFS=${IFS/#/|}
+
   local -a _main_opts _repeat_opts _exclu_opts _opencaptures
   local -a _machine _conf_dirs _scaler
 
