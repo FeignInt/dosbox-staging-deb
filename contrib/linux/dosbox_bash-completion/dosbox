@@ -11,7 +11,8 @@ _dosbox()
   local -a _main_opts _repeat_opts _exclu_opts _opencaptures
   local -a _machine _conf_dirs _scaler
 
-  local -n _forcescaler=_scaler _sub_opts=${prev//+(-)/_}
+  local -n _forcescaler=_scaler
+  [[ ${prev:0:1} == - ]] && local -n _sub_opts=${prev//+(-)/_}
 
       _main_opts=( -fullscreen -startmapper -noautoexec -securemode -userconf  )
      _main_opts+=( -scaler -forcescaler -lang -machine -socket -exit           )
