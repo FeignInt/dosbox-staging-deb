@@ -45,7 +45,10 @@ _dosbox()
   [[ ${words[@]} =~ [\ ](${_exclu_opts[*]}) ]] ||
   case "$cur" in
     -*)
-        _dosbox_options
+        COMPREPLY=($( compgen -W "${_main_opts[*]/@(${words[*]:1:$(( cword - 1 ))})} \
+                                  ${_repeat_opts[*]}" -- "$cur" ))
+        [[ $cword -gt 1 ]] ||
+        COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- "$cur" ))
         return;;
      *) # hint at "-"
         # <dir|dos_exe(s)>
@@ -82,21 +85,6 @@ _list_native_programs()
   #TODO populate above with suitable programs
   local prog
   COMPREPLY=($( compgen -W '$( type -P "${_prog_type[@]}")' -- $cur ))
-}
-_dosbox_options()
-{
-  COMPREPLY=($( compgen -W "${_main_opts[*]} ${_repeat_opts[*]}" -- $cur ))
-
-  [[ $cword -gt 1 ]] ||
-  COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- $cur ))
-  local i _filter
-  for (( i = 1 ; i < $(( ${#words[@]} - 1 )) ; i++ ))
-  do
-    [[ ${words[i]} =~ ^(${_repeat_opts[*]})$ ]] ||
-      _filter+=${words[i]/%/|}
-  done
-  [[ $_filter ]] &&
-    COMPREPLY=($(compgen -W "${COMPREPLY[*]#@(${_filter%|})}" -- "$cur" ))
 }
 
 complete -F _dosbox dosbox
