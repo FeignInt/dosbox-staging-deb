@@ -69,14 +69,7 @@ _list_conf_files()
   done
   compgen -G "*[.]@(conf|CONF)"
   compgen -G "${cur}*[.]@(conf|CONF)" )' -- "$cur" ))
-  local _filter
-  for (( i = 1 ; i < $(( ${#words[@]} - 1 )) ; i++ ))
-  do
-    [[ ${words[i]} =~ ^(${COMPREPLY[*]})$ ]] &&
-      _filter+=${words[i]/%/|}
-  done
-  [[ $_filter ]] &&
-    COMPREPLY=($(compgen -W "${COMPREPLY[*]#@(${_filter%|})}" -- "$cur" ))
+  COMPREPLY=($(compgen -W "${COMPREPLY[*]#@(${words[*]:1:$(( cword - 1 ))})}" -- "$cur" ))
 }
 
 complete -F _dosbox dosbox
