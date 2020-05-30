@@ -34,10 +34,12 @@ _dosbox()
 
 
   case "$prev" in
-                       -conf) _list_conf_files
-                              return;;
-               -opencaptures) _list_native_programs   _${prev:1}
-                              return;;
+    -?(-)conf)
+      _list_conf_files
+      return;;
+    -?(-)opencaptures)
+      _list_native_programs  _${prev:1}
+      return;;
     -?(-)@(?(force)scaler|machine))
       COMPREPLY=($( compgen -W "${_sub_opts[*]}" -- "$cur" ))
       return;;
