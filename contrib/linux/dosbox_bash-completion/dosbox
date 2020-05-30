@@ -38,7 +38,7 @@ _dosbox()
       _list_conf_files
       return;;
     -?(-)opencaptures)
-      _list_native_programs  _${prev:1}
+      COMPREPLY=($( compgen -W '$( type -P "${_sub_opts[@]}")' -- $cur ))
       return;;
     -?(-)@(?(force)scaler|machine))
       COMPREPLY=($( compgen -W "${_sub_opts[*]}" -- "$cur" ))
@@ -76,13 +76,6 @@ _list_conf_files()
   done
   [[ $_filter ]] &&
     COMPREPLY=($(compgen -W "${COMPREPLY[*]#@(${_filter%|})}" -- "$cur" ))
-}
-_list_native_programs()
-{
-  local -n _prog_type=$1
-  #TODO populate above with suitable programs
-  local prog
-  COMPREPLY=($( compgen -W '$( type -P "${_prog_type[@]}")' -- $cur ))
 }
 
 complete -F _dosbox dosbox
