@@ -46,22 +46,14 @@ _dosbox()
       return;;
   esac
 
-  [[ ${words[@]} =~ [\ ](${_exclu_opts[*]}) ]] ||
-  case "$cur" in
-    -*)
-        COMPREPLY=($( compgen -W "${_main_opts[*]/@(${words[*]:1:$(( cword - 1 ))})} \
-                                  ${_repeat_opts[*]}" -- "$cur" ))
-        [[ $cword -gt 1 ]] ||
-        COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- "$cur" ))
-        return;;
-     *) #FIXME
-        # kind of works, but puts a space on the end of dirs
-        # I have no idea why yet
-        #COMPREPLY=( $( compgen -f -X '!*.@(bat|BAT|com|COM|exe|EXE)' -- "$cur" ) )
-        #COMPREPLY+=( $( compgen -d -S/ -- "$cur" ))
-        #printf "\n%s\n" "${COMPREPLY[*]}"
-        return;;
-  esac
+  [[ ${words[@]} =~ [\ ](${_exclu_opts[*]}) ]] && return
+
+  COMPREPLY=($( compgen -W "${_main_opts[*]/@(${words[*]:1:$(( cword - 1 ))})} \
+                            ${_repeat_opts[*]}" -- "$cur" ))
+
+  [[ $cword -gt 1 ]] || COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- "$cur" ))
+
+  COMPREPLY+=( $( compgen -f -X '!*.@(bat|BAT|com|COM|exe|EXE)' -- $cur ) )
 }
 _list_conf_files()
 {
@@ -76,4 +68,4 @@ _list_conf_files()
   COMPREPLY=($(compgen -W "${COMPREPLY[*]#@(${words[*]:1:$(( cword - 1 ))})}" -- "$cur" ))
 }
 
-complete -F _dosbox dosbox
+complete -F _dosbox -o plusdirs -o nosort dosbox
