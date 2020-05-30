@@ -11,7 +11,7 @@ _dosbox()
   local -a _main_opts _repeat_opts _exclu_opts _opencaptures
   local -a _machine _conf_dirs _scaler
 
-  local -n _forcescaler=_scaler
+  local -n _forcescaler=_scaler _sub_opts=${prev//+(-)/_}
 
       _main_opts=( -fullscreen -startmapper -noautoexec -securemode -userconf  )
      _main_opts+=( -scaler -forcescaler -lang -machine -socket -exit           )
@@ -38,8 +38,9 @@ _dosbox()
                               return;;
                -opencaptures) _list_native_programs   _${prev:1}
                               return;;
-    -?(force)scaler|-machine) _list_function          _${prev:1}
-                              return;;
+    -?(-)@(?(force)scaler|machine))
+      COMPREPLY=($( compgen -W "${_sub_opts[*]}" -- "$cur" ))
+      return;;
   esac
 
   [[ ${words[@]} =~ [\ ](${_exclu_opts[*]}) ]] ||
@@ -54,11 +55,6 @@ _dosbox()
         # <dir|dos_exe(s)>
         return;;
   esac
-}
-_list_function()
-{
-  local -n _wordsarray=$1
-  COMPREPLY=($( compgen -W "${_wordsarray[*]}" -- "$cur" ))
 }
 _list_conf_files()
 {
