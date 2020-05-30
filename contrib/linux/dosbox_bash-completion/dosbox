@@ -54,8 +54,12 @@ _dosbox()
         [[ $cword -gt 1 ]] ||
         COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- "$cur" ))
         return;;
-     *) # hint at "-"
-        # <dir|dos_exe(s)>
+     *) #FIXME
+        # kind of works, but puts a space on the end of dirs
+        # I have no idea why yet
+        #COMPREPLY=( $( compgen -f -X '!*.@(bat|BAT|com|COM|exe|EXE)' -- "$cur" ) )
+        #COMPREPLY+=( $( compgen -d -S/ -- "$cur" ))
+        #printf "\n%s\n" "${COMPREPLY[*]}"
         return;;
   esac
 }
