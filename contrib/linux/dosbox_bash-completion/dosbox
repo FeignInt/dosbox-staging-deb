@@ -6,7 +6,7 @@ _dosbox()
   local cur prev words cword split
   _init_completion -s || return
 
-  local IFS=${IFS/#/|}
+  local dir IFS=${IFS/#/|}
 
   local -a _main_opts _repeat_opts _exclu_opts _opencaptures
   local -a _machine _conf_dirs _scaler
@@ -31,12 +31,38 @@ _dosbox()
         _scaler+=( advinterp3x hq2x hq3x 2xsai super2xsai supereagle tv2x tv3x )
         _scaler+=( rgb2x rgb3x scan2x scan3x                                   )
 
-      _conf_dirs=( $XDG_CONFIG_HOME/dosbox/                                    )
+           _conf=( ${cur%/*} $XDG_CONFIG_HOME/dosbox/                          )
 
 
   case "$prev" in
     -?(-)conf)
-      _list_conf_files
+        # if all .conf are in one dir and no spaces it works great
+        #
+
+        #FIXME does not work when spaces are involved
+        # dosbox -conf DOS\ conf\ files
+        # first puts you in ~/.config/dosbox
+        # then in ~/.config
+        # It can also go a bit crazy setting escapes  DOS\\\ conf\\\
+        #  quoting "DOS con..." behaves in same way
+        #
+        #FIXME user's input  dir also lists the .confs in XDG,
+        #      it will switch the path
+        # e.g.
+        # ~/.config/foo.conf ./MyDOSconf/bar.conf
+        # dosbox -conf <tab><tab>
+        # foo.conf
+        # dosbox -conf ./My<tab><tab><tab>
+        # foo.conf
+        # bar.conf
+        # typing f<tab> switches to full path of foo.conf
+        # if same filename in two dirs, it will not complete
+        #
+        for dir in "${_sub_opts[@]}"
+        do
+          COMPREPLY+=( $( compgen -f -X '!*.@(conf|CONF)' "${dir%/*}/${cur##*/}" -- "${cur}" ))
+        done
+        COMPREPLY=("${COMPREPLY[@]#@(${words[*]:1:$(( cword - 1 ))})}" )
       return;;
     -?(-)opencaptures)
       COMPREPLY=($( compgen -W '$( type -P "${_sub_opts[@]}")' -- $cur ))
@@ -53,19 +79,8 @@ _dosbox()
 
   [[ $cword -gt 1 ]] || COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- "$cur" ))
 
+  # FIXME can not select exe if dirname contains spaces
   COMPREPLY+=( $( compgen -f -X '!*.@(bat|BAT|com|COM|exe|EXE)' -- $cur ) )
-}
-_list_conf_files()
-{
-  local i
-  COMPREPLY=($( compgen -W '$(
-  for i in ${!_conf_dirs[@]}
-  do
-    compgen -G "${_conf_dirs[i]}*[.]@(conf|CONF)"
-  done
-  compgen -G "*[.]@(conf|CONF)"
-  compgen -G "${cur}*[.]@(conf|CONF)" )' -- "$cur" ))
-  COMPREPLY=($(compgen -W "${COMPREPLY[*]#@(${words[*]:1:$(( cword - 1 ))})}" -- "$cur" ))
 }
 
 complete -F _dosbox -o plusdirs -o nosort dosbox
