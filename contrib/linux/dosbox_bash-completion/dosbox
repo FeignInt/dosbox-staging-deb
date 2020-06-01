@@ -3,10 +3,13 @@
 
 _dosbox()
 {
+
   local cur prev words cword split
   _init_completion -s || return
 
-  local dir IFS=${IFS/#/|}
+  local IFS=$'|\t\n'
+  trap "$( shopt -p direxpand )" RETURN
+  shopt -u direxpand # with direxpand spaces in filenames cause problems
 
   local -a _main_opts _repeat_opts _exclu_opts _opencaptures
   local -a _machine _conf_dirs _scaler
@@ -31,38 +34,41 @@ _dosbox()
         _scaler+=( advinterp3x hq2x hq3x 2xsai super2xsai supereagle tv2x tv3x )
         _scaler+=( rgb2x rgb3x scan2x scan3x                                   )
 
-           _conf=( ${cur%/*} $XDG_CONFIG_HOME/dosbox/                          )
+           _conf=( "$XDG_CONFIG_HOME/dosbox/"                                  )
 
 
   case "$prev" in
     -?(-)conf)
-        # if all .conf are in one dir and no spaces it works great
-        #
 
-        #FIXME does not work when spaces are involved
-        # dosbox -conf DOS\ conf\ files
-        # first puts you in ~/.config/dosbox
-        # then in ~/.config
-        # It can also go a bit crazy setting escapes  DOS\\\ conf\\\
-        #  quoting "DOS con..." behaves in same way
-        #
-        #FIXME user's input  dir also lists the .confs in XDG,
-        #      it will switch the path
-        # e.g.
-        # ~/.config/foo.conf ./MyDOSconf/bar.conf
-        # dosbox -conf <tab><tab>
-        # foo.conf
-        # dosbox -conf ./My<tab><tab><tab>
-        # foo.conf
-        # bar.conf
-        # typing f<tab> switches to full path of foo.conf
-        # if same filename in two dirs, it will not complete
-        #
-        for dir in "${_sub_opts[@]}"
-        do
-          COMPREPLY+=( $( compgen -f -X '!*.@(conf|CONF)' "${dir%/*}/${cur##*/}" -- "${cur}" ))
-        done
-        COMPREPLY=("${COMPREPLY[@]#@(${words[*]:1:$(( cword - 1 ))})}" )
+      # if no input yet, list any .conf files in ./
+      [[ $cur ]] ||
+        COMPREPLY=( $( compgen -f -X '!*.@(conf|CONF)' "./" ) )
+
+      # if there is input, list potential matches
+      [[ ${#cur} -gt 0 ]] &&
+        COMPREPLY=( $( compgen -f -X '!*.@(conf|CONF)' "${cur}" -- "${cur}" ) )
+
+      # list .conf files in pre-configured location
+      local dir
+      for dir in "${_sub_opts[@]}"
+      do
+        # avoid duplicate
+        [[ ${dir%/} == ${cur%/.*} ]] && continue
+        COMPREPLY+=( $( compgen -f -X '!*.@(conf|CONF)' "${dir%/}/" -- "${cur}" ))
+      done
+
+      # This filters the COMPREPLY
+      # without it full path is needed
+      COMPREPLY=($( local i
+                    for ((i=0 ; i <= (( ${#COMPREPLY[@]} -1 )) ; i++ ))
+                    do
+                      [[ ${COMPREPLY[$i]} =~ ${cur//[.]/[.]} ]] &&
+                        printf "%s\n" "${COMPREPLY[$i]}"
+                    done ))
+
+      # remove previously selected
+      COMPREPLY=("${COMPREPLY[@]#@(${words[*]:1:$(( cword - 1 ))})}" )
+
       return;;
     -?(-)opencaptures)
       COMPREPLY=($( compgen -W '$( type -P "${_sub_opts[@]}")' -- $cur ))
@@ -79,7 +85,6 @@ _dosbox()
 
   [[ $cword -gt 1 ]] || COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- "$cur" ))
 
-  # FIXME can not select exe if dirname contains spaces
   COMPREPLY+=( $( compgen -f -X '!*.@(bat|BAT|com|COM|exe|EXE)' -- $cur ) )
 }
 
