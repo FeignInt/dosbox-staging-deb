@@ -81,8 +81,9 @@ _dosbox()
 
   [[ ${words[@]} =~ [\ ](${_exclu_opts[*]}) ]] && return
 
-  COMPREPLY=($( compgen -W "${_main_opts[*]/@(${words[*]:1:$(( cword - 1 ))})} \
-                            ${_repeat_opts[*]}" -- "$cur" ))
+  COMPREPLY=($( compgen -W \
+    "${_main_opts[*]/@(${words[*]:1:$(( cword - 1 ))})}|${_repeat_opts[*]}" \
+    -- "$cur" ))
 
   [[ $cword -gt 1 ]] || COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- "$cur" ))
 
