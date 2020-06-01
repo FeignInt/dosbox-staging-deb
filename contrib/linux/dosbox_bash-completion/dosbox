@@ -74,6 +74,7 @@ _dosbox()
       COMPREPLY=($( compgen -W '$( type -P "${_sub_opts[@]}")' -- $cur ))
       return;;
     -?(-)@(?(force)scaler|machine))
+      compopt +o plusdirs
       COMPREPLY=($( compgen -W "${_sub_opts[*]}" -- "$cur" ))
       return;;
   esac
