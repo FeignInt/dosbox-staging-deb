@@ -8,6 +8,8 @@ _dosbox()
   _init_completion -s || return
 
   local IFS=$'|\t\n'
+  local words_filter="${words[*]:1:$(( cword - 1 ))}"
+
   trap "$( shopt -p direxpand )" RETURN
   shopt -u direxpand # with direxpand spaces in filenames cause problems
 
@@ -39,13 +41,14 @@ _dosbox()
 
   case "$prev" in
     -?(-)conf)
+      compopt -o plusdirs
       while read -r
       do
         [[ ${REPLY} =~ ${cur//[.]/[.]} ]] &&
-          COMPREPLY+=( "${REPLY#@(${words[*]:1:$(( cword - 1 ))})}" )
-                             # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-                             # removes already selected .conf(s)
-      done <<<"$(
+          COMPREPLY+=( "${REPLY#@(${words_filter})}" )
+                             # ^^^^^^^^^^^^^^
+                   # removes already selected .conf(s)
+      done < <(
             # when no input, list any .conf files in ./
             [[ $cur ]] ||
               compgen -f -X '!*.@(conf|CONF)' "./"
@@ -53,31 +56,38 @@ _dosbox()
             [[ ${#cur} -gt 0 ]] &&
               compgen -f -X '!*.@(conf|CONF)' "${cur}" -- "${cur}"
             # list .conf files in pre-configured location
+
             while read -r dir
             do
               [[ ${dir%/} == ${cur%/*} ]] && continue
                 compgen -f -X '!*.@(conf|CONF)' "${dir%/}/" -- "${cur}"
             done <<<"${_sub_opts[*]}"
-                )"
+          )
       return;;
     -?(-)opencaptures)
-      COMPREPLY=($( compgen -W '$( type -P "${_sub_opts[@]}")' -- $cur ))
+      COMPREPLY=( \
+        $( compgen -W "$( type -P "${_sub_opts[@]}" )" -- "${cur}" )
+      )
+      # include filenames plusdirs ?
       return;;
     -?(-)@(?(force)scaler|machine))
-      compopt +o plusdirs
-      COMPREPLY=($( compgen -W "${_sub_opts[*]}" -- "$cur" ))
+      COMPREPLY=( \
+        $( compgen -W "${_sub_opts[*]}" -- "${cur}" )
+      )
       return;;
   esac
 
   [[ ${words[@]} =~ [\ ](${_exclu_opts[*]}) ]] && return
+  compopt -o plusdirs
+  COMPREPLY=( $(
+    [[ $cword -gt 1 ]] ||
+      compgen -W "${_exclu_opts[*]}"                   -- "${cur}"
 
-  COMPREPLY=($( compgen -W \
-    "${_main_opts[*]/@(${words[*]:1:$(( cword - 1 ))})}|${_repeat_opts[*]}" \
-    -- "$cur" ))
-
-  [[ $cword -gt 1 ]] || COMPREPLY+=($( compgen -W "${_exclu_opts[*]}" -- "$cur" ))
-
-  COMPREPLY+=( $( compgen -f -X '!*.@(bat|BAT|com|COM|exe|EXE)' -- $cur ) )
+     compgen  -W "${_repeat_opts[*]}"                  -- "${cur}"
+     compgen  -W "${_main_opts[*]#@(${words_filter})}" -- "${cur}"
+     compgen  -f -X '!*.@(bat|BAT|com|COM|exe|EXE)'    -- "${cur}"
+    )
+  )
 }
 
-complete -F _dosbox -o plusdirs -o nosort dosbox
+complete -F _dosbox -o nosort dosbox
