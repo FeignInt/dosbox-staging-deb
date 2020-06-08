@@ -41,4 +41,5 @@ override_dh_auto_install:
 		 | make -f - hicolor && make clean || true
 
 override_dh_gencontrol:
+	sed -i -E 's/ [(][^,]+//g' debian/*.substvars
 	dh_gencontrol -- -DDistribution=$(CODENAME)
