@@ -1,3 +1,10 @@
+dosbox-staging (0.75.1-2) unstable; urgency=medium
+
+  * debian/rules: Set Distribution: Field
+  * debian/rules: strip minversion from depends
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Mon, 08 Jun 2020 01:25:03 +0100
+
 dosbox-staging (0.75.1-1) unstable; urgency=medium
 
   * New upstream release: (Fixes: #385)
