@@ -3,7 +3,7 @@ Section: otherosfs
 Priority: optional
 Maintainer: Feignint <37488595+FeignInt@users.noreply.github.com>
 Homepage: https://dosbox-staging.github.io/about/
-Build-Depends: debhelper-compat (= 12), libsdl2-dev, libsdl2-net-dev,
+Build-Depends: debhelper-compat (= 11), libsdl2-dev, libsdl2-net-dev,
  libasound2-dev, libopusfile-dev, libpng-dev, libncurses-dev | libncurses5-dev,
  librsvg2-bin
 Standards-Version: 4.4.1
