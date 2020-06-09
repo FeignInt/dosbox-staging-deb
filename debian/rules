@@ -1,6 +1,28 @@
 #!/usr/bin/make -f
 include /usr/share/dpkg/pkg-info.mk
 export DEB_CPPFLAGS_MAINT_APPEND=-D_FILE_OFFSET_BITS=64
+export DEB_LDFLAGS_SET=-Wl,--as-needed -Wall -pipe -fpch-preprocess -fdiagnostics-color=auto -flto=4
+
+export RELEASE_FLAGS=-O3 -fstrict-aliasing -fno-signed-zeros -fno-trapping-math
+export RELEASE_FLAGS+=-fassociative-math -mfpmath=sse
+#export RELEASE_FLAGS+=-msse4.2
+export RELEASE_FLAGS+=-flto -ffunction-sections -fdata-sections -DNDEBUG -pipe
+
+export DEBUG_FLAGS=-Wall -pipe -fpch-preprocess -fdiagnostics-color=auto
+export DEBUG_FLAGS+=-fno-omit-frame-pointer -flto
+
+export DEB_CXXFLAGS_MAINT_APPEND=$(DEB_CFLAGS_MAINT_APPEND)
+
+release_buildflags = \
+   DEB_CFLAGS_MAINT_STRIP="-O2" \
+   DEB_CFLAGS_MAINT_APPEND="$(RELEASE_FLAGS)" \
+   DEB_CXXFLAGS_MAINT_APPEND="$(RELEASE_FLAGS)" \
+   dpkg-buildflags
+
+  debug_buildflags = \
+	 DEB_CFLAGS_MAINT_APPEND="$(DEBUG_FLAGS)" \
+   DEB_CXXFLAGS_MAINT_APPEND="$(DEBUG_FLAGS)" \
+   dpkg-buildflags
 
 %:
 	dh $@
@@ -14,8 +36,12 @@ override_dh_auto_configure:
 	sed -E 's/(AC_INIT.+,[[]?)[^])]+/\1$(DEB_VERSION)/' configure.ac \
 	  | autoconf -o configure -
 	#
-	dh_auto_configure -Bbuild-release
-	dh_auto_configure -Bbuild-debug -- --enable-debug=heavy
+	dh_auto_configure \
+			-Bbuild-release	-- \
+			$(shell $(release_buildflags) --export=configure )
+	dh_auto_configure \
+			-Bbuild-debug -- \
+			$(shell $(debug_buildflags) --export=configure ) --enable-debug=heavy
 
 override_dh_auto_build:
 	dh_auto_build -Bbuild-release
