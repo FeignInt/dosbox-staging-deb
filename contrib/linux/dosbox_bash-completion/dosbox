@@ -82,29 +82,24 @@ _dosbox()
           )
       return;;
     -?(-)opencaptures)
-      COMPREPLY=( \
-        $( compgen -W "$( type -P "${_sub_opts[@]}" )" -- "${cur}" )
-      )
+      readarray -t -O 0 COMPREPLY \
+        < <( compgen -W "$( type -P "${_sub_opts[@]}" )" -- "${cur}" )
       # include filenames plusdirs ?
       return;;
     -?(-)@(?(force)scaler|machine))
-      COMPREPLY=( \
-        $( compgen -W "${_sub_opts[*]}" -- "${cur}" )
-      )
+      readarray -t -O 0 COMPREPLY \
+        < <( compgen -W "${_sub_opts[*]}" -- "${cur}" )
       return;;
   esac
 
-  [[ ${words[@]} =~ [\ ](${_exclusive_opts[*]}) ]] && return
+  [[ ${words[*]} =~ (${_exclusive_opts[*]}) ]] && return
   compopt -o plusdirs
-  COMPREPLY=( $(
-    [[ $cword -gt 1 ]] ||
-      compgen -W "${_exclusive_opts[*]}"               -- "${cur}"
-
-     compgen  -W "${_repeat_opts[*]}"                  -- "${cur}"
-     compgen  -W "${_main_opts[*]#@(${words_filter})}" -- "${cur}"
-     compgen  -f -X '!*.@(bat|BAT|com|COM|exe|EXE)'    -- "${cur}"
+  readarray -t -O 0 COMPREPLY < <( [[ $cword -gt 1 ]] ||
+     compgen -W "${_exclusive_opts[*]}"               -- "${cur}"
+     compgen -W "${_repeat_opts[*]}"                  -- "${cur}"
+     compgen -W "${_main_opts[*]#@(${words_filter})}" -- "${cur}"
+     compgen -f -X '!*.@(bat|BAT|com|COM|exe|EXE)'    -- "${cur}"
     )
-  )
 }
 
 complete -F _dosbox -o nosort dosbox
