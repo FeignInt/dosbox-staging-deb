@@ -12,6 +12,7 @@ _dosbox()
 
   local -a \
        _main_opts=(
+                    --help
                     -fullscreen -startmapper -noautoexec -securemode -scaler
                     -forcescaler -lang -machine -socket -exit
                   )\
@@ -46,6 +47,14 @@ _dosbox()
 
   # forcescaler uses same sub. options as scaler, so setup a nameref to it
   local -n _forcescaler=_scaler
+
+  case "$cur" in
+    --h*)
+      # have to hope they tabbed
+       man dosbox
+       COMPREPLY=( " " )
+      return;;
+  esac
 
   case "$prev" in
     -?(-)conf)
