@@ -35,14 +35,14 @@ _dosbox()
                     advinterp3x hq2x hq3x 2xsai super2xsai supereagle tv2x
                     tv3x rgb2x rgb3x scan2x scan3x
                   )\
-            _conf=(
-                    "$XDG_CONFIG_HOME/dosbox/"
-                  )\
   # As far as the shell is concerned the above, starting at "local -a",
   # is on one line, thus the above are all local arrays
 
-  # setup nameref to point to array
+  # shellcheck disable=SC2034 # using nameref
+  local _conf="${DOSBOX_STAGING_CONF_DIR:-$XDG_CONFIG_HOME/dosbox/}"
+        #TODO validate the dir exists
 
+  # setup nameref to point to array
   [[ ${prev:0:1} == - ]] && local -n _sub_opts=${prev//+(-)/_}
 
   # forcescaler uses same sub. options as scaler, so setup a nameref to it
@@ -59,27 +59,18 @@ _dosbox()
   case "$prev" in
     -?(-)conf)
       compopt -o plusdirs
-      while read -r
-      do
-        [[ ${REPLY} =~ ${cur//[.]/[.]} ]] &&
-          COMPREPLY+=( "${REPLY#@(${words_filter})}" )
-                             # ^^^^^^^^^^^^^^
-                   # removes already selected .conf(s)
-      done < <(
-            # when no input, list any .conf files in ./
-            [[ $cur ]] ||
-              compgen -f -X '!*.@(conf|CONF)' "./"
-            # if there is input, list potential matches
-            [[ ${#cur} -gt 0 ]] &&
-              compgen -f -X '!*.@(conf|CONF)' "${cur}" -- "${cur}"
-            # list .conf files in pre-configured location
 
-            while read -r dir
-            do
-              [[ ${dir%/} == ${cur%/*} ]] && continue
-                compgen -f -X '!*.@(conf|CONF)' "${dir%/}/" -- "${cur}"
-            done <<<"${_sub_opts[*]}"
-          )
+      readarray -t -O ${#COMPREPLY[@]} COMPREPLY \
+        < <( compgen -f -X '!*.@(conf|CONF)' -- "${cur}" )
+
+      # skip configured conf dir if cur looks like it contains a path
+      [[ ${cur} =~ ^[.]|[/\~] ]] ||
+      readarray -t -O ${#COMPREPLY[@]} COMPREPLY \
+        < <( compgen -f -X '!*.@(conf|CONF)' -- "${_sub_opts%/}/${cur##*/}" )
+
+      # filter out previously selected confs
+      COMPREPLY=( "${COMPREPLY[@]#@(${words_filter})}" )
+
       return;;
     -?(-)opencaptures)
       readarray -t -O 0 COMPREPLY \
