@@ -13,7 +13,7 @@ _dosbox()
   # shellcheck disable=SC2034 # using nameref
   local -a \
        _main_opts=(
-                    --help
+                    --help --README
                     -fullscreen -startmapper -noautoexec -securemode -scaler
                     -forcescaler -lang -machine -socket -exit
                   )\
@@ -55,6 +55,21 @@ _dosbox()
       # have to hope they tabbed
        man dosbox
        COMPREPLY=( " " )
+      return;;
+    --R*)
+      local -a pager
+      readarray -t -O 0 pager < <( type -p zless zmore || true; )
+      #FIXME zmore ( and more ) does not play nice
+      # at least not for me, it does not return me to a visible cmd prompt
+      # pressing enter will launch dosbox
+      if [[ $pager ]]
+      then
+        $pager /usr/share/doc/dosbox-staging/README.gz
+      else
+        # unlikely to be missing, try to help anyway
+        printf "\nzless and zmore not found\n do you have gzip installed?\n"
+      fi
+      COMPREPLY=( " " )
       return;;
   esac
 
