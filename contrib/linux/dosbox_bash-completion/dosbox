@@ -13,7 +13,6 @@ _dosbox()
   # shellcheck disable=SC2034 # using nameref
   local -a \
        _main_opts=(
-                    --help --README
                     -fullscreen -startmapper -noautoexec -securemode -scaler
                     -forcescaler -lang -machine -socket -exit
                   )\
@@ -39,6 +38,18 @@ _dosbox()
   # As far as the shell is concerned the above, starting at "local -a",
   # is on one line, thus the above are all local arrays
 
+  local -a _pager
+  readarray -t -O 0 _pager < <( type -p zless zmore || true; )
+
+  # man or pager may not exist, README might not be where I expect
+  readarray -t -O 0 _help_opts < <(
+     man -w dosbox >/dev/null 2>&1 &&
+       printf "%s\n"  "--help"
+     [[ ${_pager[*]} ]] &&
+       [[ -e /usr/share/doc/dosbox-staging/README.gz ]] &&
+       printf "%s\n" "--README"
+     )
+
   # shellcheck disable=SC2034 # using nameref _sub_opts
   local _conf="${DOSBOX_STAGING_CONF_DIR:-$XDG_CONFIG_HOME/dosbox/}"
         #TODO validate the dir exists
@@ -57,18 +68,7 @@ _dosbox()
        COMPREPLY=( " " )
       return;;
     --R*)
-      local -a pager
-      readarray -t -O 0 pager < <( type -p zless zmore || true; )
-      #FIXME zmore ( and more ) does not play nice
-      # at least not for me, it does not return me to a visible cmd prompt
-      # pressing enter will launch dosbox
-      if [[ $pager ]]
-      then
-        $pager /usr/share/doc/dosbox-staging/README.gz
-      else
-        # unlikely to be missing, try to help anyway
-        printf "\nzless and zmore not found\n do you have gzip installed?\n"
-      fi
+      "${_pager[0]}" /usr/share/doc/dosbox-staging/README.gz
       COMPREPLY=( " " )
       return;;
   esac
@@ -102,9 +102,12 @@ _dosbox()
 
   [[ ${words[*]} =~ (${_exclusive_opts[*]}) ]] && return
   compopt -o plusdirs
+
   readarray -t -O 0 COMPREPLY < <( [[ $cword -gt 1 ]] ||
      compgen -W "${_exclusive_opts[*]}"               -- "${cur}"
      compgen -W "${_repeat_opts[*]}"                  -- "${cur}"
+     [[ ${_help_opts[*]} ]] &&
+     compgen -W "${_help_opts[*]}"                    -- "${cur}"
      compgen -W "${_main_opts[*]#@(${words_filter})}" -- "${cur}"
      compgen -f -X '!*.@(bat|BAT|com|COM|exe|EXE)'    -- "${cur}"
     )
