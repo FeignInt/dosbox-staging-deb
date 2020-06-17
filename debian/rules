@@ -1,7 +1,8 @@
 #!/usr/bin/make -f
 include /usr/share/dpkg/pkg-info.mk
 export DEB_CPPFLAGS_MAINT_APPEND=-D_FILE_OFFSET_BITS=64
-export DEB_LDFLAGS_SET=-Wl,--as-needed -Wall -pipe -fpch-preprocess -fdiagnostics-color=auto -flto=4
+export DEB_LDFLAGS_SET=-Wl,--as-needed -Wall -pipe -fpch-preprocess
+export DEB_LDFLAGS_SET+=-fdiagnostics-color=auto -flto=$(shell nproc)
 
 export RELEASE_FLAGS=-O3 -fstrict-aliasing -fno-signed-zeros -fno-trapping-math
 export RELEASE_FLAGS+=-fassociative-math -mfpmath=sse
