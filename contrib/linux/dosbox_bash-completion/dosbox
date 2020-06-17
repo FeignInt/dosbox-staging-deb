@@ -63,11 +63,13 @@ _dosbox()
 
   case "$cur" in
     --h*)
+      compopt -o nospace
       # have to hope they tabbed
-       man dosbox
-       COMPREPLY=( " " )
+      man dosbox
+      COMPREPLY=( " " )
       return;;
     --R*)
+      compopt -o nospace
       "${_pager[0]}" /usr/share/doc/dosbox-staging/README.gz
       COMPREPLY=( " " )
       return;;
