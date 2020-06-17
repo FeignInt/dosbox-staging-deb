@@ -100,33 +100,24 @@ _dosbox()
       return;;
     -socket|-lang|-c)
       # man and the manpage required
-      if [[ ${_help_opts[*]} =~ help ]]
-      then
-        # don't spam a tab spammer
-        [[ ${cur} ]] ||
-        1>&2 printf "\n%s %s %s, %s\n%s"                       \
-          "no completion support for" "$prev" "yet"            \
-          "hint from manpage:"                                 \
-          "$( sed -n -E '/ '"${prev#[-]/[-]}"' /,/^$/{s/^ +//p}' \
-               < <( man dosbox 2>/dev/null ) )"
-      fi
-
-      #TODO stop duplicate printing
-      # i.e. only print on second tab, after leaving a count
-      # I don't really want to leave an env. var. hanging around,
-      # but that would be the lesser of two evils
-
-      #TODO make this pretty
-      #"$( sed -n -E \
-      #  '/[.].. [\]'${prev/[-]/[-]}'/,/[.]TP/{s/^[.].{2} ["\]?(.+)/\1/p}' \
-      #  < <(zcat $( man -w dosbox ) ) )"
+      [[ ${_help_opts[*]} =~ help && -z ${cur} ]] &&
+        readarray -t -O ${#COMPREPLY[@]} COMPREPLY \
+        < <(
+          # shellcheck disable=SC2046
+          # using IFS=$'|\t\n" I want sed's output split
+          printf "» %s\n"                                        \
+           "no completion support for $prev yet"                 \
+           "hint from manpage:"                                  \
+           $( < <( man dosbox 2>/dev/null )                      \
+              sed -n -E '/ '"${prev#[-]/[-]}"' /,/^$/{s/^ +//p}' )
+        )
       ;;
   esac
 
   [[ ${words[*]} =~ (${_exclusive_opts[*]}) ]] && return
   compopt -o plusdirs
 
-  readarray -t -O 0 COMPREPLY < <( [[ $cword -gt 1 ]] ||
+  readarray -t -O ${#COMPREPLY[@]} COMPREPLY < <( [[ $cword -gt 1 ]] ||
      compgen -W "${_exclusive_opts[*]}"               -- "${cur}"
      compgen -W "${_repeat_opts[*]}"                  -- "${cur}"
      [[ ${_help_opts[*]} ]] &&
