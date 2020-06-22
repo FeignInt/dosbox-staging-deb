@@ -6,15 +6,16 @@ on:
   push:
     tags:
       - push_to_ppa/v*
+      # push_to_ppa/ prefix is just what I was using to test
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - name: set env
       run: |
-          export    debian_branch="debianlike"
-          export      debian_path="debian-worktree"
-          export debian_changelog="debian/changelog"
+          export    debian_branch="debianlike"       # branch debian/ lives on
+          export      debian_path="debian-worktree"  # no need to change
+          export debian_changelog="debian/changelog" # no need to change
 
           export              TAG="${GITHUB_REF#refs/tags/}"
 
@@ -27,13 +28,18 @@ jobs:
           export       debVersion="${debVersion#${upstreamPrefix}}"
           export           debTAG="${debian_branch}/${debVersion/\~/_}"
 
+          # These will be used in commit, changelog and to id gpg key used to
+          # sign package, which in turn authenticates the .dsc to launchpad
           export      DEBFULLNAME=builddebtest
           export         DEBEMAIL=blddebtest@foo.com
 
-          export GPG_TTY="$(tty)"
-          gpg --batch --import < <( base64 --decode <<<"$PPA_GPG_PK" )
-
+          # The PPA to push to
           export PPA_ID=feignint/db-s-poc2
+
+          export GPG_TTY="$(tty)"
+          # import private gpg key used to sign, this must match the gpg key
+          # registered with the PPA being pushed to.
+          gpg --batch --import < <( base64 --decode <<<"$PPA_GPG_PK" )
 
           for envvar in                  \
                         debian_branch    \
@@ -62,6 +68,8 @@ jobs:
         sudo apt-get update # upgrade takes ages
         sudo apt-get install -y --install-recommends=no \
           git-buildpackage dput debhelper lintian
+          # lintian not strictly needed, but will make the tail end of github's
+          # log a little more verbose.
 
     # TODO can I checkout debian branch here?, I don't like using cd
     - name: Checkout dosbox-staging
