@@ -185,3 +185,12 @@ jobs:
           --git-export-dir=../build-area                        \
           --git-export="${treeish}" "${tagging}"                \
           --git-postbuild="$( push_to_ppa )" || exit 9
+    - name: check gpg expiry
+      run: |
+        EXPIRY=$( date +%s -d \
+              "$( grep -m1 -Po '(?<=expires: )[2-9][0-9]{3}(-[0-9]{2}){2}' \
+                      < <( gpg --list-keys ) )" )
+         TODAY="$( date +%s )"
+        DAYSLEFT="$((  $(( $EXPIRY - $TODAY )) / 60/60/24 ))"
+        [[ ${DAYSLEFT} -lt 60 ]] &&
+          printf "gpg key expires in %s days\n" "${DAYSLEFT}" && exit 42
