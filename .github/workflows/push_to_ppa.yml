@@ -26,6 +26,7 @@ jobs:
           export         DEBEMAIL=blddebtest@foo.com
 
           export GPG_TTY="$(tty)"
+          gpg --batch --import < <( base64 --decode <<<"$PPA_GPG_PK" )
 
           export PPA_ID=feignint/db-s-poc2
 
@@ -48,25 +49,8 @@ jobs:
                     "${envvar_nameref}"
           done
 
-          # configure to enable caching the passphrase
-          install -DT -m 0600 <(printf "%s\n" allow-preset-passphrase ) ~/.gnupg/gpg-agent.conf
-          chmod 0700 ~/.gnupg # fix permissions
-
-          # import key
-          gpg --batch --import < <(base64 --decode <<<"$BDT_PK" )
-          #  the above line is the only one needed if no passphrase
-
-          keygrip="$( grep -m1 -Po "(?<=Keygrip = )[[:alnum:]]{40}" \
-                          < <( gpg --list-keys --with-keygrip ) )"
-          # Note: at the moment I really don't care about checking keygrip
-          # The only bit I need for live script is the batch import
-          # passphrase is redundent, I'm just too lazy to reset keys passphrase
-          # cache passphrase
-          /usr/lib/gnupg2/gpg-preset-passphrase -c $keygrip <<<"$BDT_PP"
-          # it is overkill using passphrase, the PK fits in secret
       env:
-        BDT_PK: ${{ secrets.BDT_PK }} # base64
-        BDT_PP: ${{ secrets.BDT_PP }}
+        PPA_GPG_PK: ${{ secrets.PPA_GPG_PK }}
     - name: install depends
       run: |
         set -x
