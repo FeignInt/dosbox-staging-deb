@@ -17,6 +17,11 @@ jobs:
           export debian_changelog="debian/changelog"
 
           export              TAG="${GITHUB_REF#refs/tags/}"
+
+          # exit if alpha tag
+          # v0.76.0-alpha was created before v0.75.0-rc1
+          [[ $TAG =~ -alpha ]] && exit 0
+
           export   upstreamPrefix="${TAG%%[0-9][.]*}"
                        debVersion="${TAG/-/\~}-1"
           export       debVersion="${debVersion#${upstreamPrefix}}"
