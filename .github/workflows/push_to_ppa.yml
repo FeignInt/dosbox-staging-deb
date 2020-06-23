@@ -5,8 +5,9 @@ name: push to PPA
 on:
   push:
     tags:
-      - push_to_ppa/v*
-      # push_to_ppa/ prefix is just what I was using to test
+      - 'push_to_ppa/v*' # push_to_ppa/ prefix is just what I was using to test
+      - '!**-alpha**'    # ignore -alpha tags
+      - '!**-pre**'      # ignore -pre tags
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,10 +19,6 @@ jobs:
           export debian_changelog="debian/changelog" # no need to change
 
           export              TAG="${GITHUB_REF#refs/tags/}"
-
-          # exit if alpha tag
-          # v0.76.0-alpha was created before v0.75.0-rc1
-          [[ $TAG =~ -alpha ]] && exit 0
 
           export   upstreamPrefix="${TAG%%[0-9][.]*}"
                        debVersion="${TAG/-/\~}-1"
