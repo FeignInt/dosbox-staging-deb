@@ -8,6 +8,9 @@ on:
       - 'push_to_ppa/v*' # push_to_ppa/ prefix is just what I was using to test
       - '!**-alpha**'    # ignore -alpha tags
       - '!**-pre**'      # ignore -pre tags
+      # TODO expand tag trigger to include debianised version
+      # ( excluding *-1 which will be tagged by this script )
+      # This is to push a debian packaging revision to ppa
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,14 +22,27 @@ jobs:
           export debian_changelog="debian/changelog" # no need to change
 
           export              TAG="${GITHUB_REF#refs/tags/}"
+          export      upstreamTAG="${TAG}"
 
           export   upstreamPrefix="${TAG%%[0-9][.]*}"
-                       debVersion="${TAG/-/\~}-1"
-          export       debVersion="${debVersion#${upstreamPrefix}}"
-          export           debTAG="${debian_branch}/${debVersion/\~/_}"
 
-          # These will be used in commit, changelog and to id gpg key used to
-          # sign package, which in turn authenticates the .dsc to launchpad
+          # account for debian versioned tags
+          [[ $upstreamPrefix == ${debian_branch}/ ]] &&
+          [[ ${TAG##*-} =~ ^([2-9]|[1-9][0-9]+)$  ]] &&
+                             debSUFFIX="-${TAG##*-}" || debSUFFIX="-1"
+          # i.e. if it looks like a debTAG preserve Suffix,
+          # else reset to -1 ( debTAG will be created )
+
+          # untested, I think the indentation here breaks yaml syntax
+                       debVersion="${TAG%${debSUFFIX}}"
+                       debVersion="${TAG/-/\~}"
+                       debVersion="${debVersion#${upstreamPrefix}}"
+                           debTAG="${debian_branch}/${debVersion/\~/_}"
+
+          export       debVersion="${debVersion}${debSUFFIX}"
+          export           debTAG="${debTAG}${debSUFFIX}"
+
+          # These will be used in commit, changelog
           export      DEBFULLNAME=builddebtest
           export         DEBEMAIL=blddebtest@foo.com
 
@@ -43,6 +59,7 @@ jobs:
                         debian_path      \
                         debian_changelog \
                         TAG              \
+                        upstreamTAG      \
                         upstreamPrefix   \
                         debVersion       \
                         debTAG           \
@@ -174,7 +191,8 @@ jobs:
         gbp buildpackage                                        \
           --build=source                                        \
           --no-check-builddeps                                  \
-          --git-upstream-tag="${upstreamPrefix}%(version%~%-)s" \
+          -k$( grep -m1 -Po "(?<= )[[:xdigit:]]{40}"            \
+                   < <( gpg --list-keys ) )                     \
           --git-overlay                                         \
           --git-export-dir=../build-area                        \
           --git-export="${treeish}" "${tagging}"                \
