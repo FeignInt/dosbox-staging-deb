@@ -18,7 +18,6 @@ jobs:
     - name: set env
       run: |
           export    debian_branch="debianlike"       # branch debian/ lives on
-          export      debian_path="debian-worktree"  # no need to change
           export debian_changelog="debian/changelog" # no need to change
 
           export              TAG="${GITHUB_REF#refs/tags/}"
@@ -56,7 +55,6 @@ jobs:
 
           for envvar in                  \
                         debian_branch    \
-                        debian_path      \
                         debian_changelog \
                         TAG              \
                         upstreamTAG      \
@@ -85,9 +83,10 @@ jobs:
           # lintian not strictly needed, but will make the tail end of github's
           # log a little more verbose.
 
-    # TODO can I checkout debian branch here?, I don't like using cd
     - name: Checkout dosbox-staging
       uses: actions/checkout@v2
+        fetch-depth:  1
+        ref:  ${{ env.debian_branch }}
     - name: sanity check
       run: |
         set -x
@@ -100,9 +99,6 @@ jobs:
     - name: Changelog
       run: |
         set -x
-        # checkout debian worktree
-        git worktree add "${GITHUB_WORKSPACE}/${debian_path}" "${debian_branch}" || exit 3
-        cd "${GITHUB_WORKSPACE}/${debian_path}" || exit 4
         append_changelog()
         {
 
@@ -173,7 +169,6 @@ jobs:
     - name: package source
       run: |
         set -x
-        cd "${GITHUB_WORKSPACE}/${debian_path}" || exit 8
         push_to_ppa()
         {
           printf 'dput ppa:%s "$%s"' \
