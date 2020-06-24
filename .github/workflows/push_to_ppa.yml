@@ -6,11 +6,11 @@ on:
   push:
     tags:
       - 'push_to_ppa/v*' # push_to_ppa/ prefix is just what I was using to test
+      - 'debianlike/*-[2-9]'
+      - 'debianlike/*-[1-9][0-9]+'
+      - '!debianlike/*-1'
       - '!**-alpha**'    # ignore -alpha tags
       - '!**-pre**'      # ignore -pre tags
-      # TODO expand tag trigger to include debianised version
-      # ( excluding *-1 which will be tagged by this script )
-      # This is to push a debian packaging revision to ppa
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -188,7 +188,7 @@ jobs:
           treeish="HEAD"
           tagging="--git-tag"
         fi
-        gbp buildpackage                                        \
+        gbp buildpackage -i'(?!debian/)'                        \
           --build=source                                        \
           --no-check-builddeps                                  \
           -k$( grep -m1 -Po "(?<= )[[:xdigit:]]{40}"            \
@@ -197,6 +197,9 @@ jobs:
           --git-export-dir=../build-area                        \
           --git-export="${treeish}" "${tagging}"                \
           --git-postbuild="$( push_to_ppa )" || exit 9
+        # -i'(?!debian/)' is to ignore anything on the debian_branch
+        # that is not in debian/ i.e. this yml script, and README.*
+        # see dpkg-source(1)
     - name: check gpg expiry
       run: |
         EXPIRY=$( date +%s -d \
