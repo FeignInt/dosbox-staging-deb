@@ -19,6 +19,7 @@ jobs:
     steps:
       - name: set env
         run: |
+          set -x
           export      debian_branch="debianlike"       # branch debian/ lives on
           export   debian_changelog="debian/changelog" # no need to change
           export upstream_user_repo="dosbox-staging/dosbox-staging"
