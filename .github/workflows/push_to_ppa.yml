@@ -244,18 +244,24 @@ jobs:
             treeish="HEAD"
             tagging=( "--git-tag" "--git-sign-tags" )
           fi
-          gbp buildpackage -i'(?!debian/)'                        \
-            --build=source                                        \
-            --no-check-builddeps                                  \
-            -k$( grep -m1 -Po "(?<= )[[:xdigit:]]{40}"            \
-                     < <( gpg --list-keys ) )                     \
-            --git-overlay                                         \
-            --git-export-dir=../build-area                        \
-            --git-export="${treeish}" "${tagging[@]}"             \
+
+          gbp buildpackage -i'(?!debian/)'             \
+            -S --no-check-builddeps                    \
+            -k$( grep -m1 -Po "(?<= )[[:xdigit:]]{40}" \
+                     < <( gpg --list-keys ) )          \
+            --git-overlay                              \
+            --git-export-dir=../build-area             \
+            --git-export="${treeish}" "${tagging[@]}"  \
             --git-postbuild="$( push_to_ppa )" || exit 9
+
           # -i'(?!debian/)' is to ignore anything on the debian_branch
           # that is not in debian/ i.e. this yml script, and README.*
           # see dpkg-source(1)
+
+          # -S is equivalent to --build=source, *must* use -S to avoid
+          #  inconsistent behaviour of debuild and dpkg-buildpackage
+          #  using long form results in debuild failing to use correct
+          #  .changes file
       - name: check gpg expiry
         run: |
           EXPIRY=$( date +%s -d \
