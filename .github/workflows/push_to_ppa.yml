@@ -29,6 +29,12 @@ jobs:
 
           export             PPA_ID="feignint/dosbox-staging" # PPA to push to
 
+          # import private gpg key used to sign, this must match the gpg key
+          # registered with the PPA being pushed to.
+          export GPG_TTY="$(tty)"
+          gpg --batch --import < <( base64 --decode <<<"$PPA_GPG_PK" )
+          printf "::set-env name=%s::%s\n" "GPG_TTY" "${GPG_TTY}"
+
           Get_tags_json()
           {
             curl -s "${GITHUB_API_URL}/repos/$1/tags"
@@ -57,15 +63,15 @@ jobs:
                  .name,"|",.commit.sha, "\n"' < <(
                    Get_tags_json "${upstream_user_repo:=${GITHUB_REPOSITORY}}" )
             )
-            [[ ${#upstreamTAGs[@]} -gt 0 ]] &&
-              TAG="${upstreamTAGs[-1]%|*}"  &&
+            [[ ${#upstreamTAGs[@]} -gt 0 ]] ||
+              exit 0 # no new tags, exit gracefully
+
+            TAG="${upstreamTAGs[-1]%|*}" &&
               upstreamCommit="${upstreamTAGs[-1]#*|}"
             #TODO use upstreamCommit, or lose it...
             #  I was going to use the sha to fetch the commit
             #  but gbp will do that just fine on its own
 
-            #FIXME need a graceful exit
-            # most of the time a scheduled job will have nothing to do
           }
 
           [[ ${GITHUB_EVENT_NAME} == schedule ]] && SetTAG
@@ -95,11 +101,6 @@ jobs:
           export       debVersion="${debVersion/_/\~}${debSUFFIX}"
           export           debTAG="${debTAG}${debSUFFIX}"
 
-          export GPG_TTY="$(tty)"
-          # import private gpg key used to sign, this must match the gpg key
-          # registered with the PPA being pushed to.
-          gpg --batch --import < <( base64 --decode <<<"$PPA_GPG_PK" )
-
           for envvar in                    \
                         debian_branch      \
                         debian_changelog   \
@@ -112,7 +113,6 @@ jobs:
                         upstreamPrefix     \
                         debVersion         \
                         debTAG             \
-                        GPG_TTY            \
           ;do
             declare -n envvar_nameref="$envvar"
             printf "::set-env name=%s::%s\n"  \
@@ -122,6 +122,7 @@ jobs:
         env:
           PPA_GPG_PK: ${{ secrets.PPA_GPG_PK }}
       - name: install depends
+        if: ${{ env.TAG != '' }}
         run: |
           set -x
           sudo apt-get update # upgrade takes ages
@@ -131,11 +132,13 @@ jobs:
           # log a little more verbose.
 
       - name: Checkout dosbox-staging
+        if: ${{ env.TAG != '' }}
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
           ref: ${{ env.debian_branch }}
       - name: sanity check
+        if: ${{ env.TAG != '' }}
         run: |
           set -x
           git config --local user.name  "$DEBFULLNAME"
@@ -152,6 +155,7 @@ jobs:
           # TODO if I'm going to use upstreamCommit use in fetch
           [[ $( git tag --list "${TAG}" ) == "${TAG}" ]] || exit 2
       - name: Changelog
+        if: ${{ env.TAG != '' }}
         run: |
           set -x
           append_changelog()
@@ -227,6 +231,7 @@ jobs:
           #TODO re-try depending on git return code
 
       - name: package source
+        if: ${{ env.TAG != '' }}
         run: |
           set -x
           push_to_ppa()
