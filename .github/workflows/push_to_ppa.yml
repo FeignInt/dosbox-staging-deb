@@ -140,13 +140,15 @@ jobs:
           set -x
           git config --local user.name  "$DEBFULLNAME"
           git config --local user.email "$DEBEMAIL"
+          git fetch --prune --unshallow --tags --force
 
           # if we are not the upstream dosbox-staging, remote add it
-          [[ ${GITHUB_REPOSITORY} == ${upstream_user_repo} ]] ||
+          if [[ ${GITHUB_REPOSITORY} != ${upstream_user_repo} ]]
+          then
             git remote add upstream https://github.com/${upstream_user_repo}.git
-
+            git fetch --prune --tags --force upstream
+          fi
           # before continuing be certain TAG exists ( should never not exist )
-          git fetch --prune --unshallow --tags --force
           # TODO if I'm going to use upstreamCommit use in fetch
           [[ $( git tag --list "${TAG}" ) == "${TAG}" ]] || exit 2
       - name: Changelog
