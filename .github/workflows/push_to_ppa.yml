@@ -86,13 +86,12 @@ jobs:
           # i.e. if it looks like a debTAG preserve Suffix,
           # else reset to -1 ( debTAG will be created )
 
-          # untested, I think the indentation here breaks yaml syntax
                        debVersion="${TAG%${debSUFFIX}}"
-                       debVersion="${TAG/-/\~}"
+                       debVersion="${debVersion/-/\~}"
                        debVersion="${debVersion#${upstreamPrefix}}"
                            debTAG="${debian_branch}/${debVersion/\~/_}"
 
-          export       debVersion="${debVersion}${debSUFFIX}"
+          export       debVersion="${debVersion/_/\~}${debSUFFIX}"
           export           debTAG="${debTAG}${debSUFFIX}"
 
           export GPG_TTY="$(tty)"
@@ -218,10 +217,13 @@ jobs:
           {
             grep -m1 -Po "(?<=\()[^\)]+" "${debian_changelog}"
           }
-          if [[ $(LastChangelogVersion) =~ ${debVersion//[.]/[.]} ]]
-          then
-            append_changelog && git push origin "${debian_branch}" "${debTAG}"
-          fi
+
+          [[ ! $(LastChangelogVersion) =~ ${debVersion//[.]/[.]} ]] || exit 0
+
+          append_changelog    &&
+          gbp tag --sign-tags &&
+          git push origin "${debian_branch}" "${debTAG}" || exit $?
+          #TODO re-try depending on git return code
 
       - name: package source
         run: |
@@ -236,10 +238,11 @@ jobs:
           if [[ $( git tag --list "${debTAG}" ) == "${debTAG}" ]]
           then
             treeish="${debTAG}"
-            tagging=""
+            tagging=()
           else
+            # This is redundent, debTAG should exist
             treeish="HEAD"
-            tagging="--git-tag"
+            tagging=( "--git-tag" "--git-sign-tags" )
           fi
           gbp buildpackage -i'(?!debian/)'                        \
             --build=source                                        \
@@ -248,7 +251,7 @@ jobs:
                      < <( gpg --list-keys ) )                     \
             --git-overlay                                         \
             --git-export-dir=../build-area                        \
-            --git-export="${treeish}" "${tagging}"                \
+            --git-export="${treeish}" "${tagging[@]}"             \
             --git-postbuild="$( push_to_ppa )" || exit 9
           # -i'(?!debian/)' is to ignore anything on the debian_branch
           # that is not in debian/ i.e. this yml script, and README.*
