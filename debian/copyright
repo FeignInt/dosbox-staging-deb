@@ -1,30 +1,981 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: DOSBox
-Upstream-Contact: dosbox.crew@gmail.com
-Source: http://www.sourceforge.net/projects/dosbox
+Upstream-Name: dosbox-staging
+Source: https://github.com/dosbox-staging/dosbox-staging
 
-Files: *
-Copyright: 2002-2018 The DOSBox Team
-           Sjoerd v.d. Berg <harekiet@users.sourceforge.net>
-           Peter Veenstra <qbix79@users.sourceforge.net>
-           Ulf Wohlers <finsterr@users.sourceforge.net>
-           Tommy Frössman <fanskapet@users.sourceforge.net>
-           Dean Beeler <canadacow@users.sourceforge.net>
-           Sebastian Strohhäcker <c2woody@users.sourceforge.net>
-           Ralf Grillenberger <h-a-l-9000@users.sourceforge.net>
+Files:     debian/*
+Copyright: 2003, Peter Veenstra <H.P.Veenstra@student.rug.nl>
+           2009-2014, Jan Dittberner <jandd@debian.org>
+           2018-2019, Stephen Kitt <skitt@debian.org>
+           2020, Feignint <FeignInt@users.noreply.github.com>
 License: GPL-2
 
-Files: src/hardware/mame/*
-Copyright: Juergen Buchmueller, Manuel Abadia, Nicola Salmoria
-License: BSD-3-Clause
+Files:     include/bios.h
+           include/bios_disk.h
+           include/byteorder.h
+           include/callback.h
+           include/compiler.h
+           include/control.h
+           include/cpu.h
+           include/cross.h
+           include/debug.h
+           include/dma.h
+           include/dos_inc.h
+           include/dos_system.h
+           include/dosbox.h
+           include/drives.h
+           include/envelope.h
+           include/fpu.h
+           include/hardware.h
+           include/inout.h
+           include/ipx.h
+           include/ipxserver.h
+           include/joystick.h
+           include/keyboard.h
+           include/logging.h
+           include/mapper.h
+           include/mem.h
+           include/mem_host.h
+           include/mem_unaligned.h
+           include/midi.h
+           include/mixer.h
+           include/mouse.h
+           include/paging.h
+           include/pci_bus.h
+           include/pic.h
+           include/programs.h
+           include/regs.h
+           include/render.h
+           include/serialport.h
+           include/setup.h
+           include/shell.h
+           include/support.h
+           include/timer.h
+           include/types.h
+           include/vga.h
+           include/video.h
+           src/cpu/callback.cpp
+           src/cpu/core_dyn_x86.cpp
+           src/cpu/core_dyn_x86/cache.h
+           src/cpu/core_dyn_x86/decoder.h
+           src/cpu/core_dyn_x86/dyn_fpu.h
+           src/cpu/core_dyn_x86/dyn_fpu_dh.h
+           src/cpu/core_dyn_x86/helpers.h
+           src/cpu/core_dyn_x86/risc_x64.h
+           src/cpu/core_dyn_x86/risc_x86.h
+           src/cpu/core_dyn_x86/string.h
+           src/cpu/core_dynrec.cpp
+           src/cpu/core_dynrec/cache.h
+           src/cpu/core_dynrec/decoder.h
+           src/cpu/core_dynrec/dyn_fpu.h
+           src/cpu/core_dynrec/operators.h
+           src/cpu/core_dynrec/risc_x64.h
+           src/cpu/core_dynrec/risc_x86.h
+           src/cpu/core_full.cpp
+           src/cpu/core_full/ea_lookup.h
+           src/cpu/core_full/load.h
+           src/cpu/core_full/loadwrite.h
+           src/cpu/core_full/string.h
+           src/cpu/core_full/support.h
+           src/cpu/core_normal.cpp
+           src/cpu/core_normal/helpers.h
+           src/cpu/core_normal/prefix_0f.h
+           src/cpu/core_normal/prefix_66.h
+           src/cpu/core_normal/prefix_66_0f.h
+           src/cpu/core_normal/prefix_none.h
+           src/cpu/core_normal/string.h
+           src/cpu/core_normal/support.h
+           src/cpu/core_normal/table_ea.h
+           src/cpu/core_prefetch.cpp
+           src/cpu/core_simple.cpp
+           src/cpu/cpu.cpp
+           src/cpu/lazyflags.h
+           src/cpu/modrm.cpp
+           src/cpu/modrm.h
+           src/cpu/paging.cpp
+           src/debug/debug.cpp
+           src/debug/debug_gui.cpp
+           src/debug/debug_win32.cpp
+           src/dos/cdrom.cpp
+           src/dos/cdrom.h
+           src/dos/dev_con.h
+           src/dos/dos.cpp
+           src/dos/dos_classes.cpp
+           src/dos/dos_devices.cpp
+           src/dos/dos_execute.cpp
+           src/dos/dos_files.cpp
+           src/dos/dos_ioctl.cpp
+           src/dos/dos_keyboard_layout.cpp
+           src/dos/dos_memory.cpp
+           src/dos/dos_misc.cpp
+           src/dos/dos_mscdex.cpp
+           src/dos/dos_mscdex.h
+           src/dos/dos_programs.cpp
+           src/dos/dos_tables.cpp
+           src/dos/drive_cache.cpp
+           src/dos/drive_fat.cpp
+           src/dos/drive_iso.cpp
+           src/dos/drive_overlay.cpp
+           src/dos/drive_virtual.cpp
+           src/dos/drives.cpp
+           src/dos/program_autotype.cpp
+           src/dos/program_autotype.h
+           src/dosbox.cpp
+           src/fpu/fpu.cpp
+           src/fpu/fpu_instructions.h
+           src/fpu/fpu_instructions_x86.h
+           src/gui/render.cpp
+           src/gui/render_glsl.h
+           src/gui/render_loops.h
+           src/gui/render_scalers.h
+           src/gui/render_simple.h
+           src/gui/render_templates.h
+           src/gui/render_templates_sai.h
+           src/gui/sdl_gui.cpp
+           src/gui/sdl_mapper.cpp
+           src/gui/sdlmain.cpp
+           src/hardware/adlib.cpp
+           src/hardware/adlib.h
+           src/hardware/cmos.cpp
+           src/hardware/dbopl.h
+           src/hardware/disney.cpp
+           src/hardware/dma.cpp
+           src/hardware/envelope.cpp
+           src/hardware/gameblaster.cpp
+           src/hardware/gus.cpp
+           src/hardware/hardware.cpp
+           src/hardware/iohandler.cpp
+           src/hardware/ipx.cpp
+           src/hardware/ipxserver.cpp
+           src/hardware/joystick.cpp
+           src/hardware/keyboard.cpp
+           src/hardware/memory.cpp
+           src/hardware/mpu401.cpp
+           src/hardware/pci_bus.cpp
+           src/hardware/pci_devices.h
+           src/hardware/pcspeaker.cpp
+           src/hardware/pic.cpp
+           src/hardware/sblaster.cpp
+           src/hardware/serialport/directserial.cpp
+           src/hardware/serialport/libserial.cpp
+           src/hardware/serialport/libserial.h
+           src/hardware/serialport/misc_util.cpp
+           src/hardware/serialport/misc_util.h
+           src/hardware/serialport/nullmodem.cpp
+           src/hardware/serialport/serialdummy.cpp
+           src/hardware/serialport/serialdummy.h
+           src/hardware/serialport/serialport.cpp
+           src/hardware/serialport/softmodem.cpp
+           src/hardware/serialport/softmodem.h
+           src/hardware/timer.cpp
+           src/hardware/vga.cpp
+           src/hardware/vga_attr.cpp
+           src/hardware/vga_crtc.cpp
+           src/hardware/vga_dac.cpp
+           src/hardware/vga_draw.cpp
+           src/hardware/vga_gfx.cpp
+           src/hardware/vga_memory.cpp
+           src/hardware/vga_misc.cpp
+           src/hardware/vga_other.cpp
+           src/hardware/vga_paradise.cpp
+           src/hardware/vga_s3.cpp
+           src/hardware/vga_seq.cpp
+           src/hardware/vga_tseng.cpp
+           src/hardware/vga_xga.cpp
+           src/ints/bios.cpp
+           src/ints/bios_disk.cpp
+           src/ints/bios_keyboard.cpp
+           src/ints/ems.cpp
+           src/ints/int10.cpp
+           src/ints/int10.h
+           src/ints/int10_memory.cpp
+           src/ints/int10_misc.cpp
+           src/ints/int10_modes.cpp
+           src/ints/int10_pal.cpp
+           src/ints/int10_put_pixel.cpp
+           src/ints/int10_vesa.cpp
+           src/ints/int10_video_state.cpp
+           src/ints/int10_vptable.cpp
+           src/ints/mouse.cpp
+           src/ints/xms.cpp
+           src/ints/xms.h
+           src/libs/decoders/SDL_sound.c
+           src/libs/decoders/SDL_sound.h
+           src/libs/decoders/SDL_sound_internal.h
+           src/libs/decoders/mp3_seek_table.h
+           src/libs/decoders/opus.cpp
+           src/libs/decoders/vorbis.c
+           src/libs/decoders/wav.c
+           src/libs/zmbv/zmbv.cpp
+           src/libs/zmbv/zmbv.h
+           src/midi/midi.cpp
+           src/midi/midi_alsa.h
+           src/midi/midi_coreaudio.h
+           src/midi/midi_coremidi.h
+           src/midi/midi_oss.h
+           src/midi/midi_win32.h
+           src/misc/cross.cpp
+           src/misc/messages.cpp
+           src/misc/programs.cpp
+           src/misc/setup.cpp
+           src/misc/support.cpp
+           src/shell/shell.cpp
+           src/shell/shell_batch.cpp
+           src/shell/shell_cmds.cpp
+           src/shell/shell_misc.cpp
+Copyright: 2001-2017 Ryan C. Gordon <icculus@icculus.org>
+           2002-2020 The DOSBox Team
+           2018-2019 Kevin R. Croft <krcroft@gmail.com>
+           2018-2020 The dosbox-staging team
+           2019-2020 Kevin R Croft <krcroft@gmail.com>
+           __NO_COPYRIGHT__ in: src/midi/midi_coremidi.h
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
 
-Files: debian/*
-Copyright: 2003 Peter Veenstra <H.P.Veenstra@student.rug.nl>
-           2009-2014 Jan Dittberner <jandd@debian.org>
-           2018-2019 Stephen Kitt <skitt@debian.org>
-License: GPL-2
+Files:     scripts/count-clang-bugs.py
+           scripts/count-pvs-bugs.py
+           scripts/count-warnings.py
+           scripts/count-xsan-issues.py
+           scripts/format-commit.sh
+           scripts/import-from-svn/import-svn-ignore.sh
+           scripts/msys-bash.py
+           src/libs/gui_tk/gui_tk.cpp
+Copyright: 2005-2007 Jörg Walter
+           2019-2020 Patryk Obara <patryk.obara@gmail.com> SPDX-License-Identifier: GPL-2.0-or-later
+           2020 Kevin Croft <krcroft@gmail.com> SPDX-License-Identifier: GPL-2.0-or-later
+           2020 Patryk Obara <patryk.obara@gmail.com>
+License:   __NO_LICENSE__
 
-License: GPL-2
+Files:     src/libs/zmbv/drvproc.cpp
+           src/libs/zmbv/zmbv_vfw.cpp
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/libs/nuked/nukedopl.cpp
+           src/libs/nuked/nukedopl.h
+Copyright: 2013-2020 Alexey Khokholov (Nuke.YKT)
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License
+ as published by the Free Software Foundation; either version 2
+ of the License, or (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/gui/render_templates_hq.h
+           src/gui/render_templates_hq3x.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/hardware/serialport/directserial.h
+           src/hardware/serialport/nullmodem.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/hardware/opl.cpp
+           src/hardware/opl.h
+Copyright: 2002-2020 The DOSBox Team OPL2/OPL3 emulation library
+License:   LGPL-2.1+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ .
+ Originally based on ADLIBEMU.C, an AdLib/OPL2 emulation library by Ken Silverman
+ Copyright (C) 1998-2001 Ken Silverman
+ Ken Silverman's official web site: "http://www.advsys.net/ken"
+ .
+ On Debian systems, the complete text of the GNU Lesser General Public License
+ Version 2.1 can be found in `/usr/share/common-licenses/LGPL-2.1'.
+
+Files:     src/libs/ppscale/ppscale.c
+           src/libs/ppscale/ppscale.h
+Copyright: 2018-2020 Anton Shepelev          (anton.txt@gmail.com)
+License:   __UNKNOWN__
+ Usage of the works is permitted  provided that this instrument is retained
+ with the works, so that any entity that uses the works is notified of this
+ instrument.    DISCLAIMER: THE WORKS ARE WITHOUT WARRANTY.
+
+Files:     m4/ax_cxx_compile_stdcxx.m4
+           m4/ax_cxx_compile_stdcxx_14.m4
+Copyright: 2008 Benjamin Kosnik <bkoz@redhat.com>
+           2012 Zack Weinberg <zackw@panix.com>
+           2013 Roy Stogner <roystgnr@ices.utexas.edu>
+           2014-2015 Google Inc.; contributed  Alexey Sokolov <sokolov@google.com>
+           2015 Moritz Klammler <moritz@klammler.eu>
+           2015 Paul Norman <penorman@mac.com>
+           2016-2018 Krzesimir Nowak <qdlacz@gmail.com>
+License:   __AUTO_PERMISSIVE__
+ Autogenerated files with permissive licenses.
+
+Files:     src/cpu/core_full/optable.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/decoder_opcodes.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ The functions in this file are called almost exclusively by	decoder.h,
+ they translate an (or a set of) instruction(s) into hostspecific code
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_armv4le-thumb.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/dos/cdrom_image.cpp
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/dos/drive_local.cpp
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_armv4le-o3.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/gui/render_scalers.cpp
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/gui/dosbox_logo.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_armv4le.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/dos/dos_codepages.h
+Copyright: Henrique Peron
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ This file contains data of .CPI/.CPX-files. They have been
+ generated by Henrique Peron
+ .
+ The font files have been created/edited with CPIadd V1.20
+ Copyright (C) 1993-1996 by kostis@acm.org (Kosta Kostis)
+ .
+ This file contains data of UPX-compressed CPI files.
+ UPX, The Ultimate Packer for eXecutables
+ Copyright (c) 1996-2002 Markus Oberhumer & Laszlo Molnar
+ http://upx.sourceforge.net
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_armv4le-thumb-niw.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/hardware/dbopl.cpp
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ DOSBox implementation of a combined Yamaha YMF262 and Yamaha YM3812 emulator.
+ Enabling the opl3 bit will switch the emulator to stereo opl3 output instead of regular mono opl2
+ Except for the table generation it's all integer math
+ Can choose different types of generators, using muls and bigger tables, try different ones for slower platforms
+ The generation was based on the MAME implementation but tried to have it use less memory and be faster in general
+ MAME uses much bigger envelope tables and this will be the biggest cause of it sounding different at times
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_armv4le-common.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/flags.cpp
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/libs/decoders/flac.c
+Copyright: 2001-2017 Ryan C. Gordon <icculus@icculus.org>
+           2018-2019 Kevin R. Croft <krcroft@gmail.com>
+           2020 The dosbox-staging team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/hardware/tandy_sound.cpp
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ Based of sn76496.c of the M.A.M.E. project
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_full/op.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_ppc64le.h
+Copyright: 2002-2019 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/ints/int10_char.cpp
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_ppc.h
+Copyright: 2002-2019 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/hardware/mixer.cpp
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/gui/render_templates_hq2x.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/dos/dos_keyboard_layout_data.h
+Copyright: Henrique Peron
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ This file contains data of .KL-files. They have been generated
+ by Henrique Peron using FreeDOS KC and are combined into .SYS files.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/debug/debug_inc.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_full/save.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_armv8le.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_mipsel32.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/instructions.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     configure.ac
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -35,34 +986,87 @@ License: GPL-2
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU Library General Public License for more details.
  .
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  .
  On Debian systems, the complete text of the GNU General Public License
- version 2 can be found in /usr/share/common-licenses/GPL-2 file.
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
 
-License: BSD-3-Clause
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
- 1. Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
- 2. Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in the
-    documentation and/or other materials provided with the distribution.
- 3. Neither the name of the University nor the names of its contributors
-    may be used to endorse or promote products derived from this software
-    without specific prior written permission.
+Files:     src/libs/decoders/mp3.cpp
+Copyright: 2001-2017 Ryan C. Gordon <icculus@icculus.org>
+           2018-2019 Kevin R. Croft <krcroft@gmail.com>
+           2020 The dosbox-staging team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
  .
- THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
- ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
- FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- SUCH DAMAGE.
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/cpu/core_dynrec/risc_armv4le-thumb-iw.h
+Copyright: 2002-2020 The DOSBox Team
+License:   GPL-2.0+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files:     src/libs/gui_tk/gui_tk.h
+Copyright: 2005-2007 Jörg Walter
+License:   GPL-3.0+
+ gui::tk is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 3 of the License, or
+ (at your option) any later version.
+ .
+ gui::tk is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>
+ .
+ On Debian systems, the complete text of the GNU General Public License
+ Version 3 can be found in `/usr/share/common-licenses/GPL-3'.
+
+Files:     src/cpu/core_dynrec/decoder_basic.h
+Copyright: 2002-2020 The DOSBox Team
+License:   __HEADER___
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
