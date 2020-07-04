@@ -29,11 +29,22 @@ jobs:
 
           export             PPA_ID="feignint/dosbox-staging" # PPA to push to
 
+          export GPG_TTY="$(tty)"
+          printf "::set-env name=%s::%s\n" "GPG_TTY" "${GPG_TTY}"
           # import private gpg key used to sign, this must match the gpg key
           # registered with the PPA being pushed to.
-          export GPG_TTY="$(tty)"
-          gpg --batch --import < <( base64 --decode <<<"$PPA_GPG_PK" )
-          printf "::set-env name=%s::%s\n" "GPG_TTY" "${GPG_TTY}"
+
+          # support both "ASCII armoured" and straight base64
+          if [[ ${PPA_GPG_SSB_PK:0:10} == "-----BEGIN" ]]
+          then
+            # gpg --armor --export-secret-subkeys <ID>
+            gpg --batch --import <<<"$PPA_GPG_SSB_PK" || exit 101
+          else
+            # no ascii armor wrapper, so assume base64 encoded
+            # e.g. gpg --export-secret-subkeys | base64
+            gpg --batch --import < <(
+               base64 --decode <<<"$PPA_GPG_SSB_PK" ) || exit 101
+          fi
 
           Get_tags_json()
           {
@@ -120,7 +131,7 @@ jobs:
                     "${envvar_nameref}"
           done
         env:
-          PPA_GPG_PK: ${{ secrets.PPA_GPG_PK }}
+          PPA_GPG_SSB_PK: ${{ secrets.PPA_GPG_SSB_PK }}
       - name: install depends
         if: ${{ env.TAG != '' }}
         run: |
