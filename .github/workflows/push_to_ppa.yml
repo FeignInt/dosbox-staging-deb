@@ -10,7 +10,7 @@ on:
       - '!**-alpha**'    # ignore -alpha tags
       - '!**-pre**'      # ignore -pre tags
   schedule:
-    - cron: 10 9 * * 0-6
+    - cron: 30 3 * * 0-6  # 03:30 utc every day
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -256,8 +256,7 @@ jobs:
           set -x
           push_to_ppa()
           {
-            #FIXME just an echo, it won't push to PPA
-            printf 'echo dput ppa:%s "$%s"' \
+            printf 'dput ppa:%s "$%s"' \
                    "${PPA_REPO}"       \
                    "GBP_CHANGES_FILE"
           }
