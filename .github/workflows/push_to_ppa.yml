@@ -5,9 +5,8 @@ on:
   push:
     tags:
       - 'v*'
-      - 'debianlike/*-[2-9]'
-      - 'debianlike/*-[1-9][0-9]+'
-      - '!debianlike/*-1'
+      - '**-[2-9]'
+      - '**-[1-9][0-9]'
       - '!**-alpha**'    # ignore -alpha tags
       - '!**-pre**'      # ignore -pre tags
   schedule:
@@ -102,6 +101,15 @@ jobs:
           TAG="${TAG:=${GITHUB_REF#refs/tags/}}"
           upstreamPrefix="${TAG%%[0-9][.]*}"
 
+          # I have not figured out how to use an env. var. in the
+          # on: push: tag: <pattern>
+          # so check tag here instead
+
+          check_tag="v|${DEBIAN_BRANCH}/"
+
+          [[ $upstreamPrefix =~ ^${check_tag}$ ]] || exit 0
+          # if no match, TAG will not be set. All runs, excluding the gpg expiry
+          # check, are conditional on TAG.
 
           # account for debian versioned tags
           [[ $upstreamPrefix == ${DEBIAN_BRANCH}/ ]] &&
