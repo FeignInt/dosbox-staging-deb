@@ -40,6 +40,8 @@ jobs:
             gpg --batch --import < <(
                base64 --decode <<<"$PPA_GPG_SSB_PK" ) || exit 101
           fi
+          # no point continuing if gpg key does not work
+          gpg --clearsign <<<"test" > /dev/null
 
           for envvar in       \
                DEBIAN_BRANCH  \
