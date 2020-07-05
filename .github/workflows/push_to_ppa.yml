@@ -1,7 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 ---
 name: push to PPA
-
 on:
   push:
     tags:
@@ -17,20 +16,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: set env
+      - name: setup env
+        env:
+          PPA_GPG_SSB_PK: ${{ secrets.PPA_GPG_SSB_PK }}
+          DEBIAN_BRANCH: "debianish"
+          UPSTREAM_REPO: "dosbox-staging/dosbox-staging"
+          DEBFULLNAME: "Feignint"
+          DEBEMAIL: "37488595+FeignInt@users.noreply.github.com"
+          PPA_REPO: "feignint/dosbox-staging"
+          GPG_TTY: "not a tty"
         run: |
           set -x
-          export      debian_branch="debianlike"       # branch debian/ lives on
-          export   debian_changelog="debian/changelog" # no need to change
-          export upstream_user_repo="dosbox-staging/dosbox-staging"
-
-          export        DEBFULLNAME="builddebtest"       # These will be used in
-          export           DEBEMAIL="blddebtest@foo.com" # commit, changelog
-
-          export             PPA_ID="feignint/dosbox-staging" # PPA to push to
-
-          export GPG_TTY="$(tty)"
-          printf "::set-env name=%s::%s\n" "GPG_TTY" "${GPG_TTY}"
           # import private gpg key used to sign, this must match the gpg key
           # registered with the PPA being pushed to.
 
@@ -46,6 +42,22 @@ jobs:
                base64 --decode <<<"$PPA_GPG_SSB_PK" ) || exit 101
           fi
 
+          for envvar in       \
+               DEBIAN_BRANCH  \
+               UPSTREAM_REPO  \
+               DEBFULLNAME    \
+               DEBEMAIL       \
+               PPA_REPO       \
+               GPG_TTY        \
+          ;do
+            declare -n envvar_nameref="$envvar"
+            printf "::set-env name=%s::%s\n"  \
+                    "${envvar}"               \
+                    "${envvar_nameref}"
+          done
+      - name: parse tags
+        run: |
+          set -x
           Get_tags_json()
           {
             curl -s "${GITHUB_API_URL}/repos/$1/tags"
@@ -56,9 +68,9 @@ jobs:
             # was nice to see jq installed by default, so put it to use
             # build an ERE pattern to filter already done tags out
             jq -j '.[]|
-              select(.name|test("'${debian_branch}'/"))|
+              select(.name|test("'${DEBIAN_BRANCH}'/"))|
                 .name|
-                sub("'${debian_branch}'/";"^v")|
+                sub("'${DEBIAN_BRANCH}'/";"^v")|
                 sub("-[0-9]+$";"")|
                 sub("_";"-"), "$|"' < <(
                   Get_tags_json "${GITHUB_REPOSITORY}" )
@@ -72,7 +84,7 @@ jobs:
                 select(.name |
                  test("'"$( filter )"'^v.+-alpha$|^v.+-pre$") | not ) |
                  .name,"|",.commit.sha, "\n"' < <(
-                   Get_tags_json "${upstream_user_repo:=${GITHUB_REPOSITORY}}" )
+                   Get_tags_json "${UPSTREAM_REPO:=${GITHUB_REPOSITORY}}" )
             )
             [[ ${#upstreamTAGs[@]} -gt 0 ]] ||
               exit 0 # no new tags, exit gracefully
@@ -87,51 +99,35 @@ jobs:
 
           [[ ${GITHUB_EVENT_NAME} == schedule ]] && SetTAG
 
-          export              TAG="${TAG:=${GITHUB_REF#refs/tags/}}"
-          export      upstreamTAG="${TAG}"
-          # upstreamTAG might be debTAG !
-          # however, it really does not matter, upstreamTAG is only used
-          # to determine if a releasenotes link is to be added to changelog
-          # if we are processing a debTAG, the changelog already exists
-          # TODO remove upstreamTAG, it was just a hangover from shell script
+          TAG="${TAG:=${GITHUB_REF#refs/tags/}}"
+          upstreamPrefix="${TAG%%[0-9][.]*}"
 
-          export   upstreamPrefix="${TAG%%[0-9][.]*}"
 
           # account for debian versioned tags
-          [[ $upstreamPrefix == ${debian_branch}/ ]] &&
+          [[ $upstreamPrefix == ${DEBIAN_BRANCH}/ ]] &&
           [[ ${TAG##*-} =~ ^([2-9]|[1-9][0-9]+)$  ]] &&
                              debSUFFIX="-${TAG##*-}" || debSUFFIX="-1"
           # i.e. if it looks like a debTAG preserve Suffix,
           # else reset to -1 ( debTAG will be created )
+          debVersion="${TAG%${debSUFFIX}}"
+          debVersion="${debVersion/-/\~}"
+          debVersion="${debVersion#${upstreamPrefix}}"
+              debTAG="${DEBIAN_BRANCH}/${debVersion/\~/_}"
 
-                       debVersion="${TAG%${debSUFFIX}}"
-                       debVersion="${debVersion/-/\~}"
-                       debVersion="${debVersion#${upstreamPrefix}}"
-                           debTAG="${debian_branch}/${debVersion/\~/_}"
+          debVersion="${debVersion/_/\~}${debSUFFIX}"
+              debTAG="${debTAG}${debSUFFIX}"
 
-          export       debVersion="${debVersion/_/\~}${debSUFFIX}"
-          export           debTAG="${debTAG}${debSUFFIX}"
-
-          for envvar in                    \
-                        debian_branch      \
-                        debian_changelog   \
-                        upstream_user_repo \
-                        DEBFULLNAME        \
-                        DEBEMAIL           \
-                        PPA_ID             \
-                        TAG                \
-                        upstreamTAG        \
-                        upstreamPrefix     \
-                        debVersion         \
-                        debTAG             \
+          for envvar in                \
+                        TAG            \
+                        upstreamPrefix \
+                        debVersion     \
+                        debTAG         \
           ;do
             declare -n envvar_nameref="$envvar"
             printf "::set-env name=%s::%s\n"  \
                     "${envvar}"               \
                     "${envvar_nameref}"
           done
-        env:
-          PPA_GPG_SSB_PK: ${{ secrets.PPA_GPG_SSB_PK }}
       - name: install depends
         if: ${{ env.TAG != '' }}
         run: |
@@ -147,7 +143,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
-          ref: ${{ env.debian_branch }}
+          ref: ${{ env.DEBIAN_BRANCH }}
       - name: sanity check
         if: ${{ env.TAG != '' }}
         run: |
@@ -157,9 +153,9 @@ jobs:
           git fetch --prune --unshallow --tags --force
 
           # if we are not the upstream dosbox-staging, remote add it
-          if [[ ${GITHUB_REPOSITORY} != ${upstream_user_repo} ]]
+          if [[ ${GITHUB_REPOSITORY} != ${UPSTREAM_REPO} ]]
           then
-            git remote add upstream https://github.com/${upstream_user_repo}.git
+            git remote add upstream https://github.com/${UPSTREAM_REPO}.git
             git fetch --prune --tags --force upstream
           fi
           # before continuing be certain TAG exists ( should never not exist )
@@ -169,9 +165,9 @@ jobs:
         if: ${{ env.TAG != '' }}
         run: |
           set -x
+          export debian_changelog="debian/changelog"
           append_changelog()
           {
-
             # create snapshot
             gbp dch --new-version="${debVersion}"  \
                     --snapshot                     \
@@ -190,12 +186,15 @@ jobs:
             # might have something useful in the tag annotation
             TagAnnotation="$(
               grep -E "^[^tag]{3}.+[0-9][.][0-9]{2}[.][0-9]"       \
-                < <( git tag --verify "${upstreamTAG}" 2>/dev/null )
+                < <( git tag --verify "${TAG}" 2>/dev/null )
             )"
             Changelog=( "* ${TagAnnotation:-New Upstream Release:}\n" )
 
             # only include release notes link if it exists
-            ReleaseNotesTAG="v${upstreamTAG#${upstreamPrefix}}" # note v prefix
+            ReleaseNotesTAG="v${TAG#${upstreamPrefix}}"
+            # note v prefix above, during testing I was using custom prefix
+            # hence the strip of upstreamPrefix
+
             ReleaseNotesURL="https://dosbox-staging.github.io/${ReleaseNotesTAG//[.]/-}/"
 
             < <(curl -s --compressed "${ReleaseNotesURL}" ) \
@@ -238,7 +237,7 @@ jobs:
 
           append_changelog    &&
           gbp tag --sign-tags &&
-          git push origin "${debian_branch}" "${debTAG}" || exit $?
+          git push origin "${DEBIAN_BRANCH}" "${debTAG}" || exit $?
           #TODO re-try depending on git return code
 
       - name: package source
@@ -249,7 +248,7 @@ jobs:
           {
             #FIXME just an echo, it won't push to PPA
             printf 'echo dput ppa:%s "$%s"' \
-                   "${PPA_ID}"         \
+                   "${PPA_REPO}"       \
                    "GBP_CHANGES_FILE"
           }
           if [[ $( git tag --list "${debTAG}" ) == "${debTAG}" ]]
@@ -271,7 +270,7 @@ jobs:
             --git-export="${treeish}" "${tagging[@]}"  \
             --git-postbuild="$( push_to_ppa )" || exit 9
 
-          # -i'(?!debian/)' is to ignore anything on the debian_branch
+          # -i'(?!debian/)' is to ignore anything on the DEBIAN_BRANCH
           # that is not in debian/ i.e. this yml script, and README.*
           # see dpkg-source(1)
 
