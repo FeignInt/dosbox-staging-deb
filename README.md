@@ -14,6 +14,28 @@ override_dh_gencontrol:
   - It is an ugly hack, but seemed to be the easiest way to accommodate the widest range of distributions.
 
 Thus the packages should work with many "Debian Like" distros.
+
+```
+sudo apt-add-repository ppa:feignint/dosbox-staging
+```
+
+:warning: if you are not on ubuntu bionic!
+Ubuntu's apt-add-repository blindly adds uri for your codename regardless of it not existing. I had expected it to query and select best match, it does not.
+
+Manually add,
+See the *Technical details about this PPA* on [launchpad PPA](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging)
+
+This would create a .list for the bionic versioned
+```
+sudo cat > /etc/apt/sources.list.d/dosbox-staging.list <<EOF
+deb http://ppa.launchpad.net/feignint/dosbox-staging/ubuntu bionic main
+deb-src http://ppa.launchpad.net/feignint/dosbox-staging/ubuntu bionic main
+EOF
+```
+Of course, use which ever editor you prefer
+
+don't forget to _**sudo apt update**_
+
 - If the packages are not working on your distro an option would be to [compile_yourself](#compiling-yourself) which has a much greater chance of working.
 
 #### Automagical
@@ -48,12 +70,7 @@ Launchpad's PPA build farms can produce packages for a number of architectures
 The simplest way, assuming you have added the [launchpad PPA](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging),
 
 :warning: the deb-src line must be uncommented
-
 If using Ubuntu's _add-apt-repository_ include **-s**, short for **--enable-source**
-```
-# can be used retrospectivly
-sudo add-apt-repository -s ppa:feignint/dosbox-staging
-```
 
 ```
 sudo apt update &&
