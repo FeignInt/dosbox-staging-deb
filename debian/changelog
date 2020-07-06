@@ -1,3 +1,18 @@
+dosbox-staging (0.75.0~rc1-1) unstable; urgency=medium
+
+  * [36e7710b] debian/rules: strip minversion from depends
+  * [532e2394] debian/control: reduce compat level to 11
+  * [63e27285] debian/rules: add compiler flags
+  * [6f309aac] debian/rules: LDFLAG set -flto=$(shell nproc) instead of 4
+  * [ae0f00ae] debian/copyright: update copyright file
+  * [c6d904ca] debian/patches: drop update_AUTHORS_file_location.patch
+  * [cb05945e] debian/rules: simplify *FLAGS
+  * [84a59e63] debian/gbp.conf: drop upstream-branch
+  * [99c31d7f] debian/control: synchronise package descriptions
+  * [0b7c9a18] debian/gbp.conf: add id-length to dch opts
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Mon, 06 Jul 2020 02:42:20 +0100
+
 dosbox-staging (0.74.99-1) unstable; urgency=medium
 
   * UNRELEASED
