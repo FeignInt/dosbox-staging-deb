@@ -1,3 +1,10 @@
+dosbox-staging (0.75.0-1) bionic; urgency=medium
+
+  * dosbox-staging 0.75.0 final release
+  - https://dosbox-staging.github.io/v0-75-0/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Mon, 06 Jul 2020 03:31:22 +0000
+
 dosbox-staging (0.75.0~rc1-1) unstable; urgency=medium
 
   * [36e7710b] debian/rules: strip minversion from depends
