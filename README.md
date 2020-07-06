@@ -47,6 +47,13 @@ Launchpad's PPA build farms can produce packages for a number of architectures
 #### Compiling yourself.
 The simplest way, assuming you have added the [launchpad PPA](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging),
 
+:warning: the deb-src line must be uncommented
+
+If using Ubuntu's _add-apt-repository_ include **-s**, short for **--enable-source**
+```
+# can be used retrospectivly
+sudo add-apt-repository -s ppa:feignint/dosbox-staging
+```
 
 ```
 sudo apt update &&
