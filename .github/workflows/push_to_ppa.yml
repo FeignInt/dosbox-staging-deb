@@ -1,0 +1,299 @@
+# This is a basic workflow to help you get started with Actions
+---
+name: push to PPA
+on:
+  push:
+    tags:
+      - 'v*'
+      - '**-[2-9]'
+      - '**-[1-9][0-9]'
+      - '!**-alpha**'    # ignore -alpha tags
+      - '!**-pre**'      # ignore -pre tags
+  schedule:
+    - cron: 30 3 * * 0-6  # 03:30 utc every day
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup env
+        env:
+          PPA_GPG_SSB_PK: ${{ secrets.PPA_GPG_SSB_PK }}
+          DEBIAN_BRANCH: "debianish"
+          UPSTREAM_REPO: "dosbox-staging/dosbox-staging"
+          DEBFULLNAME: "Feignint"
+          DEBEMAIL: "37488595+FeignInt@users.noreply.github.com"
+          PPA_REPO: "feignint/dosbox-staging"
+          GPG_TTY: "not a tty"
+        run: |
+          set -x
+          # import private gpg key used to sign, this must match the gpg key
+          # registered with the PPA being pushed to.
+
+          # support both "ASCII armoured" and straight base64
+          if [[ ${PPA_GPG_SSB_PK:0:10} == "-----BEGIN" ]]
+          then
+            # gpg --armor --export-secret-subkeys <ID>
+            gpg --batch --import <<<"$PPA_GPG_SSB_PK" || exit 101
+          else
+            # no ascii armor wrapper, so assume base64 encoded
+            # e.g. gpg --export-secret-subkeys | base64
+            gpg --batch --import < <(
+               base64 --decode <<<"$PPA_GPG_SSB_PK" ) || exit 101
+          fi
+          # no point continuing if gpg key does not work
+          gpg --clearsign <<<"test" > /dev/null
+
+          for envvar in       \
+               DEBIAN_BRANCH  \
+               UPSTREAM_REPO  \
+               DEBFULLNAME    \
+               DEBEMAIL       \
+               PPA_REPO       \
+               GPG_TTY        \
+          ;do
+            declare -n envvar_nameref="$envvar"
+            printf "::set-env name=%s::%s\n"  \
+                    "${envvar}"               \
+                    "${envvar_nameref}"
+          done
+      - name: parse tags
+        run: |
+          set -x
+          Get_tags_json()
+          {
+            curl -s "${GITHUB_API_URL}/repos/$1/tags"
+            #TODO make more robust, i.e. loop a bit if timeout
+          }
+          filter()
+          {
+            # was nice to see jq installed by default, so put it to use
+            # build an ERE pattern to filter already done tags out
+            jq -j '.[]|
+              select(.name|test("'${DEBIAN_BRANCH}'/"))|
+                .name|
+                sub("'${DEBIAN_BRANCH}'/";"^v")|
+                sub("-[0-9]+$";"")|
+                sub("_";"-"), "$|"' < <(
+                  Get_tags_json "${GITHUB_REPOSITORY}" )
+          }
+          SetTAG()
+          {
+            readarray -t -O 0 upstreamTAGs < <(
+              jq -j '.[]|
+                select(.name |
+                 test("^v")) |
+                select(.name |
+                 test("'"$( filter )"'^v.+-alpha$|^v.+-pre$") | not ) |
+                 .name,"|",.commit.sha, "\n"' < <(
+                   Get_tags_json "${UPSTREAM_REPO:=${GITHUB_REPOSITORY}}" )
+            )
+            [[ ${#upstreamTAGs[@]} -gt 0 ]] ||
+              exit 0 # no new tags, exit gracefully
+
+            TAG="${upstreamTAGs[-1]%|*}" &&
+              upstreamCommit="${upstreamTAGs[-1]#*|}"
+            #TODO use upstreamCommit, or lose it...
+            #  I was going to use the sha to fetch the commit
+            #  but gbp will do that just fine on its own
+
+          }
+
+          [[ ${GITHUB_EVENT_NAME} == schedule ]] && SetTAG
+
+          TAG="${TAG:=${GITHUB_REF#refs/tags/}}"
+          upstreamPrefix="${TAG%%[0-9][.]*}"
+
+          # I have not figured out how to use an env. var. in the
+          # on: push: tag: <pattern>
+          # so check tag here instead
+
+          check_tag="v|${DEBIAN_BRANCH}/"
+
+          [[ $upstreamPrefix =~ ^${check_tag}$ ]] || exit 0
+          # if no match, TAG will not be set. All runs, excluding the gpg expiry
+          # check, are conditional on TAG.
+
+          # account for debian versioned tags
+          [[ $upstreamPrefix == ${DEBIAN_BRANCH}/ ]] &&
+          [[ ${TAG##*-} =~ ^([2-9]|[1-9][0-9]+)$  ]] &&
+                             debSUFFIX="-${TAG##*-}" || debSUFFIX="-1"
+          # i.e. if it looks like a debTAG preserve Suffix,
+          # else reset to -1 ( debTAG will be created )
+          debVersion="${TAG%${debSUFFIX}}"
+          debVersion="${debVersion/-/\~}"
+          debVersion="${debVersion#${upstreamPrefix}}"
+              debTAG="${DEBIAN_BRANCH}/${debVersion/\~/_}"
+
+          debVersion="${debVersion/_/\~}${debSUFFIX}"
+              debTAG="${debTAG}${debSUFFIX}"
+
+          for envvar in                \
+                        TAG            \
+                        upstreamPrefix \
+                        debVersion     \
+                        debTAG         \
+          ;do
+            declare -n envvar_nameref="$envvar"
+            printf "::set-env name=%s::%s\n"  \
+                    "${envvar}"               \
+                    "${envvar_nameref}"
+          done
+      - name: install depends
+        if: ${{ env.TAG != '' }}
+        run: |
+          set -x
+          sudo apt-get update # upgrade takes ages
+          sudo apt-get install -y --install-recommends=no \
+            git-buildpackage dput debhelper lintian
+          # lintian not strictly needed, but will make the tail end of github's
+          # log a little more verbose.
+
+      - name: Checkout dosbox-staging
+        if: ${{ env.TAG != '' }}
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ env.DEBIAN_BRANCH }}
+      - name: sanity check
+        if: ${{ env.TAG != '' }}
+        run: |
+          set -x
+          git config --local user.name  "$DEBFULLNAME"
+          git config --local user.email "$DEBEMAIL"
+          git fetch --prune --unshallow --tags --force
+
+          # if we are not the upstream dosbox-staging, remote add it
+          if [[ ${GITHUB_REPOSITORY} != ${UPSTREAM_REPO} ]]
+          then
+            git remote add upstream https://github.com/${UPSTREAM_REPO}.git
+            git fetch --prune --tags --force upstream
+          fi
+          # before continuing be certain TAG exists ( should never not exist )
+          # TODO if I'm going to use upstreamCommit use in fetch
+          [[ $( git tag --list "${TAG}" ) == "${TAG}" ]] || exit 2
+      - name: Changelog
+        if: ${{ env.TAG != '' }}
+        run: |
+          set -x
+          export debian_changelog="debian/changelog"
+          append_changelog()
+          {
+            # create snapshot
+            gbp dch --new-version="${debVersion}"  \
+                    --snapshot                     \
+                    --spawn-editor=never           \
+                    -- debian/ || exit 6
+            # tweak it
+            PostEdit_Changelog
+            # commit it
+            gbp dch --release                      \
+                    --spawn-editor=never           \
+                    --commit || exit 7
+          }
+
+          Changelog_template()
+          {
+            # might have something useful in the tag annotation
+            TagAnnotation="$(
+              grep -E "^[^tag]{3}.+[0-9][.][0-9]{2}[.][0-9]"       \
+                < <( git tag --verify "${TAG}" 2>/dev/null )
+            )"
+            Changelog=( "* ${TagAnnotation:-New Upstream Release:}\n" )
+
+            # only include release notes link if it exists
+            ReleaseNotesTAG="v${TAG#${upstreamPrefix}}"
+            # note v prefix above, during testing I was using custom prefix
+            # hence the strip of upstreamPrefix
+
+            ReleaseNotesURL="https://dosbox-staging.github.io/${ReleaseNotesTAG//[.]/-}/"
+
+            < <(curl -s --compressed "${ReleaseNotesURL}" ) \
+              grep -m1 "404: Page not found" ||
+                Changelog+=( "- ${ReleaseNotesURL}" )
+          }
+
+          PostEdit_Changelog()
+          {
+            Changelog_template
+
+            while read -r
+            do
+              ChangelogLines+=("$REPLY")
+              [[ $REPLY =~ ^[\ ]- ]] && break
+            done <"${debian_changelog}"
+
+            if [[ ${ChangelogLines[-3]} == "  * UNRELEASED" ]]
+            then
+              sedpattern="$(( ${#ChangelogLines[@]} - 2 )){s@  \* UNRELEASED@"
+              sedterminate="@}"
+            else
+              sedpattern="${#ChangelogLines[@]}i"
+              sedterminate='\n'
+            fi
+
+            sed -i \
+            "${sedpattern}$(
+                printf "\ \ %s" "${Changelog[@]}"
+              )${sedterminate}" "${debian_changelog}"
+          }
+
+          [[ -e ${debian_changelog} ]] || exit 5
+          LastChangelogVersion()
+          {
+            grep -m1 -Po "(?<=\()[^\)]+" "${debian_changelog}"
+          }
+
+          [[ ! $(LastChangelogVersion) =~ ${debVersion//[.]/[.]} ]] || exit 0
+
+          append_changelog    &&
+          gbp tag --sign-tags &&
+          git push origin "${DEBIAN_BRANCH}" "${debTAG}" || exit $?
+          #TODO re-try depending on git return code
+
+      - name: package source
+        if: ${{ env.TAG != '' }}
+        run: |
+          set -x
+          push_to_ppa()
+          {
+            printf 'dput ppa:%s "$%s"' \
+                   "${PPA_REPO}"       \
+                   "GBP_CHANGES_FILE"
+          }
+          if [[ $( git tag --list "${debTAG}" ) == "${debTAG}" ]]
+          then
+            treeish="${debTAG}"
+            tagging=()
+          else
+            # This is redundent, debTAG should exist
+            treeish="HEAD"
+            tagging=( "--git-tag" "--git-sign-tags" )
+          fi
+
+          gbp buildpackage -i'(?!debian/)'             \
+            -S --no-check-builddeps                    \
+            -k$( grep -m1 -Po "(?<= )[[:xdigit:]]{40}" \
+                     < <( gpg --list-keys ) )          \
+            --git-overlay                              \
+            --git-export-dir=../build-area             \
+            --git-export="${treeish}" "${tagging[@]}"  \
+            --git-postbuild="$( push_to_ppa )" || exit 9
+
+          # -i'(?!debian/)' is to ignore anything on the DEBIAN_BRANCH
+          # that is not in debian/ i.e. this yml script, and README.*
+          # see dpkg-source(1)
+
+          # -S is equivalent to --build=source, *must* use -S to avoid
+          #  inconsistent behaviour of debuild and dpkg-buildpackage
+          #  using long form results in debuild failing to use correct
+          #  .changes file
+      - name: check gpg expiry
+        run: |
+          set -x
+          EXPIRY=$( date +%s -d \
+                "$( grep -m1 -Po '(?<=expires: )[2-9][0-9]{3}(-[0-9]{2}){2}' \
+                        < <( gpg --list-keys ) )" )
+           TODAY="$( date +%s )"
+          DAYSLEFT="$((  $(( $EXPIRY - $TODAY )) / 60/60/24 ))"
+          [[ ${DAYSLEFT} -gt 60 ]] && exit 0 ||
+          printf "gpg key expires in %s days\n" "${DAYSLEFT}" && exit 42
