@@ -47,7 +47,3 @@ override_dh_auto_install:
 	  <Makefile sed -E \
 		 's|(install( [[:graph:]]+){4} +)|\1$(CURDIR)/debian/tmp/usr/share/|' \
 		 | make -f - hicolor && make clean || true
-
-override_dh_gencontrol:
-	sed -i -E 's/ [(][^,]+//g' debian/*.substvars
-	dh_gencontrol
