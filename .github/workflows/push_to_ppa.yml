@@ -24,6 +24,7 @@ jobs:
           DEBEMAIL: "37488595+FeignInt@users.noreply.github.com"
           PPA_REPO: "feignint/dosbox-staging"
           GPG_TTY: "not a tty"
+          LP_API: "https://api.launchpad.net/1.0/ubuntu/"
         run: |
           set -x
           # import private gpg key used to sign, this must match the gpg key
@@ -43,6 +44,17 @@ jobs:
           # no point continuing if gpg key does not work
           gpg --clearsign <<<"test" > /dev/null
 
+          get_supported_distros()
+          {
+            # This gets the current distros PPA can build for
+            # TODO loop a bit if network flacky
+            jq -jc '.entries[]|select(.supported) |
+                  { name: .name, version: .version }' \
+              < <( curl --silent --compressed "${LP_API}series" ) ||
+                exit 10
+          }
+          PPA_DISTROS="$( get_supported_distros )"
+
           for envvar in       \
                DEBIAN_BRANCH  \
                UPSTREAM_REPO  \
@@ -50,6 +62,8 @@ jobs:
                DEBEMAIL       \
                PPA_REPO       \
                GPG_TTY        \
+               LP_API         \
+               PPA_DISTROS    \
           ;do
             declare -n envvar_nameref="$envvar"
             printf "::set-env name=%s::%s\n"  \
