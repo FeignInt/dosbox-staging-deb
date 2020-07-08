@@ -292,6 +292,33 @@ jobs:
             local replace='\1'${ppa_version}'\2'${distro}';'
             sed -i -E 's/'"${pattern}"'/'"${replace}"'/' debian/changelog
           }
+          adjust_control()
+          {
+            if [[ $dh_compat -lt 10 ]]
+            then
+              break
+              # The script will not get this far
+              # anything older than bionic fails, so breaking out of loop
+              # until I fix it ( if I fix it )
+              sed -i -E 's/(debhelper)-compat \(= [0-9]+\)/\1/' \
+                         debian/control
+              echo "${dh_compat}" > debian/compat
+            else
+              sed -i -E 's/(debhelper-compat \(= )[0-9]+/\1'${dh_compat}'/' \
+                         debian/control
+            fi
+          }
+          get_dh_compat()
+          {
+            # get the major version number of debhelper for distro
+            query="${query:=getPackageUploads&name=debhelper&exact_match=true}"
+            head -n1 < <(
+              jq -r '.entries[] | select( .status == "Done"
+                                     and  .pocket != "Backports" )
+                     .display_version | sub("[.].+";"")' \
+                < <( curl -s --compressed "${LP_API}${distro}?ws.op=${query}" )
+            )
+          }
 
           # pre-export tarball
           build_area="../build-area"
@@ -300,13 +327,16 @@ jobs:
 
           for DISTRO in $( jq -j '.name,"_",.version," "' <<<"$PPA_DISTROS" )
           do
-
             git restore debian/
+            rm debian/compat || true
 
             ppa_version="+ubuntu${DISTRO#*_}"
                  distro="${DISTRO%_*}"
 
+            dh_compat="$( get_dh_compat )"
+
             adjust_changelog
+            adjust_control
 
             treeish=WC # Working Copy, therefore includes uncommited changes
 
