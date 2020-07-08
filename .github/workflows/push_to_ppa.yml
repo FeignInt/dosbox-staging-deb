@@ -268,14 +268,11 @@ jobs:
         if: ${{ env.TAG != '' }}
         run: |
           set -x
-          push_to_ppa()
-          {
-            printf 'dput ppa:%s "$%s"' \
-                   "${PPA_REPO}"       \
-                   "GBP_CHANGES_FILE"
-          }
+          # FIXME This if block is redundent,
+          # multi PPA requires treeish=WC
           if [[ $( git tag --list "${debTAG}" ) == "${debTAG}" ]]
           then
+            # FIXME replace with checkout ${debTAG} ?
             treeish="${debTAG}"
             tagging=()
           else
@@ -284,14 +281,48 @@ jobs:
             tagging=( "--git-tag" "--git-sign-tags" )
           fi
 
-          gbp buildpackage -i'(?!debian/)'             \
-            -S --no-check-builddeps                    \
-            -k$( grep -m1 -Po "(?<= )[[:xdigit:]]{40}" \
-                     < <( gpg --list-keys ) )          \
-            --git-overlay                              \
-            --git-export-dir=../build-area             \
-            --git-export="${treeish}" "${tagging[@]}"  \
-            --git-postbuild="$( push_to_ppa )" || exit 9
+          gpg_key_id="$( grep -m1 -Po "(?<= )[[:xdigit:]]{40}" \
+                             < <( gpg --list-keys ) )"
+
+          adjust_changelog()
+          {
+            # Append the target distro's version number and substitute distro.
+
+            local pattern='(\('${debVersion}')([^ ]+ ).+;'
+            local replace='\1'${ppa_version}'\2'${distro}';'
+            sed -i -E 's/'"${pattern}"'/'"${replace}"'/' debian/changelog
+          }
+
+          # pre-export tarball
+          build_area="../build-area"
+          mkdir "${build_area}"
+          gbp export-orig --tarball-dir="${build_area}"
+
+          for DISTRO in $( jq -j '.name,"_",.version," "' <<<"$PPA_DISTROS" )
+          do
+
+            git restore debian/
+
+            ppa_version="+ubuntu${DISTRO#*_}"
+                 distro="${DISTRO%_*}"
+
+            adjust_changelog
+
+            treeish=WC # Working Copy, therefore includes uncommited changes
+
+            gbp buildpackage -i'(?!debian/)'               \
+              -S -sa --no-check-builddeps                  \
+              -k"${gpg_key_id}"                            \
+              --git-overlay                                \
+              --git-tarball-dir="${build_area}"            \
+              --git-export-dir="${build_area%/}/${distro}" \
+              --git-export="${treeish}" "${tagging[@]}"    \
+              --git-postbuild="$(
+               printf 'echo ::set-env name=%s::"$%s"\n'    \
+                      "GBP_CHANGES_FILE_${distro}"         \
+                      "GBP_CHANGES_FILE"
+              )" || exit 9
+          done
 
           # -i'(?!debian/)' is to ignore anything on the DEBIAN_BRANCH
           # that is not in debian/ i.e. this yml script, and README.*
@@ -301,6 +332,18 @@ jobs:
           #  inconsistent behaviour of debuild and dpkg-buildpackage
           #  using long form results in debuild failing to use correct
           #  .changes file
+      - name: push to PPA
+        if: ${{ env.TAG != '' }}
+        run: |
+          set -x
+          #TODO test the set-error works as I expect
+          for DISTRO in $( jq -r '.name' <<<"$PPA_DISTROS" ||
+                             printf "%s\n" "::set-error" 1>&2 )
+          do
+            declare -n GBP_CHANGES_FILE="GBP_CHANGES_FILE_$DISTRO"
+            [[ ${GBP_CHANGES_FILE} ]] &&
+            dput ppa:${PPA_REPO} "${GBP_CHANGES_FILE}"
+          done
       - name: check gpg expiry
         run: |
           set -x
