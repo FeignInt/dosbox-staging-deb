@@ -162,6 +162,16 @@ jobs:
           # lintian not strictly needed, but will make the tail end of github's
           # log a little more verbose.
 
+          # Override debhelper compatibility level set in debian/control
+          DH_COMPAT="$( grep -Po "(?<=Version: )[1-9]+(?=[.])" \
+                            < <( dpkg --status debhelper ) )"
+          [[ ${DH_COMPAT} ]] &&
+          printf "::set-env name=%s::%s\n" \
+                  "DH_COMPAT"              \
+                  "${DH_COMPAT}"
+          # NOTE:
+          # DH_COMPAT is only relavent to this runner not the PPA build farm.
+
       - name: Checkout dosbox-staging
         if: ${{ env.TAG != '' }}
         uses: actions/checkout@v2
@@ -325,6 +335,8 @@ jobs:
           mkdir "${build_area}"
           gbp export-orig --tarball-dir="${build_area}"
 
+          builder="debuild --set-envvar=DH_COMPAT=${DH_COMPAT}"
+
           for DISTRO in $( jq -j '.name,"_",.version," "' <<<"$PPA_DISTROS" )
           do
             git restore debian/
@@ -343,6 +355,7 @@ jobs:
             gbp buildpackage -i'(?!debian/)'               \
               -S -sa --no-check-builddeps                  \
               -k"${gpg_key_id}"                            \
+              --git-builder="${builder}"                   \
               --git-overlay                                \
               --git-tarball-dir="${build_area}"            \
               --git-export-dir="${build_area%/}/${distro}" \
