@@ -37,7 +37,7 @@ Of course, use which ever editor you prefer
 don't forget to _**sudo apt update**_
 
 - If the packages are not working on your distro an option would be to [compile_yourself](#compiling-yourself) which has a much greater chance of working.
-
+---
 #### Automagical
 Automation is achieved with _`.github/workflows/push_to_ppa.yml`_
 1. It is triggered daily with a _`schedule:`_ event trigger
@@ -51,6 +51,7 @@ Automation is achieved with _`.github/workflows/push_to_ppa.yml`_
          - new compiler flags
          - some patch not yet available upstream
          - simply a rebuild with newer toolchain.
+---
 #### Architectures
 Launchpad's PPA build farms can produce packages for a number of architectures
 
@@ -66,6 +67,7 @@ Launchpad's PPA build farms can produce packages for a number of architectures
 |PowerPC64 Little-Endian (ppc64el) | :heavy_check_mark: | :grey_question:    |               |
 
   - I should probably try the i386 myself
+---
 #### Compiling yourself.
 The simplest way, assuming you have added the [launchpad PPA](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging),
 
@@ -90,6 +92,7 @@ sudo apt purge dosbox-staging-build-deps &&
 sudo apt autopurge
 ```
 
+---
 ### [cowbuilder](https://wiki.debian.org/cowbuilder)
 **Note:** This is just a brief introduction, the above cowbuilder link is more informative.
 ```
@@ -108,6 +111,7 @@ You will find the packages in:
 
 Consult the manual for details on how to set result dir.
 
+---
 ### [git-buildpackage](https://honk.sigxcpu.org/piki/projects/git-buildpackage/)
 
 A lot more involved, as the name suggests it revolves around git.
@@ -165,6 +169,7 @@ man gbp-buildpackage # look for --git-pbuilder-options
 man cowbuilder       # look for --basepath
 ```
 
+---
 ### Bleeding edge
 If you want to build something other than a _predefined tag_, for instance you want to build the `HEAD` of `dosbox-staging/master` or any other branch.
 
@@ -190,6 +195,7 @@ gbp buildpackage -i'(?!debian/)'        \
 ```
 *WC is Working Copy, it will include everything at your feet, including uncommitted changes.*
 
+---
 #### Bonus for reading this far.
 
 If you have a [reprepro](https://wiki.debian.org/DebianRepository/SetupWithReprepro) setup
