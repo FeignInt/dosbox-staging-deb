@@ -3,26 +3,26 @@
 
 This github repo will automagically push a debianised source package of [dosbox-staging](https://dosbox-staging.github.io/about) to an [unofficial PPA](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging), where it is built and made available to apt.
 
-Currently the target release is Ubuntu Bionic ( 18.04 )
-The reason is simply the fact that the default github workflow runner ( ubuntu-latest ) is 18.04. The dependencies have been relaxed, by stripping the minimum version requirements with the following in _`debian/rules`_
-
-```
-override_dh_gencontrol:
-        sed -i -E 's/ [(][^,]+//g' debian/*.substvars
-        dh_gencontrol
-```
-  - It is an ugly hack, but seemed to be the easiest way to accommodate the widest range of distributions.
-
-Thus the packages should work with many "Debian Like" distros.
-
 ```
 sudo apt-add-repository ppa:feignint/dosbox-staging
 ```
 
-:warning: if you are not on ubuntu bionic!
-Ubuntu's apt-add-repository blindly adds uri for your codename regardless of it not existing. I had expected it to query and select best match, it does not.
+:warning: Ubuntu's apt-add-repository blindly adds uri for your codename regardless of it not existing. I had expected it to query and select best match, it does not.
 
-Manually add,
+You can find your distro's codename with `lsb_release -a`
+
+If you don't have `apt-add-repository`, for instance Debian
+
+Pick the closest match
+| Codename | Release | Debian /sid  | Debian Version |
+|:-        |:-:      | :-           | :-:            |
+| Focal    | 20.04   | Bullseye     | 11             |
+| Eoan     | 19.10   | Buster       | 10             |
+| Bionic   | 18.04   | Buster       | 10             |
+| Xenial   | 16.04   | Stretch      | 9              |
+| Trusty   | 14.04   | Jessie       | 8              |
+
+If you don't have `apt-add-repository`, for instance Debian, Manually add the repo. and signing key
 See the *Technical details about this PPA* on [launchpad PPA](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging)
 
 This would create a .list for the bionic versioned
@@ -34,12 +34,22 @@ EOF
 ```
 Of course, use which ever editor you prefer
 
-don't forget to _**sudo apt update**_
+*import signing key*
+```
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
+                 --recv-keys 80FFDEB381C2ECCD9B6CC21837E03C78EA70A526
+```
+That last part can be found on the [launchpad PPA](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging)
+
+Don't forget to `sudo apt update`
 
 - If the packages are not working on your distro an option would be to [compile_yourself](#compiling-yourself) which has a much greater chance of working.
 ---
 #### Automagical
-Automation is achieved with _`.github/workflows/push_to_ppa.yml`_
+Automation is achieved with [.github/workflows/push_to_ppa.yml](https://github.com/FeignInt/dosbox-staging-deb/blob/debianish/.github/workflows/push_to_ppa.yml)
+
+The script currently packages for _Focal, Eoan, Bionic, Xenial and Trusty._ This list is derived from Launchpad's api listing of supported builders, excluding Precise as it lacks `libopusfile`.
+
 1. It is triggered daily with a _`schedule:`_ event trigger
   - When triggered on a schedule the upstream [dosbox-staging](https://github.com/dosbox-staging/dosbox-staging/) tags are queried, filtering out any tags that correspond to tags on this repo. Should a new tag exist the script proceeds with packaging the source and pushing to PPA where it is compiled, packaged and served.
   - Should there be more than one new tag, the oldest is processed, leaving the newer tags for next scheduled run.
@@ -51,6 +61,7 @@ Automation is achieved with _`.github/workflows/push_to_ppa.yml`_
          - new compiler flags
          - some patch not yet available upstream
          - simply a rebuild with newer toolchain.
+
 ---
 #### Architectures
 Launchpad's PPA build farms can produce packages for a number of architectures
@@ -61,9 +72,7 @@ Launchpad's PPA build farms can produce packages for a number of architectures
 |AMD x86-64 (amd64)                | :heavy_check_mark: | :heavy_check_mark: | bullseye/sid, |
 |Intel x86 (i386)                  | :heavy_check_mark: | :grey_question:    |               |
 |ARM ARMv8 (arm64)                 | :heavy_check_mark: | :grey_question:    |               |
-|ARM ARMv7 Soft Float (armel)      | :no_entry:         |                    | ppa ignored   |
 |ARM ARMv7 Hard Float (armhf)      | :heavy_check_mark: | :grey_question:    |               |
-|PowerPC (powerpc)                 | :no_entry:         |                    | ppa ignored   |
 |PowerPC64 Little-Endian (ppc64el) | :heavy_check_mark: | :grey_question:    |               |
 
   - I should probably try the i386 myself
