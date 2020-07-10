@@ -349,6 +349,20 @@ jobs:
 
             dh_compat="$( get_dh_compat )"
 
+            if [[ $dh_compat -lt 10 ]]
+            then
+              break
+              # The script will not get this far
+              # anything older than bionic fails, so breaking out of loop
+              # until I fix it ( if I fix it )
+              sed -i -E 's/(debhelper)-compat \(= [0-9]+\)/\1/' \
+                         debian/control
+              echo "${dh_compat}" > debian/compat
+            else
+              sed -i -E 's/(debhelper-compat \(= )[0-9]+/\1'${dh_compat}'/' \
+                         debian/control
+            fi
+
             adjust_changelog
             adjust_control
 
@@ -387,7 +401,7 @@ jobs:
                              printf "%s\n" "::set-error" 1>&2 )
           do
             declare -n GBP_CHANGES_FILE="GBP_CHANGES_FILE_$DISTRO"
-            [[ ${GBP_CHANGES_FILE} ]] &&
+            [[ ${GBP_CHANGES_FILE} ]] || continue
             dput ppa:${PPA_REPO} "${GBP_CHANGES_FILE}"
           done
       - name: check gpg expiry
