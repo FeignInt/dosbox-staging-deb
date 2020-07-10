@@ -335,6 +335,8 @@ jobs:
           mkdir "${build_area}"
           gbp export-orig --tarball-dir="${build_area}"
 
+          upload_orig_tarball="-sa" # This will be unset after first pass
+
           builder="debuild --set-envvar=DH_COMPAT=${DH_COMPAT}"
 
           for DISTRO in $( jq -j '.name,"_",.version," "' <<<"$PPA_DISTROS" )
@@ -353,7 +355,7 @@ jobs:
             treeish=WC # Working Copy, therefore includes uncommited changes
 
             gbp buildpackage -i'(?!debian/)'               \
-              -S -sa --no-check-builddeps                  \
+              -S --no-check-builddeps                      \
               -k"${gpg_key_id}"                            \
               --git-builder="${builder}"                   \
               --git-overlay                                \
@@ -364,7 +366,8 @@ jobs:
                printf 'echo ::set-env name=%s::"$%s"\n'    \
                       "GBP_CHANGES_FILE_${distro}"         \
                       "GBP_CHANGES_FILE"
-              )" || exit 9
+              )" "${upload_orig_tarball}" || exit 9
+              unset upload_orig_tarball # only need to upload once
           done
 
           # -i'(?!debian/)' is to ignore anything on the DEBIAN_BRANCH
