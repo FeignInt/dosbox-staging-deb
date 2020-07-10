@@ -25,6 +25,9 @@ jobs:
           PPA_REPO: "feignint/dosbox-staging"
           GPG_TTY: "not a tty"
           LP_API: "https://api.launchpad.net/1.0/ubuntu/"
+          MIN_UBUNTU: "14.04"  # i.e. ignore older than Trusty
+          # NOTE that only the first two digits are used, [[ 16 >= 14 ]]
+          # 14.04 is the same as 14.10
         run: |
           set -x
           # import private gpg key used to sign, this must match the gpg key
@@ -47,11 +50,14 @@ jobs:
           get_supported_distros()
           {
             # This gets the current distros PPA can build for
+            # excluding anything older than $MIN_UBUNTU
             # TODO loop a bit if network flacky
-            jq -jc '.entries[]|select(.supported) |
-                  { name: .name, version: .version }' \
-              < <( curl --silent --compressed "${LP_API}series" ) ||
-                exit 10
+            jq -jc '.entries[] |
+                    select( .supported and
+                    .version[:2] >= "'${MIN_UBUNTU:0:2}'" ) |
+                    { name: .name, version: .version }
+                   ' < <( curl --silent --compressed "${LP_API}series" ) ||
+                          exit 10
           }
           PPA_DISTROS="$( get_supported_distros )"
 
@@ -63,6 +69,7 @@ jobs:
                PPA_REPO       \
                GPG_TTY        \
                LP_API         \
+               MIN_UBUNTU     \
                PPA_DISTROS    \
           ;do
             declare -n envvar_nameref="$envvar"
