@@ -1,13 +1,8 @@
 dosbox-staging (0.75.0-2) bionic; urgency=medium
 
-  * [6898de44] README.md: detail deb-src requirement in .list file.
-    Thanks to @soredake for pointing this out
-  * [a5ce23c5] README.md: include some rough instruction for adding .list
   * [38e5a885] Switch to debhelper compatibility level 13
   * [50e100f0] debian/rules: revise compiler flags
   * [c702af42] debian/rules: drop "strip min version" hack
-  * [1c8553a5] README.md: add line breaks
-  * [bad02bdb] README.md: update for multi PPA push
   * [9f5637ff] push_to_ppa.yml: retrieve supported distros from launchpad's api
   * [26629fea] push_to_ppa.yml: push multiple series to PPA
   * [c4b82800] push_to_ppa.yml: adjust debhelper-compat level for each distro
