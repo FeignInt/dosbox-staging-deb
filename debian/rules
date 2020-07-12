@@ -45,5 +45,5 @@ override_dh_auto_install:
 	 $(CURDIR)/debian/tmp/usr/share/applications/dosbox-staging.desktop || true
 	cd $(CURDIR)/contrib/icons && \
 	  <Makefile sed -E \
-		 's|(install( [[:graph:]]+){4} +)|\1$(CURDIR)/debian/tmp/usr/share/|' \
+		 's|(install( [[:graph:]]+){4} +)|\1$(CURDIR)/debian/tmp/usr/share/icons/|' \
 		 | make -f - hicolor && make clean || true
