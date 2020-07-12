@@ -53,9 +53,9 @@ jobs:
             # excluding anything older than $MIN_UBUNTU
             # TODO loop a bit if network flacky
             jq -jc '.entries[] |
-                    select( .supported and
-                    .version[:2] >= "'${MIN_UBUNTU:0:2}'" ) |
-                    { name: .name, version: .version }
+                    select( .status      != "Obsolete" and
+                            .version[:2] >= "'${MIN_UBUNTU:0:2}'"
+                          ) | { name: .name, version: .version }
                    ' < <( curl --silent --compressed "${LP_API}series" ) ||
                           exit 10
           }
