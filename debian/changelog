@@ -1,3 +1,9 @@
+dosbox-staging (0.75.0-3) bionic; urgency=medium
+
+  * [5d1d50d9] debian/rules: install icons to correct location
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sun, 12 Jul 2020 17:55:26 +0100
+
 dosbox-staging (0.75.0-2) bionic; urgency=medium
 
   * [38e5a885] Switch to debhelper compatibility level 13
