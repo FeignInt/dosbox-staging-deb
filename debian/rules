@@ -1,18 +1,22 @@
 #!/usr/bin/make -f
 include /usr/share/dpkg/pkg-info.mk
-export DEB_CPPFLAGS_MAINT_APPEND=-D_FILE_OFFSET_BITS=64
-export DEB_LDFLAGS_MAINT_APPEND=-flto=$(shell nproc)
+export DEB_CPPFLAGS_MAINT_APPEND  = -D_FILE_OFFSET_BITS=64 -DNDEBUG
+export DEB_LDFLAGS_MAINT_APPEND   = -flto=$(shell nproc)
 
-release_buildflags = \
- DEB_CFLAGS_MAINT_APPEND="-O3 -flto" \
- DEB_CXXFLAGS_MAINT_APPEND="-O3 -flto" \
- DEB_CPPFLAGS_MAINT_APPEND="-D_FILE_OFFSET_BITS=64 -DNDEBUG" \
- dpkg-buildflags
+default_opt_level := $(shell dpkg-buildflags --get CFLAGS | grep -E -o [-]O[0-3] )
+    new_opt_level  = -O3
 
-debug_buildflags = \
- DEB_CFLAGS_MAINT_APPEND="-flto" \
- DEB_CXXFLAGS_MAINT_APPEND="-flto" \
- dpkg-buildflags
+export DEB_CFLAGS_MAINT_STRIP     = -g $(default_opt_level)
+export DEB_CXXFLAGS_MAINT_STRIP   = $(DEB_CFLAGS_MAINT_STRIP)
+
+export DEB_CFLAGS_MAINT_PREPEND   = -g $(new_opt_level) -flto
+export DEB_CXXFLAGS_MAINT_PREPEND = $(DEB_CFLAGS_MAINT_PREPEND)
+
+debugger = \
+   DEB_CFLAGS_MAINT_PREPEND="$(DEB_CFLAGS_MAINT_PREPEND:$(new_opt_level)=)" \
+ DEB_CXXFLAGS_MAINT_PREPEND="$(DEB_CFLAGS_MAINT_PREPEND:$(new_opt_level)=)" \
+  DEB_CPPFLAGS_MAINT_APPEND="$(DEB_CPPFLAGS_MAINT_APPEND:-DNDEBUG=)"        \
+ dpkg-buildflags --export=configure
 
 %:
 	dh $@
@@ -26,10 +30,8 @@ override_dh_auto_configure:
 	sed -E 's/(AC_INIT.+,[[]?)[^])]+/\1$(DEB_VERSION)/' configure.ac \
 	  | autoconf -o configure -
 	#
-	dh_auto_configure -Bbuild-release -- \
-			$(shell $(release_buildflags) --export=configure )
-	dh_auto_configure -Bbuild-debug -- \
-			$(shell $(debug_buildflags) --export=configure ) --enable-debug=heavy
+	dh_auto_configure -Bbuild-release
+	dh_auto_configure -Bbuild-debug -- $(shell $(debugger) ) --enable-debug=heavy
 
 override_dh_auto_build:
 	dh_auto_build -Bbuild-release
