@@ -17,6 +17,7 @@ to an
 
 | Codename | Release | Builds             | Debian base  | Debian Version |
 |:-        |:-:      |:-:                 |-:            |:-:             |
+| Groovy   | 20.10   | :heavy_check_mark: | Bullseye/sid | 11             |
 | Focal    | 20.04   | :heavy_check_mark: | Bullseye/sid | 11             |
 | Eoan     | 19.10   | :heavy_check_mark: | Buster/sid   | 10             |
 | Bionic   | 18.04   | :heavy_check_mark: | Buster/sid   | 10             |
@@ -40,9 +41,10 @@ Launchpad's PPA build farms can produce packages for a number of architectures
 ## Automagical
 Automation is achieved with [.github/workflows/push_to_ppa.yml](https://github.com/FeignInt/dosbox-staging-deb/blob/debianish/.github/workflows/push_to_ppa.yml)
 
-The script currently packages for *Focal, Eoan, Bionic, Xenial and Trusty.*
+The script currently packages for
+ *Groovy, Focal, Eoan, Bionic, Xenial and Trusty.*
  This list is derived from Launchpad's API listing of supported builders,
- excluding Precise as it lacks `libopusfile`.
+ excluding Precise as it lacks *libopusfile*.
 
 - It is triggered daily with a *schedule:* event trigger
   - When triggered on a schedule the upstream
@@ -76,8 +78,6 @@ sudo apt-add-repository -s ppa:feignint/dosbox-staging
 ```
 
 :information_source: **-s** is optional, it allows downloading source packages.
-
-:information_source: ppa:feignint/**bionic**/dosbox-staging forces *bionic*
 
 ## Manual adding of dosbox-staging repo to Debian
 
@@ -116,6 +116,24 @@ The `<key-id>` can be found on the
  page.
 
 Don't forget to `sudo apt update`
+
+:warning: if update complains about signing key, re-do *apt-key* and update again.
+
+---
+:information_source:
+ I have recently discovered that Debian does have *apt-add-repository*
+ available in the package **software-properties-common**
+ however it does not really help that much:
+
+- :+1: automatically gets signing-key
+- :-1: appears to default to latest bleeding edge series, groovy at time of writing
+
+  - Since I have added "Active development" series,
+ if you are on sid this is actually a :+1:
+
+ Personally I don't think is worth messing with.
+
+---
 
 If the packages are not working on your distro an option would be to
 [compile yourself](#compiling-yourself) which has a much greater chance of working.
