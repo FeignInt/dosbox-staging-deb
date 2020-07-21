@@ -270,38 +270,27 @@ man cowbuilder       # look for --basepath
 If you want to build something other than a *predefined tag*, for instance you
  want to build the `HEAD` of `dosbox-staging/master` or any other branch.
 
-#### Create a tag
-
 ```
-git fetch origin # assumes dosbox-staging is on this remote
-git tag --force ss0.76.0-a origin/master
-# it is just a throw away tag that gbp can grab
+git fetch origin # /!\ assumes dosbox-staging is on *origin* remote
+gbp dch -N $( git describe origin/master | sed 's/-/\~/g;s/^v//' )-1 -- debian/
+git diff
 ```
-
-:information_source: *The fetch is optional, but you want the latest right?*
-
-#### Create a snapshot changelog
-
-```
-gbp dch -S -N 0.76.0~a
-
-```
-
-:information_source:  just drop the `-N <version>` to increment snapshot,
- **don't forget to retag!**
 
 ```
 gbp buildpackage -i'(?!debian/)'        \
   --git-overlay --git-pbuilder          \
   --git-export-dir="../build-area"      \
-  --git-export="WC"                     \
-  --git-upstream-tag="ss%(version%~%-)s"
+  --git-export="WC"
 ```
 
 :information_source:
 
 - **WC** is Working Copy, it will include everything at your
  feet, including uncommitted changes.
+- The debianised version string e.g. **`0.76.0~alpha~327~g93448542-1`** will
+ result in *gbp* packaging commit
+ [v0.76.0-alpha-327-g93448542](https://github.com/dosbox-staging/dosbox-staging/commit/934485421ff4558c269606e4007a4e712adfc6ca)
+- Replace **origin/master** with any branch or commit you like.
 
 ---
 ## Bonus for reading this far.
