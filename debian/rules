@@ -18,6 +18,12 @@ debugger = \
   DEB_CPPFLAGS_MAINT_APPEND="$(DEB_CPPFLAGS_MAINT_APPEND:-DNDEBUG=)"        \
  dpkg-buildflags --export=configure
 
+# fluidsynth >= 2.0.0 required
+FLUIDSYNTH_V2=$(shell pkg-config fluidsynth --atleast-version=2 && echo true )
+ifneq ($(FLUIDSYNTH_V2), true)
+  configure_extra += --disable-fluidsynth
+endif
+
 %:
 	dh $@
 
@@ -30,8 +36,9 @@ override_dh_auto_configure:
 	sed -E 's/(AC_INIT.+,[[]?)[^])]+/\1$(DEB_VERSION)/' configure.ac \
 	  | autoconf -o configure -
 	#
-	dh_auto_configure -Bbuild-release
-	dh_auto_configure -Bbuild-debug -- $(shell $(debugger) ) --enable-debug=heavy
+	dh_auto_configure -Bbuild-release -- $(configure_extra)
+	dh_auto_configure -Bbuild-debug   -- $(configure_extra) \
+		$(shell $(debugger) ) --enable-debug=heavy
 
 override_dh_auto_build:
 	dh_auto_build -Bbuild-release
