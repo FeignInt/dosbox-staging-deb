@@ -209,17 +209,18 @@ jobs:
           export debian_changelog="debian/changelog"
           append_changelog()
           {
-            # create snapshot
-            gbp dch --new-version="${debVersion}"  \
-                    --snapshot                     \
-                    --spawn-editor=never           \
-                    -- debian/ || exit 6
-            # tweak it
+            snapshot=(
+                      --snapshot
+                      --new-version="${debVersion}"
+                     )
+             release=(
+                      --release
+                      --commit
+                      --spawn-editor=never
+                     )
+            gbp dch "${snapshot[@]}" -- debian/ || exit 6
             PostEdit_Changelog
-            # commit it
-            gbp dch --release                      \
-                    --spawn-editor=never           \
-                    --commit || exit 7
+            gbp dch "${release[@]}"  -- debian/ || exit 7
           }
 
           Changelog_template()
