@@ -57,6 +57,33 @@ jobs:
           }
           PPA_DISTROS="$( get_supported_distros )"
 
+          Get_tags_json()
+          {
+            curl --silent     \
+                 --compressed \
+                 "${GITHUB_API_URL}/repos/$1/tags"
+            #TODO make more robust, i.e. loop a bit if timeout
+          }
+          last_alpha_commit_url()
+          {
+            # returns link to json about most recent -alpha commit
+            jq -r '.[] | select( .name |
+                    test("^v.+alpha") )| .commit.url
+                  ' < <( Get_tags_json "${UPSTREAM_REPO}" ) | head -n1
+            # TODO confirm order, looks like it is pre-sorted
+            # I expect v0.77.0-alpha would be 'above' v0.76...
+          }
+          last_alpha_commit_date()
+          {
+            # returns date of most recent -alpha commit
+            jq -r '.commit.committer.date
+                  ' < <( curl -s --compressed "$( last_alpha_commit_url )" )
+          }
+          # SHALLOW_SINCE will be used to fetch minimal git history
+          SHALLOW_SINCE="$( last_alpha_commit_date )"
+          # i.e. I need the tag, so git describe returns something that can
+          # be used as a debian version string
+
           for envvar in       \
                DEBIAN_BRANCH  \
                UPSTREAM_REPO  \
@@ -67,6 +94,7 @@ jobs:
                LP_API         \
                MIN_UBUNTU     \
                PPA_DISTROS    \
+               SHALLOW_SINCE  \
           ;do
             declare -n envvar_nameref="$envvar"
             printf "::set-env name=%s::%s\n"  \
@@ -106,9 +134,13 @@ jobs:
           # if we are not the upstream dosbox-staging, remote add it
           if [[ ${GITHUB_REPOSITORY} != ${UPSTREAM_REPO} ]]
           then
-            git remote add upstream https://github.com/${UPSTREAM_REPO}.git
-            git fetch --prune --tags --force upstream
+            # is it worth also doing release snapshots?
+            git remote add --track=master \
+                upstream https://github.com/${UPSTREAM_REPO}
+            git fetch upstream --shallow-since="${SHALLOW_SINCE}"
           fi
+          # FIXME if we are upstream this script breaks
+          # upstream needs to be set as origin, and other things..
         run: |
           set -x
           {
