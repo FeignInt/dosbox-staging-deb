@@ -216,6 +216,7 @@ jobs:
              release=(
                       --release
                       --commit
+                      --dch-opt=--distribution=unstable
                       --spawn-editor=never
                      )
             gbp dch "${snapshot[@]}" -- debian/ || exit 6
