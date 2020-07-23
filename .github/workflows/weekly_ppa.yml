@@ -111,7 +111,7 @@ jobs:
           # log a little more verbose.
 
           # Override debhelper compatibility level set in debian/control
-          DH_COMPAT="$( grep -Po "(?<=Version: )[1-9]+(?=[.])" \
+          DH_COMPAT="$( grep -Po "(?<=Version: )[1-9][0-9]*(?=[.])" \
                             < <( dpkg --status debhelper ) )"
           [[ ${DH_COMPAT} ]] &&
           printf "::set-env name=%s::%s\n" \
@@ -248,7 +248,7 @@ jobs:
               # I should at least properly condition the -flto in debian/rules
               #
               # replace debhelper-compat (= N) with "debhelper, automake"
-              sed -i -E 's/(debhelper)-compat \(= [0-9]+\)/\1, automake/
+              sed -i -E 's/(debhelper)-compat \(= ?[0-9]+\)/\1, automake/
                         ' debian/control
 
               # install lecacy compat config file
@@ -262,7 +262,7 @@ jobs:
                         ' debian/rules
               # also added ./autogen.sh to start of version string hack
             else
-              sed -i -E 's/(debhelper-compat \(= )[0-9]+/\1'${dh_compat}'/
+              sed -i -E 's/(debhelper-compat \(= ?)[0-9]+/\1'${dh_compat}'/
                         ' debian/control
             fi
           }
