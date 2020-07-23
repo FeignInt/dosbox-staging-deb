@@ -141,38 +141,92 @@ jobs:
           fi
           # FIXME if we are upstream this script breaks
           # upstream needs to be set as origin, and other things..
-        run: |
-          set -x
-          {
-          }
-          {
-          }
-          {
-            then
-            fi
-
-
-
       - name: package source
-        if: ${{ env.TAG != '' }}
         run: |
           set -x
-          # FIXME This if block is redundent,
-          # multi PPA requires treeish=WC
-          if [[ $( git tag --list "${debTAG}" ) == "${debTAG}" ]]
-          then
-            # FIXME replace with checkout ${debTAG} ?
-            treeish="${debTAG}"
-            tagging=()
-          else
-            # This is redundent, debTAG should exist
-            treeish="HEAD"
-            tagging=( "--git-tag" "--git-sign-tags" )
-          fi
-
           gpg_key_id="$( grep -m1 -Po "(?<= )[[:xdigit:]]{40}" \
                              < <( gpg --list-keys ) )"
+          hack_dch_py()
+          {
+            # Primary reason for this function is to get the commit history from
+            # a branch not related to HEAD.
+            # This is achieved by adding an "until" option, basically a copy of
+            # the existing "since" option.
 
+            # Secondary, allows malformed meta tag to work
+            # namely "Fixes #nnn" which appears all to frequently
+            # it is a hack
+
+            # shellcheck disable=SC2207 # I want it to split
+            _gbp=( $( file -h "$( type -p gbp )" ) )
+            _dch=${_gbp[0]%gbp:}${_gbp[-1]%/*}/dch.py
+
+            # hack dch to treat malformed meta tags as legit
+            # e.g. "Fixes #381" should be "Fixes: #381"
+            if [[ ! -e "${HOME}/dch.py" ]]
+            then
+              sed -E 's/(.+%s[)]:)/\1?/' "${_dch/scripts\/}" > "${HOME}/dch.py"
+            fi
+            export PYTHONPATH="${HOME}"
+
+            # default "until" is HEAD, add option to change it
+            s="    " # whitespace for indents
+            add_option="$s"
+            add_option+='range_group.add_option('
+            add_option+='"-u",  "--until", dest="until", '
+            add_option+='help="commit to stop at (e.g. HEAD")'
+
+            options_until+="${s}${s}"
+            options_until+='if options.until:\n'
+            options_until+="${s}${s}${s}until = options.until"
+
+            sed -e '/"-s"/a\\n'"${add_option}"'\n'                 \
+                -e '/if options.since:/i\\n'"${options_until}"'\n' \
+                -e 's/gbp\.dch/dch/'                               \
+                "${_dch}"
+          }
+          patched_dch()
+          {
+            last_version="$( grep -Po ".+(?=-)" \
+              < <( dpkg-parsechangelog --show-field Version ) )"
+            last_treeish="v${last_version//\~/-}"
+
+            local debVersion="${debVersion%-*}"
+            until_treeish="v${debVersion//\~/-}"
+
+            python3 <( hack_dch_py )        \
+            --id-length=8                   \
+            --meta-closes="Closes|LP|Fixes" \
+            --since "${last_treeish}"       \
+            --until "${until_treeish}"      \
+            "${@}"
+          }
+          weekly_changelog()
+          {
+            # switch to weekly changelog
+            # TODO figure out how to get gbp to use a custom changelog
+            # it appears to be hardcodeed in gbp/scripts/dch.py
+            # setting env var CHANGELOG results in:
+            # 1. debian/changelog header and trailer being ammended
+            # 2. debian/changelog-weekly is created, author entries are correct
+            #    but commit descption is placeholer:
+            #      [[[insert-git-dch-commit-message-here]]]
+            if [[ -e debian/changelog-weekly ]]
+            then
+              cp debian/changelog-weekly debian/changelog
+            fi
+            patched_dch -S -N "${debVersion}"
+
+            gbp dch -R --spawn-editor=never \
+                       --dch-opt=--distribution=unstable
+
+            cp debian/changelog debian/changelog-weekly
+
+            git add debian/changelog-weekly
+            git commit -m "Weekly snapshot $( date -I )"
+            git push origin "${DEBIAN_BRANCH}"
+
+          }
           adjust_changelog()
           {
             # Append the target distro's version number and substitute distro.
@@ -224,6 +278,14 @@ jobs:
             )
           }
 
+          # set debian version to most practically short string
+          # e.g. 0.76.0~alpha~331~g53b1-1
+          debVersion="$( sed 's/-/\~/g;s/^v//
+                             ' < <( git describe --abbrev=4  \
+                                        upstream/master    ) )-1"
+
+          weekly_changelog
+
           # pre-export tarball
           build_area="../build-area"
           mkdir "${build_area}"
@@ -235,7 +297,7 @@ jobs:
 
           for DISTRO in $( jq -j '.name,"_",.version," "' <<<"$PPA_DISTROS" )
           do
-            ppa_version="+ubuntu${DISTRO#*_}"
+            ppa_version="+u${DISTRO#*_}"
                  distro="${DISTRO%_*}"
 
             dh_compat="$( get_dh_compat )"
@@ -252,7 +314,7 @@ jobs:
               --git-overlay                                \
               --git-tarball-dir="${build_area}"            \
               --git-export-dir="${build_area%/}/${distro}" \
-              --git-export="${treeish}" "${tagging[@]}"    \
+              --git-export="${treeish}"                    \
               --git-postbuild="$(
                printf 'echo ::set-env name=%s::"$%s"\n'    \
                       "GBP_CHANGES_FILE_${distro}"         \
