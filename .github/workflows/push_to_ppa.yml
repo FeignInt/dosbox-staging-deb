@@ -305,12 +305,17 @@ jobs:
           {
             # Append the target distro's version number and substitute distro.
 
-            local pattern='(\('${debVersion}')([^ ]+ ).+;'
+            local pattern='(\('${debVersion}')[^)]+([^ ]+ ).+;'
             local replace='\1'${ppa_version}'\2'${distro}';'
             sed -i -E 's/'"${pattern}"'/'"${replace}"'/' debian/changelog
           }
           adjust_control()
           {
+            git restore debian/control
+            rm debian/compat || true
+            # it is redundant really, it would only matter if the series order
+            # from LA_API reversed
+
             if [[ $dh_compat -lt 10 ]]
             then
               # fixups, hacks really,for older than bionic
@@ -358,9 +363,6 @@ jobs:
 
           for DISTRO in $( jq -j '.name,"_",.version," "' <<<"$PPA_DISTROS" )
           do
-            git restore debian/
-            rm debian/compat || true
-
             ppa_version="+ubuntu${DISTRO#*_}"
                  distro="${DISTRO%_*}"
 
