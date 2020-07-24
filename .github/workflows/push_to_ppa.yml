@@ -307,7 +307,7 @@ jobs:
           {
             # Append the target distro's version number and substitute distro.
 
-            local pattern='(\('${debVersion}')[^)]+([^ ]+ ).+;'
+            local pattern='(\('${debVersion}')[^)]*([^ ]+ ).+;'
             local replace='\1'${ppa_version}'\2'${distro}';'
             sed -i -E 's/'"${pattern}"'/'"${replace}"'/' debian/changelog
           }
