@@ -163,11 +163,15 @@ jobs:
 
             # hack dch to treat malformed meta tags as legit
             # e.g. "Fixes #381" should be "Fixes: #381"
-            if [[ ! -e "${HOME}/dch.py" ]]
+            if [[ -z ${gbp_dchpy_patched} ]]
             then
-              sed -E 's/(.+%s[)]:)/\1?/' "${_dch/scripts\/}" > "${HOME}/dch.py"
+              # ugly, I could not get PYTHONPATH to work on github's runner
+              # runner is ephemeral, so it dosn't matter too much
+              sudo sed -i -E \
+                's/(bts_rx = re.compile.+%s[)]:)([^?].+meta_closes_bug)/\1?\2/
+                ' "${_dch/scripts\/}" || exit 11
             fi
-            export PYTHONPATH="${HOME}"
+            gbp_dchpy_patched=yes
 
             # default "until" is HEAD, add option to change it
             s="    " # whitespace for indents
@@ -180,9 +184,8 @@ jobs:
             options_until+='if options.until:\n'
             options_until+="${s}${s}${s}until = options.until"
 
-            sed -e '/"-s"/a\\n'"${add_option}"'\n'                 \
+            sed -e '/commit to start from/a\\n'"${add_option}"'\n' \
                 -e '/if options.since:/i\\n'"${options_until}"'\n' \
-                -e 's/gbp\.dch/dch/'                               \
                 "${_dch}"
           }
           patched_dch()
