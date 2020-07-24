@@ -1,0 +1,578 @@
+dosbox-staging (0.76.0~alpha~332~g6694-1) unstable; urgency=medium
+
+  [ Patryk Obara ]
+  * [0926b060] Update hardcoded version strings to 0.76.0
+
+  [ David Reid ]
+  * [2e9f0c67] Sync dr_wav with upsteam (v0.12.2)
+
+  [ Patryk Obara ]
+  * [333a771a] Fix typo resulting in broken ARM builds
+
+  [ Peter Veenstra ]
+  * [8e74e307] time keeps ticking
+
+  [ kcgen ]
+  * [9de8f125] Add mailmap file to update maintainer information
+
+  [ David Reid ]
+  * [9c90722e] Sync dr_mp3 with upstream (v0.6.5)
+
+  [ Tyrell Sassen ]
+  * [de430731] Convert existing shaders to C++11 raw strings
+
+  [ kcgen ]
+  * [892a6f61] Print the log if configure fails
+  * [01728f71] Drop xvfb, and add autotools for apt-repos
+  * [2f483083] Add nightly ARM & IBM platform builds
+  * [ec43dabb] Enable NEON SIMD for corresponding ARM platforms
+
+  [ krcroft ]
+  * [106b45ef] Move to GitHub's v2 API when checking out
+
+  [ ripsaw8080 ]
+  * [a4edebe6] Correct cdrom sector size field length according to docs.
+
+  [ kcgen ]
+  * [1bd770b5] Cleanup and add warning count to platform build
+
+  [ Patryk Obara ]
+  * [83e1a3a9] Move config dir detection earlier
+  * [d230e075] Cleanup PrintConfigLocation function
+  * [2ccae54e] Improve --editconf option
+  * [62a469a8] Use consistent order for GNU-style params
+  * [4675596d] Unify macOS configuration paths in a single location
+    (Fixes: #311)
+  * [de3e030a] Update documentation for --printconf and --editconf
+
+  [ krcroft ]
+  * [e6311d36] AV scan the Linux package prior to upload
+  * [e62d903d] AV scan the macOS package prior to upload
+
+  [ Patryk Obara ]
+  * [23f4c5bb] Fix branding in metadata for PNG screenshots
+  * [f1880076] Update allowed warnings limits
+  * [e0ab23ad] Add build status badge for non-x86 architectures
+
+  [ kcgen ]
+  * [e603337c] Limit string copies to the target's length
+  * [e8acb7f0] Use C++ pointer-type casting to be more explicit
+  * [71af263c] Count and limit the string-copy target's length
+
+  [ Troy Campbell ]
+  * [e417d062] Scan Windows release package using Microsoft Defender
+
+  [ kcgen ]
+  * [c803db02] Limit string concatenation to the target's length
+
+  [ Patryk Obara ]
+  * [bf614c61] Prevent platform builds failure
+
+  [ Vladimir Serbinenko ]
+  * [c183992d] Fix pointer declarations
+
+  [ Patryk Obara ]
+  * [19267d00] Rename boolean flag "exit" to "exit_flag"
+  * [4ae5528a] Prevent SDL2 crash on exit when using Wayland
+  * [4ed5f93e] Update allowed warnings limits
+  * [365a298e] Clean code around setting png "Software" keyword
+  * [17de912e] Adjust file export paths injected by Inkscape
+
+  [ kcgen ]
+  * [d7b85900] Allow GCC's LTO on all platforms
+
+  [ Patryk Obara ]
+  * [0d9670ad] Document contributing guidelines
+
+  [ kcgen ]
+  * [5fdb4acb] Fix APT package names and minimum OS ver
+  * [a495aefe] Add Haiku OS support to build system
+
+  [ Patryk Obara ]
+  * [01fb4f30] Parse build log in MSVC format
+  * [ac01935d] Introduce gating based on MSVC warnings
+
+  [ kcgen ]
+  * [72a8ffb0] Refresh build docs against current scripts
+  * [d423a436] Add empty configs for remaining package managers
+  * [fe6674f9] Move build-script procedures to top-level
+
+  [ Patryk Obara ]
+  * [8a3a9bfc] Update internal links to BUILD.md
+  * [2463626c] Upgrade AX_CXX_COMPILE_STDCXX_* macro to C++14
+  * [064108c9] Switch to using C++14
+  * [f49eb090] Implement starts_with and ends_with functions
+
+  [ Erlotinib ]
+  * [ff3c5aab] Internationalize generic name in desktop file
+
+  [ kcgen ]
+  * [dc886631] Simplify script-path discovery
+  * [6fecdee3] Update PVS-Studio to 7.07.38234.46
+  * [862315a3] Use the project's new repository URL
+
+  [ Patryk Obara ]
+  * [538fc27e] Use std::string for name in DOS_File class
+  * [f5193a58] Update allowed warnings limits
+  * [d4703e0b] Declare MIDI_* interface in midi.h
+  * [d518c370] Fix effc++ warnings in MidiHandler
+  * [e82e3e11] Fix effc++ warnings in MIDI ALSA backend
+  * [79778547] Fix effc++ warnings in MIDI OSS backend
+  * [bca16add] Cleanup midi section implementation
+  * [265b0564] Declare MIDI_Init in midi.h
+  * [c3822ecf] Replace global variable with a new MIDI function
+  * [f471ffd9] Hide DB_Midi structure as an implementation detail
+  * [d0ea36c4] Change midi.sysex.delay type to uint32_t
+  * [66db266f] Move midi files to a new module
+  * [e9637575] Adjust VS solution filters
+
+  [ kcgen ]
+  * [7764341d] Create release packages for ARM and IBM platforms
+
+  [ Patryk Obara ]
+  * [77859fc6] Reformat the table of internal commands
+  * [97938d43] Copy NOMINMAX from autoconf to MSVC config.h
+  * [723cf4d7] Remove parentheses around std::min/std::max
+  * [3dc8beb3] Create 64-bit configuration in VS solution
+  * [fd43fd8d] Move MSYS2 jobs to dormant dir
+  * [1712f379] Add 64-bit debug MSVC build to CI
+  * [7e5f4b04] Use LTO optimizations for MSVC release builds
+  * [be62e13a] Turn on AVX for MSVC builds
+  * [ad3cc54b] Update vcpkg instructions for x64 builds
+
+  [ kcgen ]
+  * [c5f0f88b] Refactor comm port number handling
+  * [418577cc] Use uint32 instead of Bitu in serial port area
+  * [550add4a] Initialize class members in serial port area
+  * [c8c94503] Use C++11 types and fix effc++ warnings in serial port area
+
+  [ Patryk Obara ]
+  * [abf57a06] Update allowed warnings limits
+
+  [ Peter Veenstra ]
+  * [91d78170] change new to new(std::nothrow) (vogons 73603) and some formatting
+
+  [ Patryk Obara ]
+  * [b462272b] Update our version of sBitfs macro
+  * [4f63aef3] Use const char* as first parameter for DOS_FindFirst
+  * [eadd0b0f] Move search pattern preparation out of DIR cmd
+  * [90071d67] Update allowed warnings limits
+
+  [ kcgen ]
+  * [e61509c1] Track and restore the last audio position
+  * [bacd5319] Remove unecessary syntax
+
+  [ Peter Veenstra ]
+  * [a75ae9dd] Add SALC and XLAT to the dyn_x86 core. Improve LOCK handling a bit. Thanks jmarsh.
+  * [3d3792a0] Reduce repetition a bit.
+
+  [ Expack3 ]
+  * [736d06ef] Remove typedef from SVGA_PVGA1A_DATA struct
+
+  [ Peter Veenstra ]
+  * [52511dc3] Some refinements to the shader loading and variables. (jmarsh)
+  * [0d3d7851] Add F8 to toggle printable characters on/off.
+  * [c1343923] Add missing operator to keep it compiling after 4342
+
+  [ Patryk Obara ]
+  * [4d17610e] Add ls command
+  * [a767145a] Rudimentary ls implementation
+  * [72e7f4e3] Colorize executables in ls command
+  * [32063f13] Use 5 columns 15-characters long for ls command
+  * [7e5270ed] Fix a bug in string trimming function
+  * [91d77b75] Silence MSVC 64-bit warning in mem_readd_inline
+  * [292db60b] Compilation fix in serialport for --enable-debug
+  * [ec145060] Add --enable-debug configuration to CI gating
+  * [c0033ec9] Cleanup group/sub types in dyn_fpu
+  * [b5650cbd] Add proper guards to dyn_fpu header
+  * [303616e5] Update allowed warnings limits
+
+  [ Peter Veenstra ]
+  * [b8b88eed] fix long standing crash after disconnecting second joystick after mapping a part of it and some warnings and other small things.
+
+  [ cfoesch ]
+  * [7494c5a7] Add support for binding more controller axes
+
+  [ Patryk Obara ]
+  * [b0cc6d90] Cleanup array initializations in CStickBindGroup
+  * [1a4110e2] Remove axes_cap and hats_cap
+  * [a879f146] Report SDL errors for joystick axes and hats
+
+  [ kcgen ]
+  * [c3ea8cde] Clear decode counters and sample values on channel-disable
+
+  [ Patryk Obara ]
+  * [1b2d4422] Add security.txt file
+
+  [ Peter Veenstra ]
+  * [4cc38d58] Make addSilence reflect its name more by gradually moving towards 0. Add unfinished/untested code for a somewhat gentle ramp up for DC offsets. (disabled for now)
+
+  [ Patryk Obara ]
+  * [bc6b74f3] Update allowed warnings limits
+
+  [ Sean Barrett ]
+  * [16ca41f2] Sync stb_vorbis v1.19 from upstream
+  * [8551781d] Sync stb header v2.36 from upstream
+
+  [ Yann Collet ]
+  * [481a476e] Sync xxhash (master on 2020-05-25) from upsteam
+
+  [ David Reid ]
+  * [2381f06d] Sync dr_wav v0.12.4 from upstream
+  * [8ba3cb64] Sync dr_flac v0.12.13 from upstream
+  * [3ffd64e8] Sync dr_mp3 v0.6.11 from upstream
+
+  [ kcgen ]
+  * [cc8a8574] Apply previously reported static-analysis fixes
+  * [c16be881] Update allowed warnings limits
+  * [7cca8f8a] Avoid double-free if MP3 fails to open
+
+  [ Peter Veenstra ]
+  * [710f1817] Improve register handling when calling external code/fpu so that the stack is more accurate when a pagefault occurs. (jmarsh)
+
+  [ Patryk Obara ]
+  * [dfa3c702] Initialize Section class using initializer list
+  * [1f75f051] Use standard const reference style in Section class
+  * [68359f27] Use override keyword in Section_line class
+  * [f7b0ad2c] Fix effc++ warnings in Module_base class
+
+  [ Peter Veenstra ]
+  * [9ceb9f24] Add 0x52 and 0x59. Thanks Slor
+  * [ac525799] Fix selector check of LAR and LSL and add them to dynamic core and some other fixes. (jmarsh)
+  * [f7f3b0e5] Add patch 287 from maccaf: improve escape handling in BBS mode.
+
+  [ Sjoerd van der Berg ]
+  * [b67f36de] Make adlib timers synchronize on clock interval and fix masking
+  * [a3f61758] Change adlib timer masking
+
+  [ kcgen ]
+  * [f6e834f8] Add missing commit-checks in platform CI
+  * [be07ddb0] Inform on unexpected control characters in batch files
+
+  [ Patryk Obara ]
+  * [73368be1] Revert "Add patch 287 from maccaf (…)" r4351
+  * [4913325e] Add Ubuntu 20.04 build configurations to CI
+
+  [ kcgen ]
+  * [2eac86e6] Allow SDL2_Net to be linked statically
+  * [5264f953] Allow the PNG lib to be linked statically
+  * [5b9cca13] Statically link the macos release with libPNG and SDL2_Net
+  * [e5a414cd] Exercise --enable-*-static flags in Config Heavy CI workflow
+
+  [ Patryk Obara ]
+  * [ae2760b5] Make Program::GetEnv* functions const-correct
+  * [b5b89b31] Make DOS_Shell::Which const-correct
+  * [7f7addb9] Remove code duplication in DOS_Shell::Execute
+
+  [ kcgen ]
+  * [7192712b] Format the Sound Blaster type enumerator vertically
+  * [8c51722c] Provide a textual name for the Sound Blaster card type
+  * [9a616a39] Rename CheckDMAEnd to represent its actual function
+  * [13ef8898] Rename GenerateDMASound to better reflect its role
+  * [102c12ca] Eliminate the redundant END_DMA_Event wrapper
+  * [e5bd852c] Adjust the DMA_Silent_Event function name slightly
+  * [5ba58ad4] Include the card-type in the log message
+  * [85446afe] Introduce a function-pointer to differentiate DMA processing
+  * [0714569b] Remove some dead-code
+  * [1ac4c746] Introduce a DMA initialization supression function
+  * [9c827f21] Package the speaker setup statements into a function
+  * [4da07d35] Simplify the DSP_SetSpeaker slightly for for readability
+  * [6c39b529] Don't play audio across DSP reset sequences
+  * [426358e5] Avoid DMA prefix for static functions in sblaster.cpp
+
+  [ Patryk Obara ]
+  * [c660f950] Remove unused min/max macro
+  * [e385cf2b] Replace ConvDecWord function with atoi/atol
+  * [eb8d92d0] Update allowed warnings limits
+  * [ee88c089] Expand CI gating with Linux dynrec build
+
+  [ kcgen ]
+  * [2f443eae] Revert "Make use of indexed reads and writes"
+  * [55db5846] Revert "Fix alignment when writing the jump value to memory"
+  * [e2129410] Revert "Fix alignment when saving the branch value"
+  * [b64ec42f] Revert "Fix alignment when assigning a cache diff value"
+  * [237dca0b] Revert "Fix alignment when incrementing values in the cache"
+  * [5c2e9da3] Revert "Fix alignment when fetching values in the decoder"
+  * [ddbf5994] Revert "Fix alignment when incrementing the invalidation map"
+  * [48111ebe] Revert "Fix alignment when writing to the cache"
+  * [4b5882f5] Revert "Fix alignment when reading values from the write-map"
+  * [50566904] Split unaligned and host mem functions into separate headers
+
+  [ Patryk Obara ]
+  * [41cb19db] Update allowed warnings limits
+  * [ab9215b8] Reorganize functions and update doc in mem_unaligned.h
+  * [28a7c81a] Reorganize functions and update doc in mem_host.h
+
+  [ rderooy ]
+  * [bc62bbb7] Change mkdir permissions to 775
+
+  [ kcgen ]
+  * [32b1fe52] Drop some unused code in the PC Speaker
+  * [2edefb4c] Differentiate and clarify speaker "volume" as voltage extents
+  * [b7ba6515] Introduce a neutral voltage for the PC speaker
+  * [a6ec51d3] Use the neutral voltage in the steady-state speaker modes (0, 1, 2)
+  * [769252c1] Add a cosine volume-scaling function
+  * [016c0c10] Improve channel halting for the PC speaker
+  * [5edebd16] Prioritize initial PWM and PIT voltages
+  * [2ea41bb5] Fix effc++ warnings in PC Speaker
+  * [38092992] Make a couple PC Speaker functions static
+
+  [ Patryk Obara ]
+  * [48086f0a] Remove unused disasm_tables header
+  * [9cc98a52] Reclassify *.h files as C++ for GitHub tools
+
+  [ kcgen ]
+  * [2e879107] Limit the criteria for initial SB DMA transfer suppression
+
+  [ Patryk Obara ]
+  * [623595b2] Add Linux x86_64, +dynrec, +debug gating to CI
+
+  [ kcgen ]
+  * [726e60cd] Further limit SB initialization criteria
+
+  [ ripsaw8080 ]
+  * [49356ff3] Handle carry flag for INT 2F/15xx functions like real MSCDEX. Fixes CDDA in Muzzle Velocity.
+
+  [ Patryk Obara ]
+  * [5a086baf] Implement MAYBE_UNUSED macro
+  * [6e586685] Mark dyn_interrupt as maybe_unused in both dynamic cores
+  * [7bff5b87] Mark PauseDOSBox function as maybe_unused
+  * [53c928c4] Update allowed warnings limits
+
+  [ Jonathan Campbell ]
+  * [cae58040] Add PIT timer control when in mode 3 and with a counter of 1
+
+  [ kcgen ]
+  * [7c086124] Fix copyright attributions in the CD-DA backend
+
+  [ Patryk Obara ]
+  * [65dd991c] Move function mem_writeb_checked_drc in dynrec
+  * [4665156c] Silence false-positive -Wstrict-aliasing warning
+
+  [ kcgen ]
+  * [cc2f6084] Simplify and fix a regression in the speaker fade
+
+  [ jmarsh ]
+  * [f4f1f381] Add PowerPC dynamic recompiler
+
+  [ ClassicHasClass ]
+  * [12c7e202] Add ppc64le dynrec backend
+  * [0d5afe46] Add ppc64le support to the buildsystem
+
+  [ Patryk Obara ]
+  * [509cf0b6] Enable dynrec by default for PowerPC architecture
+  * [8539ff06] Remove dead block of code in ppc64le backend
+  * [7d9b2475] Specify arch names in core_dynrec backends
+  * [763e608e] Avoid introducing new debugging mechanism/macro
+  * [a6ae97ca] Silence -Wswitch warning in dynrec loop emulation
+  * [30f3d0a4] Fix -Wformat warnings in dynrec cache
+  * [b7f3c38e] Fix whitespace formatting in dynrec ppc64le backend
+  * [c3c9af63] Use architecture names in platforms workflow
+  * [0b921dd9] Silence GCC warning -Wsign-compare in ppc64le backend
+  * [21d4520f] Fix -Wformat warnings in dyn_fpu_esc3 in dynrec
+  * [d709f09b] Mark dyn_lea_mem_mem as maybe_unused in core_dynrec
+  * [f333036d] Replace XXX "tags" with FIXMEs in ppc64le backend
+  * [59952dc2] Update allowed warnings limits
+
+  [ kcgen ]
+  * [df9b371b] Ensure SDL2_net preceeds SDL2 in the link-order
+
+  [ Patryk Obara ]
+  * [9547132a] Create initial issue templates
+
+  [ Peter Veenstra ]
+  * [5b33e5c6] Add missing releasereg instances. (jmarsh)
+  * [ea398056] Add CPU_IO_Exception to 0xed and 0xef
+
+  [ Patryk Obara ]
+  * [6d087e48] Eliminate typo-level differences in cache.h files
+  * [2397604a] Unify cache_code_* variables in dynrec caches
+  * [1c882787] Use alignment-safe functions in dynrec caches
+  * [d035f9c5] Unify memory allocation err reporting in dynrec caches
+  * [a80c51bf] Fix effc++ warnings for memory module
+  * [80720dde] Log base address for emulated memory (Fixes: #428)
+
+  [ kcgen ]
+  * [9750765d] Move -fstack-protector to debug builds
+  * [5120f44a] Add a warning about LTO on the Pi4
+  * [38d65aff] Keep track of the channel's sample rate
+  * [610848c0] Provide a configurable peak-amplitude setter
+  * [624f2d80] Set the PC Speaker's peak amplitude
+  * [f29cf550] Add an audio envelope class
+  * [4e98c60e] Envelope each channel's initial content to mitigate pops
+  * [5472a881] Catch extraneous semicolons in the warnmore build target
+  * [f69066bd] Cleanup effc++ warnings in the mixer
+  * [96cb223b] Ensure Tandy DMA partial tail-reads terminate in silence
+  * [32933199] Document the Tandy DACs actual vs implemented behavior
+  * [8f9e3eb6] Skip early Tandy DAC use until it's initialized
+  * [830efeb4] Cleanup efc++ warnings in Tandy sound
+  * [6813d904] Remove a pointer check when the Tandy DAC mode is changed
+
+  [ Patryk Obara ]
+  * [547bc8c3] Fix effc++ warnings in Section_prop class
+  * [306402fb] Fix effc++ warnings in Prop_multival class
+  * [6bc21fd3] Fix effc++ warnings in Value class
+  * [1619370b] Fix extra-semi warnings in helper class Hex
+  * [c047d1a1] Fix effc++ warnings in cpu.cpp
+  * [8d87369a] Add new collaborator to our CI setup
+  * [2842f104] Disable AVX in our Windows builds
+  * [bcd08501] Fix crash with single controller connected (Fixes: #405)
+  * [64ca2407] Fix crash after removing bind
+  * [8de35637] Add 64-bit release Windows builds to CI (Fixes: #381)
+  * [0eb301b3] Simplify Windows CI matrix
+  * [93fa6cc7] Mention 64-bit Windows builds in README.md
+
+  [ kcgen ]
+  * [66d039e0] Always use the full negative volume on new negative PIT requests
+  * [64bdf2ff] Add and use an is_executable_filename() support function
+  * [37708094] Let CommandLine inidicate if it was passed an executable filename
+  * [16c6b102] Let CommandLine inidicate if it was passed a directory
+  * [50d3e822] Add a configurable "Startup Verbosity" setting
+  * [fb7eeed3] Add startup Verbosity::High as pre-req for the Splash
+  * [394e48be] Add startup Verbosity::Medium as pre-req for the Welcome banner
+  * [2e1c510e] Add startup Verbosity::Low as pre-req for stdout prior to executable
+  * [7530307d] List Startup Verbosity in README's table of differences
+
+  [ Patryk Obara ]
+  * [078013e7] Use action upload-artifact@v2
+  * [35a4cdc4] Upload changelog with git-describe info as an artifact
+
+  [ kcgen ]
+  * [d7346cfc] Move libSDL2_net ahead of SDL2 and both behind common LIBSs
+
+  [ Patryk Obara ]
+  * [c8739dfe] Update build instructions in CONTRIBUTING.md
+  * [a78c72ea] Simplify README.md instructions
+  * [f0777b40] Sort sources in hardware module
+
+  [ kcgen ]
+  * [5ab241b3] Enable M_PI under MSVC, and use it in existing code
+
+  [ Patryk Obara ]
+  * [8254c032] Assert paging.links.used is zero after clearing
+  * [e2e0b905] Fix effc++ warnings in callback.h
+  * [6401fbd6] Remove unused local variable 'failed' in CMD_COPY
+  * [4ef63920] Remove unused local variable 'finished' in FCB_Parsename
+  * [8bb1a5d6] Remove misleading indentation
+  * [a7982ae1] Initialize srcx, tarx when necessary
+  * [c507e6d0] Fix effc++ warnings in Prop_int class
+  * [9a2e01d0] Update allowed warnings limits
+  * [f5e3c168] Assume powf is always available via C99
+
+  [ kcgen ]
+  * [6e0052d0] Add lib iphlpapi for static SDL builds under Windows
+  * [934e8972] Define _USE_MATH_DEFINES in support.h for M_PI
+  * [db7c5ff0] Include fast sine & cosine approximations in support
+  * [a784637c] Add a DC Silencer class for use by the PC Speaker
+  * [2e6ac8be] Add the DC Silencer to the build system
+  * [9e1c4080] Use the DC Silencer in the PC Speaker
+  * [145f19ab] Move the Speaker Speed calc to a constexpr
+  * [2586f22e] Fallback to sinf/cosf for now
+
+  [ Patryk Obara ]
+  * [6ef4b556] Initialize all opcode fields
+  * [03e6fe0e] Zero-initialize rm_eaa field
+  * [98a6ceb0] Format C_HEAVY_DEBUG statement in core_dynrec.cpp
+  * [944efadd] Sort sources in cpu module
+  * [443036ca] Fix effc++ warning in Descriptor constructor
+  * [b7604ea5] Unify ROM cache write prevention in dynrec cores
+  * [68955a9e] Update allowed warnings limits
+  * [3481a00f] Remove extra semicolons from dos_system.h
+  * [39b9ba4f] Remove extra semicolons from dos_inc.h
+  * [510bffb2] Fix effc++ warnings in PageHandler
+  * [cc287c64] Fix effc++ warnings in Prop_path class
+  * [848d0a81] Fix effc++ warnings in DmaController class
+  * [140c551f] Fix effc++ warnings in MAME emu header
+  * [613e33f0] Cleanup Prop_string class
+  * [c82da20e] Remove extra semicolons from drives.h
+  * [5e35b57d] Implement safe ARRAY_LEN macro
+  * [f742afcd] Replace magic number in DmaController
+  * [fc717b0a] Remove extra semicolon in bios_disk.h
+
+  [ kcgen ]
+  * [e37d9a3f] Track prior speaker position movements
+  * [cfaa1089] Add debug output for speaker modes and requested volume
+  * [71df28cf] Move the PC Speaker volume defines to static const expressions
+  * [8dee2b5b] Reduce the PC speaker's square-wave volume
+  * [7ede15f5] Adjust the default pcrate for authentic game accuracy
+
+  [ Patryk Obara ]
+  * [043c435d] Add -Weffc++ flag to CI gating
+  * [8a74e224] Add -Wextra-semi flag to CI gating
+  * [b8068ff7] Prevent clang-format from breaking string literals
+
+  [ kcgen ]
+  * [9c07906a] Upgrade PVS Studio to version 7.08.39765.52
+  * [427a3193] Upgrade the Mixer's callback to use a std::function
+  * [4d94d6b2] Upgrade DMA callback from a *func to std::function
+  * [6dacc634] Git-ignore local settings dropped by VS-Code
+
+  [ Wengier ]
+  * [93448542] Add help message for DIR command
+
+  [ Patryk Obara ]
+  * [e50fc313] Prevent crash on SDL2 re-creating OpenGL window
+  * [d02577a5] Rename CodePageHandlerDynRec
+  * [c6d2ebb7] Rename CacheBlockDynRec
+  * [53b1ccee] Update program name in VER command
+
+  [ kcgen ]
+  * [6694a491] Let users set build variables with a copy-and-pasteable export line
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 24 Jul 2020 08:19:56 +0000
+
+dosbox-staging (0.75.0-3) bionic; urgency=medium
+
+  * [5d1d50d9] debian/rules: install icons to correct location
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sun, 12 Jul 2020 17:55:26 +0100
+
+dosbox-staging (0.75.0-2) bionic; urgency=medium
+
+  * [38e5a885] Switch to debhelper compatibility level 13
+  * [50e100f0] debian/rules: revise compiler flags
+  * [c702af42] debian/rules: drop "strip min version" hack
+  * [9f5637ff] push_to_ppa.yml: retrieve supported distros from launchpad's api
+  * [26629fea] push_to_ppa.yml: push multiple series to PPA
+  * [c4b82800] push_to_ppa.yml: adjust debhelper-compat level for each distro
+  * [bae58086] push_to_ppa.yml: Override debian/control's compat level
+  * [19f2d104] push_to_ppa.yml: upload .orig.tar* only once
+  * [d5c2914c] push_to_ppa.yml: skip older unbuntu series
+  * [f1275445] push_to_ppa.yml: re-enable xenial and older
+  * [f8cc7676] push_to_ppa.yml: exclude any series older than Trusty
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 10 Jul 2020 22:21:31 +0100
+
+dosbox-staging (0.75.0-1) bionic; urgency=medium
+
+  * dosbox-staging 0.75.0 final release
+  - https://dosbox-staging.github.io/v0-75-0/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Mon, 06 Jul 2020 03:31:22 +0000
+
+dosbox-staging (0.75.0~rc1-1) unstable; urgency=medium
+
+  * [36e7710b] debian/rules: strip minversion from depends
+  * [532e2394] debian/control: reduce compat level to 11
+  * [63e27285] debian/rules: add compiler flags
+  * [6f309aac] debian/rules: LDFLAG set -flto=$(shell nproc) instead of 4
+  * [ae0f00ae] debian/copyright: update copyright file
+  * [c6d904ca] debian/patches: drop update_AUTHORS_file_location.patch
+  * [cb05945e] debian/rules: simplify *FLAGS
+  * [84a59e63] debian/gbp.conf: drop upstream-branch
+  * [99c31d7f] debian/control: synchronise package descriptions
+  * [0b7c9a18] debian/gbp.conf: add id-length to dch opts
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Mon, 06 Jul 2020 02:42:20 +0100
+
+dosbox-staging (0.74.99-1) unstable; urgency=medium
+
+  * UNRELEASED
+
+  * debian/*: Add Packaging for Debian
+  * debian/rules: Add .desktop and hicolor icons.
+  * debian/rules: force version string to $(DEB_VERSION).
+  * debian/gbp.conf: Add per-branch gbp config
+  * debian/docs: Include README documents
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sat, 23 May 2020 05:40:52 +0100
