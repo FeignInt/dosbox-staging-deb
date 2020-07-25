@@ -1,12 +1,39 @@
 # dosbox-staging package as deb
 
-![push to PPA](https://github.com/FeignInt/dosbox-staging-deb/workflows/push%20to%20PPA/badge.svg?branch=debianish)
+![push to PPA](https://github.com/FeignInt/dosbox-staging-deb/workflows/push%20to%20PPA/badge.svg)
+![Weekly PPA](https://github.com/FeignInt/dosbox-staging-deb/workflows/Weekly%20PPA/badge.svg)
 
-This github repo will automagically push a debianised source package of
+This github repo will automagically push debianised source packages of
 [dosbox-staging](https://dosbox-staging.github.io/about)
-to an
-[unofficial PPA](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging),
- where it is built and made available to apt.
+to Launchpad's PPA, which in turn compiles and packages the final deb package
+ and makes them available to apt update.
+
+Currently two PPA repositories
+
+| Stable Release Series | Weekly snapshots |
+|:-:                    |:-:               |
+| [ppa:feignint/dosbox-staging](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging) | [ppa:feignint/dosbox-staging-weekly](https://launchpad.net/~feignint/+archive/ubuntu/dosbox-staging-weekly) |
+
+:information_source: *Weekly snapshots* will have priority over *Stable Release*
+
+The snapshots represent recent Work in Progress code,
+ including features and bug fixes not yet released.
+[the dosbox-staging projects page](https://github.com/dosbox-staging/dosbox-staging/projects)
+ should give you some idea of what to expect.
+
+Plese note that weekly snapshots may contain undocumented features ( aka bugs )
+check both the
+[open](https://github.com/dosbox-staging/dosbox-staging/issues?q=is%3Aopen+is%3Aissue)
+and
+[closed](https://github.com/dosbox-staging/dosbox-staging/issues?q=is%3Aissue+is%3Aclosed)
+issues at
+[dosbox-staging issues](https://github.com/dosbox-staging/dosbox-staging/issues)
+If your bug is not listed, see if you can reproduce it using the most recent
+  *Stable Release*
+
+It is possible that the bug you are experiencing is specific to the deb
+ packaging, especially if you are unable to install. Feel free to report that
+ [here](https://github.com/FeignInt/dosbox-staging-deb/issues)
 
 ---
 
@@ -15,14 +42,17 @@ to an
 :information_source: no apt repo for pure Debian yet, for the moment use the
  best match as per table below or [compile your own](#compiling-yourself).
 
-| Codename | Release | Builds             | Debian base  | Debian Version |
-|:-        |:-:      |:-:                 |-:            |:-:             |
-| Groovy   | 20.10   | :heavy_check_mark: | Bullseye/sid | 11             |
-| Focal    | 20.04   | :heavy_check_mark: | Bullseye/sid | 11             |
-| Eoan     | 19.10   | :heavy_check_mark: | Buster/sid   | 10             |
-| Bionic   | 18.04   | :heavy_check_mark: | Buster/sid   | 10             |
-| Xenial   | 16.04   | :heavy_check_mark: | Stretch/sid  | 9              |
-| Trusty   | 14.04   | :heavy_check_mark: | Jessie/sid   | 8              |
+| Ubuntu       | Debian base     | Stable Release     | Weekly             |Notes           |
+|:-            | :-              | :-:                | :-:                |:-              |
+| 20.10 Groovy | 11 Bullseye/sid | :heavy_check_mark: | :heavy_check_mark: | <sup>[2]</sup> |
+| 20.04 Focal  | 11 Bullseye/sid | :heavy_check_mark: | :heavy_check_mark: | <sup>[2]</sup> |
+| 19.10 Eoan   | 10 Buster/sid   | :heavy_check_mark: |                    |                |
+| 18.04 Bionic | 10 Buster/sid   | :heavy_check_mark: |                    |                |
+| 16.04 Xenial | 9  Stretch/sid  | :heavy_check_mark: |                    | <sup>[1]</sup> |
+| 14.04 Trusty | 8  Jessie/sid   | :heavy_check_mark: |                    | <sup>[1]</sup> |
+
+<sup>[1] - no link-time optimizer ( -flto )</sup>\
+<sup>[2] - [future fluidsynth support](https://github.com/dosbox-staging/dosbox-staging/issues/262#)</sup>
 
 ## Architectures
 
