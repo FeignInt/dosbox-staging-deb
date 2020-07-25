@@ -216,7 +216,17 @@ jobs:
             then
               cp debian/changelog-weekly debian/changelog
             fi
-            patched_dch -S -N "${debVersion}"
+
+            # new changelog entry
+            # exclude dot files|dirs and scripts/*
+            local -a exclude=(
+                               ':!.*'
+                               ':!scripts/'
+                             )
+
+            patched_dch --snapshot                    \
+                        --new-version "${debVersion}" \
+                        -- "${exclude[@]}"
 
             gbp dch -R --spawn-editor=never \
                        --dch-opt=--distribution=unstable
