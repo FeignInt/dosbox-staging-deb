@@ -68,8 +68,8 @@ jobs:
           {
             # returns link to json about most recent -alpha commit
             jq -r '.[] | select( .name |
-                    test("^v.+alpha") )| .commit.url
-                  ' < <( Get_tags_json "${UPSTREAM_REPO}" ) | head -n1
+                    test("^v.+alpha") )| .commit.url, halt
+                  ' < <( Get_tags_json "${UPSTREAM_REPO}" )
             # TODO confirm order, looks like it is pre-sorted
             # I expect v0.77.0-alpha would be 'above' v0.76...
           }
@@ -281,12 +281,12 @@ jobs:
           {
             # get the major version number of debhelper for distro
             query="${query:=getPackageUploads&name=debhelper&exact_match=true}"
-            head -n1 < <(
-              jq -r '.entries[] | select( .status == "Done"
-                                     and  .pocket != "Backports" )
-                     .display_version | sub("[.].+";"")' \
-                < <( curl -s --compressed "${LP_API}${distro}?ws.op=${query}" )
-            )
+            jq -r '.entries[] | select( .status == "Done"
+                                   and  .pocket != "Backports" )
+                   .display_version | sub("[.].+";""), halt
+                  ' < <( curl --silent                            \
+                              --compressed                        \
+                              "${LP_API}${distro}?ws.op=${query}" )
           }
 
           # set debian version to most practically short string
