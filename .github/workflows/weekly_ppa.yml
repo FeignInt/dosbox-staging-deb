@@ -21,7 +21,7 @@ jobs:
           PPA_REPO: "feignint/dosbox-staging-weekly"
           GPG_TTY: "not a tty"
           LP_API: "https://api.launchpad.net/1.0/ubuntu/"
-          MIN_UBUNTU: "20.04"  # i.e. ignore older than focal
+          MIN_UBUNTU: "18.04"
           # NOTE that only the first two digits are used, [[ 16 >= 14 ]]
           # 14.04 is the same as 14.10
         run: |
@@ -253,10 +253,12 @@ jobs:
             # it is redundant really, it would only matter if the series order
             # from LA_API reversed
 
-            if [[ $dh_compat -lt 10 ]]
+            if [[ $dh_compat -gt 9 ]]
             then
+              sed -i -E 's/(debhelper-compat \(= ?)[0-9]+/\1'${dh_compat}'/
+                        ' debian/control
+            else
               # fixups, hacks really,for older than bionic
-              # I should at least properly condition the -flto in debian/rules
               #
               # replace debhelper-compat (= N) with "debhelper, automake"
               sed -i -E 's/(debhelper)-compat \(= ?[0-9]+\)/\1, automake/
@@ -266,15 +268,15 @@ jobs:
               echo "${dh_compat}" > debian/compat
 
               # remove -flto
+              # TODO instead of stripping -flto here
+              #  export RANLIB="gcc-ranlib" in debian/rules, but I don't
+              #  think -flto does much with older releases
               sed -i -E 's/ ?-flto(=[^ ]+ [^ ]+[)])?//;
                           /APPEND *=(\"\"| ?$)/d;
                           /APPEND=(\"\"|$)/d;
                           /auto_configure:/a\\t./autogen.sh
                         ' debian/rules
               # also added ./autogen.sh to start of version string hack
-            else
-              sed -i -E 's/(debhelper-compat \(= ?)[0-9]+/\1'${dh_compat}'/
-                        ' debian/control
             fi
           }
           get_dh_compat()

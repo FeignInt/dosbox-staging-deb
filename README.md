@@ -46,8 +46,8 @@ It is possible that the bug you are experiencing is specific to the deb
 |:-            | :-              | :-:                | :-:                |:-              |
 | 20.10 Groovy | 11 Bullseye/sid | :heavy_check_mark: | :heavy_check_mark: | <sup>[2]</sup> |
 | 20.04 Focal  | 11 Bullseye/sid | :heavy_check_mark: | :heavy_check_mark: | <sup>[2]</sup> |
-| 19.10 Eoan   | 10 Buster/sid   | :heavy_check_mark: |                    |                |
-| 18.04 Bionic | 10 Buster/sid   | :heavy_check_mark: |                    |                |
+| 19.10 Eoan   | 10 Buster/sid   | :heavy_check_mark: | :heavy_check_mark: |     |
+| 18.04 Bionic | 10 Buster/sid   | :heavy_check_mark: | :heavy_check_mark: |     |
 | ~~16.04 Xenial~~ | ~~9  Stretch/sid~~  | :heavy_check_mark: | | <sup>[1],[3]</sup> |
 | ~~14.04 Trusty~~ | ~~8  Jessie/sid~~   | :heavy_check_mark: | | <sup>[1],[3]</sup> |
 
