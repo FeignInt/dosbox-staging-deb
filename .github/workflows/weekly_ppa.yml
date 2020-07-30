@@ -222,6 +222,7 @@ jobs:
             local -a exclude=(
                                ':!.*'
                                ':!scripts/'
+                               ':!src/platform/visualc'
                              )
 
             patched_dch --snapshot                    \
