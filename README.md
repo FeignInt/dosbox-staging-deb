@@ -48,11 +48,12 @@ It is possible that the bug you are experiencing is specific to the deb
 | 20.04 Focal  | 11 Bullseye/sid | :heavy_check_mark: | :heavy_check_mark: | <sup>[2]</sup> |
 | 19.10 Eoan   | 10 Buster/sid   | :heavy_check_mark: |                    |                |
 | 18.04 Bionic | 10 Buster/sid   | :heavy_check_mark: |                    |                |
-| 16.04 Xenial | 9  Stretch/sid  | :heavy_check_mark: |                    | <sup>[1]</sup> |
-| 14.04 Trusty | 8  Jessie/sid   | :heavy_check_mark: |                    | <sup>[1]</sup> |
+| ~~16.04 Xenial~~ | ~~9  Stretch/sid~~  | :heavy_check_mark: | | <sup>[1],[3]</sup> |
+| ~~14.04 Trusty~~ | ~~8  Jessie/sid~~   | :heavy_check_mark: | | <sup>[1],[3]</sup> |
 
 <sup>[1] - no link-time optimizer ( -flto )</sup>\
-<sup>[2] - [future fluidsynth support](https://github.com/dosbox-staging/dosbox-staging/issues/262#)</sup>
+<sup>[2] - [future fluidsynth support](https://github.com/dosbox-staging/dosbox-staging/issues/262#)</sup>\
+<sup>[3] - 2020-07-30 - script will no longer push to PPA</sup>
 
 ## Architectures
 
@@ -72,7 +73,7 @@ Launchpad's PPA build farms can produce packages for a number of architectures
 Automation is achieved with [.github/workflows/push_to_ppa.yml](https://github.com/FeignInt/dosbox-staging-deb/blob/debianish/.github/workflows/push_to_ppa.yml)
 
 The script currently packages for
- *Groovy, Focal, Eoan, Bionic, Xenial and Trusty.*
+ *Groovy, Focal, Eoan, Bionic, ~~Xenial and Trusty~~<sup>[3]</sup>.*
  This list is derived from Launchpad's API listing of supported builders,
  excluding Precise as it lacks *libopusfile*.
 
