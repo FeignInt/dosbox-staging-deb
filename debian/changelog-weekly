@@ -1,3 +1,16 @@
+dosbox-staging (0.76.0~alpha~351~g714a-1) unstable; urgency=medium
+
+  [ Patryk Obara ]
+  * [83546ae5] Revert AdLib timing adjustments
+  * [06fb90b8] Skip over . and .. search results earlier in LS cmd
+  * [93c27e22] Map DtaResults to entry name lengths
+  * [68422156] Calculate column widths for ls cmd
+  * [348cdb0a] Use new column widths algorithm in ls command
+  * [124460fc] Simplify variable names in CMD_LS function
+  * [e9aceeb6] Remove extra-semi warnings from shell_cmds
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 31 Jul 2020 12:41:31 +0000
+
 dosbox-staging (0.76.0~alpha~332~g6694-1) unstable; urgency=medium
 
   [ Patryk Obara ]
