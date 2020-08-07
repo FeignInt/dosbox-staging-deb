@@ -1,3 +1,72 @@
+dosbox-staging (0.76.0~alpha~404~g0314-1) unstable; urgency=medium
+
+  [ Patryk Obara ]
+  * [bcf31de3] Disable screenshot feature for MSVC builds
+
+  [ kcgen ]
+  * [8edef458] Log the size of the IO bus handlers on destruction
+  * [39adcff6] Replace the IO handler function pointers with std::functions
+  * [ba502658] Replace the magic number 3 with a defined number of IO handlers
+  * [98ed9ca1] Replace the IO handlers Bitu type with with io_port_t and io_val_t
+  * [be606fca] Propose realistic IO handler io_port_t and io_val_t types
+  * [3c5c6205] Use an unordered_map with O(1) lookup to manage the IO handlers
+  * [968e0277] Call the IO default handlers directly instead using a lookup
+  * [8d0fcdf4] Fix effc++ warnings in IO handler class
+
+  [ Yann Collet ]
+  * [e49b9215] Upgrade xxHash from 0.7.4 to 0.8.0
+
+  [ kcgen ]
+  * [febefa8d] Bump the seek-table version from 4 to 5
+
+  [ Patryk Obara ]
+  * [bd505001] Sort sources in midi module
+  * [2eea51fa] Add define guards in midi module
+  * [02f28922] Move MidiHandler class to a new header
+  * [a751be16] Initialize macOS MIDI handlers correctly
+  * [3b9cf46b] Remove extra semicolons in shell_cmds.cpp
+  * [1fd67a33] Fix 'dir /p' cmd in non-standard text modes
+
+  [ kcgen ]
+  * [c299516c] Eliminate temporary pointers in the IO R+W calls
+
+  [ Patryk Obara ]
+  * [762be1c6] Remove trailing whitespace in ALSA MIDI handler
+  * [09d49383] Fix help string for texture_renderer
+  * [be99d1c6] Add openglpp option
+  * [868c759e] Rename function for calculating viewport
+  * [0fa161c0] Move pixel-perfect calculation out of texture init
+  * [266e9136] Move initial calculation of pixel-perfect scales
+  * [6da9c1e3] Use pixel-perfect viewport size in openglpp mode
+  * [a150756e] Replace Dimensions struct with SDL_Rect
+  * [850375cb] Remove dangling whitespace in sdlmain file
+  * [9b7b04fd] Ignore error while calculating pixel-perfect scale
+  * [2b74bc6e] Remove get_available_area function
+  * [2e673aac] Comment-out some debug logs for window events
+  * [a0e33924] Fix effc++ warnings in CommandLine class
+  * [c0ceb241] Remove unused variable in softmodem
+  * [e019b44f] Fix effc++ warnings in Program class
+  * [22d87722] Fix extra-semi warning in CDROM_Interface_Fake class
+  * [fc14db00] Use C++11 [[noreturn]] attribute
+  * [b1d430fd] Fix false positive Coverity warning
+  * [d82fe64f] Use emplace_back for Section function wrappers
+  * [377c5f8c] Fix extra-semi warnings in CMscdex class
+  * [452f0c26] Replace setbuf with setvbuf
+  * [7a2d78e3] Remove unused ConvDblWord function
+
+  [ kcgen ]
+  * [193f1655] Remove semi-colon from back of ARRAY_LEN macro
+  * [4ce10003] Cleanup a casting warning in dos drive_iso
+  * [0103fe22] Cleanup potential string overrun in dos drive_iso
+  * [d4c88f5d] Avoid masking the DOS drive members driveLetter and subUnit
+  * [c6fbe8f9] Cleanup dos drive function formatting and clarify iterator decrement
+  * [a6583e4d] Initialize drive_iso members
+
+  [ Wengier ]
+  * [03143a60] Add DOS_ParseVersion function
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 07 Aug 2020 04:06:52 +0000
+
 dosbox-staging (0.76.0~alpha~351~g714a-1) unstable; urgency=medium
 
   [ Patryk Obara ]
