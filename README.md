@@ -335,7 +335,7 @@ If you have a
 The postbuild hook will run after a successful build, it exports env. var.
  `GBP_CHANGES_FILE` containing the full path to the .changes file.
 
-The following script will push the .changes file to `/src/reprepro`
+The following script will push the .changes file to `/srv/reprepro`
  modify to point at your own reprepro.
 
 :information_source: passing `--update` is optional
