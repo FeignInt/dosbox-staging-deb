@@ -235,7 +235,8 @@ jobs:
             cp debian/changelog debian/changelog-weekly
 
             git add debian/changelog-weekly
-            git commit -m "Weekly snapshot $( date -I )"
+            git commit -m "Weekly snapshot $( date -I )" \
+                       -m "Gbp-Dch: Ignore"
             git push origin "${DEBIAN_BRANCH}"
 
           }
