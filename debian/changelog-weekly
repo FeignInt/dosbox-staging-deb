@@ -1,3 +1,34 @@
+dosbox-staging (0.76.0~alpha~425~g105b-1) unstable; urgency=medium
+
+  [ Patryk Obara ]
+  * [70235834] Remove dangling whitespace in byteorder header
+
+  [ kcgen ]
+  * [e32af3d8] Avoid a time-of-check vs use issue in local drive
+  * [df89b383] Avoid using an illegal value range in seek
+  * [cb6a1a60] Don't assume that all of the requested bytes were written
+  * [189ebb97] Ensure the file value and its position are valid before using them
+  * [0d700749] Don't assume file operations are error-free
+  * [a5e6112f] Don't assume that fileno() and fstat() will suceed
+  * [aa277105] Cleanup an effc++ warning in drive_local
+  * [005d7e89] Collapse ftell and fseek into local helpers
+
+  [ Wengier ]
+  * [6fddba08] Fix coverity related to new_version
+
+  [ Patryk Obara ]
+  * [c8b51ed9] Prevent shell from injecting spurious newlines
+  * [eb609209] Fix extra-semi warnings in mscdex implementation
+  * [25b38198] Fix extra-semi warning in NUL DOS device
+  * [ec7ec5d9] Fix extra-semi warnings in keymapper implementation
+  * [93be5b6a] Fix extra-semi warning in core_dyn_x86
+  * [70537d26] Fix extra-semi warning in CPU module
+  * [3ecbea38] Fix extra-semi warning in keyboard_layout class
+  * [7beab2ec] Fix extra-semi warnings in hardware module
+  * [d6fe40f5] Revert "Disable screenshot feature for MSVC builds"
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 14 Aug 2020 04:07:23 +0000
+
 dosbox-staging (0.76.0~alpha~404~g0314-1) unstable; urgency=medium
 
   [ Patryk Obara ]
