@@ -33,7 +33,7 @@ override_dh_auto_clean:
 
 override_dh_auto_configure:
 	# re-set version string, useful for gbp snapshot builds
-	sed -E 's/(AC_INIT.+,[[]?)[^])]+/\1$(DEB_VERSION)/' configure.ac \
+	sed -E 's/(AC_INIT.+,[[]?)[^])]+/\1v$(subst ~,-,$(DEB_VERSION))/' configure.ac \
 	  | autoconf -o configure -
 	#
 	dh_auto_configure -Bbuild-release -- $(configure_extra)
