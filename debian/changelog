@@ -1,3 +1,16 @@
+dosbox-staging (0.75.1-1) unstable; urgency=medium
+
+  * [2af2f94c] debian/*: include patch to install .desktop and hicolor icons
+    (Closes: #5)
+  * [acc548b8] debian/rules: revise compiler FLAGS
+  * [a939633c] debian/*: Add support for future fluidsynth on Debian 11+/Ubuntu 20+
+  * [7c2d8146] d/r: Prefix ver. string with v and sub. ~ with -
+
+  * dosbox-staging 0.75.1 bugfix release
+  - https://dosbox-staging.github.io/v0-75-1/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Thu, 20 Aug 2020 03:31:58 +0000
+
 dosbox-staging (0.75.0-3) bionic; urgency=medium
 
   * [5d1d50d9] debian/rules: install icons to correct location
