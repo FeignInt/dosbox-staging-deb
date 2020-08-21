@@ -1,3 +1,64 @@
+dosbox-staging (0.76.0~alpha~478~gaa45-1) unstable; urgency=medium
+
+  [ kcgen ]
+  * [4d3d0e88] Simplify drive_local's delete function with actionable checks only
+  * [7a081d54] Add a helper to check for open file matches within the local mount
+  * [72d08f97] Use the local open check in localDrive::FileOpen
+  * [ea201c4d] Use the local open check in localDrive::Unlink
+  * [1aede67e] Confirm the file position given to and written by localFile::Seek is in-bounds
+  * [20cdbdb0] Initialize vars before reading in drive_local (PVS)
+
+  [ Patryk Obara ]
+  * [fb5ad16a] Detect FluidSynth >= 2.0.0 during configure step
+  * [d78f763a] Update developer documentation
+  * [78879ac9] Add FluidSynth MIDI handler
+  * [e39efca6] Restore logs in FluidSynth MIDI handler
+  * [28eb0332] Enable FluidSynth support in MSVC builds
+  * [32c1f4ce] Remove RetroArch-specific workaround
+  * [825835eb] Move FluidSynth conf settings to a new section
+  * [32887d07] Clean-up code picking the MIDI device
+  * [4d092bdb] Adjust initial set of user-facing FluidSynth tweaks
+  * [435c270f] Use new mixer callback signature
+  * [eafd6c3d] Resolve home directory when loading sf2 file
+  * [0d8b4869] Use stack-allocated buffer for sample transfer
+  * [e3eb4e48] Rename member field in FluidSynth MIDI hander
+  * [c3112314] Force pixel-perfect to respect aspect.ratio setting (Fixes: #544)
+
+  [ kcgen ]
+  * [ed1d1e19] Slightly improve readability of two shell_batch functions
+  * [b1400948] Fix warnings in shell batch using a lamda for repeating code
+  * [4b115bdf] Fix sign coversion warning in shell_batch
+  * [eb8dca40] Fix a Coverity warning in shell_batch
+  * [7c0331f3] Fix regression involving international characters in batch file
+    (Fixes: #555)
+
+  [ Patryk Obara ]
+  * [8f16d6c8] Update AUTHORS and THANKS files
+
+  [ kcgen ]
+  * [bc2042ae] Don't explicitly disable Microsoft bitfields for autotools builds
+  * [49b0ad74] Clarify the use of a dummy variable in shell
+  * [557bafbc] Clarify the use of a temporary array in shell
+  * [b7053ba0] Reorder shell's #include statements
+  * [a2e6c62a] Add a support function to assert and cast from int to char
+  * [b95da173] Add a support function to convert a drive letter to index
+  * [4a1c9613] Use the drive_index helper in dos_mscdex
+  * [e828b763] Use the drive_index helper in dos_programs
+  * [6edc304e] Use the drive_index helper in shell_cmds
+  * [6bcc3524] Use the drive_index helper in shell_misc
+  * [5bb0bb49] Use the drive_index and int_to_char helpers in dos_files
+  * [2740eddf] Use the int_to_char helper in dos_programs
+  * [c15ae803] Use a char-type to represent the boot drive in dos_programs
+  * [39b6a900] Simplify drive validity check in dos_files
+
+  [ Patryk Obara ]
+  * [ab65e861] Provide safe replacement for sGet, sSave macros
+  * [66d8aa61] Convert DOS_PSP to using new field access macros
+  * [1c15111b] Unroll loop to allow SGET_* macro in constexpr context
+  * [09783524] Log warning if buffer overflow on PSP file_table
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 21 Aug 2020 04:07:26 +0000
+
 dosbox-staging (0.76.0~alpha~425~g105b-1) unstable; urgency=medium
 
   [ Patryk Obara ]
