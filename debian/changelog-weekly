@@ -1,3 +1,170 @@
+dosbox-staging (0.76.0~alpha~635~g4c7c-1) unstable; urgency=medium
+
+  [ kcgen ]
+  * [80ca9ff7] Add explicit pthread configuration to autotools
+  * [2879336a] Clarify the mouse capture configuration names
+  * [66e56da8] Fix capture_mouse's middlegame configuration state
+  * [41faae95] Don't report backspace and escape as illegal characters in batch files
+
+  [ Patryk Obara ]
+  * [84ea5849] Use write_unaligned* in cache_add* functions
+  * [ea1d4b02] Synchronize comments in CacheBlock declarations
+  * [04518ac6] Synchronize comments in CacheBlock classes
+  * [ccf12af5] Synchronize static functions' comments in dyn caches
+  * [782d5bf7] Synchronize comments in CodePageHandler classes
+  * [ec820e71] Synchronize comments in cache structs in both dynrec cores
+
+  [ kcgen ]
+  * [3befd7e6] Eliminate redundant RAMP_FRAC multiplier in GUS
+  * [0ee78537] Implement 16 constant-power pan positions
+  * [b6a17b63] Retain the fractional interwave-portion of GUS samples
+  * [92ac680f] Clarify GUS volume state-variable names
+  * [0958ac76] Streamline GUS sample generation
+  * [f828f0ef] Simplify GUS wave addition calculation
+  * [2ab725ec] Eliminate redundant volume bit-shifting up and down
+  * [3c01b31d] Define and initialize the GUS memory
+  * [7d7bb9ee] Cleanup GUS by moving Bit8u to uint8_t (no formatting)
+  * [31037487] Cleanup GUS by reformatting updated uint8_t (squash after review)
+  * [d3323193] Cleanup GUS by moving Bit16u to uint16_t (no formatting)
+  * [d0cd8ad4] Cleanup GUS by reformatting updated uint16_t (squash after review)
+  * [e13a9df9] Cleanup GUS by moving Bit32u to uint32_t (no formatting)
+  * [29e74e88] Cleanup GUS by reformatting updated uint32_t (squash after review)
+  * [19c6f862] Cleanup GUS by moving Bit32s to int32_t
+  * [1a297383] Cleanup GUS by replacing (void)s with ()
+  * [a56f7dce] Cleanup GUS by initializing member variables
+  * [33bed551] Cleanup GUS by applying const when possible
+  * [cd5febec] Cleanup GUS by replacing INLINE with inline
+  * [085b8e38] Cleanup GUS remaining small formatting issues
+  * [624730a0] Cleanup GUS by eliminating redundant casts
+  * [a2e0d13c] Operate the GUS mixer channel at the internal playback rate
+  * [2085a129] Track peak amplitude of the accumulated samples
+  * [2578475b] Soft-limit the GUS accumulated stream as-needed
+  * [b2f4a670] Gather GUS bit-depth usage from voice channels
+  * [13542149] Print GUS bit-depth and volume info on close
+  * [2c83e85f] Bound the GUS pan request instead of asserting
+  * [b8f3909d] Only update GUS channel details when needed
+  * [e199c7ee] Include dosbox-staging team in copyright header
+  * [9aa55158] Further streamline GUS sample generation
+  * [12789af0] Cleanup GUS by dropping use of 'using namespace std'
+  * [2f4d4b27] Refactor GUS
+  * [3186ede6] Initilize GUS timers and mix control with reset values
+  * [2f121373] Stop the GUS audio channel when resetting
+  * [c570badf] Scale the GUS volume index variables
+  * [d2995f6f] Simplify GUS temporary variable names
+  * [6b6bdb57] Move magic-number #defines to constexpr, and drop GUS_ prefix
+  * [5577c16b] Rollover requested GUS voices at 31 instead of 63
+  * [ee5494bb] Cleanup effc++ warnings in GUS
+  * [cc6205d1] Move more default values to constexpr in GUS
+  * [fa0a6b26] Vectorize GUS sample pass-through when not soft limiting
+  * [1ca83510] Use a unique_ptr to hold the static GUS object
+  * [75835d14] Eliminate the defunct IS_EGAVGA_ARCH check in GUS
+  * [9255689a] Migrate the GUS volume indexes to integers
+  * [abc48ccd] Migrate the GUS wave addresses to integers
+  * [f46d6dc1] Simplify the interface to GUS GenerateSamples
+  * [a8dc1a7a] Collapse wave and volume index control into a common struct
+  * [96097c27] Collapse GUS Wave and Volume update functions into one
+  * [9a33b30b] Generalize GUS wave and volume read, write, and IRQ control functions
+  * [b8fafced] Eliminate need to pass irq check fn into each GUS voice
+  * [340c5949] Rename GUS wave and volume control members
+  * [49563d9e] Rename the GUS current_voice* to simply voice
+  * [52196768] Capitalize GUS voice control states
+  * [6e4d807e] Break out GUS prototypes into a header
+  * [a4abfad4] Include inout.h in dma.h as it depends on IO_ReadHandleObject
+  * [ab292274] Rename global object myGUS to 'gus'
+  * [e3c2eeb2] Simlify GUS reset by assigning the default Timer{} structs
+  * [a3755bc2] [WIP] reset handling
+  * [1977f9ae] Clarify the GUS stop-init-play Reset states
+  * [26be5529] Refactor the GUS wave, volume, and runtime state control
+  * [ca5c5471] Document the GUS structs and classes
+  * [d3d3ea94] Pass std:arrays as references and assert their sizes
+  * [aaa11545] Move GUS sample-passthru into SoftLimit
+  * [7c5529d5] Define 16-bit audio limits as a constexpr float value
+  * [7bcd3996] Vector-optimize GUS SoftLimit and GenerateSample calls
+  * [bb73d3a4] Compartmentalize long GUS GenerateSamples func, and vectorize others
+  * [4950c3b9] Move GUS peak amplitude update into the soft limiter
+  * [cbfa5cf7] Replace some std::arrays w C-arrays for aligned SIMD vectorization
+  * [2e8c3435] Make GUS runtime reset & init more thorough
+  * [8d4cc245] Cleanup GUS DMA transfer related code
+
+  [ Jonathan Campbell ]
+  * [7afd0c28] Add PIC-controlled DMA handling authored by the DOSBox-X project
+
+  [ kcgen ]
+  * [3d0e742b] Clamp configured DMA and IRQ to defined limits
+  * [77e0140c] Hoist DMA bit-size determination to a function
+  * [2916de91] Quantify GUS maximum DMA rate and timings
+  * [65f5676c] Simplify GUS DMA callback
+  * [5f8385b8] Cleanup warnings in GUS DMA and sample callback
+  * [e8964e7d] Reseparate the shared IRQ state into volume and wave parts
+  * [59911766] Add 'Pop' functions to get the current GUS control position and increment it
+  * [11bab88a] Recombine GUS header and body into one cpp
+  * [ec9d4dba] Cleanup GUS DMA transfer functions
+  * [423d2eac] Let GUS DMA transfers naturally expire
+  * [8153f3b4] Cleanup GUS log messages
+  * [4b8cba8e] Cleanup a couple GUS comments and whitespace
+  * [17bb58f2] Fix copyright banner spacing in GUS
+  * [26fe4364] Configure the GUS conf-file settings locally
+  * [ffd1f1de] Reorganize GUS constants and use the wave masks locally
+  * [4699c42a] Remove an unused GUS function and some extra whitespace
+  * [b7000965] Correct GUS lower-bound DMA and IRQ values (zero is valid)
+  * [d99cfee7] Improve documentation in the GUS PopWave position function
+  * [87e4f031] Define GUS type bit-sizes in separate variables
+  * [27407c96] Use lowercase hex constants in GUS
+  * [19def010] Define GUS address masks using bit-syntax
+  * [96814a89] Round the GUS playback rate instead of using + 0.5
+  * [e7760137] Use consistent bracing in GUS DMA routine
+  * [2f1f9372] Create GUS ULTRASND using snprintf instead of sstream
+  * [2b64fc8b] Eliminate unecessary cast in GUS comparison
+  * [c7a222b8] Adjust order of state assignment to be less misleading in GUS
+  * [6719273e] Silence setting of GUS ULTRA* env variable
+  * [548ed383] Attribute GUS functions with noexcept
+  * [abcf9ce7] Move definition closers to point-of-use in GUS
+  * [8c6c68d3] Fix an implicit cast warning in GUS
+  * [16c9cbf2] Eliminate casting in GUS wave updaters
+  * [caa666b8] Move the GUS accumulator and output arrays to containers
+  * [8cf170ff] Move the GUS pan scalars to a std::array
+  * [6689e9e6] Move the GUS RAM to a std::array
+  * [dfb01a4d] Move GUS conf and init definition to hardware header
+  * [1af38df4] Move the GUS vol_scalars array to a std::arrays
+  * [64b6bb5e] Move a couple more GUS constants to their point-of-use
+  * [7977a2ab] Attribute more GUS member functions with noexcept
+  * [7b3289db] Separate GUS timer-array into two standalone timers
+  * [eab10ec1] Up-cast GUS arithmetic vals to resulting size before operating
+  * [d23e5c6d] Iterate over the GUS voices array instead of indexing
+  * [c7882943] Initialize a couple GUS variables
+  * [c03b35a0] Add default cases in GUS read and write switches
+  * [266aaf26] Prefer using the bound-checked at(x) in GUS non-hot-path code
+  * [17c0562e] Mark GUS local variables const when possible
+  * [9a4a621a] Assert GUS configuration pointers before use
+  * [4fc749b3] Use 1024x1024 for GUS RAM size and IEC unit symbols
+
+  [ Patryk Obara ]
+  * [1f156b2b] Copy diff between caches into core_dyn_x86
+  * [c0ed9543] Move core_dyn_x86/cache.h to dyn_cache.h
+  * [445d3c42] Decorate CodePageHandler with override keyword
+  * [a7612203] Fix effc++ warnings in CodePageHandler class
+  * [7fb27b18] Format "wrap cache early" check for core_dynrec
+
+  [ kcgen ]
+  * [560f6a78] Fix a boundary-check in the GUS voice volume register
+  * [5404322a] Add GUS Enhancements to the table of changes
+  * [9b3e6cdd] Fix a CD-DA roll-over bug when calculating PCM frames
+
+  [ Patryk Obara ]
+  * [852adb13] Convert DOS_FCB to using new field access macros
+  * [7b41359f] Convert DOS_DTA to using new field access macros
+  * [db28c6f7] Convert DOS_SDA to using new field access macros
+  * [bb9cba91] Convert DOS_MCB to using new field access macros
+  * [e6d31b9c] Convert DOS_ParamBlock to using new field access macros
+  * [a5f9bde8] Convert DOS_InfoBlock to using new field access macros
+  * [6449ff63] Convert DOS_DeviceHeader to using new field access macros
+  * [02ef9135] Remove old field access macros for MemStruct
+  * [e0fca3c0] Reorganize MemStruct construction
+  * [623964cc] Silence PVS false-positive warnings in dos_classes
+  * [93cd210e] Create memset-like function for filling dos structures
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 28 Aug 2020 04:08:07 +0000
+
 dosbox-staging (0.76.0~alpha~478~gaa45-1) unstable; urgency=medium
 
   [ kcgen ]
