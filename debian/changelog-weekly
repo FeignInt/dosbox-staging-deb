@@ -1,3 +1,60 @@
+dosbox-staging (0.76.0~alpha~675~g740a-1) unstable; urgency=medium
+
+  [ ripsaw8080 ]
+  * [42ac3ba4] Discard buffer contents at start of CDDA playing. Prevents initial sound blips.
+  * [ad574a64] Copy from the current handle table (not always the PSP) when increasing the number of file handles, in case a process does it more than once. Also, create a new handle table only if the number of handles actually increases. Fixes a Spanish adventure game.
+
+  [ kcgen ]
+  * [3f6475d6] Add a couple more LOG_GUS messages and adjust formatting
+  * [ae76ad0d] Return after writing to the GUS DMA register (typo)
+
+  [ Wengier ]
+  * [06f2b2ba] Fix boot failure from Drive C
+
+  [ MasterO2 ]
+  * [8bbc68d8] Add program usage output for IMGMOUNT.COM
+
+  [ kcgen ]
+  * [0843e508] Adjust IMGMOUNT.COM help message
+  * [8332d3be] Add "?" and "-help" usage output for AUTOTYPE.COM
+
+  [ Patryk Obara ]
+  * [1f594811] Fix effc++ warnings in device_CON class
+  * [b073f119] Fix effc++ warnings in GenReg class
+  * [26360d20] Fix effc++ warnings in imageDisk class
+  * [cad1c405] Fix effc++ warnings in SBLASTER class
+  * [0da43bf2] Fix effc++ warning in MPU401 class
+  * [cf472207] Fix effc++ warning in XMS class
+  * [b1e0b9ad] Fix effc++ warnings in ECBClass class
+  * [481aebb4] Fix effc++ warning in CDROM_Interface_Image class
+  * [86c508dc] Fix effc++ warnings in DISNEY class
+  * [a108d08b] Fix effc++ warnings in Virtual_File class
+  * [541c8947] Fix effc++ warning in Virtual_Drive class
+  * [23810e8f] Fix effc++ warnings in JOYSTICK class
+  * [8c75cb78] Fix effc++ warnings in CMS class
+  * [4b6cea89] Fix effc++ warnings in isoDrive class
+  * [f7cdcfd6] Fix effc++ warnings in IPX class
+
+  [ MasterO2 ]
+  * [0f2ec600] Change Wiki link to dosbox-staging wiki URL
+
+  [ Patryk Obara ]
+  * [1b7a3773] Remove useless DB_FASTCALL macro
+  * [517642b1] Remove unneeded AC_* macro invocations
+  * [b6e515e9] Don't print pointless "not on Apple" messages
+  * [bd37b707] Remove trailing whitespace in configure.ac
+  * [4524d640] Move AC_C_BIGENDIAN to be grouped with AC_C* checks
+  * [cfdcc0b1] Use C99 for compiling autoconf C snippets
+  * [ffb2a087] Update copyright info in generated config.h
+  * [3bdfaadd] Make makefiles less verbose by default
+  * [5b5fd7c3] Add convenience "make run" target
+  * [87ae5923] Fix ls cmd output when emulating Hercules
+
+  [ kcgen ]
+  * [666faa90] Fix a regression differentiating the PCSPEAKER wave-type for Digger
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 04 Sep 2020 04:08:33 +0000
+
 dosbox-staging (0.76.0~alpha~635~g4c7c-1) unstable; urgency=medium
 
   [ kcgen ]
