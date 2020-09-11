@@ -1,15 +1,15 @@
 Description: install linux .desktop and hicolor icons
 This patch is hardcoded for linux, do not upstream.
 Author: Feignint <37488595+FeignInt@users.noreply.github.com>
-Last-Update: 2020-09-02
+Last-Update: 2020-09-11
 ---
 This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
 --- a/configure.ac
 +++ b/configure.ac
-@@ -692,5 +692,7 @@ src/platform/Makefile
+@@ -735,5 +735,7 @@ src/shell/Makefile
+ src/platform/Makefile
  src/platform/visualc/Makefile
- include/Makefile
- docs/Makefile
+ tests/Makefile
 +contrib/Makefile
 +contrib/linux/Makefile
  ])
@@ -39,8 +39,8 @@ This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
  
  EXTRA_DIST = autogen.sh
  
--SUBDIRS = docs include src
-+SUBDIRS = docs include src contrib
+-SUBDIRS = docs include src tests
++SUBDIRS = docs include src tests contrib
  
  # Per the auto-tools clean guidelines:
  # https://www.gnu.org/savannah-checkouts/gnu/automake/manual/html_node/Clean.html#Clean
