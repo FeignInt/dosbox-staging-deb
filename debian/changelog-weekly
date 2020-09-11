@@ -1,3 +1,58 @@
+dosbox-staging (0.76.0~alpha~719~g10da-1) unstable; urgency=medium
+
+  [ kcgen ]
+  * [6f04c2a2] Log audio channel creation and if resampling is used
+  * [b2a503ff] Use the mixer's rate if the channel doesn't provide one
+  * [5ff2386b] Always generate FM at the mixer's output rate
+  * [d141266a] Cleanup some effc++ warnings in mixer
+  * [e9f8af46] Differentiate and describe negotiated SDL rate and buffer
+  * [8fc538e6] Deprecate the [sblaster] oplrate setting
+
+  [ Bernard Cafarelli ]
+  * [2cd7c356] Use system archiver instead of hardcoded 'ar'
+
+  [ kcgen ]
+  * [9bf3f3da] Let "+" be part of AT command-set per Hayes spec
+  * [7f107d84] Move the softmode +NET1/+NET0 parsing into command-loop
+  * [6421cea6] Permit full-length hostnames in softmodem's command sequence
+  * [240b681a] Let telnet-mode for softmodems be set via the conf-file
+  * [16d1e3d1] Describe softmodem telnet:1 and +NET1/0 in the README
+  * [a343e91e] Eliminate unecessary whitespace in softmodem cmd log
+  * [21a5231a] Rename telnetmode to telnet_mode in softmodem
+
+  [ Patryk Obara ]
+  * [a2c98d1c] Fix effc++ warnings in keyboard_layout class
+  * [8a6c3537] Fix effc++ warning in OverlayFile class
+  * [0c98c9da] Fix effc++ warnings in Overlay_Drive class
+  * [eb81d5e0] Fix effc++ warnings in VideoCodec class
+  * [38f802cd] Remove unused class NullInt
+  * [5c959fb8] Fix effc++ warnings in saa1099_device class
+  * [06638f86] Fix effc++ warnings in sn76496_base_device class
+  * [0dde71e1] Fix effc++ warnings in DmaChannel class
+  * [c1c9cb58] Explicitly initialize all VGA page handlers
+  * [a54b45de] Fix effc++ warnings in DBOPL::Channel class
+  * [7552521a] Fix effc++ warnings in DBOPL::Chip
+  * [2dd605f0] Fix effc++ warning in DBOPL::Handler class
+  * [ce533d03] Add an option for setting monochrome palette colour (Fixes: #602)
+  * [b73d8d06] Update VS project filter for new midi source files
+
+  [ ripsaw8080 ]
+  * [4c9aa645] Fix 4bpp modes in VBETEST. Thanks TheGreatCodeholio.
+
+  [ Peter Veenstra ]
+  * [66a71cc1] don't do a thing when refreshing the cache for the fatDrive.
+  * [f5527933] Some protections against an empty basedir.
+
+  [ Patryk Obara ]
+  * [e050395b] Replace strlen call for checking if string is empty
+  * [ff040349] Optimize remaining checks for empty strings
+  * [cc276709] Extend buildsystem with ability to run unit tests
+  * [f2f927ef] Write brief documentation on building unit tests
+  * [7844bcfb] Add UTs for safe_strcpy function
+  * [10daa816] Mention unit tests in README.md
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 11 Sep 2020 07:04:15 +0000
+
 dosbox-staging (0.76.0~alpha~675~g740a-1) unstable; urgency=medium
 
   [ ripsaw8080 ]
