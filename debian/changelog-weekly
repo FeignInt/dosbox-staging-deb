@@ -1,3 +1,29 @@
+dosbox-staging (0.76.0~alpha~734~ga40e-1) unstable; urgency=medium
+
+  [ MasterO2 ]
+  * [aafede89] Adjust MOUNT.COM Help Message
+
+  [ Patryk Obara ]
+  * [93dd6b65] Use our formatting convention for MOUNT help msg
+  * [1c60c1d7] Adjust formatting of IMGMOUNT help msg
+  * [eaa48f2a] Fix arguments for triggering imgmount help message
+
+  [ Peter Veenstra ]
+  * [8bbd1eb8] Fix up ternaries in the exceptions (jmarsh)
+
+  [ ripsaw8080 ]
+  * [a9a8d2c8] Avoid a problem related to r4357 that could occur rarely.
+  * [9490515e] Improve argument handling of internal programs that execute user programs.
+  * [57bd7e28] Add buffer overflow guard in case of very long command line.
+
+  [ Patryk Obara ]
+  * [d2621ed8] Fix sign-compare warnings in YMF262 emulator
+  * [657febec] Revert "Avoid a problem related to r4357 that could occur rarely."
+  * [3fc5ee8d] Use safe_strcat in refactored LOADFIX code
+  * [a40eee2d] Fix effc++ warnings in DBOPL::Operator class
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 18 Sep 2020 04:08:34 +0000
+
 dosbox-staging (0.76.0~alpha~719~g10da-1) unstable; urgency=medium
 
   [ kcgen ]
