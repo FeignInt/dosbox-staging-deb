@@ -1,3 +1,28 @@
+dosbox-staging (0.76.0~alpha~746~g61fe-1) unstable; urgency=medium
+
+  [ Peter Veenstra ]
+  * [751947d3] refine alt-pause a bit, so it handles keeping alt-pressed and releasing it when returning to main loop a bit better.
+
+  [ Patryk Obara ]
+  * [80c430a2] Update Alt+Pause fix to use SDL 2.0
+
+  [ Peter Veenstra ]
+  * [ed82b55d] Change FPU_FBST to only write 18 decimals instead of the wrongly 19, this makes it possible to switch 64 integers which in turn fixes some rounding issues. (jmarsh)
+
+  [ Patryk Obara ]
+  * [c3a51f19] Override automake distclean target for tests (Fixes: #614)
+  * [21b7e42b] Add some missing generated files to distclean
+
+  [ kcgen ]
+  * [55feca66] Simplify and clarify FPU decimation loop
+  * [f368bbf6] Ensure long long int and uint64_t are the same size
+
+  [ Patryk Obara ]
+  * [92969079] Adjust static_assert message to be more specific
+  * [61fe2a5b] Fix "Dead nested assignment" static analysis issue
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 25 Sep 2020 04:08:37 +0000
+
 dosbox-staging (0.76.0~alpha~734~ga40e-1) unstable; urgency=medium
 
   [ MasterO2 ]
