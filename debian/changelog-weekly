@@ -1,3 +1,42 @@
+dosbox-staging (0.76.0~alpha~770~gd41a2-1) unstable; urgency=medium
+
+  [ NicknineTheEagle ]
+  * [57f6994e] Properly set modify time on written files
+
+  [ Patryk Obara ]
+  * [879cae65] Return error code when handling DOS function 57h
+
+  [ NicknineTheEagle ]
+  * [b51327d7] Clear modem phone book on serial ports shutdown
+
+  [ kcgen ]
+  * [da2a43d1] Avoid dropping the last character when appending shell commands
+
+  [ Patryk Obara ]
+  * [ac392cb8] Fix compilation when building with --disable-network
+  * [3d87eea6] Fix -Wswitch warnings in INT10_SetSinglePaletteRegister
+  * [31080687] Fix -Wswitch warnings in INT10_SetOverscanBorderColor
+  * [fd0a441e] Fix -Wswitch warnings in INT10_SetAllPaletteRegisters
+  * [97f3257a] Fix -Wswitch warnings in INT10_WriteChar
+  * [cd552a63] Fix -Wswitch warning in INT10_SetBackgroundBorder
+  * [d043bffc] Introduce SDL2 version check for Visual Studio
+  * [7bb013a0] Add an option for selecting raw mouse input (Fixes: #244)
+  * [3a420188] Mass-replace safe_strncpy with safe_strcpy
+
+  [ kcgen ]
+  * [19388066] Make the mixer command line use the SetVolume() function
+  * [ccb1301a] Make the AudioFrame struct available for general use
+  * [c8b75c31] Let the channels' levels be managed by the source
+  * [836512b6] Generalize the GUS's Soft Limiter as a standalone class
+  * [af8a9c22] Use the mixer's level callback in GUS
+  * [9692835d] Replace GUS's internal soft limiter with the standalone class
+  * [9ffcc041] Add unit tests for the Soft Limiter
+
+  [ Patryk Obara ]
+  * [d41a2129] Reimplement CLS command
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 02 Oct 2020 04:09:56 +0000
+
 dosbox-staging (0.76.0~alpha~746~g61fe-1) unstable; urgency=medium
 
   [ Peter Veenstra ]
