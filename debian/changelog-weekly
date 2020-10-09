@@ -1,3 +1,58 @@
+dosbox-staging (0.76.0~alpha~813~g41d2-1) unstable; urgency=medium
+
+  [ ripsaw8080 ]
+  * [0f4a84f4] Improve error codes for some DOS file functions; fixes #539.
+  * [326c371a] Compatible side-effect behavior of DOS in the file close function.
+
+  [ kcgen ]
+  * [74529749] Use pkg-config to find the FluidSynth dependencies
+  * [81c600ef] Contribute a static FluidSynth builder
+  * [35f1c8f9] Inform macOS users they can alternatively build FluidSynth
+
+  [ Patryk Obara ]
+  * [d4272c69] Remove CommandLine::FindHex method
+  * [c35f6d26] Fix a warning and check for wrap-around in datetime calls
+
+  [ kcgen ]
+  * [a014e3d6] Fix a warning in the date and time conversion calls
+  * [87299b1f] Let the compiler decide when to inline date & time calls
+  * [e6252d94] Rename the 'seg' argument to avoid masking the member variable
+  * [caea5a36] Annotate an unused argument in the CDROM header
+  * [0591fdfc] Switch from INLINE to inline in the memory header
+  * [aa51b40c] Switch from Bit16u to uint16_t in the memory header
+  * [1b95159c] Switch from Bit32u to uint32_t in the memory header
+  * [f276d973] Switch from Bit8u to uint8_t in the memory header
+  * [06bb2a80] Switch from Bit32s to int32_t in the memory header
+  * [fad33560] Cleanup formatting in memory header
+  * [f9af4739] Fix all implicit sign conversion warnings in mem.h
+  * [1155eec9] Drop (void) arguments in the Memory header
+
+  [ ripsaw8080 ]
+  * [460b863b] As an adjunct to r4369, make the reference counts of standard device handles equivalent to those of real DOS.
+
+  [ kcgen ]
+  * [9785dcf4] Append "(debug build)" to the title bar text
+
+  [ Patryk Obara ]
+  * [05fdbb85] Silence -Wunused-but-set-variable warning: font_data_length
+  * [dfbaee62] Silence -Wsign-compare warning in sn76496
+  * [7e9e59d1] Initialize boolean flags in SDL_Block
+  * [e503d51a] Clear initial memory buffers for all modes
+  * [47e8b84d] Zero-initialize anonymous structs in SDL_Block
+
+  [ ripsaw8080 ]
+  * [8c0021ab] Fix regression in Clue: Master Detective.
+
+  [ kcgen ]
+  * [8ded88c9] Include FluidSynth as a macOS build pre-requisite in README.md
+
+  [ Patryk Obara ]
+  * [951d8392] Sort header files in include/
+  * [10d23efb] Introduce filesystem utilities
+  * [41d249fb] Check for file existence using path_exists
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 09 Oct 2020 04:10:21 +0000
+
 dosbox-staging (0.76.0~alpha~770~gd41a2-1) unstable; urgency=medium
 
   [ NicknineTheEagle ]
