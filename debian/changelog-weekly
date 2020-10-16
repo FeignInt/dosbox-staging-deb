@@ -1,3 +1,42 @@
+dosbox-staging (0.76.0~alpha~839~gfb63-1) unstable; urgency=medium
+
+  [ NicknineTheEagle ]
+  * [a01ac058] Fix space removing in modem ATD command
+
+  [ Patryk Obara ]
+  * [54c042dd] Fix unused-but-set-variable warning in ipx.cpp
+  * [18f7e70c] Fix unused-but-set-variable warning in ipxserver.cpp
+  * [ad6a49c2] Convert ScalingMode enum to an enum class
+  * [cf3bb920] Initialize Alt-keys state in sdlmain
+  * [74a8f5e6] Simplify writing IPX server status
+  * [f0ea94a9] Use UDP_UNICAST name to replace SDLNet magic number
+  * [bfb37f65] Split fs_utils file into Windows and POSIX variants
+  * [9b134487] Implement to_native_path function
+  * [20f50b1c] Add FALLTHROUGH macro wrapper
+  * [91ba2154] Adjust format and copyright line in mem.h
+
+  [ Jonathan Campbell ]
+  * [1b5ea0fa] Remove unused "result" variable in EMS
+
+  [ Patryk Obara ]
+  * [80038f6b] Silence effc++ warnings in sdl_mapper
+  * [5c1ca389] Cleanup code using DOS_FILES
+  * [476eae50] Update number of open DOS file handles to 255
+  * [f19b1722] Revert "Check for file existence using path_exists"
+
+  [ ripsaw8080 ]
+  * [0617cdde] Undocumented boundary behavior of DOS Read/Write functions. Fixes the Dark Purpose demo.
+  * [67ae6ada] Install read/write handlers for DMA port 0x8f. Fixes a test in PC Tools 9 and probably little else because DMA channel 4 is not used for transfers.
+
+  [ David Heidelberg ]
+  * [2cb5af56] Fix man page appearance
+  * [fe79f1c3] Correct spelling errors
+
+  [ Patryk Obara ]
+  * [7bdfce51] Check for file existence using path_exists
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 16 Oct 2020 08:37:25 +0000
+
 dosbox-staging (0.76.0~alpha~813~g41d2-1) unstable; urgency=medium
 
   [ ripsaw8080 ]
