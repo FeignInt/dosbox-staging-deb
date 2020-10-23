@@ -1,3 +1,57 @@
+dosbox-staging (0.76.0~alpha~868~g93c7-1) unstable; urgency=medium
+
+  [ Peter Veenstra ]
+  * [cbe59b66] Add a bit of hack so cycles=max/auto 90% keeps on working inside batch files after 3925.
+  * [41905f4f] Improve compatibility with older intel chipsets (jmarsh) and fix a warning.
+  * [c686c84c] fix up config -r on linux
+
+  [ ripsaw8080 ]
+  * [6af6c947] Fix DAC output in certain cases. Thanks TheGreatCodeholio.
+
+  [ Peter Veenstra ]
+  * [769850c6] Prevent some possible deadlocks with sti in dynrec core. (jmarsh)
+
+  [ David Heidelberg ]
+  * [748cbe3f] Add metainfo.xml for Linux packages
+
+  [ Patryk Obara ]
+  * [fa5802fc] Update typography in various desktop metadata files
+  * [c3bea617] Update typography in user-visible program names
+
+  [ Peter Veenstra ]
+  * [a4d9d809] Extend missing return fix to this case as well. (jmarsh)
+  * [7bcd7792] Correct the TAG check after 4199
+
+  [ Patryk Obara ]
+  * [51489aa6] Correct typography in README.md file
+
+  [ Peter Veenstra ]
+  * [7892be26] Fix up Stack over- and underflow exception bits. Set Precision Exception in FRNDINT, so that the Borland pascal pow implementation works correctly with non-integer arguments.
+  * [2856020d] Refine adlib timers a bit more (harekiet) and make reading the adlib take a bit more time.
+  * [2dd2265f] remove a comment out value.
+
+  [ Patryk Obara ]
+  * [d7abe4d2] Bundle VS C++ Runtime Files in Windows package (Fixes: #672)
+
+  [ ripsaw8080 ]
+  * [45ef11f9] ICW1 on the PIC clears the Interrupt Mask Register. Fixes Antagony and quite a few demos that expect IRQs to be unmasked.
+  * [b5c09dd8] Improve check-for-keystroke functions to be more like real BIOS. Fixes hang at exit in Intro 3 by DPS.
+  * [050d9b4d] Correct MPU-401 clock-to-host function to operate independently of playing. Fixes hang at exit when playing Roland music in demos by The Phoney Coders. Clamp tempo to valid range, thanks Cloudschatze for research. Remove unused variables.
+
+  [ Patryk Obara ]
+  * [153c6a4a] Revert "Revert AdLib timing adjustments"
+
+  [ Feignint ]
+  * [b3b58140] Fix spelling in vga_attr.cpp, unkown => unknown
+
+  [ kcgen ]
+  * [d1aa89ec] Make the PC Speaker's DC-offset correction optional
+
+  [ Feignint ]
+  * [93c7d6fe] Fix UTF-8 encoding in AUTHORS and THANKS files
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 23 Oct 2020 04:11:37 +0000
+
 dosbox-staging (0.76.0~alpha~839~gfb63-1) unstable; urgency=medium
 
   [ NicknineTheEagle ]
