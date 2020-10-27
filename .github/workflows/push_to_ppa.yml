@@ -321,6 +321,14 @@ jobs:
             # it is redundant really, it would only matter if the series order
             # from LA_API reversed
 
+            # Currently ( 2020-10-27 ) launchpad API is not
+            # populated with data for hirsute (ubuntu 21.04)
+            # set dh_compat when it is null
+            if [[ -z $dh_compat ]]
+            then
+              dh_compat=13
+            fi
+
             if [[ $dh_compat -gt 9 ]]
             then
               sed -i -E 's/(debhelper-compat \(= ?)[0-9]+/\1'${dh_compat}'/
