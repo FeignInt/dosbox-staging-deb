@@ -73,9 +73,10 @@ jobs:
                PPA_DISTROS    \
           ;do
             declare -n envvar_nameref="$envvar"
-            printf "::set-env name=%s::%s\n"  \
-                    "${envvar}"               \
-                    "${envvar_nameref}"
+            printf "%s=%s\n"            \
+                    "${envvar_nameref}" \
+                    "${envvar}"         \
+                    >> "${GITHUB_ENV}"
           done
       - name: parse tags
         run: |
@@ -155,9 +156,10 @@ jobs:
                         debTAG         \
           ;do
             declare -n envvar_nameref="$envvar"
-            printf "::set-env name=%s::%s\n"  \
-                    "${envvar}"               \
-                    "${envvar_nameref}"
+            printf "%s=%s\n"            \
+                    "${envvar_nameref}" \
+                    "${envvar}"         \
+                    >> "${GITHUB_ENV}"
           done
       - name: install depends
         if: ${{ env.TAG != '' }}
@@ -173,9 +175,10 @@ jobs:
           DH_COMPAT="$( grep -Po "(?<=Version: )[1-9][0-9]*(?=[.])" \
                             < <( dpkg --status debhelper ) )"
           [[ ${DH_COMPAT} ]] &&
-          printf "::set-env name=%s::%s\n" \
-                  "DH_COMPAT"              \
-                  "${DH_COMPAT}"
+          printf "%s=%s\n"           \
+                  "DH_COMPAT"        \
+                  "${DH_COMPAT}"     \
+                  >> "${GITHUB_ENV}"
           # NOTE:
           # DH_COMPAT is only relavent to this runner not the PPA build farm.
 
@@ -386,9 +389,9 @@ jobs:
               --git-export-dir="${build_area%/}/${distro}" \
               --git-export="${treeish}" "${tagging[@]}"    \
               --git-postbuild="$(
-               printf 'echo ::set-env name=%s::"$%s"\n'    \
+               printf 'echo %s="$%s" >> ${GITHUB_ENV}\n'   \
                       "GBP_CHANGES_FILE_${distro}"         \
-                      "GBP_CHANGES_FILE"
+                      "GBP_CHANGES_FILE"                   \
               )" "${upload_orig_tarball}" || exit 9
               unset upload_orig_tarball # only need to upload once
           done
@@ -405,9 +408,7 @@ jobs:
         if: ${{ env.TAG != '' }}
         run: |
           set -x
-          #TODO test the set-error works as I expect
-          for DISTRO in $( jq -r '.name' <<<"$PPA_DISTROS" ||
-                             printf "%s\n" "::set-error" 1>&2 )
+          for DISTRO in $( jq -r '.name' <<<"$PPA_DISTROS" )
           do
             declare -n GBP_CHANGES_FILE="GBP_CHANGES_FILE_$DISTRO"
             [[ ${GBP_CHANGES_FILE} ]] || continue
