@@ -1,0 +1,24 @@
+From: Feignint <8937-Feignint@users.noreply.salsa.debian.org>
+Date: Tue, 27 Oct 2020 19:59:35 +0000
+Subject: fix macro error in docs/dosbox.1
+
+Fixes
+line 242: 'R' is a string (producing the
+ registered sign), not a macro.
+---
+ docs/dosbox.1 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/dosbox.1 b/docs/dosbox.1
+index f9241f5..ccb350d 100644
+--- a/docs/dosbox.1
++++ b/docs/dosbox.1
+@@ -239,7 +239,7 @@ this as well!)
+ .RS
+ .TP
+ .B \-All
+-.R Reread directory structure for all drives.
++.RB "Reread directory structure for all drives."
+ .TP
+ .B Drive:
+ .RB "Reread directory structure for drive " Drive:
