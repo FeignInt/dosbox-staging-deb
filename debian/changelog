@@ -1,3 +1,15 @@
+dosbox-staging (0.75.2-1) unstable; urgency=medium
+
+  * [a71fc295] debian/docs: add AUTHORS & THANKS
+  * [75ab47a8] d/p/: refresh linux_desktop_files.patch
+  * [5a2e58fe] d/p/: refresh linux_desktop_files.patch
+  * [ab34a38c] d/control: update package descriptions
+
+  * dosbox-staging 0.75.2 maintenance release
+  - https://dosbox-staging.github.io/v0-75-2/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Wed, 28 Oct 2020 12:03:54 +0000
+
 dosbox-staging (0.75.1-1) unstable; urgency=medium
 
   * [2af2f94c] debian/*: include patch to install .desktop and hicolor icons
