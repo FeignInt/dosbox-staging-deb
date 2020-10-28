@@ -98,8 +98,8 @@ jobs:
           ;do
             declare -n envvar_nameref="$envvar"
             printf "%s=%s\n"            \
-                    "${envvar_nameref}" \
                     "${envvar}"         \
+                    "${envvar_nameref}" \
                     >> "${GITHUB_ENV}"
           done
       - name: install depends
