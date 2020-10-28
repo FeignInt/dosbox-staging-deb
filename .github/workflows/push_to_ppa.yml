@@ -9,6 +9,7 @@ on:
       - '**-[1-9][0-9]'
       - '!**-alpha**'    # ignore -alpha tags
       - '!**-pre**'      # ignore -pre tags
+      - '**schedule'     # force a scheduled run
   schedule:
     - cron: 30 3 * * 0-6  # 03:30 utc every day
 jobs:
@@ -120,7 +121,8 @@ jobs:
 
           }
 
-          [[ ${GITHUB_EVENT_NAME} == schedule ]] && SetTAG
+          [[ ${GITHUB_EVENT_NAME} == schedule ]] ||
+          [[ ${GITHUB_REF} =~ schedule$ ]] && SetTAG
 
           TAG="${TAG:=${GITHUB_REF#refs/tags/}}"
           upstreamPrefix="${TAG%%[0-9][.]*}"
