@@ -1,0 +1,39 @@
+From: FeignInt <8937-Feignint@users.noreply.salsa.debian.org>
+Date: Wed, 28 Oct 2020 23:34:47 +0000
+Subject: add leading PATH to hicolor in icons/Makefile
+
+With %hicolor, debian/rules can use:
+ $(MAKE) -C contrib/icons \
+   $(CURDIR)/debian/tmp/usr/share/icons/hicolor \
+   clean
+
+Replaces:
+ $(MAKE) -C contrib/icons hicolor
+ mkdir -p $(CURDIR)/debian/tmp/usr/share/icons
+ mv contrib/icons/hicolor \
+    $(CURDIR)/debian/tmp/usr/share/icons/
+ $(MAKE) -C contrib/icons clean
+
+Note, this breaks a straight "hicolor" target.
+One workaround is to lead target with an escaped space
+ make \ hicolor
+
+I guess another would be to use "%icolor",
+but that would be more prone to typos.
+---
+ contrib/icons/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/contrib/icons/Makefile b/contrib/icons/Makefile
+index b26de6b..6f760fa 100644
+--- a/contrib/icons/Makefile
++++ b/contrib/icons/Makefile
+@@ -77,7 +77,7 @@ dosbox-staging.iconset: \
+ # This is not strictly necessary (just placing scalable icon is enough,
+ # but some there are some corner cases where small raster icon looks better).
+ #
+-hicolor: \
++%hicolor: \
+ 		dosbox-staging.svg \
+ 		icon_32.png \
+ 		icon_24.png \
