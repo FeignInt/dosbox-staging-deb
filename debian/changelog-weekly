@@ -1,3 +1,22 @@
+dosbox-staging (0.76.0~alpha~883~g00b0-1) unstable; urgency=medium
+
+  [ Patryk Obara ]
+  * [a3848c32] Update Fedora dependencies in README file
+  * [b97ed780] Don't check for glib nor gthread headers
+  * [624afec4] Remove excessive newline in oplemu description
+  * [3918ebed] Update and verify the metainfo.xml file
+
+  [ kcgen ]
+  * [fcae63cc] Add state-tracking for the GUS DMA teminal count status
+
+  [ Patryk Obara ]
+  * [afef2694] Use appstream-util for validation
+  * [02a891d9] Add Fedora spec file draft
+  * [b2d62f90] Update rpm spec file to package v0.75.2
+  * [00b0d055] Add documentation for rpm packaging
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 30 Oct 2020 04:06:51 +0000
+
 dosbox-staging (0.76.0~alpha~868~g93c7-1) unstable; urgency=medium
 
   [ Peter Veenstra ]
