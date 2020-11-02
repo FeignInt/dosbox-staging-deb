@@ -189,9 +189,10 @@ jobs:
           }
           patched_dch()
           {
-            #TODO replace last_{version,treeish} with: last_weeky_commit
+            # since the changelog has been opened as a snapshot with
+            # debian/ changes, parse with offset of 1 ( -o 1 -c 1 )
             last_version="$( grep -Po ".+(?=-)" \
-              < <( dpkg-parsechangelog --show-field Version ) )"
+              < <( dpkg-parsechangelog -o 1 -c 1 --show-field Version ) )"
             last_treeish="v${last_version//\~/-}"
 
             local debVersion="${debVersion%-*}"

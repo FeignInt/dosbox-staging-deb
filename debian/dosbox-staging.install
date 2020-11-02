@@ -1,3 +1,4 @@
 contrib/linux/dosbox-staging.desktop	usr/share/applications
+contrib/linux/dosbox-staging.metainfo.xml	usr/share/metainfo
 usr/bin/dosbox
 usr/share
