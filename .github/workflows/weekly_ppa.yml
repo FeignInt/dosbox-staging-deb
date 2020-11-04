@@ -189,6 +189,7 @@ jobs:
           }
           patched_dch()
           {
+            #TODO replace last_{version,treeish} with: last_weeky_commit
             last_version="$( grep -Po ".+(?=-)" \
               < <( dpkg-parsechangelog --show-field Version ) )"
             last_treeish="v${last_version//\~/-}"
@@ -227,10 +228,23 @@ jobs:
                                ':!src/platform/visualc'
                              )
 
-            patched_dch --snapshot                    \
-                        --new-version "${debVersion}" \
-                        -- "${exclude[@]}"
+            # get commit of last changelog
+            local last_weeky_commit=$(
+                                       git log --max-count=1 \
+                                               --pretty=format:%H \
+                                               -- debian/changelog-weekly
+                                     )
+            # Open new snapshot,
+            # logging changes to debian/ since previous weekly
+            gbp dch --snapshot \
+                    --new-version "${debVersion}" \
+                    --since "${last_weeky_commit}"
+                    -- debian/
 
+            # log upstream's changes
+            patched_dch --snapshot -- "${exclude[@]}"
+
+            # Release changelog
             gbp dch -R --spawn-editor=never \
                        --dch-opt=--distribution=unstable
 
