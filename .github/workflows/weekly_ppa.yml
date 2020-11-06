@@ -125,7 +125,7 @@ jobs:
       - name: Checkout dosbox-staging
         uses: actions/checkout@v2
         with:
-          fetch-depth: 1
+          fetch-depth: 0
           ref: ${{ env.DEBIAN_BRANCH }}
       - name: sanity check
         run: |
@@ -238,8 +238,8 @@ jobs:
             # Open new snapshot,
             # logging changes to debian/ since previous weekly
             gbp dch --snapshot \
-                    --new-version "${debVersion}" \
-                    --since "${last_weeky_commit}"
+                    --new-version "${debVersion}"  \
+                    --since "${last_weeky_commit}" \
                     -- debian/
 
             # log upstream's changes
