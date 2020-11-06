@@ -1,3 +1,82 @@
+dosbox-staging (0.76.0~alpha~932~g57a2-1) unstable; urgency=medium
+
+  [ FeignInt ]
+  * [6a6e96e8] d/patches:
+    - fix-macro-error-in-docs-dosbox.1.patch
+        fixes lintian "groff-message" warning
+  * [a5c2d099] Include dosbox-staging.metainfo.xml
+
+  [ kcgen ]
+  * [824e2b0b] Make FluidSynth's mixer-callback a normal function
+  * [584efd93] Use the mixer's volume callback in FluidSynth
+  * [f7b0f00b] Soft-limit the FluidSynth stream to avoid distortion
+  * [05f441a1] Print FluidSynth channel volume and mixer suggestions
+  * [3066fa08] Apply reasonable chorus and reverb settings to FluidSynth
+  * [c6b30f9b] Neither amplify nor suppress FluidSynth's MIDI sample amplitudes
+  * [4ab216a4] Generate FluidSynth waveforms using a 7th-order polynomial
+  * [6d0adce0] Using a polynomial to ensure tail-head continuity in the SoftLimiter
+  * [899947d3] Use end() instead of nullptr for member iterators
+
+  [ ripsaw8080 ]
+  * [b6e7718e] Enhance BIOS wait function to unmask IRQ 8 and to time out when the RTC timer is blocked. Fixes hang in the MayDay demo.
+
+  [ Patryk Obara ]
+  * [c31e8cdf] Fix warnings in SVGA_S3_ReadSEQ
+
+  [ kcgen ]
+  * [3123f0c6] Correct and further implement the GUS reset register
+
+  [ Patryk Obara ]
+  * [037a3458] Sort project-specific includes in sdlmain.cpp
+
+  [ Affonso Amendola ]
+  * [a761dd79] Add a --help command line option (Fixes: #327)
+
+  [ Patryk Obara ]
+  * [a96bd9c6] Convert ppc64le dynrec code to Unix line endings
+  * [f67d1015] Add missing fallthrough when setting video mode
+  * [c6c8ea20] Format code setting CPUID
+
+  [ Robert de Rooy ]
+  * [4764bb9e] Identify pentium_slow as "Intel Pentium 60/66 D1-step"
+
+  [ Patryk Obara ]
+  * [849b0faa] Change CPUID for 486 and Pentium depending on FPU
+  * [5c6f1e38] Remove trailing whitespace from documentation
+  * [37f01e17] Remove trailing/mixed whitespace from sdl_mapper
+  * [89ce55e0] Sort some project includes in dos module
+  * [c16d62f0] Improve conversion of .cue entry paths to native
+  * [1f03e0fe] Treat imgmount input path as case-insensitive
+  * [36b3a490] Treat mount input path as case-insensitive
+  * [6f4de0a2] Implement drive_letter helper function
+  * [f214cafb] Add missing fallthrough in VGA_VerticalTimer
+  * [1a0d9797] Add fallthrough statements in adlib.cpp
+  * [6a9baa14] Add missing fallthrough in ADPCM code (Fixes: 3)
+  * [32b45123] Add missing fallthrough for some cases handling SB16
+
+  [ kcgen ]
+  * [fdf597c9] Include FluidSynth's dependencies when using the static library
+
+  [ Patryk Obara ]
+  * [5b8a33fe] Add missing fallthrough in core_dyn_x86
+
+  [ kcgen ]
+  * [092f50d9] Avoid resampling FluidSynth by using the mixer's negotiated rate
+
+  [ Patryk Obara ]
+  * [a1360e46] Add fallthrough statement in dbopl.cpp
+
+  [ kcgen ]
+  * [79784a26] Add SoundFont-specific level scaling as a multi-prop conf
+  * [9357eeba] Optionally scale a soundfont's levels by a given percentage
+
+  [ Patryk Obara ]
+  * [be71f0bb] Add fallthrough statement in sdl_mapper
+  * [6670dbf7] Add fallthrough statement in keyboard write handler
+  * [57a272ee] Add fallthrough statement in core_dyn_x86
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 06 Nov 2020 13:37:36 +0000
+
 dosbox-staging (0.76.0~alpha~883~g00b0-1) unstable; urgency=medium
 
   [ Patryk Obara ]
