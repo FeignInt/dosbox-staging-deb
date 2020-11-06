@@ -318,15 +318,15 @@ jobs:
             )
           }
           weekly_patches()
-          {
+          (
             # bit of a hack to include patches against master branch
             # TODO quit hacking "one branch for all"
-            local patch
+            shopt -s nullglob
             for patch in debian/patches/*-weekly
             do
               cp "${patch}" "${patch%-weekly}"
             done
-          }
+          )
           # set debian version to most practically short string
           # e.g. 0.76.0~alpha~331~g53b1-1
           debVersion="$( sed 's/-/\~/g;s/^v//
