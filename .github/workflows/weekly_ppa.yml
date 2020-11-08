@@ -321,11 +321,10 @@ jobs:
           (
             # bit of a hack to include patches against master branch
             # TODO quit hacking "one branch for all"
-            shopt -s nullglob
-            for patch in debian/patches/*-weekly
+            while read -r
             do
-              cp "${patch}" "${patch%-weekly}"
-            done
+              cp "${REPLY}" "${REPLY%-weekly}"
+            done < <( find debian/patches -name "*-weekly" )
           )
           # set debian version to most practically short string
           # e.g. 0.76.0~alpha~331~g53b1-1
