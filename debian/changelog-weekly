@@ -1,3 +1,71 @@
+dosbox-staging (0.76.0~alpha~979~ga7c1-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @ae15cbdafcee66ab0b92adefbafcb057dfc621e8 **
+
+  * UNRELEASED
+
+  [ ripsaw8080 ]
+  * [8c07c9bc] Correct GUS peek/poke address registers. Patch by h-a-l-9000. Fixes detection of GUS with 1 MB RAM in the Pleasure 'N Pain slideshow.
+
+  [ Patryk Obara ]
+  * [397c8bdc] Display modifier key names in keymapper GUI
+  * [6bcc2119] Make modifier labels easier to comprehend
+  * [9a4f859b] Display number of binds associatd with event
+  * [e8934c53] Display modifiers for selected event in keymapper
+  * [52191297] Use key names for describing key combination
+  * [4791c8c2] Hide "Next bind" button when a single bind exists
+  * [7e743fd0] Make event name field in GUI a bit nicer
+  * [fe81bfac] Reposition action description in mapper GUI
+  * [5cfb97f1] Retouch Add/Del/Next bind buttons and description
+  * [e93568ae] Refactor CBind::BindName to a const getter
+  * [fc408f98] Remove "Key " prefix from every keyboard key name
+  * [9b7e1c20] Simplify SetActiveBind function
+  * [da53982b] Reorganize code setting mod keys button labels
+  * [dec721d2] Split SetActiveBind into two functions
+
+  [ Edward Betts ]
+  * [cf75eebc] Correct spelling mistakes
+
+  [ Patryk Obara ]
+  * [a710471d] Replace MapKey enum with SDL_Scancode
+  * [55860be9] Sort headers in vga_other.cpp
+  * [3f9e33e7] Remove default keybind for recording OPL commands
+  * [d6e5d1f7] Remove default keybind for recording MIDI commands
+  * [36b997c0] Remove default keybinds for adjusting frameskips
+  * [38e484c8] Change default keybind for video capture
+  * [b287afde] Adjust descriptions for default keybindings
+  * [174c7500] Fix the second page of intro command
+  * [cb2c848a] Simplify iteration over handler events in sdl_mapper
+
+  [ drfiemost ]
+  * [a4c617f5] Add missing files to makefiles, fixes make dist
+  * [2b8a5a6d] Reindent makefile for consistency
+  * [3840fcbf] Sort items in makefile
+  * [9474f307] Add contrib dir to the generated tarball
+  * [b7bc0417] Add newline at the end of file
+  * [8c882ce3] Reindent makefile for consistency
+  * [5fc07117] Sort items in makefile
+
+  [ Patryk Obara ]
+  * [298e6fa6] List 0.75.0 and 0.75.2 releases in metainfo.xml
+
+  [ Peter Veenstra ]
+  * [effae932] Improve capturing of Zeliard  and fix a few percussion related capturing problems as well. Thanks NewRisingSun (vogons 38029).
+
+  [ Patryk Obara ]
+  * [587cdafe] Use ARRAY_LEN macro instead of sizeof in new memset
+  * [bd066b71] Add fallthrough to parameter handling in config cmd
+  * [8f59b66c] Sort builtin DOS program entries
+  * [482c407e] Add LS program stub to replace LS command (Fixes: #504)
+
+  [ kcgen ]
+  * [79f43482] Update DOSBox Staging column name in README.md
+  * [0ef5a2da] Expand CD-DA audio characteristics in README.md
+  * [a7c10d46] Rename pc_zero_offset to zero_offset
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 13 Nov 2020 04:08:30 +0000
+
 dosbox-staging (0.76.0~alpha~932~g57a2-1) unstable; urgency=medium
 
   [ FeignInt ]
