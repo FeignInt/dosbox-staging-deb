@@ -1,3 +1,29 @@
+dosbox-staging (0.76.0~alpha~990~g780b-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @cebc8139113cf88ec809c3dd2936808269e364c4 **
+
+  * UNRELEASED
+
+  [ Patryk Obara ]
+  * [a8d7a4da] Move starts_with function to a new header
+  * [e2d67a8b] Cleanup VS solution and file filter
+  * [2c28af8b] Add an option for unblocking the OS screensaver (Fixes: #630)
+
+  [ kcgen ]
+  * [f42ebee8] Skip removal of already absent files
+  * [fb53749b] Skip removal of already absent files
+  * [6b84faa5] Set path-not-found when it cannot be constructed during file delete
+
+  [ Patryk Obara ]
+  * [47cfc8cb] Prevent FluidSynth start when user selecter auto
+  * [44d88e59] Reorganize midi settings for readability
+  * [e2a9c01d] Cleanup and update MIDI conf documentation
+  * [bb5dec33] Specify that -t iso is a synonym for -t cdrom (Fixes: #714)
+  * [780b8410] Add missing fallthrough in render_loops
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 20 Nov 2020 04:08:23 +0000
+
 dosbox-staging (0.76.0~alpha~979~ga7c1-1) unstable; urgency=medium
 
   [ Feignint ]
