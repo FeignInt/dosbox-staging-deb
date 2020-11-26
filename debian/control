@@ -5,7 +5,7 @@ Maintainer: Feignint <37488595+FeignInt@users.noreply.github.com>
 Homepage: https://dosbox-staging.github.io/about/
 Build-Depends: debhelper-compat (= 13), libsdl2-dev, libsdl2-net-dev,
  libasound2-dev, libopusfile-dev, libpng-dev, libncurses-dev | libncurses5-dev,
- librsvg2-bin, libfluidsynth-dev
+ librsvg2-bin, libfluidsynth-dev, curl, ca-certificates, cmake
 Standards-Version: 4.4.1
 Vcs-Git: https://github.com/dosbox-staging/dosbox-staging.git
 Vcs-Browser: https://github.com/dosbox-staging/dosbox-staging/
@@ -15,6 +15,7 @@ Package: dosbox-staging
 Architecture: any
 Multi-Arch: foreign
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: fluid-soundfont-gm
 Conflicts: dosbox
 Description: DOS/x86 emulator focusing on ease of use
  DOSBox Staging is a full x86 CPU emulator (independent of host architecture),

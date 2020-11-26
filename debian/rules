@@ -21,7 +21,15 @@ debugger = \
 # fluidsynth >= 2.0.0 required
 FLUIDSYNTH_V2=$(shell pkg-config fluidsynth --atleast-version=2 && echo true )
 ifneq ($(FLUIDSYNTH_V2), true)
-  configure_extra += --disable-fluidsynth
+  fluidsynth_src    = $(CURDIR)/contrib/static-fluidsynth
+ifneq ("$(wildcard $(fluidsynth_src)/Makefile)","")
+  fluidsynth        = static-fluidsynth
+  GLIB_LIBS         = $(shell pkg-config --libs gthread-2.0 glib-2.0)
+  GLIB_CFLAGS       = $(shell pkg-config --cflags gthread-2.0 glib-2.0)
+  FLUIDSYNTH_CFLAGS = -I$(fluidsynth_src)/include $(GLIB_CFLAGS)
+  FLUIDSYNTH_LIBS   = $(fluidsynth_src)/lib/libfluidsynth.a $(GLIB_LIBS) -lm
+  export FLUIDSYNTH_CFLAGS FLUIDSYNTH_LIBS
+endif
 endif
 
 %:
@@ -31,7 +39,10 @@ override_dh_auto_clean:
 	dh_auto_clean -Bbuild-release
 	dh_auto_clean -Bbuild-debug
 
-override_dh_auto_configure:
+static-fluidsynth:
+	$(MAKE) -C $(fluidsynth_src)
+
+override_dh_auto_configure: $(fluidsynth)
 	# re-set version string, useful for gbp snapshot builds
 	sed -E 's/(AC_INIT.+,[[]?)[^])]+/\1v$(subst ~,-,$(DEB_VERSION))/' configure.ac \
 	  | autoconf -o configure -
