@@ -1,3 +1,19 @@
+dosbox-staging (0.76.0~alpha~1008~ga703-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @04bfcca8f3dccd0ae4bf5ff2ca8c341920a2992f **
+
+  * UNRELEASED
+
+  [ Patryk Obara ]
+  * [b37b8ab7] Implement CROSS_GetPlatformConfigDir
+  * [fd7da0ab] Create glshaders and soundfonts directories
+  * [93974b51] Implement CROSS_ResolveHome
+  * [7c531e39] Look for sf2 files in standard locations
+  * [a703bf78] Update feature differences table for 0.76.0
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 27 Nov 2020 09:57:11 +0000
+
 dosbox-staging (0.76.0~alpha~1003~gc531-1) unstable; urgency=medium
 
   [ Feignint ]
