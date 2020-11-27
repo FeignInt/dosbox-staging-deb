@@ -354,9 +354,28 @@ jobs:
             adjust_changelog
             adjust_control
 
+            [[ $distro == bionic ]] && {
+              # Bionic lacks fluidsynth2, contrib/static-fluidsynth has
+              # Makefile to download/compile static lib
+              # However, PPA builders have no access to github.com
+              # so bundle the tarball here
+
+              mkdir -p contrib/static-fluidsynth &&
+              curl -s -L -o contrib/static-fluidsynth/fluidsynth-master.tar.gz \
+               https://github.com/FluidSynth/fluidsynth/archive/master.tar.gz &&
+              printf "%s\n" \
+                     "contrib/static-fluidsynth/fluidsynth-master.tar.gz" \
+                  >> debian/source/include-binaries
+
+              # The 'default' diff-ignore excludes anything *not* debian/
+              # we need debian/ *and* contrib/
+              diff_ignore="-i.github|README.md"
+            } || true
+
             treeish=WC # Working Copy, therefore includes uncommited changes
 
-            gbp buildpackage -i'(?!debian/)'               \
+            gbp buildpackage                               \
+              ${diff_ignore:--i'(?!debian/)'}              \
               -S --no-check-builddeps                      \
               -k"${gpg_key_id}"                            \
               --git-builder="${builder}"                   \
@@ -370,6 +389,7 @@ jobs:
                       "GBP_CHANGES_FILE"                   \
               )" "${upload_orig_tarball}" || exit 9
               unset upload_orig_tarball # only need to upload once
+              unset diff_ignore # resets to 'default'
           done
 
           # -i'(?!debian/)' is to ignore anything on the DEBIAN_BRANCH
