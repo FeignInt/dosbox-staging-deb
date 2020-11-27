@@ -1,3 +1,29 @@
+dosbox-staging (0.76.0~alpha~1003~gc531-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @8e25fcc1365aeaa5fc0cd18c37968d297cc34993 **
+
+  * [5399f148] d/*: When libfluidsynth <2.0.0 build contrib/static-fluidsynth
+  * [8e25fcc1] d/rules: disable opengl for arm64.
+    Thanks to nemo93
+
+  [ kcgen ]
+  * [e87d833c] Loop over large audio requests in the GUS
+
+  [ Patryk Obara ]
+  * [8716a00b] Avoid version name in default phonebook file
+  * [bbd2e22d] Replace Cross::CreateDir with create_dir function
+  * [e7ef1182] Use thread-safe replacements for strerror
+  * [84d42014] Parametrize create_dir functions
+  * [9ab2caa6] Provide sane wrapper for strerror_* functions
+  * [81f4fdb8] Use create_dir option for preventing err if dir exists
+  * [90488fd7] Replace fallthrough comments with a statements
+  * [62a0ce31] Add missing fallthrough in VGA_DAC_CombineColor
+  * [6e1054c4] Add fallthroughs in cpu core_full load switch
+  * [c5315119] Move goto labels to prevent Clang errors
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 27 Nov 2020 04:10:16 +0000
+
 dosbox-staging (0.76.0~alpha~990~g780b-1) unstable; urgency=medium
 
   [ Feignint ]
