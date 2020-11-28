@@ -1,6 +1,5 @@
 #!/usr/bin/make -f
 include /usr/share/dpkg/pkg-info.mk
-include /usr/share/dpkg/architecture.mk
 export DEB_CPPFLAGS_MAINT_APPEND  = -D_FILE_OFFSET_BITS=64 -DNDEBUG
 export DEB_LDFLAGS_MAINT_APPEND   = -flto=$(shell nproc)
 
@@ -31,11 +30,6 @@ ifneq ("$(wildcard $(fluidsynth_src)/Makefile)","")
   FLUIDSYNTH_LIBS   = $(fluidsynth_src)/lib/libfluidsynth.a $(GLIB_LIBS) -lm
   export FLUIDSYNTH_CFLAGS FLUIDSYNTH_LIBS
 endif
-endif
-
-# with arm64 opengl support is limited, so disable
-ifeq ($(DEB_BUILD_ARCH),"arm64")
-  configure_extra += --disable-opengl
 endif
 
 %:
