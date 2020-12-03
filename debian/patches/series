@@ -1,2 +1,3 @@
 fix-macro-error-in-docs-dosbox.1.patch
 add-leading-PATH-to-hicolor-in-icons-Makefile.patch
+fluidsynth/set-fluidsynth-soundfont.patch
