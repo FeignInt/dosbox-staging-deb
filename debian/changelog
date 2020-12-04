@@ -1,3 +1,27 @@
+dosbox-staging (0.76.0-1) unstable; urgency=medium
+
+  [ Feignint ]
+  * [f6224878] d/*: generate hicolor icons
+
+  [ FeignInt ]
+  * [9a3578a2] d/patches:
+    - fix-macro-error-in-docs-dosbox.1.patch
+        fixes lintian "groff-message" warning
+  * [34a6adaa] Include dosbox-staging.metainfo.xml
+
+  [ Feignint ]
+  * [738b2860] d/patches:
+    + Add patch to set default fluidsynth soundfont
+      default.sf2 => default-GM.sf2
+  * [d8d07311] d/patches: drop metainfo-typo-fix applied upstream
+  * [b14bb9f6] Add debian/watch file
+  * [d1f18937] Update standards version to 4.5.0, no changes needed.
+
+  * dosbox-staging 0.76.0 release
+  - https://dosbox-staging.github.io/v0-76-0/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 04 Dec 2020 03:36:20 +0000
+
 dosbox-staging (0.75.2-2) unstable; urgency=medium
 
   * [e1059824] Simplify desktop icons:
