@@ -139,8 +139,10 @@ jobs:
             # is it worth also doing release snapshots?
             git remote add --track=master \
                 upstream https://github.com/${UPSTREAM_REPO}
-            git fetch upstream --shallow-since="${SHALLOW_SINCE}"
+            git fetch --tags upstream --shallow-since="${SHALLOW_SINCE}"
+            git fetch --deepen=1 upstream
           fi
+          git describe upstream/master
           # FIXME if we are upstream this script breaks
           # upstream needs to be set as origin, and other things..
       - name: package source
