@@ -1,3 +1,28 @@
+dosbox-staging (0.77.0~alpha~3~g973e-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @a22c78228261f9010de14bb2e1666b930483fc7a **
+
+  * [738b2860] d/patches:
+    + Add patch to set default fluidsynth soundfont
+      default.sf2 => default-GM.sf2
+  * [d8d07311] d/patches: drop metainfo-typo-fix applied upstream
+  * [b14bb9f6] Add debian/watch file
+  * [d1f18937] Update standards version to 4.5.0, no changes needed.
+  * [30f6a615] Update changelog for 0.76.0-1 release
+
+  [ ripsaw8080 ]
+  * [67f517f7] Remove video page check when drawing internal mouse pointer, as the BIOS current page is not updated in some cases. Fixes QQP games: Lost Admiral, Conquered Kingdoms, and Solitaire's Journey. Also be a bit smarter about enabling autolock, supporting more cases where the mouse is used for input without resetting it.
+
+  [ Patryk Obara ]
+  * [48511e7f] Cleanup detect_window_size function
+  * [4ce9cf21] Update hardcoded version strings to 0.77.0
+
+  [ Feignint ]
+  * [973e1df0] Fix spelling in src/gui/render_crt_glsl.h
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 04 Dec 2020 06:36:05 +0000
+
 dosbox-staging (0.76.0~alpha~1008~ga703-1) unstable; urgency=medium
 
   [ Feignint ]
