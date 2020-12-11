@@ -1,3 +1,45 @@
+dosbox-staging (0.77.0~alpha~25~gcbd1-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @3085805c962ceb052b394fc23b5286088f15b153 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [61f6c7b8] Fix build error using SteamRT default gcc-5.4.0
+
+  [ Patryk Obara ]
+  * [08aae4fd] Dump all known translation files for old versions
+
+  [ David Reid ]
+  * [1c89bd6f] Sync dr_flac with upsteam (v0.12.24)
+  * [a230bfa5] Sync dr_mp3 with upsteam (v0.6.22)
+  * [2c80a234] Sync dr_wav with upsteam (v0.12.16)
+
+  [ Patryk Obara ]
+  * [e71a7a86] Sync Nuked-OPL3 with upstream repo
+
+  [ David Reid ]
+  * [dc17133c] Sync dr_mp3 with upsteam (v0.6.24)
+
+  [ Patryk Obara ]
+  * [747d2456] Work around MSYS2/MinGW build issues (Fixes: #753)
+
+  [ kcgen ]
+  * [56d7016c] Contribute a static glib-2.0 builder
+  * [bd339916] Add checksum verification to static Glib builder
+
+  [ Patryk Obara ]
+  * [04ff1705] Add release in metainfo.xml
+
+  [ kcgen ]
+  * [ae440178] Check and report negotiated audio channels
+
+  [ Patryk Obara ]
+  * [cbd1ae54] Cleanup some duplicated stuff in opl
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 11 Dec 2020 04:12:59 +0000
+
 dosbox-staging (0.77.0~alpha~3~g973e-1) unstable; urgency=medium
 
   [ Feignint ]
