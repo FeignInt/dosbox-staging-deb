@@ -5,7 +5,7 @@ Maintainer: Feignint <37488595+FeignInt@users.noreply.github.com>
 Homepage: https://dosbox-staging.github.io/about/
 Build-Depends: debhelper-compat (= 13), libsdl2-dev, libsdl2-net-dev,
  libasound2-dev, libopusfile-dev, libpng-dev, libncurses-dev | libncurses5-dev,
- librsvg2-bin, libfluidsynth-dev, curl, ca-certificates, cmake
+ libfluidsynth-dev, curl, ca-certificates, cmake
 Standards-Version: 4.5.0
 Vcs-Git: https://github.com/dosbox-staging/dosbox-staging.git
 Vcs-Browser: https://github.com/dosbox-staging/dosbox-staging/

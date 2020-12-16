@@ -59,4 +59,4 @@ override_dh_auto_install:
 	dh_auto_install -Bbuild-debug
 	mv debian/tmp/usr/bin/dosbox debian/tmp/usr/bin/dosbox-debug
 	dh_auto_install -Bbuild-release
-	$(MAKE) -C contrib/icons $(CURDIR)/debian/tmp/usr/share/icons/hicolor clean
+	$(MAKE) -C contrib/icons install DESTDIR=$(CURDIR)/debian/tmp prefix=/usr
