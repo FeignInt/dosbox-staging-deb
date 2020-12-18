@@ -1,3 +1,43 @@
+dosbox-staging (0.77.0~alpha~47~gfea8-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @0177e2e4f570e09147d1b17df4c354a847c06e56 **
+
+  * [478cf263] d/patches,control,rules:
+    + patches: Drop add-leading-PATH-to-hicolor-in...
+       New Makefile available upstream
+    + control: Remove Build-Depends: librsvg2-bin
+       Generation of icon files no longer required
+    + rules: Amend contrib/icons make command
+  * [0177e2e4] Update debian/copyright
+
+  [ Patryk Obara ]
+  * [fa4b74c7] Add safe wrapper macro for sprintf
+  * [b48349fa] Future-proof function for formatting file sizes
+  * [467801cd] Use larger file size fields in dir cmd
+  * [3b9b0cbe] Fix integer overflow issue in dir command
+  * [7df4276b] Prevent hiding a global variable
+
+  [ Peter Veenstra ]
+  * [df2842e1] switch to WAVE_SH instead of LFO_SH (harekiet). Thanks for bringing it up psyraven.
+  * [8c41c329] Another attempt
+
+  [ Patryk Obara ]
+  * [fb3254ba] Remove two MEM_* function declarations inside blocks
+
+  [ kcgen ]
+  * [c57ba6a6] Refactor the serial port's Putchar wait logic
+  * [68892b2d] Refactor the serial port's Getchar wait logic
+
+  [ Patryk Obara ]
+  * [ed2316a5] Add 'install' target for pre-rendered png icons
+  * [5d594ebd] Prevent hiding a global variable in hardware module
+  * [d7460ef4] Add missing header guard in debug.h
+  * [695a3aa6] Remove MAPPER_CheckEvent declaration inside block
+  * [fea88071] Cleanup MAPPER_CheckEvent implementation
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 18 Dec 2020 04:13:01 +0000
+
 dosbox-staging (0.77.0~alpha~25~gcbd1-1) unstable; urgency=medium
 
   [ Feignint ]
