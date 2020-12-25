@@ -1,3 +1,104 @@
+dosbox-staging (0.77.0~alpha~116~g2e93-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @922d2ea0ee347e136a0b1ca91e9ec6e7ec01a5d9 **
+
+  * UNRELEASED
+
+  [ sergm ]
+  * [5ff39f31] Update mt-32 patch to apply cleanly to dosbox-staging
+
+  [ kcgen ]
+  * [be6e6acd] Add C_MT32EMU guards around MT-32 header and source
+  * [5b762daf] Standardize MT-32 global instance similar to FluidSynth
+  * [fc9c4ba9] Standardize MT-32 config handling like FluidSynth
+  * [95843a8e] Ensure MT-32 is opt-in only and not auto-selected
+  * [525a0304] Add MT-32 support as an opt-in ./configure feature
+  * [f3f56f66] Move MT-32 static-member func to basic C function
+  * [da867b1a] Make MT-32 verbosity level public for static-access
+  * [2079b02d] Move MT-32 static member report func to basic C function
+  * [b70ac82b] Cleanup spelling of synthesize[r]
+  * [2b9d67e6] Clarify delaysysex recommendation is for pyhsical MT-32
+  * [d23dffb4] Cleanup MT-32 formatting (no-code changes)
+  * [552b6630] Use stdint type for MT-32 audio buffer
+  * [a47b1edb] Initialize MT-32 pointers with nullptr
+  * [f1a1c378] Use safe_printf in MT-32
+  * [7ac635d0] Use millisecond and channels-per-frame constexprs in MT-32
+  * [c8182f6b] Cleanup MT-32 function interfaces
+  * [af46264c] Move MT-32 timestamp generation out of header
+  * [2ca4af1f] Use uint16_t to manager buffer offsets in MT-32
+  * [0142afc8] Use a 32-bit sysex MT-32 message size, matching the API
+  * [bc98d862] Reintepret 8-bit MT-32 buffers as larger types (don't C-cast)
+  * [0d552064] Perform rote type replacements for Bit* in MT-32
+  * [7ad84443] Remove MT-32 reverse-stereo (should be done by mixer)
+  * [a590a834] Replace MT-32 verbose option with DEBUG_LOG_MSG
+  * [b4d79838] Move MT-32 threaded rendering option to constexpr
+  * [bb57b6c6] Organize MT-32 class members
+  * [61e49bca] Move MT-32 rendering max and mins to constxpr
+  * [fdd241bc] Prefer MT-32 upstream configuration of "partials" limit
+  * [5fcaddbe] Move MT-32 DAC emulation mode to constexpr
+  * [38396b63] Move MT-32 analog circuit mode to constexpr
+  * [044213e4] Remove MT-32 reverb setting in favour of those set by the control ROM
+  * [9dbc2c2a] Tie MT-32 playback rate to the mixer rate without resampling
+  * [48f96e01] Move MT-32 rate conversion quality to constexpr
+  * [3910c373] Move MT-32 amplitude ramp choice to a constexpr
+  * [018173f0] Indicate MAYBE_UNUSED for some MT-32 paramters
+  * [fd28a403] Improve titles and wording of MT-32 comments
+
+  [ Patryk Obara ]
+  * [3fe42736] Add "Unlicense" SPDX license identifier to archive.h
+  * [0ae79a98] Add SPDX tags to mp3_seek_table
+  * [3ff112a9] Prepare setup for easier translations
+  * [15b763e1] Translate several messages to test the workflow
+
+  [ kcgen ]
+  * [e73b18b4] Look for MT-32 ROMs in the <config-path>/mt32-roms directory
+  * [89c0ad39] Allow a specific MT-32 model to be selected via configuration setting
+
+  [ Patryk Obara ]
+  * [b18a73c1] Rename generated language files to include dialects
+  * [9955e5b4] Remove encoding from default language file names
+  * [1a98db0c] Add pl_PL.CP437 (transliterated) language file
+  * [16e4db2b] Translate few more strings to polish
+  * [a804b832] Replace std::list with std::vector for ROM path lookup
+
+  [ Gilles ]
+  * [640e651f] Update french translation
+
+  [ Patryk Obara ]
+  * [b7f6a375] Replace makefile converting .lng files with a script
+
+  [ Gilles ]
+  * [ed1855a9] Fill-in french translation for overlay feature
+
+  [ Patryk Obara ]
+  * [43f205b5] Rename sources for translations to use .txt extension
+  * [dc2e11ef] Adjust help message to mount and imgmount
+  * [f9f6f40a] Add missing string translations for mount command
+  * [d7b84eb7] Update english source for translations
+  * [7c03eb0e] Translate few more strings to polish
+
+  [ kcgen ]
+  * [941f5236] Rename the MT-32 report handler's message buffer
+  * [17ff9c02] Move MT-32 return code to where it's assigned
+  * [e9dc6c0a] Clarify that the MT-32 callback operates on frames
+  * [a1855f2a] Rename and case-fix MT-32 current rendering position
+  * [c56833ed] Rename and case-fix MT-32 current play position
+  * [13188563] Case-fix MT-32 samples to render
+  * [d193ab89] Case-fix MT-32 frames to render
+  * [b0d5f6a4] Remove excess parens in MT-32 render-not-needed check
+
+  [ Gilles ]
+  * [9757dfef] Update the french translation with new strings
+
+  [ Patryk Obara ]
+  * [2b54d07e] Adjust spacing in few translated strings
+
+  [ Gilles ]
+  * [ee90787d] Avoid using 'fixed' keyword in french translation
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 25 Dec 2020 04:17:08 +0000
+
 dosbox-staging (0.77.0~alpha~47~gfea8-1) unstable; urgency=medium
 
   [ Feignint ]
