@@ -1,0 +1,39 @@
+From: Feignint <37488595+FeignInt@users.noreply.github.com>
+Date: Thu, 31 Dec 2020 16:15:01 +0000
+Subject: Add SF3 support to static-fluidsynth
+
+Forwareded: PlaceHolder
+
+This is only used when fluidsynth version <2.0.0
+
+sf3 soundfonts are availbale to Debian Buster via
+buster-backports, I imagine the same is true of
+Ubuntu's Bionic.
+---
+ contrib/static-fluidsynth/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/contrib/static-fluidsynth/Makefile b/contrib/static-fluidsynth/Makefile
+index b01b3ee..73030b6 100644
+--- a/contrib/static-fluidsynth/Makefile
++++ b/contrib/static-fluidsynth/Makefile
+@@ -85,7 +85,7 @@ fluidsynth/build/Makefile: fluidsynth/build
+ 	-Denable-floats=1 \
+ 	-Denable-ipv6=0 \
+ 	-Denable-jack=0 \
+-	-Denable-libsndfile=0 \
++	-Denable-libsndfile=1 \
+ 	-Denable-midishare=0 \
+ 	-Denable-network=0 \
+ 	-Denable-oss=0 \
+@@ -117,8 +117,8 @@ export FLUIDSYNTH_CFLAGS="-I$(CURDIR)/include $(GLIB_CFLAGS)"
+ export FLUIDSYNTH_LIBS="$(CURDIR)/lib/libfluidsynth.a $(GLIB_LIBS) -lm"
+ endef
+ 
+-GLIB_LIBS = $(shell pkg-config --libs gthread-2.0 glib-2.0)
+-GLIB_CFLAGS = $(shell pkg-config --cflags gthread-2.0 glib-2.0)
++GLIB_LIBS = $(shell pkg-config --libs gthread-2.0 glib-2.0 sndfile)
++GLIB_CFLAGS = $(shell pkg-config --cflags gthread-2.0 glib-2.0 sndfile)
+ .PHONY: fluidsynth-message
+ fluidsynth-message: lib/libfluidsynth.a
+ 	$(info $(FLUIDSYNTH_EXPORTS))

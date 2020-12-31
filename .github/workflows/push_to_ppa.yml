@@ -404,6 +404,10 @@ jobs:
               # The 'default' diff-ignore excludes anything *not* debian/
               # we need debian/ *and* contrib/
               diff_ignore="-i.github|README.md"
+
+              # libsndfile1-dev needed for SF3
+              sed -i 's/cmake$/cmake, libsndfile1-dev/' debian/control
+
             } || true
 
             treeish=WC # Working Copy, therefore includes uncommited changes
