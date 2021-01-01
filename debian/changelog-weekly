@@ -1,3 +1,57 @@
+dosbox-staging (0.77.0~alpha~153~g0a36-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @85c1580efc53f41cf17dc8eaa89fa43b047b7a4c **
+
+  * [ebe2d86d] d/patches: Include sf3 in soundfont search
+    - Drop fluidsynth/set-fluidsynth-soundfont.patch
+    + Add fluidsynth/add-sf3-soundfont-search.patch
+      searching for soundfont appends {,-GM}.sf{2,3}
+
+  [ kcgen ]
+  * [ee389fb1] Add a string split-on-delim function and unit tests
+  * [9acbbf62] Add a string split-on-whitespace supporting function
+  * [4261681c] Include XDG_DATA_DIRS in FluidSynth SF2 paths
+  * [a93b22f2] Include XDG_DATA_DIRS in MT-32 ROM paths
+
+  [ Patryk Obara ]
+  * [d66272e5] Sort includes in support (header and cpp file)
+  * [2c34b089] Sort includes in dos.cpp
+  * [b1ef7dd3] New functions for DOS_PackTime/Date
+  * [95c63221] Implement Windows wrapper for POSIX localtime_r
+  * [b77f0778] Replace several uses of localtime with safe equivalent
+  * [74b678a9] Document and simplify 'time /h' implementation
+  * [b888228f] Prevent CWE-835 vulnerability
+  * [dcfc4ec8] Avoid false-positive Coverity issue
+  * [0e93a8ad] Silence MSVC warnings for conversion from size_t to Bit16u
+  * [a66fceb5] Limit reimplementation of localtime_r only to MSVC
+  * [3b5560f1] Hide our implementation of localtime_r in a namespace
+  * [bc5d60b8] Use cross::localtime_r in CMOS emulator
+  * [ab8e094a] Update comment regarding OpenGL extension loading
+
+  [ kcgen ]
+  * [5cfbe838] Manage MT-32 mixer channel using a unique_mtr
+  * [ca12b2ba] Manage MT-32 service using a unique_ptr
+  * [994fd4c8] Manage MT-32 threading objects using unique_ptrs
+  * [0d5c3949] Manage MT-32 audio buffer using a std::vector
+  * [5c5338ba] Remove MT-32 non-threaded branches
+  * [948133b4] Rename MT-32 'open' bool member to 'is_open'
+  * [2d8193da] Clarify calculation of "samples to render" in MT-32
+  * [e3a0e442] Scope the MT-32 managed types inside the class
+
+  [ Patryk Obara ]
+  * [7d528470] Remove outdated FIXME comment
+  * [0d2ebe9a] Fix column formatting of mount listing
+  * [eed393a0] Format volume label printed by DIR command
+  * [e6c41842] fixup! Fix column formatting of mount listing
+  * [a51d8f20] Simplify loop obtaining info about mount points
+  * [d6530bde] Describe the issue with setting/reading drive labels
+  * [6323683c] Leave a more precise comment regarding hat binding
+  * [c16e7d9c] Translate few more strings in Polish
+  * [0a36c373] Adjust copyright statements for 2021
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 01 Jan 2021 04:22:41 +0000
+
 dosbox-staging (0.77.0~alpha~116~g2e93-1) unstable; urgency=medium
 
   [ Feignint ]
