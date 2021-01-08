@@ -1,0 +1,80 @@
+From: Feignint <37488595+FeignInt@users.noreply.github.com>
+Date: Fri, 8 Jan 2021 14:05:44 +0000
+Subject: Prioritise SF3 over SF2 SoundFont
+
+Forwarded: PlaceHolder
+
+When searching for SoundFont look for SF3 before
+SF2, on Debian SF2 (uncompresssed) SoundFonts are
+symlinked to SF3 equivalent filename as the SF2
+format is understood by clients supporting SF3
+
+Not prioritising SF3 could result in the inferior
+`timgm6mb-soundfont` being used as the 'default'
+even when a superior SF3 (compressed) format e.g.
+`musescore-general-soundfont` is installed.
+---
+ src/midi/midi_fluidsynth.cpp | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/src/midi/midi_fluidsynth.cpp b/src/midi/midi_fluidsynth.cpp
+index 785679d..3cf8cfc 100644
+--- a/src/midi/midi_fluidsynth.cpp
++++ b/src/midi/midi_fluidsynth.cpp
+@@ -45,13 +45,14 @@ static void init_fluid_dosbox_settings(Section_prop &secprop)
+ 	str_prop->Set_help(
+ 	        "Path to a SoundFont file. You can use an absolute or relative path,\n"
+ 	        "or simply the name of a soundfont and known directories will be searched\n"
+-	        "sf2 (uncompressed) format has priority over sf3 (compressed)\n"
+-	        "explicitly including the file extension overrides this\n"
+-	        "e.g. 'MuseScore_General_Full.sf3'\n"
+-	        "But in general is not required\n"
++	        "SF3 (compressed) has priority over SF2 (uncompressed) SoundFonts\n"
++	        "explicitly include the .sf2 file extension to override this\n"
+ 	        "An optional percentage will scale the SoundFont's volume.\n"
+ 	        "For example: 'soundfont 50' will attenuate it by 50 percent.\n"
+ 	        "The scaling percentage can range from 1 to 500.");
++	// TODO: Feignint: clean up wording regards SF2 vs SF3 with respect to non-Debian
++	// or more specifically non-linux (I imagine most Linux distros have similar symlink
++	// strategy to Debian)
+ 
+ 	auto *int_prop = secprop.Add_int("synth_threads", when_idle, 1);
+ 	int_prop->SetMinMax(1, 256);
+@@ -139,8 +140,8 @@ static std::deque<std::string> get_data_dirs()
+ 	std::deque<std::string> dirs = {
+ 	        xdg_data_home + "/dosbox/soundfonts/",
+ 	        xdg_data_home + "/soundfonts/",
+-	        xdg_data_home + "/sounds/sf2/",
+ 	        xdg_data_home + "/sounds/sf3/",
++	        xdg_data_home + "/sounds/sf2/",
+ 	};
+ 
+ 	// Second priority are the $XDG_DATA_DIRS
+@@ -155,8 +156,8 @@ static std::deque<std::string> get_data_dirs()
+ 		}
+ 		const auto resolved_dir = CROSS_ResolveHome(xdg_data_dir);
+ 		dirs.emplace_back(resolved_dir + "/soundfonts/");
+-		dirs.emplace_back(resolved_dir + "/sounds/sf2/");
+ 		dirs.emplace_back(resolved_dir + "/sounds/sf3/");
++		dirs.emplace_back(resolved_dir + "/sounds/sf2/");
+ 	}
+ 
+ 	// Third priority is $XDG_CONF_HOME, for convenience
+@@ -173,11 +174,14 @@ static std::string find_sf_file(const std::string &name)
+ 	if (path_exists(sf_path))
+ 		return sf_path;
+ 	for (const auto &dir : get_data_dirs()) {
++		// sf3 has priority over sf2 since on Debian a sf2 file is symlinked
++		// to sf3 (sf2 is compatible with sf3 aware clients)
++		// TODO: Feignint: confirm non-debian employ similar symlink strategy.
+ 		for (const auto &sf : {dir + name,
+-		                       dir + name + ".sf2",
+-		                       dir + name + "-GM.sf2",
+ 		                       dir + name + ".sf3",
+-		                       dir + name + "-GM.sf3"}) {
++		                       dir + name + "-GM.sf3",
++		                       dir + name + ".sf2",
++		                       dir + name + "-GM.sf2"}) {
+ 			// DEBUG_LOG_MSG("MIDI: FluidSynth checking if '%s' exists", sf.c_str());
+ 			if (path_exists(sf))
+ 				return sf;

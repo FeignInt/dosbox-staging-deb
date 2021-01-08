@@ -1,3 +1,4 @@
 fix-macro-error-in-docs-dosbox.1.patch
 fluidsynth/add-sf3-soundfont-search.patch
 contrib/static-fluidsynth/SF3-with-static-fluidsynth.patch
+fluidsynth/Prioritise-SF3-over-SF2-SoundFont.patch
