@@ -15,7 +15,9 @@ Package: dosbox-staging
 Architecture: any
 Multi-Arch: foreign
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Suggests: fluid-soundfont-gm
+Recommends: musescore-general-soundfont |
+            musescore-general-soundfont-lossless |
+            musescore-general-soundfont-small
 Conflicts: dosbox
 Description: DOS/x86 emulator focusing on ease of use
  DOSBox Staging is a full x86 CPU emulator (independent of host architecture),
