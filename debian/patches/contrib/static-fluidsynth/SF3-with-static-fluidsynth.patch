@@ -2,11 +2,11 @@ From: Feignint <37488595+FeignInt@users.noreply.github.com>
 Date: Thu, 31 Dec 2020 16:15:01 +0000
 Subject: Add SF3 support to static-fluidsynth
 
-Forwareded: PlaceHolder
+Forwarded: PlaceHolder
 
 This is only used when fluidsynth version <2.0.0
 
-sf3 soundfonts are availbale to Debian Buster via
+sf3 soundfonts are available to Debian Buster via
 buster-backports, I imagine the same is true of
 Ubuntu's Bionic.
 ---
