@@ -1,3 +1,57 @@
+dosbox-staging (0.77.0~alpha~191~gf532-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @e48d9178d24da61ecd6a9d5fc3fcb954f9dfbec2 **
+
+  * [aa42fa59] Update debian/copyright
+  * [0ededc32] d/patches: Add Prioritise-SF3-over-SF2-SoundFont
+  * [e48d9178] d/control:
+    - Remove Suggests: fluid-soundfont-gm
+      Appears to be unmaintained.
+    + Add Recommends: musescore-general-soundfont |
+                      musescore-general-soundfont-lossless |
+                      musescore-general-soundfont-small
+
+  [ Jonathan Campbell ]
+  * [edc7297a] Mask and compare &cpu_regs to determine if it resides above 4GB
+
+  [ kcgen ]
+  * [8c96654d] Use a boolean compare to check if &cpu_regs resides above 4GB
+  * [21f68377] Inialize Shell member pointers
+  * [ffaf7c44] Replace all (void)'s with () in shell classes
+  * [1b6435a3] Cleanup the autoexec module's memory on close
+  * [74e201f5] Cleanup any allocated batch file memory on close
+  * [58b4842a] Cleanup management of callback descriptions using stings
+  * [cb8dc7c6] Cleanup the serial port members on destruction
+  * [9f271b09] Cleanup GUS channel and IO handlers when inactive or shutdown
+  * [f8298c11] Cleanup a precision-loss warning in GUS
+  * [acb4aab5] Migrate Config and Section lists to deques
+  * [b5b944b4] Make defition of a SectionFunction generally accessible
+  * [537730e1] Use SectionFunction type in existing prototypes
+  * [f68529ce] Add early-init function handing to the Section class
+  * [7414b1d9] Add early-section handling to the Config class
+
+  [ Patryk Obara ]
+  * [ca417e93] Remove unused Config::const_reverse_it
+  * [a99efc67] Remove unnecessary Config::reverse_it
+  * [387b7c8f] Remove harmful Config::iterator
+  * [169b0a0b] Remove unnecessary Config::const_it
+  * [e7a3e223] Split OSS MIDI backend into header and cpp file
+  * [165142c2] Simplify opening OSS MIDI handler
+  * [11dfa44b] Implement missing destructor for OSS MIDI handler
+  * [7ae25da3] Fix and simplify OSS device reopening
+  * [d6b6d035] Decorate internal buffers in OSS with asserts
+  * [fa19f869] Prevent potential infinite loop in dc_silencer
+  * [1eec2391] Replace link to PVS with link to LGTM
+  * [582b4ee6] Rename DB_HAVE_CLOCK_GETTIME to HAVE_CLOCK_GETTIME
+  * [4055d69b] Rename DIRENT_HAS_D_TYPE to HAVE_STRUCT_DIRENT_D_TYPE
+  * [446afaa7] Rename C_HAVE_MPROTECT to HAVE_MPROTECT
+  * [1e3b9481] Rename C_SET_PRIORITY to HAVE_SETPRIORITY
+  * [5d92a878] Replace autoconf check to define C_ATTRIBUTE_ALWAYS_INLINE
+  * [f5328558] Fix grammar in documentation for XSTR macro
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 15 Jan 2021 04:35:35 +0000
+
 dosbox-staging (0.77.0~alpha~155~gd6ed-1) unstable; urgency=medium
 
   * UNRELEASED
