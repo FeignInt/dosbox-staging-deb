@@ -2,18 +2,30 @@ From: Feignint <8937-Feignint@users.noreply.salsa.debian.org>
 Date: Tue, 27 Oct 2020 19:59:35 +0000
 Subject: fix macro error in docs/dosbox.1
 
-Fixes
-line 242: 'R' is a string (producing the
- registered sign), not a macro.
+Fixes lines 112,242,360
+  'R' is a string (producing the
+  registered sign), not a macro.
 ---
- docs/dosbox.1 | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/dosbox.1 | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/docs/dosbox.1 b/docs/dosbox.1
-index f9241f5..ccb350d 100644
+index 8786b8e..39f2591 100644
 --- a/docs/dosbox.1
 +++ b/docs/dosbox.1
-@@ -239,7 +239,7 @@ this as well!)
+@@ -109,9 +109,9 @@ an Internal Program, a DOS command or an executable on a mounted drive.
+ Output version information and exit. Useful for frontends.
+ .TP
+ .BI "\-\-editconf ["editor ]
+-.R Open the default configuration file in a text editor. If no editor name
++.RI "Open the default configuration file in a text editor. If no editor name
+ is given, then use the program from EDITOR environment variable,
+-otherwise DOSBox will try to guess the name.
++otherwise DOSBox will try to guess the name."
+ .TP
+ .BI \-opencaptures " program"
+ .RI "calls " program " with as  first parameter the location of the captures folder."
+@@ -238,7 +238,7 @@ this as well!)
  .RS
  .TP
  .B \-All
@@ -22,3 +34,12 @@ index f9241f5..ccb350d 100644
  .TP
  .B Drive:
  .RB "Reread directory structure for drive " Drive:
+@@ -357,7 +357,7 @@ Any configuration option can be override using an environment variable.
+ interpreted as follows:
+ .B DOSBOX_SECTIONNAME_PROPERTYNAME=value
+ .PP
+-.R For example, you can override render aspect this way:
++.RB "For example, you can override render aspect this way:"
+ .PP
+ .B $ DOSBOX_RENDER_ASPECT=false dosbox
+ .SH NOTES

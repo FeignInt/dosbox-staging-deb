@@ -30,7 +30,7 @@ I think covers most, if not all distributions
  1 file changed, 17 insertions(+), 9 deletions(-)
 
 diff --git a/src/midi/midi_fluidsynth.cpp b/src/midi/midi_fluidsynth.cpp
-index 083aeee..785679d 100644
+index 7844372..52239e6 100644
 --- a/src/midi/midi_fluidsynth.cpp
 +++ b/src/midi/midi_fluidsynth.cpp
 @@ -39,16 +39,18 @@ static void init_fluid_dosbox_settings(Section_prop &secprop)
