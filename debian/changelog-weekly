@@ -1,3 +1,105 @@
+dosbox-staging (0.77.0~alpha~264~gafdf-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @b541dd21a8121db9a6635bc28a165d22b029013c **
+
+  * [74148d80] Refresh debian/patches
+  * [b541dd21] d/patches: Add bash completion script
+
+  [ Peter Veenstra ]
+  * [9d9159cb] Merge 2 cache files together, using the oldest as base. Thanks jmarsh
+  * [0cd1b1b6] Bring OS/2 port up to date. Thanks Jochen (patch #290)
+  * [2ae4d36f] Split the position updating from the cache adding. (jmarsh)
+  * [162d4fe0] Finish up and add LOOP_NE and LOOP_E (jmarsh).
+  * [676e90eb] Some warnings.
+  * [fa0cd823] Improve xchg to handle unwritable memory better. (jmarsh)
+  * [6de8e1ee] Slight reordering so that none isn't present twice
+  * [567a14d1] replace some loops with memset and cleanup a lot of weird spaces
+  * [28d6f866] Do full aggregate initialization in order to fix some warnings.
+  * [e4e21965] Be smarter when clearing the cache. (jmarsh)
+  * [10741618] It seems compilers prefer FALLTHROUGH else some start complaining.
+  * [e768df91] Extend SDL Xorg fix to also check for erroneous key up events. Fixes key loss in fullscreen mode. (thanks jmarsh)
+  * [a5bd9714] Change shift for ticks to 24 to reduce calculation error and init the counter with non-zero on most occasions.
+  * [071d2fec] Fix the usual warnings and a mix ups between | and ||
+  * [d0518340] Reduce warnings
+  * [d67fb1db] More warning and unify if spacing a bit
+  * [7c4ca1eb] A new and hopeful better year
+
+  [ kcgen ]
+  * [7dd030ff] Make the exit request bool accessible outside Shell
+  * [95881d36] Quit the command loop when exit is requested
+  * [b8aab5a1] Use a conditional instead of exception for normal exits
+  * [71924dd5] Honor the exit request in the machine loop
+  * [78655c02] Simplify the RunMachine loop
+
+  [ Peter Veenstra ]
+  * [8fa23e84] Make the blitting surface a bit larger in ddraw mode. Fixes graphics problems in fullscreen mode when there is large border.
+
+  [ Patryk Obara ]
+  * [79819138] Remove PCSPEAKER module destructor
+
+  [ cameron314 ]
+  * [5f65a15c] Add the moodycamel::ReaderWriterCircularBuffer single-header library
+
+  [ kcgen ]
+  * [ab7448c9] Add unit tests for moodycamel::ReaderWriterCircularBuffer
+
+  [ Peter Veenstra ]
+  * [25268d1d] a few more warnings
+
+  [ Patryk Obara ]
+  * [082393e0] Move safe_strcpy and safe_strcat to string_utils
+
+  [ Peter Veenstra ]
+  * [33034b75] Add experimental option to use a smaller window in fullscreen mode and correct surface to center properly. Might be removed again.
+
+  [ Patryk Obara ]
+  * [8cb7ba42] Remove commented-out function
+  * [6086f947] Sort includes in setup.cpp
+  * [55ae4d73] Add missing includes in hardware module
+  * [c5e38959] Implement new function for parsing dosbox env variables
+  * [0e760da2] Use new implementation for filtering environment
+  * [9fe39483] Assert section and property names formats
+  * [811adb6a] Move environ pointer out of sdlmain
+  * [501d28d0] Document environment variables handling
+  * [2481798f] Move test stubs to a separate file
+  * [f9eca4a4] Revert "Bring OS/2 port up to date. Thanks Jochen (patch #290)"
+
+  [ kcgen ]
+  * [00aaefae] Update glib to 2.67.2 in static builder
+
+  [ Patryk Obara ]
+  * [a8778212] Fix absolute-value warning in envelope.cpp
+  * [fa9ef07f] Fix linking error in unit tests
+  * [5af937fc] Revert "Extend SDL Xorg fix to also check for erroneous key up events. Fixes key loss in fullscreen mode. (thanks jmarsh)"
+
+  [ Peter Veenstra ]
+  * [81c0d8ea] Add modified and updated version of patch #262 to start and stop avi recording with config. Add way to start keymapper from config as well.
+
+  [ kcgen ]
+  * [c98c2570] Add the maximum pixel size for use instead of magic-num
+  * [076c4f1b] Fix an overflow warning with texture frame calculation
+  * [8ef5db71] Fix a multiplication overflow warning in ZMBV
+  * [968dc605] Organize headers in ZMBC source
+  * [10f0bd1c] Provide description of MT-32 control and PCM ROMs
+
+  [ Patryk Obara ]
+  * [3ad92ff1] Mark variable used only in an assert with maybe_unused
+  * [19e5563f] Fix regex verifying section names
+
+  [ kcgen ]
+  * [13431ffb] Fix an SDL2 version comparison bug in autotools
+
+  [ Patryk Obara ]
+  * [248d1448] Revert "Make the blitting surface a bit larger in ddraw mode. Fixes graphics problems in fullscreen mode when there is large border."
+  * [6af43010] Revert "Add experimental option to use (…)"
+  * [4f9ac9fa] Add new strings for translators
+  * [45cf3234] Rename define HAVE_ALSA to C_ALSA
+  * [fb95bcdc] Adjust Core MIDI, Core Audio defines
+  * [afdf5bd9] Move C_HAS_ATTRIBUTE to compiler.h
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 22 Jan 2021 04:37:58 +0000
+
 dosbox-staging (0.77.0~alpha~191~gf532-1) unstable; urgency=medium
 
   [ Feignint ]
