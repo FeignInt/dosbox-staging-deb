@@ -1,3 +1,30 @@
+dosbox-staging (0.77.0~alpha~277~ge131-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @323f63ef3ff31fb3d1aa98d669d1c18c44a5eb19 **
+
+  * UNRELEASED
+
+  [ Peter Veenstra ]
+  * [dba4cb70] Update it for when neither screenshots or avi making is selected.
+  * [6314d580] warnings and such
+  * [26158fae] Update the template for more complicated scalers to potentially support higher scale factors as well
+
+  [ Patryk Obara ]
+  * [25de173f] Fix includes order in numerous files
+
+  [ Peter Veenstra ]
+  * [f02ae91a] Rewrite dynamic core port handling so only one call is made instead of 2. (jmarsh)
+  * [c393d3a3] Some warnings and spaces cleanup
+
+  [ Patryk Obara ]
+  * [ca898d91] Remove some old translation files
+  * [05003921] Describe machine types in README and man page
+  * [a827baa1] Update fedora spec file to package 0.76.0
+  * [e131d562] Tighten dependency checks in fedora spec file
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 29 Jan 2021 04:16:50 +0000
+
 dosbox-staging (0.77.0~alpha~264~gafdf-1) unstable; urgency=medium
 
   [ Feignint ]
