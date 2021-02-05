@@ -1,3 +1,67 @@
+dosbox-staging (0.77.0~alpha~325~g0541-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @84a6a7a6238870164ee59244686090e7109bc753 **
+
+  * UNRELEASED
+
+  [ David Reid ]
+  * [d65f2e6f] Sync dr_flac to v0.12.27
+  * [6f880256] Sync dr_wav to v0.12.18
+  * [dd072e9f] Sync dr_mp3 to v0.6.26
+
+  [ kcgen ]
+  * [b0ef7b34] Fix increment of unintialized deque iterator in Debug Winx64
+  * [42755963] Squash an Opus printf-type warning in debug-chatter output
+  * [a962087b] Clarify Opus track-open return result
+  * [07e935f4] Check Opus track length before down-casting
+  * [35efa548] Clarify that Opus rate is in frames per interval
+  * [6490fbf9] Squash warnings in Opus debug chatter time calculation
+  * [6723963b] Don't unnecessarily downcast seek offset in Opus
+  * [a2855b07] Populate the URL field in the Opus callback signature
+  * [f5ffe082] Check audio track length before down-casting
+
+  [ Patryk Obara ]
+  * [14877916] Fix assert for checking file size for formatting (Fixes: #799)
+
+  [ kcgen ]
+  * [5d232060] Move Disney state #defines to enum
+  * [898ac605] Move Disney port base and size from #define to constexpr
+  * [9da7dfe3] Clarify Disney_size is number of audio buffer samples
+  * [7f3bc42a] Re-order headers in Disney
+  * [1f64babf] Reduce the Disney input frequency type to uint32_t
+  * [3ed0ecc3] Replace Bit8u's in Disney with uint8_t
+  * [24e968e7] Move Disney buffer-used tally to uint8_t
+  * [e621a2ef] Manage Disney mixer chan in Init() and Shutdown()
+  * [45f71f9e] Manage the IO handlers in Init() and Destroy()
+  * [bd4881d8] Manage the Disney states in Init() and Destroy()
+  * [394e3932] Move Disney conf checkto Init() and drop class DISNEY
+  * [58ae1da3] Remove the Disney interrupt handler during shutdown
+  * [7a7413f9] Move Disney frequency calculation to a function
+  * [f3b207e4] Use the DAC freq calculation during Disney analysis
+  * [240cb869] Simplify Disney's stereo-mode determination
+  * [4b1b4b25] Operate on 8-bit value in Disney write method
+  * [3fb629a1] Operate on 8-bit return value in Disney read method
+  * [6f60396f] Limit the Disney Callback length to uint16_t
+  * [8e85ce50] Flag section parameter as unused in Disney Shutdown
+  * [f001c53e] Move the implied Disney struct to explicit variable
+  * [d3d0843a] Explicitly initialize Disney status in the struct
+  * [3bdc342f] Cleanup effc++ warnings by initializing struct members
+  * [9bcba50c] Simplify Disney leading channel determination
+  * [0637a6a1] Demote Disney counters from Bitu to uint32_t
+  * [07bdd959] Use const on one value in Disney
+  * [edb74c90] Tighten up a Disney for-loop based on fixed iterations
+  * [7635f1b2] Clarify that "STATE" is the Disney runtime state
+
+  [ Patryk Obara ]
+  * [80eecc43] Improve input checking when unmounting
+  * [a52aefa8] Show error messages when moving Z drive fails
+  * [12d41165] Record new translation strings for mount command
+  * [736655b8] Fix whitespace issues in rescan command
+  * [054100f3] Rename variable newz_drive to new_drive_z
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 05 Feb 2021 04:10:38 +0000
+
 dosbox-staging (0.77.0~alpha~277~ge131-1) unstable; urgency=medium
 
   [ Feignint ]
