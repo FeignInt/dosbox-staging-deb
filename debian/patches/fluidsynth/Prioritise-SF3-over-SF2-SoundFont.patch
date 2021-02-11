@@ -18,7 +18,7 @@ even when a superior SF3 (compressed) format e.g.
  1 file changed, 13 insertions(+), 9 deletions(-)
 
 diff --git a/src/midi/midi_fluidsynth.cpp b/src/midi/midi_fluidsynth.cpp
-index 52239e6..d67148e 100644
+index eb6eaf2..1488b41 100644
 --- a/src/midi/midi_fluidsynth.cpp
 +++ b/src/midi/midi_fluidsynth.cpp
 @@ -45,13 +45,14 @@ static void init_fluid_dosbox_settings(Section_prop &secprop)
