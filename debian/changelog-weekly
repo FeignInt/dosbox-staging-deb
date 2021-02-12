@@ -1,3 +1,49 @@
+dosbox-staging (0.77.0~alpha~347~g7e5b-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @05d431fadef9a288f051ad7e366e109ce7264db4 **
+
+  * [05d431fa] Refresh debian/patches
+
+  [ kcgen ]
+  * [a3a761a3] Shorten the directory name for the RW queue (#864)
+
+  [ Gilles ]
+  * [f260b0fb] Update french translation
+  * [0d7c6a8b] Update french translation
+
+  [ kcgen ]
+  * [fc697733] Disable OpenMP and others when building FluidSynth statically (#867)
+  * [cdf42b43] Close the MT-32 device first-thing on Open
+  * [8aec6a14] Manage MT-32 rendering and playback using the ReaderWriterCircularBuffer
+
+  [ Patryk Obara ]
+  * [79710ec3] Use ARRAY_LEN macro to avoid maybe-unused variable
+
+  [ kcgen ]
+  * [77862ab8] Replace deprecated FluidSynth effect calls (#870)
+
+  [ Wengier ]
+  * [98c3ac45] Adjust VER help message to new style
+  * [16c8f01f] Color the version examples
+
+  [ Patryk Obara ]
+  * [4b87e8b0] Adjust new ver /? message to fit the screen width
+  * [36b54563] Add a script to simplify translation drop
+  * [9a379a55] Update translation file with new ver/? text
+
+  [ kcgen ]
+  * [513db36c] Move the joystick type conf-parsing to a function
+  * [06dc8664] Determine if the joystick-type has been parsed
+  * [26e8ba9d] Move mapper's joystick type handling to where it's used
+  * [3758eeeb] Assert that the mapperfile has been parsed
+  * [22302b92] Colapse the mapper's ConfigureBindings and bind keys
+  * [dfe03b63] Ensure the Disney leading-channel is always valid (#876)
+  * [ff6b00a7] Use mt32emu's floating-point synthesis with the soft-limiter
+  * [7e5b4d4e] Use mt32emu's nice panning and partial mixing settings
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 12 Feb 2021 04:10:47 +0000
+
 dosbox-staging (0.77.0~alpha~325~g0541-1) unstable; urgency=medium
 
   [ Feignint ]
