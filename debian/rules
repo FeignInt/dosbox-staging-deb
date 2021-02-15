@@ -22,13 +22,10 @@ debugger = \
 FLUIDSYNTH_V2=$(shell pkg-config fluidsynth --atleast-version=2 && echo true )
 ifneq ($(FLUIDSYNTH_V2), true)
   fluidsynth_src    = $(CURDIR)/contrib/static-fluidsynth
+  PKG_CONFIG_PATH   = $(fluidsynth_src)/fluidsynth/build
+  export PKG_CONFIG_PATH
 ifneq ("$(wildcard $(fluidsynth_src)/Makefile)","")
   fluidsynth        = static-fluidsynth
-  GLIB_LIBS         = $(shell pkg-config --libs gthread-2.0 glib-2.0 sndfile)
-  GLIB_CFLAGS       = $(shell pkg-config --cflags gthread-2.0 glib-2.0 sndfile)
-  FLUIDSYNTH_CFLAGS = -I$(fluidsynth_src)/include $(GLIB_CFLAGS)
-  FLUIDSYNTH_LIBS   = $(fluidsynth_src)/lib/libfluidsynth.a $(GLIB_LIBS) -lm
-  export FLUIDSYNTH_CFLAGS FLUIDSYNTH_LIBS
 endif
 endif
 
