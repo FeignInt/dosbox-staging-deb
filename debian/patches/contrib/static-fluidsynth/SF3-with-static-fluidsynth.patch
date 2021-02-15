@@ -14,10 +14,10 @@ Ubuntu's Bionic.
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/contrib/static-fluidsynth/Makefile b/contrib/static-fluidsynth/Makefile
-index 7cdc9a2..1ef3edf 100644
+index f158e6e..73f55bb 100644
 --- a/contrib/static-fluidsynth/Makefile
 +++ b/contrib/static-fluidsynth/Makefile
-@@ -89,7 +89,7 @@ fluidsynth/build/Makefile: fluidsynth/build
+@@ -91,7 +91,7 @@ fluidsynth/build/Makefile: fluidsynth/build
  	-Denable-ladspa=0 \
  	-Denable-lash=0 \
  	-Denable-libinstpatch=0 \
@@ -26,8 +26,8 @@ index 7cdc9a2..1ef3edf 100644
  	-Denable-midishare=0 \
  	-Denable-network=0 \
  	-Denable-oss=0 \
-@@ -123,8 +123,8 @@ export FLUIDSYNTH_CFLAGS="-I$(CURDIR)/include $(GLIB_CFLAGS)"
- export FLUIDSYNTH_LIBS="$(CURDIR)/lib/libfluidsynth.a $(GLIB_LIBS) -lm"
+@@ -129,8 +129,8 @@ Export the following to configure dosbox-staging with pkg-config
+ export PKG_CONFIG_PATH="$(CURDIR)/fluidsynth/build"
  endef
  
 -GLIB_LIBS = $(shell pkg-config --libs gthread-2.0 glib-2.0)
