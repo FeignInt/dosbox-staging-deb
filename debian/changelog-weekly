@@ -1,3 +1,68 @@
+dosbox-staging (0.77.0~alpha~385~g26cc3-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @b07841e4b3eaf0fd9d032587027261c7f6c30951 **
+
+  * [332f70c9] Refresh SF3-with-static-fluidsynth.patch
+  * [b07841e4] d/rules: Use pkg-config feature in contrib/static-fluidsynth
+
+  [ Peter Veenstra ]
+  * [ad53ebb3] Slight reordering in GFX_SetupSurfaceScaled, so that the clip.x and y are always updated in fullscreen mode, this way the fix of 4147 is not needed anymore.
+  * [9bdbdfa9] Make all references to cache const, use cache_adds instead of direct access. (jmarsh)
+  * [f3cda47d] style and warnings
+  * [5c8119dc] Emulate debug register 6 during trap flag emulation (and normal int 1). Fixes 544 (jmarsh)
+
+  [ Patryk Obara ]
+  * [46d15674] Revert "Slight reordering in GFX_SetupSurfaceScaled (…)"
+
+  [ Peter Veenstra ]
+  * [5ccc5ef2] Update to new bitfs
+  * [c852ebd1] A few more
+  * [9365d110] Add patch #271 Remove redundant glBindTexture calls Allow in OpenGL mode and aspect=true resolutions to be used if the resulting ratio is close to 4:3 and width and height are integer multiples of the input data. Use for example with: output=opengl, scaler=none, glshader=sharp, aspect=true, fullresolution=1280*1000 (the * of r4415), windowresolution=1280x1000 and a 320x200 game (this code is not finished)
+  * [593de66c] Add Some automake stuff so we can ran custom commands for mac os x
+  * [fa94c624] Some changes to fix a warning due to sign mismatch
+  * [4b114154] Some reordering to make gcc happy
+  * [f37ddbe7] a few more sBitfs changes
+  * [8318a901] Slight speed up in heavy debug mode
+  * [eca61eb1] Add mac icon to make things a bit more complete (thanks rhoenie and dominus)
+  * [565b24d9] Rewrite store integer instructions to check if the result fits.(vogons 78127) Went with the explicit size comparisons because of the undefined values on NaN and inf for frexp. Thanks M-HT and jmarsh.
+  * [728ad540] One of my compilers likes this a lot better.
+  * [17d65d5c] Add the new folder to automake files
+  * [f9b43dec] fix log messates with sbitfs in debug mode
+  * [ab8aa756] Convert to sBitfs logging.
+  * [39e19939] Start moving the running of instructions out of the check keys loop so it can be scripted in the future.
+
+  [ Patryk Obara ]
+  * [5138f7ba] Prepare new source translation file for russian
+  * [ea56f893] Translate part of banner to russian
+
+  [ Илья Индиго ]
+  * [44fb3d96] Update ru_RU translation for SHELL_STARTUP_BEGIN
+
+  [ Feignint ]
+  * [5920a8a8] Add pkg-config support to contrib/static-fluidsynth
+
+  [ Patryk Obara ]
+  * [40733427] Fix compilation issues introduced by SVN r4424
+
+  [ kcgen ]
+  * [e165c274] Fix CD-DA pregap start calculation instead of clamping-to-sanity
+
+  [ Dugan Chen ]
+  * [a0323042] Remove redundant glBindTexture calls
+
+  [ kcgen ]
+  * [d3010f0a] Make the SoftLimiter return a temporary buffer
+  * [43972608] Migrate soft-limiter and audio buffers from std:array to std::vector
+  * [ab2bf8e1] Apply further improvements relating to the SoftLimiter
+  * [cd0bad9a] Use a ratio instead of time when printing SoftLimiter's stats
+  * [e9f8b96a] Print peak-amplitude and mixer suggestions for the MT-32 channel
+
+  [ Patryk Obara ]
+  * [26cc3ca8] Revert broken parts of SVN r4429
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 19 Feb 2021 04:10:55 +0000
+
 dosbox-staging (0.77.0~alpha~347~g7e5b-1) unstable; urgency=medium
 
   [ Feignint ]
