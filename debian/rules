@@ -1,4 +1,5 @@
 #!/usr/bin/make -f
+
 include /usr/share/dpkg/pkg-info.mk
 
 export DEB_BUILD_MAINT_OPTIONS    = hardening=+all
@@ -6,10 +7,8 @@ export DEB_BUILD_MAINT_OPTIONS    = hardening=+all
 export DEB_CPPFLAGS_MAINT_APPEND  = -D_FILE_OFFSET_BITS=64 -DNDEBUG
 export DEB_LDFLAGS_MAINT_APPEND   = -flto=$(shell nproc)
 
-default_opt_level := $(shell dpkg-buildflags --get CFLAGS | grep -E -o [-]O[0-3] )
     new_opt_level  = -O3
-
-export DEB_CFLAGS_MAINT_STRIP     = -g $(default_opt_level)
+export DEB_CFLAGS_MAINT_STRIP     = -g -O0 -O1 -O2 -O3
 export DEB_CXXFLAGS_MAINT_STRIP   = $(DEB_CFLAGS_MAINT_STRIP)
 
 export DEB_CFLAGS_MAINT_PREPEND   = -g $(new_opt_level) -flto
