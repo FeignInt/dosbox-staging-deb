@@ -2,13 +2,22 @@ Source: dosbox-staging
 Section: otherosfs
 Priority: optional
 Maintainer: Feignint <37488595+FeignInt@users.noreply.github.com>
-Homepage: https://dosbox-staging.github.io/about/
-Build-Depends: debhelper-compat (= 13), libsdl2-dev, libsdl2-net-dev,
- libasound2-dev, libopusfile-dev, libpng-dev, libncurses-dev | libncurses5-dev,
- libfluidsynth-dev, cmake
+Build-Depends: debhelper-compat (= 13),
+  libsdl2-dev (>= 2.0.2),
+  libsdl2-net-dev (>= 2.0.0),
+  libasound2-dev,
+  libopusfile-dev,
+  libpng-dev,
+# ncurses needed for debugger only.
+  libncurses-dev | libncurses5-dev,
+  libfluidsynth-dev (>= 2.1.1),
+  meson (>= 0.51),
+# Git required for Meson's subprojects feature
+  git,
 Standards-Version: 4.5.0
-Vcs-Git: https://github.com/dosbox-staging/dosbox-staging.git
-Vcs-Browser: https://github.com/dosbox-staging/dosbox-staging/
+Homepage: https://dosbox-staging.github.io/about/
+Vcs-Git: https://github.com/feignint/dosbox-staging-deb.git
+Vcs-Browser: https://github.com/feignint/dosbox-staging-deb/
 Rules-Requires-Root: no
 
 Package: dosbox-staging
