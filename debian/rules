@@ -1,5 +1,8 @@
 #!/usr/bin/make -f
 include /usr/share/dpkg/pkg-info.mk
+
+export DEB_BUILD_MAINT_OPTIONS    = hardening=+all
+
 export DEB_CPPFLAGS_MAINT_APPEND  = -D_FILE_OFFSET_BITS=64 -DNDEBUG
 export DEB_LDFLAGS_MAINT_APPEND   = -flto=$(shell nproc)
 
