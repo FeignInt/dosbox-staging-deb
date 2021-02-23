@@ -5,23 +5,25 @@ Subject: Prioritise SF3 over SF2 SoundFont
 Forwarded: PlaceHolder
 
 When searching for SoundFont look for SF3 before
-SF2, on Debian SF2 (uncompresssed) SoundFonts are
-symlinked to SF3 equivalent filename as the SF2
-format is understood by clients supporting SF3
+SF2.
+
+On Debian SF2 (uncompresssed) SoundFonts are
+symlinked to SF3 equivalent filename (the SF2
+format is understood by clients supporting SF3)
 
 Not prioritising SF3 could result in the inferior
 `timgm6mb-soundfont` being used as the 'default'
-even when a superior SF3 (compressed) format e.g.
-`musescore-general-soundfont` is installed.
+when a superior, albeit compressed, SF3 format
+e.g. `musescore-general-soundfont` is installed.
 ---
  src/midi/midi_fluidsynth.cpp | 22 +++++++++++++---------
  1 file changed, 13 insertions(+), 9 deletions(-)
 
 diff --git a/src/midi/midi_fluidsynth.cpp b/src/midi/midi_fluidsynth.cpp
-index eb6eaf2..1488b41 100644
+index 57dcd15..0582651 100644
 --- a/src/midi/midi_fluidsynth.cpp
 +++ b/src/midi/midi_fluidsynth.cpp
-@@ -45,13 +45,14 @@ static void init_fluid_dosbox_settings(Section_prop &secprop)
+@@ -47,13 +47,14 @@ static void init_fluid_dosbox_settings(Section_prop &secprop)
  	str_prop->Set_help(
  	        "Path to a SoundFont file. You can use an absolute or relative path,\n"
  	        "or simply the name of a soundfont and known directories will be searched\n"
@@ -35,12 +37,12 @@ index eb6eaf2..1488b41 100644
  	        "For example: 'soundfont 50' will attenuate it by 50 percent.\n"
  	        "The scaling percentage can range from 1 to 500.");
 +	// TODO: Feignint: clean up wording regards SF2 vs SF3 with respect to non-Debian
-+	// or more specifically non-linux (I imagine most Linux distros have similar symlink
++	// or more specifically non-Linux (I imagine most Linux distros have similar symlink
 +	// strategy to Debian)
+ }
  
- 	auto *int_prop = secprop.Add_int("synth_threads", when_idle, 1);
- 	int_prop->SetMinMax(1, 256);
-@@ -139,8 +140,8 @@ static std::deque<std::string> get_data_dirs()
+ // SetMixerLevel is a callback that's given the user-desired mixer level,
+@@ -134,8 +135,8 @@ static std::deque<std::string> get_data_dirs()
  	std::deque<std::string> dirs = {
  	        xdg_data_home + "/dosbox/soundfonts/",
  	        xdg_data_home + "/soundfonts/",
@@ -50,7 +52,7 @@ index eb6eaf2..1488b41 100644
  	};
  
  	// Second priority are the $XDG_DATA_DIRS
-@@ -155,8 +156,8 @@ static std::deque<std::string> get_data_dirs()
+@@ -150,8 +151,8 @@ static std::deque<std::string> get_data_dirs()
  		}
  		const auto resolved_dir = CROSS_ResolveHome(xdg_data_dir);
  		dirs.emplace_back(resolved_dir + "/soundfonts/");
@@ -60,7 +62,7 @@ index eb6eaf2..1488b41 100644
  	}
  
  	// Third priority is $XDG_CONF_HOME, for convenience
-@@ -173,11 +174,14 @@ static std::string find_sf_file(const std::string &name)
+@@ -168,11 +169,14 @@ static std::string find_sf_file(const std::string &name)
  	if (path_exists(sf_path))
  		return sf_path;
  	for (const auto &dir : get_data_dirs()) {
