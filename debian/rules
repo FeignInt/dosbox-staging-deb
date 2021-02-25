@@ -1,27 +1,17 @@
 #!/usr/bin/make -f
-
 include /usr/share/dpkg/pkg-info.mk
 
 export DEB_BUILD_MAINT_OPTIONS    = hardening=+all
-
-export DEB_CPPFLAGS_MAINT_APPEND  = -D_FILE_OFFSET_BITS=64 -DNDEBUG
+export DEB_CPPFLAGS_MAINT_APPEND  = -D_FILE_OFFSET_BITS=64
 export DEB_LDFLAGS_MAINT_APPEND   = -flto=$(shell nproc)
+export DEB_CXXFLAGS_MAINT_APPEND  = $(DEB_CFLAGS_MAINT_APPEND)
 
-    new_opt_level  = -O3
+# Let meson's buildtype set optimisation (release defaults to -O3)
 export DEB_CFLAGS_MAINT_STRIP     = -g -O0 -O1 -O2 -O3
 export DEB_CXXFLAGS_MAINT_STRIP   = $(DEB_CFLAGS_MAINT_STRIP)
 
-export DEB_CFLAGS_MAINT_PREPEND   = -g $(new_opt_level) -flto
-export DEB_CXXFLAGS_MAINT_PREPEND = $(DEB_CFLAGS_MAINT_PREPEND)
-
-debugger = \
-   DEB_CFLAGS_MAINT_PREPEND="$(DEB_CFLAGS_MAINT_PREPEND:$(new_opt_level)=)" \
- DEB_CXXFLAGS_MAINT_PREPEND="$(DEB_CFLAGS_MAINT_PREPEND:$(new_opt_level)=)" \
-  DEB_CPPFLAGS_MAINT_APPEND="$(DEB_CPPFLAGS_MAINT_APPEND:-DNDEBUG=)"        \
- dpkg-buildflags --export=configure
-
 # fluidsynth >= 2.0.0 required
-FLUIDSYNTH_V2=$(shell pkg-config fluidsynth --atleast-version=2 && echo true )
+FLUIDSYNTH_V2:=$(shell pkg-config fluidsynth --atleast-version=2 && echo true )
 ifneq ($(FLUIDSYNTH_V2), true)
   fluidsynth_src    = $(CURDIR)/contrib/static-fluidsynth
   PKG_CONFIG_PATH   = $(fluidsynth_src)/fluidsynth/build
@@ -31,31 +21,42 @@ ifneq ("$(wildcard $(fluidsynth_src)/Makefile)","")
 endif
 endif
 
+meson_flags    := --backend ninja
+meson_flags    += -Ddefault_library=static
+
+release_flags  := --buildtype=release
+debugger_flags := --buildtype=debugoptimized -Denable_debugger=heavy
+
 %:
-	dh $@
+	dh $@ --buildsystem=meson
 
 override_dh_auto_clean:
 	dh_auto_clean -Bbuild-release
-	dh_auto_clean -Bbuild-debug
+	dh_auto_clean -Bbuild-debugger
 
 static-fluidsynth:
 	$(MAKE) -C $(fluidsynth_src)
 
 override_dh_auto_configure: $(fluidsynth)
-	# re-set version string, useful for gbp snapshot builds
-	sed -E 's/(AC_INIT.+,[[]?)[^])]+/\1v$(subst ~,-,$(DEB_VERSION))/' configure.ac \
-	  | autoconf -o configure -
-	#
-	dh_auto_configure -Bbuild-release -- $(configure_extra)
-	dh_auto_configure -Bbuild-debug   -- $(configure_extra) \
-		$(shell $(debugger) ) --enable-debug=heavy
+	# see: debian/copyright
+	sed -i '/licenses_dir/d' $(CURDIR)/meson.build
+	# set version
+	sed -i -E "s/^( +version : ')[^']+/\1$(subst ~,-,$(DEB_VERSION))/" $(CURDIR)/meson.build
+	dh_auto_configure -Bbuild-release  -- $(meson_flags) $(release_flags)
+	dh_auto_configure -Bbuild-debugger -- $(meson_flags) $(debugger_flags)
 
 override_dh_auto_build:
 	dh_auto_build -Bbuild-release
-	dh_auto_build -Bbuild-debug
+	dh_auto_build -Bbuild-debugger
+
+override_dh_auto_test:
+#	dh_auto_test -Bbuild-release
+#	dh_auto_test -Bbuild-debugger
 
 override_dh_auto_install:
-	dh_auto_install -Bbuild-debug
+	dh_auto_install -Bbuild-debugger
 	mv debian/tmp/usr/bin/dosbox debian/tmp/usr/bin/dosbox-debug
 	dh_auto_install -Bbuild-release
-	$(MAKE) -C contrib/icons install DESTDIR=$(CURDIR)/debian/tmp prefix=/usr
+
+override_dh_dwz:
+#
