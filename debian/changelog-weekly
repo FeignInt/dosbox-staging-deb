@@ -1,3 +1,147 @@
+dosbox-staging (0.77.0~alpha~572~g39fd6-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @3e70f6ca13a87e6147960f4354fd61f389eeb8d9 **
+
+  * [df2f3580] d/control: Fixes and Cleanup
+  * [f1587d20] d/rules: Set DEB_BUILD_MAINT_OPTIONS=hardening=+all
+  * [57a602db] d/rules: Simplify DEB_CFLAGS_MAINT_STRIP
+  * [d1fbd6ab] d/patches: Refresh FluidSynth SoundFont patches
+  * [3e70f6ca] d/rules,control/: Switch to Meson Build System
+
+  [ Patryk Obara ]
+  * [57d8062b] Start migration to meson buildsystem
+  * [4fad1d4f] Add CI jobs to exercise warning_level=3
+  * [12388987] Add debugger feature to meson buildsystem
+  * [4bb2cc2b] Add unit tests to meson buildsystem
+  * [0b91c9a3] Convert gtest dependency to subproject
+  * [9f2e01a4] Add some Meson usage snippets to BUILD.md
+  * [6845223e] Add new OSS file to meson buildsystem
+  * [5c14ee1d] Handle dynrec defines depending on host architecture
+  * [99bbd6d7] Define endianness via meson
+  * [b233663c] Port C_FPU* defines to meson
+  * [7dacb401] Update copyright statement in config template
+  * [2446d865] Move cpu-related build defines to src/cpu subdir
+  * [8016c439] Reorganize cpu core selection in the buildsystem
+  * [8b00b5fa] Put old/tricky architectures back in the table
+  * [cc2a28f0] Simplify buildsystem message summary for target cpu
+  * [ce3579bc] Port PAGESIZE define for PPC64LE to meson
+  * [a11338ba] Port C_HAVE_MPROTECT define
+  * [1bd9d149] Update to use new define names
+  * [4c7f68ea] Add define for mt32emu to config template
+  * [b6a1da1a] Check for availability of realpath function via meson
+  * [c0981a04] Add meson checks for several headers
+  * [c792c81c] Port OS defines to meson buildsystem
+  * [a2204752] Port C_SET_PRIORITY define to meson
+  * [9bfae123] Replace explicit checks for headers with a loop
+  * [2a5a032b] Add unit test for rwcircularbuffer to meson
+  * [30eac170] Add unit test for setup.cpp to meson
+  * [ed519db0] Fix absolute-value warning in envelope.cpp
+  * [4ee13172] Fix linking error in unit tests
+  * [e081213f] Fix include order for MSVC
+  * [ef4cb0ae] Rename 'dummy_dep' to 'optional_dep' in meson
+  * [c77a7d47] Detect CoreAudio, CoreMIDI dependencies on macOS
+  * [403616a0] Adapt to cleaned defines from master branch
+  * [ff2df2b6] Detect ALSA dependency using meson
+  * [62a4b5f9] Port C_HAS_BUILTIN_EXPECT compiler check to meson
+  * [0863b2c7] Adjust comments for few config.h sections
+  * [68f006c1] Move C_DIRECTSERIAL check to meson
+  * [be47e704] Port NOMINMAX define to meson
+  * [30a68e19] Enable math constants in math.h header on Windows
+  * [05369770] Add Windows Sockets and Windows Multimedia dependencies
+  * [089d3aa6] Include SDL.h before main for Windows builds
+  * [b87b77bc] Be more precise about ppc64/ppc64le names
+  * [f8fbc9f7] Document invoking ninja with -C flag
+  * [97b96d78] List ccache tool with other dependencies
+  * [a453f880] Add BUILD.md section about disabling dependencies
+  * [689358cf] Add warning when using buildtype=plain on meson < 0.51.0
+  * [292914ec] Fix typo in documentation
+  * [f184e5f8] Fix instructions on test coverage report
+  * [694355a8] Document running static analysis
+  * [7b39439f] Document list of buildsystem improvements
+  * [0a71c022] Upgrade minimum meson version to 0.49.0
+  * [6737dbf3] Add unitial support for installation via meson
+  * [f3ff7678] Simplify mapping of OS names to defines
+  * [b37b098a] Add mt32emu dependency with meson wrap fallback
+  * [74f0c172] Prevent effc++ warnings from affecting subprojects
+  * [d197d78e] Port missing C_ALSA define to meson
+  * [3fc7d92e] Provide an option for disabling ALSA dependency
+  * [ae5c910a] Add missing Opus dependency
+  * [b2a0a4ad] Switch linux release job to meson
+  * [7cd6b2e9] Use Git tag description for emulator version (Fixes: #543)
+  * [3b5381b1] Link SDL2 statically for macOS release build (Fixes: #837)
+  * [08813834] Update version and license in meson project function
+  * [51516108] Disable PPC and PPC64 dynrec backends for now
+  * [231cb085] Revert broken parts of SVN r4429
+  * [9b71aac2] Update mt32emu wrap to 2.4.2-2
+  * [036e8c58] Remove zlib dependency
+  * [17e675fe] Rewrite documentation about build types
+  * [82a5660d] Remove requirements section from BUILD.md
+  * [cbd106d5] Remove redundant build doc in CONTRIBUTING.md
+  * [1965ada7] Move macOS-specific instructions to separate file
+  * [d46d6f42] Move Haiku-specific instructions to separate file
+  * [3a28128d] Move Windows-specific instructions to separate file
+  * [5a7648dd] Move AutoFDO-specific instructions to separate file
+  * [70bfe2a4] Remove outdated instructions from BUILD.md
+  * [fffa76e1] Write shorter introduction for BUILD.md
+  * [ccc61f8f] Cleanup and tighten instructions in README.md
+  * [08425ed7] Mention how to open test coverage report
+  * [53be5ef5] Make LGTM links more prominent
+  * [896017c2] Reorganize badges in README.md file
+  * [0800f7d9] Raise the minimum meson version to 0.51.0
+
+  [ kcgen ]
+  * [f90046b7] Manage FluidSynth rendering and playback using the RW queue
+  * [ad709be2] Improve the log message regarding FluidSynth sound-font scaling
+  * [7f69351a] Re-order FluidSynth copyrights by ascending contributions
+
+  [ Patryk Obara ]
+  * [d3a0c528] Update script generating translation file
+  * [9d0f7c77] Remove translation string for fluidsynth.synth_threads
+  * [7a7e2cde] Reset language when updating en_US translation file
+
+  [ Gilles ]
+  * [0473a589] Update fr_FR translation for ver cmd help
+
+  [ Patryk Obara ]
+  * [2f73b726] Remove Autotools-based buildsystem
+  * [a1b637ab] Link SDL2_net statically in macOS release CI job
+  * [740a4ec2] Link libpng statically in Linux and macOS releases
+  * [612a02dc] Link opusfile statically in macOS release
+  * [3cac0413] Make a note of feature in meson 0.53.0
+  * [6ea6dffb] Move zypper packages list to README.md
+
+  [ Gilles ]
+  * [c4b660e0] Synchronize section names in fr_FR help message
+
+  [ kcgen ]
+  * [ee1b350e] Make the SoftLimiter operate on a reference and not temporary
+  * [e321bab9] Move the audio buffers into the rw-queue instead of copying
+  * [f4a4e88b] Use a second rw-queue in FluidSynth to recycle used buffers
+  * [f987707a] Use a second rw-queue in MT-32 to recycle used buffers
+  * [2fb7d1e4] Fix a spelling mistake in FluidSynth
+
+  [ Patryk Obara ]
+  * [85c0be8e] Update README.md
+  * [0f128c06] Update documentation for old branches
+  * [1891e088] Remove spurious semi-colons
+
+  [ Feignint ]
+  * [c8b84e41] Fix spelling in various documents
+  * [761cb2db] Fix spelling in dosbox binary
+
+  [ kcgen ]
+  * [23858377] Move the sysex message size constant into the MIDI header
+  * [1306122f] Inject the MIDI halt sequence when closing external MIDI handlers
+  * [c0ae7657] Add a startup verbosity option to only show the splash screen
+
+  [ Patryk Obara ]
+  * [e0a1e578] Fix potential buffer out of bound access when drawing cursor
+  * [b2740773] Organize duplicated sanity cursor checks
+  * [39fd620c] Reuse SkipCursor check in VGA_TEXT_Xlat16_Draw_Line
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 26 Feb 2021 09:02:02 +0000
+
 dosbox-staging (0.77.0~alpha~385~g26cc3-1) unstable; urgency=medium
 
   [ Feignint ]
