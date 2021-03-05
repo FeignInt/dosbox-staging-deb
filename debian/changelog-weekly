@@ -1,3 +1,99 @@
+dosbox-staging (0.77.0~alpha~621~g3bf0-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @0f074d2c649c27585953023ef182c94a6e77a28b **
+
+  * UNRELEASED
+
+  [ Sebastian Strohhäcker ]
+  * [faa11dfa] some strange people are offended by chdir hints that are not always fully correct in all imaginable situations; removed
+
+  [ Dean Beeler ]
+  * [778617b3] NE2000 Ethernet Patch
+
+  [ Patryk Obara ]
+  * [c245aa5d] Add NE2000 to the buildsystem, but keep it disabled
+
+  [ Jonathan Campbell ]
+  * [b362c971] Cleanup in NE2000 code
+  * [52566735] Fix Bochs stubs with actual logging code
+  * [3f0b811a] Set IRQ and base in NE2000
+  * [b4688232] Fix mcast lookup to truncate CRC to 32-bit in NE2000
+  * [604ce0e5] Make it CLEAR the problem is failure to mask the CRC to 32 bits
+
+  [ Allofich ]
+  * [ecf5dfce] Remove undefined function declarations
+
+  [ Jonathan Campbell ]
+  * [b1cacc28] Fix VS2017 compiler warnings
+
+  [ Allofich ]
+  * [868a8181] Remove unnecessary semicolons and parentheses
+
+  [ Emmanuel Gil Peyrot ]
+  * [8ce82db0] Replace Bit8u with uint8_t
+  * [a6357e5a] Replace Bit16u with uint16_t
+  * [197a7a75] Replace Bit32u with uint32_t
+
+  [ Patryk Obara ]
+  * [eeabd4b9] Update copyright statement for NE2000
+  * [e3840d1e] Fix header guards and include order in ne2000
+  * [dcc08e81] Add slirp dependency and use_slirp setup option
+  * [69018852] Sort dependencies in hardware module
+  * [10067a78] Add pcap dependency to make ne2000 buildable
+
+  [ kcgen ]
+  * [53a75de9] Make building of unit tests automatic or configurable
+
+  [ Patryk Obara ]
+  * [7a13c0d9] Bring back previous solution for detecting gtest
+
+  [ kcgen ]
+  * [29f79d6d] Disambiguate the CONFIG_ROMDIR versus its ROM files
+
+  [ Patryk Obara ]
+  * [3e3b471a] Fix ignored-qualifiers warning
+  * [24f20b4b] Remove url field from Sound_DecoderInfo
+  * [aaea2d5c] Fix missing-field-initializer in struct tm
+  * [05aafd4d] Fix missing-field-initializer in adlib.cpp
+  * [7866d830] Remove trailing whitespace from translation strings
+  * [3c00585f] Move mt-32 translation back to cpp file
+
+  [ Илья Индиго ]
+  * [addab42e] Update unicode file with ru_RU translation
+
+  [ Patryk Obara ]
+  * [9d173cd4] Generate new ru_RU translation
+  * [43eb7d6e] Generate new en_US translation source
+  * [4294d854] Update unicode file with pl_PL translation
+  * [7f172bc0] Generate new pl_PL translation
+  * [ecfc9e10] Remove always-true comparison in INT10_VideoState_GetSize
+
+  [ Gilles ]
+  * [1588dad0] Update fr_FR translation
+
+  [ Patryk Obara ]
+  * [33c227a9] Sync SHELL_CMD_VER_VER in all translations
+  * [21255b30] Update pl_PL translation
+  * [c774e6bc] Generate new translation files
+  * [e73ec113] Remove redundant sanity check in DOS_FCBRead
+  * [e091b615] Replace FIXME with TODO
+
+  [ kcgen ]
+  * [365e0564] Check for the exit_requested state inside the endless CHOICE loop
+  * [42576b1e] Add a rote-implemented blocking read-write queue
+
+  [ Илья Индиго ]
+  * [2cd5acbf] Update ru_RU translation
+
+  [ Patryk Obara ]
+  * [d2295454] Adjust whitespace in ru_RU translation
+  * [c57c48e9] Update english source translation strings
+  * [8c05880d] Update pl_PL translation
+  * [8a7fa8d2] Generate new translation files
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 05 Mar 2021 04:15:46 +0000
+
 dosbox-staging (0.77.0~alpha~572~g39fd6-1) unstable; urgency=medium
 
   [ Feignint ]
