@@ -1,0 +1,31 @@
+From: Feignint <37488595+FeignInt@users.noreply.github.com>
+Date: Thu, 11 Mar 2021 06:13:57 +0000
+Subject: Set .conf suffix to debugger when building debugger
+
+break_to_nag_me_via_lint Forwarded: not-needed?
+
+Inspired by:
+810ce76d7ed4d5bdffc4a2f821e54d7b763062ca
+
+The above commit causes the debugger build to use
+the -git.conf suffix for debugger, which got me
+thinking it might be nice to have a different one
+for the debugger. Not that I actually use the
+debugger, I have only ran it a few times to check
+it at least runs.
+---
+ meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/meson.build b/meson.build
+index 1e8d287..1d5d05a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -69,6 +69,7 @@ endif
+ 
+ if get_option('enable_debugger') == 'heavy'
+   conf_data.set10('C_HEAVY_DEBUG', true)
++  conf_data.set('conf_suffix', '-staging-debugger')
+ endif
+ 
+ foreach osdef : ['LINUX', 'WIN32', 'MACOSX', 'BSD']

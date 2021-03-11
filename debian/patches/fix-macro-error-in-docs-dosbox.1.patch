@@ -10,7 +10,7 @@ Fixes lines 112,242,360
  1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/docs/dosbox.1 b/docs/dosbox.1
-index 5f1e13e..e974a28 100644
+index 10c5848..0390a40 100644
 --- a/docs/dosbox.1
 +++ b/docs/dosbox.1
 @@ -144,9 +144,9 @@ an Internal Program, a DOS command or an executable on a mounted drive.
