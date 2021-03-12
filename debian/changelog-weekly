@@ -1,3 +1,69 @@
+dosbox-staging (0.77.0~alpha~662~g6107-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @26f17760964ade3fcd8c9821e1a06d40fae2f610 **
+
+  * [26f17760] d/patches:
+    + Refresh patches
+    + New Patch: set_debugger_conf_suffix.patch
+
+  [ kcgen ]
+  * [52a7e24b] Use rwqueue instead of the Moody-queue in FluidSynth
+  * [3ea2a9b7] Use rwqueue instead of the Moody-queue in MT-32
+  * [8d8907ce] Drop the moodycamel readerwriter queue
+
+  [ Илья Индиго ]
+  * [f54a4fdd] Update ru_RU translation
+
+  [ Patryk Obara ]
+  * [5f9a86e1] Adjust whitespace in ru_RU translation
+  * [adb3e345] Generate new ru_RU translation
+  * [f879e6f9] Remove old fr franslation
+  * [faa1630a] Remove old ru translation
+  * [899013b5] Convert old Russian documentation to UTF-8
+  * [f455022c] Convert old Korean documentation to UTF-8
+  * [bde996c6] Convert old Danish documentation to UTF-8
+  * [aa5764e0] Separate old translation files from new ones
+
+  [ kcgen ]
+  * [2c969cc1] Always support Opus CD-DA tracks
+
+  [ Patryk Obara ]
+  * [7568f785] Convert old German documentation to UTF-8
+  * [275fe40e] Update pl_PL translation
+
+  [ Gilles ]
+  * [921deca4] Update fr_FR translation
+
+  [ Patryk Obara ]
+  * [27456566] Generate new translation files
+  * [8bf4e810] Use consistent style for key names
+  * [dcd9e1b9] Update English source translation strings
+
+  [ kcgen ]
+  * [f7effa7e] Simplify the SoftLimiter by moving the mixer levels to function
+  * [b0e28def] Use an atomic to manager the SoftLimiter's pre-scalar
+  * [dbc8231a] Make access to mt32emu's service-pointer mutually exclusive
+
+  [ Patryk Obara ]
+  * [ba50cefe] Update pl_PL translation
+  * [c6eee65f] Generate new translation files
+  * [3a28421a] Convert old Spanish documentation to UTF-8
+  * [fbaa97f0] Convert old Italian documentation to UTF-8
+  * [be04e5f0] Convert old Norwegian documentation to UTF-8
+  * [b25b25d3] Convert old Brazilian Portugese documentation to UTF-8
+  * [230fa1d1] Convert old Turkish documentation to UTF-8
+
+  [ ripsaw8080 ]
+  * [ce6608e7] Improve DOS Create Temporary File function: don't use same sequence of filenames each session; don't overwrite existing files.
+
+  [ Patryk Obara ]
+  * [00629007] Silence MSVC warning about converting to 32-bit value
+  * [810ce76d] Remove "-git" suffix from .conf file in release
+  * [6107217f] Rename CONF_BRAND to CONF_SUFFIX
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 12 Mar 2021 04:16:19 +0000
+
 dosbox-staging (0.77.0~alpha~621~g3bf0-1) unstable; urgency=medium
 
   [ Feignint ]
