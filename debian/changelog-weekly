@@ -1,3 +1,39 @@
+dosbox-staging (0.77.0~alpha~679~g0b41-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @5c1d45921370893b9ca1b3b502a25c3e91b7889b **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [c01634b3] Add informational-only support for naming std::threads
+  * [08106eb9] Name the autotype, MT-32, and FluidSynth std::threads
+
+  [ Patryk Obara ]
+  * [9d25c500] Add fluidsynth dependency meson wrap fallback
+  * [72c9b841] Use Meson summary to communicate configuration result
+  * [41004277] Reformat meson_options file
+  * [1ab66b5e] Revert "Use Meson summary to communicate configuration result"
+  * [00291d50] Split implementation out of midi_alsa header
+
+  [ Wengier ]
+  * [49148e60] Add a delay between AUTOTYPE key down and up events
+
+  [ Patryk Obara ]
+  * [d9b2346c] Update fluidsynth wrap to 2.1.8
+  * [684b9783] Mark two parameters as unused in saa1099
+
+  [ kcgen ]
+  * [5c800f96] Fix mapping of trigger-switches on six-axis controllers
+
+  [ ripsaw8080 ]
+  * [9bbbc911] Move video BIOS signature code to where it should be. Improve detection of Paradise SVGA in some installers with additional signature.
+
+  [ Patryk Obara ]
+  * [0b410031] Add missing enum value to swith handling Video BIOS signature
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 19 Mar 2021 04:16:26 +0000
+
 dosbox-staging (0.77.0~alpha~662~g6107-1) unstable; urgency=medium
 
   [ Feignint ]
