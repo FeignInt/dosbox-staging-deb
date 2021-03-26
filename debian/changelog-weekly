@@ -1,3 +1,26 @@
+dosbox-staging (0.77.0~alpha~690~g7637-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @8eedc7d54ef2d44391d09f3bd87e6454182b435f **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [61e6f680] Fix an unused variable warning in Envelope
+  * [72d06d4a] Fix an unused variable warning in the SoftLimiter
+
+  [ Patryk Obara ]
+  * [7489a693] List info about all available MIDI devices
+  * [19c985d6] List all detected sf2 files for built-in FluidSynth
+  * [a2c31bb8] List all ALSA MIDI sequencer ports
+  * [66b13824] Remove usage of deprecated ALSA API
+  * [00e9705e] Change default ALSA MIDI sequencer name to "default"
+  * [a5b85e26] Avoid dereferencing std::string end() iterator
+  * [e78efa57] Fix extra-semi warnings in DEBUG command
+  * [39d18e08] Fix format-pedantic warning when logging memory base
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 26 Mar 2021 05:14:41 +0000
+
 dosbox-staging (0.77.0~alpha~679~g0b41-1) unstable; urgency=medium
 
   [ Feignint ]
