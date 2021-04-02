@@ -1,3 +1,32 @@
+dosbox-staging (0.77.0~alpha~705~g7c4b-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @6829751a874eaca13baf1282ae788ac26a30de4b **
+
+  * UNRELEASED
+
+  [ Patryk Obara ]
+  * [b337f7fb] Remove hardcoded default MIDI ports in ALSA backnd
+  * [880057e4] Adjust connection logic
+  * [099fe934] Provide better names for sequencer and port
+  * [56551eb8] Detect input ALSA MIDI port
+  * [2f132395] Filter MIDI ports to list only the usable ones
+  * [d8934f37] Reset used sequencer address when disconnecting
+  * [401ff2b2] Highlight ALSA port we're connected to
+  * [d6bfa2f2] Log ALSA MIDI client name after successfull connection
+  * [809d8b27] Prefer ALSA ports marked with type synthesizer
+  * [300cad4f] Group seq_client and seq_port together
+
+  [ ripsaw8080 ]
+  * [9a1a0045] Support detection of non-EGA/VGA machine types with elements of BIOS. Fixes the CGA version of Robomaze III, Road Runner, et al.
+
+  [ Patryk Obara ]
+  * [9d0073a2] Avoid using direct memory lookup to read the terminal size
+  * [2f41a42c] Update pl_PL translation
+  * [7c4bb6ff] Generate new translation files
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 02 Apr 2021 04:24:36 +0000
+
 dosbox-staging (0.77.0~alpha~690~g7637-1) unstable; urgency=medium
 
   [ Feignint ]
