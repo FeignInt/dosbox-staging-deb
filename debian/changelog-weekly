@@ -1,3 +1,48 @@
+dosbox-staging (0.77.0~alpha~727~g26bc85-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @8e919dd22813b3446749664accb2c2f6e233ce6a **
+
+  * UNRELEASED
+
+  [ Patryk Obara ]
+  * [7027e469] Move badge URLs to the bottom of README.md file
+
+  [ David Reid ]
+  * [b4838fa2] Sync dr_flac with upstream (v0.12.29)
+
+  [ Kappa971 ]
+  * [ea43d6df] Create new it_IT translation
+
+  [ Patryk Obara ]
+  * [09483f74] Add it_IT to encoding script
+  * [b5f43103] Fix formatting of few strings in it_IT translation
+  * [df3e5b00] Generate new translation files
+  * [db9eb3ec] Remove old Italian translation file
+  * [92266e32] Update mt32emu wrap dependency to 2.5.0
+  * [c220c7b6] Remove unused parameter from Mouse_BeforeNewVideoMode
+  * [86cd107a] Remove unused parameter from render.cpp
+  * [e04909d2] Remove unused parameters from XGA implementation
+  * [ddf73bea] Add fluidsynth to try_static_libs list (Fixes: #968)
+  * [668e6ef2] Update pl_PL translation
+  * [3ac7f8cd] Generate new translation files
+  * [aae3c392] Highlight soundfont when fluidsynth is active
+  * [b56d73cd] Provide option for selecting ALSA port by name
+  * [d8296838] Update manual regarding 'mixer /listmidi'
+  * [962c8245] Convert parse_addr private method to static function
+
+  [ kcgen ]
+  * [9dc57485] Add a class to manage full and partial MT-32 Model ROMs
+  * [0fc90599] Manage the ROMs and Models using the new LASynth Model
+
+  [ Kappa971 ]
+  * [37f5b8e4] Update it_IT translation
+
+  [ Patryk Obara ]
+  * [26bc8562] Generate new translation files
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 09 Apr 2021 04:21:14 +0000
+
 dosbox-staging (0.77.0~alpha~705~g7c4b-1) unstable; urgency=medium
 
   [ Feignint ]
