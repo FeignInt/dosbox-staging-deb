@@ -18,7 +18,7 @@ it at least runs.
  1 file changed, 1 insertion(+)
 
 diff --git a/meson.build b/meson.build
-index 1e8d287..1d5d05a 100644
+index 6c9ee88..23b6e40 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -69,6 +69,7 @@ endif
