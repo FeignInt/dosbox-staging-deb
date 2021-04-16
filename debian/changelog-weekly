@@ -1,3 +1,22 @@
+dosbox-staging (0.77.0~alpha~732~g4c0a9-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @005a7a21dc18faffebb62b7d72f921b15d5592d5 **
+
+  * [b56a9893] Rediff patches
+  * [005a7a21] d/patches: Revert mt32emu version bump (Closes: #15)
+
+  [ Peter Veenstra ]
+  * [30ee7bff] Fix and improve index and index_add after r4408. (used when reduce and need are not the same)
+
+  [ Patryk Obara ]
+  * [b0c4433f] Remove trailing space from dosbox.cpp
+
+  [ Brandon Munger ]
+  * [4c0a9c49] Seperate out intro cdrom command for Windows and other OSes.  Also add example for mounting cue files. (#972)
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 16 Apr 2021 04:22:31 +0000
+
 dosbox-staging (0.77.0~alpha~727~g26bc85-1) unstable; urgency=medium
 
   [ Feignint ]
