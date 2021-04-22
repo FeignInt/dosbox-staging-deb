@@ -15,7 +15,7 @@ Build-Depends: debhelper-compat (= 13),
 # Git required for Meson's subprojects feature
   git,
   cmake,
-  libmt32emu2-dev (>= 2.4.2),
+  libmt32emu2-dev (>= 2.5.0),
 Standards-Version: 4.5.0
 Homepage: https://dosbox-staging.github.io/about/
 Vcs-Git: https://github.com/feignint/dosbox-staging-deb.git
