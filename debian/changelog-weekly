@@ -1,3 +1,18 @@
+dosbox-staging (0.77.0~alpha~737~ged8c7-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @d32059626a597e24de09ebede4d9b8a0d350d9f8 **
+
+  * [d3205962] d/control: Build-Depends: libmt32emu-dev (>= 2.5.0)
+
+  [ ripsaw8080 ]
+  * [4a4ebc25] Small adjustment of S3 rectangle pattern fill. Fixes display glitch in Creative Writer and Fine Artist.
+
+  [ kcgen ]
+  * [fff64a55] Add mt32emu to Windows builds
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 23 Apr 2021 04:22:31 +0000
+
 dosbox-staging (0.77.0~alpha~732~g4c0a9-1) unstable; urgency=medium
 
   [ Feignint ]
