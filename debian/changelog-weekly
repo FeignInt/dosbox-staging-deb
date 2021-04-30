@@ -1,3 +1,15 @@
+dosbox-staging (0.77.0~alpha~740~gd8a1-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @2606f26c06541e016eaf6b6b13494a409665923c **
+
+  * UNRELEASED
+
+  [ ripsaw8080 ]
+  * [dab6a7c8] Attribute Controller port alias on EGA machine. Fixes EGA display of older Super Pac-Man release.
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 30 Apr 2021 04:18:49 +0000
+
 dosbox-staging (0.77.0~alpha~737~ged8c7-1) unstable; urgency=medium
 
   [ Feignint ]
