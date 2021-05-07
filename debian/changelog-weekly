@@ -1,3 +1,42 @@
+dosbox-staging (0.77.0~alpha~755~gba21-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @c7078cd5fd6e620461a14cf82fc0310f3941ed90 **
+
+  * UNRELEASED
+
+  [ ripsaw8080 ]
+  * [fea35234] Add support for DMF floppy disk images.
+  * [29148ec5] Function for setting BIOS equipment word. Correct floppy disk density notes.
+  * [80b3c676] Preserve DOS error code when checking file existence on the FAT drive. Fixes regression related to r4442.
+
+  [ kcgen ]
+  * [f7cad621] Format the shell's < redirect handler
+  * [86d8fe73] Fix input < redirect handling in shell
+
+  [ IPeluchito ]
+  * [39a0bda8] Create new es_ES translation
+
+  [ Patryk Obara ]
+  * [82e806c1] Add es_ES to encoding script
+  * [673a9723] Remove old Spanish translation file
+
+  [ kcgen ]
+  * [f59031db] Refresh the FluidSynth wrap to use 2.2.0
+
+  [ Patryk Obara ]
+  * [cdc11675] Fix formatting of few strings in es_ES translation
+  * [caca8b34] Generate new translation files
+
+  [ kcgen ]
+  * [b3acc39b] Document how to build a debugger-enabled binary in Visual Studio
+
+  [ Peter Veenstra ]
+  * [669c5f55] Make compilation easier with certain compilers and file systems.
+  * [88278c99] win64 changes. (jmarsh)
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 07 May 2021 04:20:09 +0000
+
 dosbox-staging (0.77.0~alpha~740~gd8a1-1) unstable; urgency=medium
 
   [ Feignint ]
