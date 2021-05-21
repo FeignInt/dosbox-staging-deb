@@ -1,3 +1,21 @@
+dosbox-staging (0.77.0~alpha~759~g77b4-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @8e78a52a1899ed7ec6f5164633d136e8c9380af1 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [f497a0f4] Don't underflow when removing trailing spaces
+
+  [ nukeykt ]
+  * [994084c8] Eliminate left shift of negative-value in Nuked OPL emulator
+
+  [ kcgen ]
+  * [77b480b1] Clarify feature differences are without patches
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 21 May 2021 04:25:15 +0000
+
 dosbox-staging (0.77.0~alpha~755~gba21-1) unstable; urgency=medium
 
   * UNRELEASED
