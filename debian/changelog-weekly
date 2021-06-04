@@ -1,3 +1,123 @@
+dosbox-staging (0.77.0~alpha~857~g2e93f-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @bafdd6e787ebcd6488d6b6763ca41796cb121275 **
+
+  * UNRELEASED
+
+  [ Dennis Lühring ]
+  * [9dbd08a4] Add unit tests to the VS2019 solution
+
+  [ kcgen ]
+  * [f05f2226] Add GoogleTest to the list of vcpkg's in README
+
+  [ Sjoerd van der Berg ]
+  * [a29ce37f] Enable A20 routines in bios
+
+  [ kcgen ]
+  * [f4f03497] Explicitly fallthrough in FixEA16's switch
+
+  [ ripsaw8080 ]
+  * [a26e20d1] Function for video BIOS Display Combination Code.
+  * [306280bd] Additive to r4344, use rawch() variant with pdcurses
+
+  [ kcgen ]
+  * [7af75b66] Finalize all dangling child classes
+  * [370ab962] Handle the keyboard 'GUI' or 'command ⌘' key as MMOD3
+  * [1581a0a4] Use the 'command ⌘' key on macOS for F-key actions
+  * [31aebd57] Add a FAQ entry describing modern F1-F12 key activation issues
+  * [4e706702] Differentiate macOS Cmd-F<key> vs. Ctrl-F<key> in help screens
+  * [f64c4799] Update README describing use of Cmd+F<key> and Opt on macOS
+  * [5bf6f4ea] Describe how to fix common key conflicts on macOS
+  * [2e9fee44] Localize the VisualStudio gitignore rules for the unit tests
+  * [73daa092] Tailor VisualStudio release and debug build settings
+  * [d6825d34] Locate unit test outputs in VisualStudio similar to the main project
+  * [48d0a941] Build and run the unit tests under VisualStudio and CI
+  * [ab9b7bef] Move dangling VisualStudio sources into respective filter trees
+  * [e242f9bb] Work-around the known-bugged VS2019 16.10 version
+  * [7ade3242] Work-around the known-bugged VS2019 16.10 version
+  * [95a85ba0] Fix segfault on initialization of MAME OPL3
+  * [89b9d9f8] Check device pointer before logging in MAME OPL
+  * [bb6be32a] Remove dead-code from MAME OPL destroy calls
+  * [5118bd23] Add a left-shift support function for signed values
+  * [cbecc069] Perform safe left-shift of signed values in MAME OPL
+  * [197dcd78] Add support tests to Visual Studio tests solution
+  * [42a09f5e] Fix shifting of negative samples in DB OPL
+  * [4aac3e9e] Ensure input is focused when fullscreen to avoid stranding
+  * [5e120466] Don't shift negative values (undefined behavior)
+  * [9fd81a79] Use a lookup table to convert 8-to-16 bit samples
+  * [ff42c8e4] Process SDL's event queue prior to each host video frame
+  * [baba5ab9] Eliminate existing poll-throttling counters
+
+  [ Kirk ]
+  * [649a428d] Dynamic core support for W^X systems
+  * [bcaf765b] Generalize texture format selection for SCREEN_TEXTURE
+
+  [ kcgen ]
+  * [f27f635d] Use write_unaligned* in decode_* functions
+  * [a7be3802] Multiply the index value instead of shifting negative values
+  * [5669f694] Reinterpret-cast the table address to a CodePageHandler
+
+  [ Joshua Krämer ]
+  * [630cecf1] Use overloaded function to handle strerror_r variants
+
+  [ kcgen ]
+  * [44181510] Make minor style adjustment to strerror_r result
+  * [a3589cd3] Import PS/1 Audio support from DOSBox-X
+  * [7bd8812f] Rename PS/1 Sound to PS/1 Audio for consistency
+  * [05479834] Reorder PS/1 Audio headers
+  * [bdf83ba6] Use the standard configuration setup for PS/1 Audio
+  * [f0d32ce3] Localize BIOS check for PS/1 Audio presence
+  * [0b1342cd] Add PS/1 Audio to build system
+  * [b2969a80] Toggle the PS/1 Audio on-and-off using a bool paramater
+  * [cc4b5d69] Reorganize PS/1 Audio setup, reset, and destroy functions
+  * [d6bde870] Replace PS/1 Audio defines with constexpr
+  * [0cf244ea] Use snake-case for PS/1 Audio channel members
+  * [6c8ba0be] Rename and group PS/1 Audio struct members
+  * [c9a9c1c5] Group the PS/1 DAC, Synth, and Register members in structs
+  * [ea13a9ca] Reorganize PS/1 Audio functions into class members
+  * [c81a7a7e] Drop the PS/1 Audio ineffective size thresholds
+  * [726456ca] Drop more dead PS/1 Audio code and unhelpful comments
+  * [0ddcc2e8] Move PS/1 Audio synth clock rate and comment to constexpr
+  * [29f4e165] Fully separate PS/1 into DAC and Synth
+  * [81c0427a] Localize PS/1 Audio constants inside either the Dac or Synth
+  * [4295ccd6] Group and enable Synth functionality within PS/1 Audio
+  * [d4a09eec] Remove non-standard debugging from PS/1 Audio
+  * [0cb5e1c2] Limit PS/1 Audio sizes on ports, data, and samples
+  * [777d81ce] Reformat PS/1 Audio whitespace
+  * [867da7a1] Add The DOSBox Staging Team to the PS/1 Audio Copyright header
+  * [ed709d32] Reduce PS/1 Audio counter types based on actual limits
+  * [e9b54487] Assign PS/1 Audio IRQ to a variable
+  * [2b46a016] Drop "rate" as a member from PS/1 Audio DAC
+  * [7a5242d3] Replace C-casts in PS/1 Audio
+  * [33c86b38] Turn PS/1 Audio channel wake and sleep routine into functions
+  * [542f5d7a] Toggle PS/1 Audio using constructors and destructors
+  * [09dda48e] Detect and correct PS/1 Audio signal bias
+  * [2aa93d87] Improve descriptions of variables in PS/1 Audio
+  * [09704fbd] Breakout PS/1 Audio DAC port calls into separate functions
+  * [7e8b2932] Squash a couple type-conversion warnings in PS/1 Audio
+  * [658567ef] Fix an array vs singleton issue in PS/1 Audio
+
+  [ Dag Lem ]
+  * [215764a4] Import reSIDfp from libsidplayfp, a C64 music player library
+
+  [ kcgen ]
+  * [a9ddaff2] Exclude VisualStudio from reSIDfp's EXPECT define
+  * [3774ad12] Fix include path in reSIDfp
+  * [130c18df] Remove C++11 differentations from reSIDfp
+  * [d0bbac00] Fix effective C++ warnings in reSIDfp
+  * [b0f9f5f7] Fix unused variable warnings in reSIDfp
+  * [f45360bc] Fix loss-of-precision warnings in reSIDfp
+
+  [ Jonathan Campbell ]
+  * [bf46cc89] Import Innovation SSI-2001 implementation
+
+  [ kcgen ]
+  * [42c0beff] Refactor, thread, and update Innovation to support reSIDfp
+  * [a4d148bd] Add reSIDfp and Innovation SSI-2001 to the buildsystem
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 04 Jun 2021 05:35:40 +0000
+
 dosbox-staging (0.77.0~alpha~761~gdc029-1) unstable; urgency=medium
 
   * UNRELEASED
