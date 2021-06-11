@@ -1,3 +1,61 @@
+dosbox-staging (0.77.0~alpha~888~gaccf8-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @6d2354340888b0b9b3bbe653b8889b0a03a842a7 **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [9c12b735] Expand environment variables in the DOS shell
+
+  [ kcgen ]
+  * [dad52f84] Add a TODO statement regarding improving env-expansions
+
+  [ ripsaw8080 ]
+  * [044f3557] Adjust BP debugger command to work in real mode (Fixes: #960)
+
+  [ Patryk Obara ]
+  * [dc3f84e8] Do small cleanup in CheckBreakpoint method
+
+  [ Kirk ]
+  * [f720d887] Add "auto" priority value
+  * [2033d23a] remove whitespace to fix "inactive" priority value
+  * [e28602b9] cleanup a few issues in dyn_cache.h
+
+  [ kcgen ]
+  * [ba14208e] Move handling of MT-32 service, model, and dirs to functions
+  * [7d783458] Add a model name-match fn to LASynth Model
+  * [09ce0b69] Add feature to list MT-32 directories and models
+  * [8fb07dea] Adjust MT-32 auto-loading order
+  * [7778dade] Fix a small typo in the 'mt32' config model names.
+
+  [ Kirk ]
+  * [bd011619] implement W^X logic for Win32
+
+  [ ripsaw8080 ]
+  * [48df9eb1] Fix regression in r4444: Hercules machine type cursor translation.
+
+  [ kcgen ]
+  * [dae0f5c9] Fix spacing in CGA hotkey line of intro banner
+  * [403879ca] Use PS/1 BIOS identifiers when PS/1 Audio is enabled
+  * [ef7af26d] Fix a potential memory out-of-bounds access in PS/1 Audio
+  * [498da348] Add to and fixup some grammar in THANKS
+  * [3481bb73] Fix and expand thanks to supporters
+
+  [ Wengier ]
+  * [d6da7df7] Use regular expression to expand shell variables
+
+  [ Kirk ]
+  * [9a8ba76b] fix high competing CPU load sluggishness
+  * [7f6297a1] convert SDL to STL functions for GetTicks and Delay
+  * [2cdd5397] fix slow dynamic core
+  * [a2bfe33a] experimental dynamic codegen optimization
+
+  [ kcgen ]
+  * [accf8cfa] Filter residfp sources in vs-package solution
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 11 Jun 2021 04:18:01 +0000
+
 dosbox-staging (0.77.0~alpha~857~g2e93f-1) unstable; urgency=medium
 
   [ Feignint ]
