@@ -1,3 +1,25 @@
+dosbox-staging (0.77.0~alpha~893~gb8ef-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @1bc690bab63b2507c42d2d4b146d199b44ba6a36 **
+
+  * UNRELEASED
+
+  [ ripsaw8080 ]
+  * [920c1db6] Remove unused class template.
+
+  [ David Reid ]
+  * [7a3b2806] Sync dr_wav with upstream (v0.12.20)
+
+  [ kcgen ]
+  * [48b14105] Adjust MT-32 settings based on listening tests
+  * [55582db8] Reinstate static analysis link to PVS Studio runs README.md
+
+  [ Patryk Obara ]
+  * [b8efb8c8] Adjust URL to LLVM's clang-format.py script
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 18 Jun 2021 04:16:43 +0000
+
 dosbox-staging (0.77.0~alpha~888~gaccf8-1) unstable; urgency=medium
 
   [ Feignint ]
