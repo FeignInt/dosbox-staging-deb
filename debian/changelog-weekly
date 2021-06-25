@@ -1,3 +1,32 @@
+dosbox-staging (0.77.0~alpha~906~g689b2-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @5cedad02e06dc5b3685213bee1760b386dec143c **
+
+  * UNRELEASED
+
+  [ Kirk ]
+  * [aee45d46] minor cleanup and add microsecond functions
+  * [71a61ca0] backwards-compatible precise delay
+  * [a0bda0c1] use our own function
+  * [7abd9005] better variable name
+  * [adbac2cd] loosen interval and remove testing flag
+  * [1eb48a84] fix incorrect seed values
+  * [7d2bc2c6] include cmath header and use namespace
+  * [6ab32bd8] minor cleanup
+  * [30e07c58] PR feedback
+
+  [ Otto Urpelainen ]
+  * [8aae97ff] Fix test crash when using GLIBCXX_ASSERTIONS
+
+  [ drfiemost ]
+  * [d232e955] Sync PVS Studio fixes in residfp from upstream
+
+  [ kcgen ]
+  * [82d5d250] Add an "auto" setting for the Innovation SID chip
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 25 Jun 2021 04:09:55 +0000
+
 dosbox-staging (0.77.0~alpha~893~gb8ef-1) unstable; urgency=medium
 
   [ Feignint ]
