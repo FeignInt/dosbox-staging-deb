@@ -1,3 +1,23 @@
+dosbox-staging (0.77.0~alpha~921~gf07d-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @5af5273a1afbc1e0a2e0627f2efa3e6d0f6422c7 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [c8379962] Use pure integer arithmetic in residfp's SincResampler
+  * [8add4da4] Mitigate an incorrect optimization by Clang in STB Vorbis
+  * [b1fff0f6] Fix undefined behavior (integer overflow) in STB Vorbis
+  * [a41ece1c] Sync STB Vorbis with upstream v1.20
+  * [89776e2d] Move the notification about non-standard characters to DEBUG_LOG
+  * [df687daa] Allow static linking for mt32emu in Meson
+
+  [ Patryk Obara ]
+  * [f07d78f1] Adjust formatting of mixer midi list
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 02 Jul 2021 04:16:30 +0000
+
 dosbox-staging (0.77.0~alpha~906~g689b2-1) unstable; urgency=medium
 
   [ Feignint ]
