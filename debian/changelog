@@ -1,3 +1,45 @@
+dosbox-staging (0.77.0-1) unstable; urgency=medium
+
+  * [478cf263] d/patches,control,rules:
+    + patches: Drop add-leading-PATH-to-hicolor-in...
+       New Makefile available upstream
+    + control: Remove Build-Depends: librsvg2-bin
+       Generation of icon files no longer required
+    + rules: Amend contrib/icons make command
+  * [0177e2e4] Update debian/copyright
+  * [ebe2d86d] d/patches: Include sf3 in soundfont search
+    - Drop fluidsynth/set-fluidsynth-soundfont.patch
+    + Add fluidsynth/add-sf3-soundfont-search.patch
+      searching for soundfont appends {,-GM}.sf{2,3}
+  * [aa42fa59] Update debian/copyright
+  * [0ededc32] d/patches: Add Prioritise-SF3-over-SF2-SoundFont
+  * [e48d9178] d/control:
+    - Remove Suggests: fluid-soundfont-gm
+      Appears to be unmaintained.
+    + Add Recommends: musescore-general-soundfont |
+                      musescore-general-soundfont-lossless |
+                      musescore-general-soundfont-small
+  * [74148d80] Refresh debian/patches
+  * [b541dd21] d/patches: Add bash completion script
+  * [05d431fa] Refresh debian/patches
+  * [332f70c9] Refresh SF3-with-static-fluidsynth.patch
+  * [b07841e4] d/rules: Use pkg-config feature in contrib/static-fluidsynth
+  * [df2f3580] d/control: Fixes and Cleanup
+  * [f1587d20] d/rules: Set DEB_BUILD_MAINT_OPTIONS=hardening=+all
+  * [57a602db] d/rules: Simplify DEB_CFLAGS_MAINT_STRIP
+  * [d1fbd6ab] d/patches: Refresh FluidSynth SoundFont patches
+  * [3e70f6ca] d/rules,control/: Switch to Meson Build System
+  * [26f17760] d/patches:
+    + Refresh patches
+    + New Patch: set_debugger_conf_suffix.patch
+  * [b56a9893] Rediff patches
+  * [d3205962] d/control: Build-Depends: libmt32emu-dev (>= 2.5.0)
+
+  * DOSBox Staging 0.77.0 release
+  - https://dosbox-staging.github.io/v0-77-0/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sat, 03 Jul 2021 03:39:07 +0000
+
 dosbox-staging (0.76.0-1) unstable; urgency=medium
 
   [ Feignint ]
