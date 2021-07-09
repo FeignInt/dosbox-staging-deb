@@ -1,3 +1,52 @@
+dosbox-staging (0.78.0~alpha~19~ga85b-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @7e5e76c6269d6489a72fd747463c758fa652f005 **
+
+  * [7e5e76c6] Update changelog for 0.77.0-1 release
+
+  [ kcgen ]
+  * [15a57e26] Add a bit more documentation regarding Meson options
+  * [6576f7e0] Bump v0.77.0 version strings to v0.78.0
+
+  [ Patryk Obara ]
+  * [5d251877] Add 0.77.0 release to metainfo.xml
+
+  [ kcgen ]
+  * [670e26b9] Update winres version 0,78,0
+
+  [ Patryk Obara ]
+  * [389db94c] Update example fedora spec file for Meson build
+
+  [ kcgen ]
+  * [56aa5939] Update SDL2 version to >= 2.0.5 in README.md and BUILD.md
+  * [8f52270b] Update SDL2 version to >= 2.0.5 in Fedora spec file
+
+  [ Patryk Obara ]
+  * [49691851] Update fedora spec file to 0.77.0-2
+
+  [ NewRisingSun ]
+  * [1c98ef1f] Add support for PCjr composite video
+
+  [ kcgen ]
+  * [5fb6b403] Make PCjr's CGA hotkeys match the PC CGA hotkeys
+  * [196a668a] Format and brace conditionals in PCjr composite
+  * [27eada16] Initialize common CGA variables
+  * [f3dc0577] Improve CGA color burst comments
+  * [b9ed4a94] Simplify CGA and PCjr palette construction
+  * [6e04ed49] Simplify CGA pixel generation conditional nesting
+  * [a2073eed] Simplify PCjr 4-color mode conditional nesting
+  * [0c0c8193] Mention support for PCjr composite mode in feature list
+  * [ce9abe7b] Replace match using position-length notation in shell
+
+  [ Dan Church ]
+  * [5b23877f] Fix missing include
+
+  [ Kirk ]
+  * [a85b39f5] Add yield() to spinlock
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 09 Jul 2021 04:16:59 +0000
+
 dosbox-staging (0.77.0~alpha~921~gf07d-1) unstable; urgency=medium
 
   [ Feignint ]
