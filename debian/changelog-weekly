@@ -1,3 +1,85 @@
+dosbox-staging (0.78.0~alpha~73~g07dc5-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @907ea5e6f2929eb4a159cca21c16d3caf6dda482 **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [915e270c] Add HELP program stub to replace HELP shell command
+  * [acb360a4] Allow HELP command to show command help
+  * [4288c398] Add CHOICE program stub to replace CHOICE shell command
+  * [0e94e675] Clean up the HELP command as suggested
+
+  [ kcgen ]
+  * [784c8754] Refactor list of shell commands and their usage
+
+  [ Wengier ]
+  * [d14460e9] Add help message for DEL/ERASE command
+
+  [ kcgen ]
+  * [be5bb8fa] Fix comments to matching C-style in pixel-perfect
+  * [95d02886] Handle divide by zero conditions in pixel-perfect
+  * [8358c60f] Adjust setup order to improve readability in pixel-perfect
+  * [ceffac11] Fix spacing around conditionals to match author's style
+
+  [ AnthoFoxo ]
+  * [0fd39c67] Guard vorbis comment list setup_malloc
+  * [123c8c9a] Fix vorbis comments causing outofmem error
+
+  [ Johannes Schultz ]
+  * [542e52d0] Rename BUFFER_SIZE macro to STB_BUFFER_SIZE in stb_vorbis
+
+  [ Fabian Giesen ]
+  * [07a43cfe] Move asserts around a bit in stb_vorbis
+  * [6e3d43ca] Include alloca.h on Sun targets for in stb_vorbis
+  * [8435e06d] Remove spurious assignment to val in stb_vorbis
+  * [158066e7] Fix unused parameter warnings in stb_vorbis
+  * [e35607f2] Add missing cast to uint to avoid UB in stb_vorbis
+  * [3148fff1] Fix A few UB in stb_vorbis
+  * [44ca04dc] Clarify lifetime of pushdata *output buffers in stb_vorbis
+  * [3d0f79de] Fix some unused variables in stb_vorbis
+  * [755b8022] Set error on open_memory with NULL data in stb_vorbis
+  * [9cfaaebe] Change imdct_step3_inner_s_loop_ld654 in stb_vorbis
+
+  [ kcgen ]
+  * [c4bbb937] Adjust formatting of history in stb_vorbis
+
+  [ Arthur Ouellet ]
+  * [6039f718] Fix issue with floating point (NaN problem) in archive serializer
+
+  [ kcgen ]
+  * [26c2e077] Operate on 8-bit data in write_crtc_data_other in VGA other
+  * [aaddb6d1] Fix conversion warning when assigning VGA cursor's high register
+  * [c2b9b8d3] Fix conversion warning when assigning VGA start address high register
+  * [0da544a1] Return 8-bit data in read_crtc_data_other in VGA other
+  * [e69a0a17] Fix double promotion warning in VGA other lighten calculation
+  * [8912a7e2] Fix loss-of-precision warning in VGA other when calculating RGB values
+  * [3a604b96] Operate on 8-bit data in write_cga_color_select in VGA other
+  * [5d9fa554] Operate on 8-bit data in write_cga in VGA other
+  * [3a2e625d] Operate on 8-bit data in write_tandy in VGA other
+  * [0abedbf6] Fix a loss of precision when assigning palette color in VGA other
+  * [32b243a5] Operate on 8-bit data in write_hercules in VGA other
+  * [027cdd1f] Localize loop iterator in VGA other
+  * [d1d3c193] Simplify HERC ports used for IO registration
+  * [b5d69615] fixup! Return 8-bit data in read_crtc_data_other in VGA other
+  * [2a89a074] fixup! Operate on 8-bit data in write_crtc_data_other in VGA other
+  * [7fd1024d] fixup! Return 8-bit data in read_crtc_data_other in VGA other
+  * [e75a1d2f] fixup! Operate on 8-bit data in write_hercules in VGA other
+  * [78637da3] Fix implicit sign-conversions for byte-swapped return types
+  * [fc277347] Fix loss of precision when handling container lengths
+  * [47d05eef] Check prior to down-casting the stream's read length
+  * [2e327a6a] Use cstdtype and auto types in mp3_seektable
+  * [0cbfcbaa] Describe the mp3_seektable maps using a typename
+  * [335d6337] Simplify the hashing start position in mp3 seektable
+  * [8e5feb4a] Fix a memory leak when closing an mp3 track file
+  * [5f68c164] Only refine aspect-ratio for exact WxH or desktop windowresolution
+  * [aa8d5d13] Allow and inform when requested windowresolution exceeds the desktop size
+  * [b7c81a24] Query the full desktop resolution instead of usable resolution
+  * [07dc5f41] Improve log messages when selecting and changing resolutions
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 16 Jul 2021 04:16:51 +0000
+
 dosbox-staging (0.78.0~alpha~19~ga85b-1) unstable; urgency=medium
 
   [ Feignint ]
