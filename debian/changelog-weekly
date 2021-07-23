@@ -1,3 +1,41 @@
+dosbox-staging (0.78.0~alpha~99~g40e0d-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @a05384744771976c69a1809185194e7111bd8797 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [03b5154e] Only query joysticks for automatic configuration
+  * [c03ba5df] Process SDL's event queue at 200 Hz, the maximum PS/2 mouse rate
+  * [f5cb57ba] Record when sdl.draw elements have changed
+  * [eb8575da] Add a function to log source and output resolution details
+  * [dc97b20d] Replace inconsistent prior logging with new display logger
+  * [e7a9e375] Reduce and simplify window-mode logging output
+  * [67b4f380] Use DISPLAY prefix when logging display-specific details
+  * [c1b6f8c7] Log the texture render driver once (when changed)
+  * [7986a713] Manage COM data memory to prevent leak on closure (#1152)
+  * [8b0ff2ad] fixup! Manage COM data memory to prevent leak on closure (#1152)
+
+  [ Kirk ]
+  * [33df0a4b] Comment out unused dynrec functions to remove compiler warnings
+
+  [ kcgen ]
+  * [67dee0b9] Use a shared-pointer to manage BatchFile objects (#1154)
+  * [f5fa20bd] Delete the BatchFile only after exiting its function (#1154)
+  * [17d58323] Simplify imgmount drive number discussion in README
+  * [190cea49] Improve comment for reset action in DMA
+  * [7ee81ca6] Improve description and use of GameBlaster clock
+  * [5f81144a] Replace master with baseline clock in MAME FM emulation sources
+  * [486a30ec] Describe the selected PCI device as-such
+  * [46e82d82] Describe the primary and secondary PIC controllers as-such
+  * [8d189ab6] Drop use of unreferenced 'master' comment regarding VGA clock
+  * [4911d184] Describe primary and secondary BIOS ISRs as-such
+  * [828b7160] Avoid reference and code repetition in MAME saa1099
+  * [40e0d339] Restore conditional sizing for resizable windows (#1161)
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 23 Jul 2021 04:17:18 +0000
+
 dosbox-staging (0.78.0~alpha~73~g07dc5-1) unstable; urgency=medium
 
   [ Feignint ]
