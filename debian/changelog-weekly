@@ -1,3 +1,102 @@
+dosbox-staging (0.78.0~alpha~165~g15125-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @d7cbd22dd3d0d2fdcb8c02c7fde64e32c0afe75f **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [1c1ffd43] Replace inline names with format tokens in message system
+  * [663cfef2] Apply formatting to messages from the language system
+  * [a51a8726] Refer to or drop references to hotkeys in config help
+  * [375ba4fa] Extract updated English messages from sources
+  * [673e3684] Regenerate lng files with updated formatting
+  * [30e5788c] Add ends_with string utils support function
+  * [0c00534a] Try loading language files from config directory
+  * [36e36bf1] Describe "translations" dir and conf settings in README
+  * [9cdaa2d9] Bump version on translation assets to 0.78.0-alpha
+
+  [ Burrito78 ]
+  * [5cf0f8bb] Add German translation asset and encoded .lng file
+
+  [ kcgen ]
+  * [8cb63302] Fix ASCII alignment in messages and translation assets
+  * [68ab8a61] Fix alignment in encoded translation .lng files
+
+  [ Kappa971 ]
+  * [0cdd348c] Update it_IT translation
+
+  [ kcgen ]
+  * [81943dc9] Avoid using namespace std in messages
+  * [56a57984] Manage messages with a map
+
+  [ Kappa971 ]
+  * [62e1ec24] Update it_IT translation
+
+  [ Kirk ]
+  * [2c07d264] Fix vsync lag
+
+  [ kcgen ]
+  * [98166098] Write messages in the order they were added
+  * [a87b5eae] Update English source translation strings
+  * [f683c5a8] Paramaterize and improve translation update script
+  * [bd7e741c] Add new messages for translation to German sources
+  * [91fd6418] Add new messages for translation to Spanish sources
+  * [998b9e9a] Add new messages for translation to French sources
+  * [1064b688] Add new messages for translation to Italian sources
+  * [d7c08c28] Add new messages for translation to Polish sources
+  * [e2b8e893] Add new messages for translation to Russian sources
+
+  [ Kappa971 ]
+  * [d89f0acc] Update it_IT translation
+
+  [ Burrito78 ]
+  * [96da51ea] Update de_DE translation
+
+  [ kcgen ]
+  * [f6a8d559] Allow mapping of joysticktype "none" (#1111)
+
+  [ Burrito78 ]
+  * [138058d4] Update de_DE translation
+
+  [ reenigne ]
+  * [9d956357] Add improved CGA composite supported by reenigne and VileRancour
+
+  [ kcgen ]
+  * [16f70c18] Add unhandled composite modes in int10 switches
+  * [52205ebd] Fix setup of PCjr vs others when setting composite mode
+  * [edbdf80f] Let PCjr use the new CGA composite modes
+  * [a1f8daff] Let PCjr use the new CGA composite hotkey controls
+  * [1c179318] White-space only format CGA Composite changes
+  * [9f29aa16] Replace CGA composite define-functions with lambdas
+  * [c2d3a421] Comment out unused CGA composite decrease control
+  * [f4c8779e] Drop unused byte_clamp function in new CGA composite code
+  * [ceeec865] Update CGA colors when switching to PCjr composite
+  * [87e9454f] Fix left-shift of signed values in VGA draw
+  * [02d2cd6e] Normalize all 8-bit port sizes in vga other
+  * [df97586d] Use integers to store adjustable composite values
+  * [fb232fe6] Use constexpr and floats to calculate CGA palette
+  * [0a75356a] Use enums to manage composite selection and wrap hue at 360
+  * [2953a222] Cleanup formatting and use stdint types in vga other
+  * [6169ca0a] Fix unaligned writes in VGA_Draw_1BPP_Line
+  * [ba58d073] Fix unaligned writes in VGA_Draw_2BPP_Line
+  * [93b23abb] Fix unaligned writes in VGA_Draw_2BPPHiRes_Line
+  * [7a261d10] Fix unaligned writes in Composite_Process
+  * [482b0950] Fix unaligned writes in VGA_Draw_Xlat16_Linear_Line
+  * [23d208f8] Fix unaligned writes in VGA_Draw_LIN16_Line_HWMouse
+  * [6f4cae21] Fix unaligned writes in VGA_Draw_LIN32_Line_HWMouse
+  * [285efbc4] Fix unaligned writes in VGA_TEXT_Draw_Line
+  * [641de7b0] Fix unaligned writes in VGA_TEXT_Herc_Draw_Line
+  * [fde2a08a] Fix unaligned writes in VGA_TEXT_Xlat16_Draw_Line
+  * [b85c2276] Fix unaligned writes in VGA_DrawSingleLine
+  * [ed79f213] Collapse duplicate text-mode actions
+  * [84fae9c3] Remove h/v total conditions flagged as always false
+  * [7142705f] Allow vmemwrap bitshift expansion into 64-bits
+  * [71ea14dd] Fix typo in vblank_skip assignment
+  * [d1111a51] Cleanup for loops and incrementers in vga_draw
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 30 Jul 2021 04:16:58 +0000
+
 dosbox-staging (0.78.0~alpha~99~g40e0d-1) unstable; urgency=medium
 
   [ Feignint ]
