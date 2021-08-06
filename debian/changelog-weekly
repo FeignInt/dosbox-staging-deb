@@ -1,3 +1,27 @@
+dosbox-staging (0.78.0~alpha~176~geda49-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @55d5d4d4f9cfdb145653447fcf3f1184b12c8916 **
+
+  * UNRELEASED
+
+  [ ripsaw8080 ]
+  * [1e7fd30c] Remove unused class template.
+
+  [ kcgen ]
+  * [c1a3d70c] De-Bitu the PIC_ interfaces and downstream users
+  * [5a5d8f58] Update VGA with PIC float-timing interfaces
+  * [efc172f7] De-Bitu the timer interfaces
+  * [5aea7b74] De-Bitu Adlib and DBOPL interfaces
+  * [14b976bb] Fix formatting in BIOS switch routines
+  * [3c63cdf2] Fix formatting in IPX switch routines
+  * [b139ea10] Fix formatting in Disney switch routines
+
+  [ ripsaw8080 ]
+  * [d58de286] Correct range of extended CRTC registers to initialize for Tseng ET3K, also remove redundant signature for ET4K that is now done in video BIOS.
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 06 Aug 2021 04:16:48 +0000
+
 dosbox-staging (0.78.0~alpha~165~g15125-1) unstable; urgency=medium
 
   [ Feignint ]
