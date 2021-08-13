@@ -1,3 +1,73 @@
+dosbox-staging (0.78.0~alpha~217~g41b44-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @905770d0f699af81333413e220f33347bf544b5c **
+
+  * UNRELEASED
+
+  [ ripsaw8080 ]
+  * [f996d1bd] Implement mouse driver function 0x27, fixes Alive - Behind the Moon.
+
+  [ kcgen ]
+  * [39b5f646] Revert "Process SDL's event queue at 200 Hz, the maximum PS/2 mouse rate"
+  * [62c85b14] Revert "Eliminate existing poll-throttling counters"
+  * [e504bb14] Revert "Process SDL's event queue prior to each host video frame"
+  * [1a8d3415] Use doubles exclusively in timer API
+  * [50be733d] Use doubles exclusively in PIC_ API
+  * [e67fc3ec] Use doubles exclusively in Audio-related timers
+  * [52a03a84] Use doubles exclusively in VGA-related timers
+  * [df5fb1b2] Use doubles exclusively in Rendering timers
+  * [a00ba68e] Use doubles exclusively in BIOS/CMOS/Keyboard timers
+  * [5e856f10] Cleanup warnings writing static strings in BIOS
+  * [c701ce11] Cast-to-double to match timer types in CPU cores
+  * [39ad8bf5] Use double in time-related serial-port calls
+  * [ded061ab] Mark a try/catch argument as unused
+  * [f40563ed] Add short-hand unit conversions for tick rate
+  * [3a7f1e2c] De-dupe joystick activation time calculation
+  * [1c98441c] Cleanup a sign-comparison warning in soft-modem
+  * [d096a573] Cleanup a warning tallying command-line length
+
+  [ Patryk Obara ]
+  * [fb1c6c24] List mt32emu-devel in Fedora dependencies
+
+  [ Kirk Klobe ]
+  * [23064270] Restore focus_ticks functionality
+
+  [ kcgen ]
+  * [b0a8214e] Use a unique_ptr to manage the Paging module
+
+  [ Kirk Klobe ]
+  * [4947e12e] Fix dynrec crash on x86 Windows builds (Fixes: #1177)
+
+  [ mrfixit2001 ]
+  * [c74131c2] Fix performance regression with meson build system
+
+  [ Cimarron Mittelsteadt ]
+  * [1713bf8f] Fix missing debug/messaging symbols in the the example and fs_utils testcase builds by adding stubs.cpp
+  * [96f5b144] Fix GetTicks() integer overflow in GFX_Events()
+
+  [ drfiemost ]
+  * [c7d0d21a] Sync reSIDfp from upstream
+
+  [ kcgen ]
+  * [b5ef84a0] Initialize members and use C++11 constructs in reSIDfp
+
+  [ Kirk ]
+  * [85cfebdc] Convert mixer audio callback to SDL_QueueAudio
+
+  [ ripsaw8080 ]
+  * [0f38ed83] Disable resizing of debug window on Windows platform; prevents the debug display getting messed up on Win10. Thanks siddhartha.
+  * [956b6865] Add log message for unusual cases where an executable unsafely places its initial stack outside the memory block.
+  * [ebddd1b9] Correct handling of invalid encodings of the LEA instruction. Thanks cimarronm.
+  * [7a8a7ba3] Remove inactive code related to debug builds in the dynamic x86 core.
+
+  [ kcgen ]
+  * [bcc2fb7a] Assert that aspect-ratio math won't operate on zeros
+  * [2995e420] Describe and use bits for Tandy and PCjr color modes
+  * [41b445e0] Clamp the latch time within 16-bits intead of asserting
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 13 Aug 2021 04:17:01 +0000
+
 dosbox-staging (0.78.0~alpha~176~geda49-1) unstable; urgency=medium
 
   [ Feignint ]
