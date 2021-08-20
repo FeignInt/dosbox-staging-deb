@@ -1,3 +1,39 @@
+dosbox-staging (0.78.0~alpha~246~g9a0e-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @1a52d85e709c270e8aa84fa659d37c059270ecb8 **
+
+  * UNRELEASED
+  * [1de99055] Add bash_completion script
+
+  [ kcgen ]
+  * [cc1254b3] Adjust bash-completion per review comments
+
+  [ Feignint ]
+  * [675b8480] List bash-completion in contrib/README.md
+
+  [ kcgen ]
+  * [39513b85] Add README along side bash-completion describing how to use it
+  * [a58327e9] Enale math constants in support header
+  * [4bc81fb1] Permit empty second mouse_control value when "nomouse"
+  * [8d188915] Drop unused coarse cosine and sine functions
+
+  [ Kirk ]
+  * [2fe3f6d1] Fix 32-bit dynamic core crashes
+  * [d37baef4] Optimize cache flushing
+  * [afbba7bb] Define and prefer HAVE_BUILTIN_CLEAR_CACHE in meson.build
+  * [8fe2350c] Install latest Meson via pip3
+  * [0c62a0e3] Fix alignment issue more correctly
+
+  [ kcgen ]
+  * [1f1e8974] Differentiate meson installation on Debian/Ubuntu versions
+  * [acbbba4a] Add arm64 to the macOS build label
+
+  [ Kirk Klobe ]
+  * [9a0e320c] Add risc_x64.h to VS2019 solution
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 20 Aug 2021 04:16:43 +0000
+
 dosbox-staging (0.78.0~alpha~217~g41b44-1) unstable; urgency=medium
 
   [ Feignint ]
