@@ -1,3 +1,32 @@
+dosbox-staging (0.78.0~alpha~259~gf8fe-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @1c200eb28260d61cc438d858797730cef0d11ab7 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [b98597d3] Move meson install comments inside the shell statement
+
+  [ Kirk ]
+  * [09a70dfb] Fix compiler warnings from GCC level 3
+
+  [ kcgen ]
+  * [58380780] Update Linux platform build label
+  * [89f81929] Squash a couple printf Bitu format warnings
+  * [98c6591f] Add a safe strlen utility function
+  * [c1658703] Avoid over-reading a non-zero terminated string in messages
+
+  [ Kirk ]
+  * [34ac3379] Replace logging with loguru
+
+  [ kcgen ]
+  * [0507817a] Sync loguru with latest updates
+  * [e9bb9a6d] Add notes about cloning with submodules
+  * [f8fecfda] Document how to configure debugger builds
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 27 Aug 2021 04:16:35 +0000
+
 dosbox-staging (0.78.0~alpha~246~g9a0e-1) unstable; urgency=medium
 
   [ Feignint ]
