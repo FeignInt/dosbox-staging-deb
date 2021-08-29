@@ -1,3 +1,10 @@
+dosbox-staging (0.77.1-1) unstable; urgency=medium
+
+  * DOSBox Staging 0.77.1
+  - https://dosbox-staging.github.io/v0-77-1/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sun, 29 Aug 2021 03:35:49 +0000
+
 dosbox-staging (0.77.0-1) unstable; urgency=medium
 
   * [478cf263] d/patches,control,rules:
