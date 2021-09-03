@@ -1,3 +1,35 @@
+dosbox-staging (0.78.0~alpha~280~g912a-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @c73098f07838fddd1422298ed5d022853bc117d8 **
+
+  * [c73098f0] Update changelog for 0.77.1-1 release
+
+  [ kcgen ]
+  * [85eabb16] Fix crash on large Tandy DMA read (#470)
+
+  [ shermp ]
+  * [c80807a0] Refactor MOUNT and IMGMOUNT out of dos_programs
+  * [e7e1483e] Add copyright declaration to MOUNT and IMGMOUNT
+  * [f3d58211] Refactor MEM from dos_programs
+  * [fbe483aa] Refactor BOOT out of dos_programs
+  * [3ba2c133] Refactor LOADROM out of dos_programs
+  * [c287009e] Refactor LOADFIX out of dos_programs
+  * [ed1e9fad] Refactor RESCAN out of dos_programs
+  * [9cf91e06] Refactor INTRO out of dos_programs
+  * [bbaeff65] Move keybord layout func prototypes to dedicated header
+  * [7f1f39bb] Refactor KEYB out of dos_programs
+  * [a947e90e] Refactor BIOSTEST out of dos_programs
+  * [47068b30] Remove uneeded #include's from dos_programs
+  * [4cb81cc7] Add new program source files to dosbox.vcxproj
+  * [af10bc44] Refine includes for dos programs
+  * [4d6f2619] Update copyright notices to correct attribution
+  * [07af58a6] Add missing trailing new lines
+  * [ce1142f8] Move program header includes to be first
+  * [912afc91] Reintroduce BIOSTEST conditional compilation
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 03 Sep 2021 04:16:47 +0000
+
 dosbox-staging (0.78.0~alpha~259~gf8fe-1) unstable; urgency=medium
 
   [ Feignint ]
