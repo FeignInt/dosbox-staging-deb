@@ -1,3 +1,138 @@
+dosbox-staging (0.78.0~alpha~414~g0dcf5-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @5d94ff13bf84146a226f896e74306f9702b2db98 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [d8aca0fd] Describe how to initialize submodules after cloning
+  * [c073fc81] Discard the batch-file after reading the last line
+  * [4148e26d] Refactor SDL2_Net initialization and avoid leak on exit
+  * [70ad2f71] Drop unnecessary mutex locking in CDROM image
+  * [1cee3cf0] Exit batch processing if user triggers exit
+
+  [ s3freak ]
+  * [b1f17bba] Import Custom S3 Trio Patch
+
+  [ kcgen ]
+  * [58a833a5] Prefer CB_VESA_PM and deprecate CB_VESA_START
+  * [b6ded81b] Add a support function that bounds-checks and casts
+  * [6d5a15f5] Simplify VESA configurable settings
+  * [d6224b6e] Assign 24-bit m-info variables directly and use twidth
+  * [715430d3] Use specified type sizes for VideoModeBlock instead of Bitu
+  * [67e989a3] Adjust VESA scan-length calculation for 24-bit modes
+  * [2eedaaa4] Adjust VESA start-position calculation for 24-bit modes
+  * [4e28c431] Retain existing VESA modes from upstream
+  * [e8c1fa83] Use a 4 MiB default framebuffer for S3 if not provided
+  * [321f5d64] Log the video adapter and memory size on start
+  * [d6968040] Cleanup formatting and unecessary casting in VGA
+  * [d0ccab33] Prefer upstream VGA translation over 24-bit patch
+  * [64dbc9e2] Make the 24-bit RGB type self-documenting
+  * [0b39eb90] Fix unaligned 24-bit pixel reads during rendering
+  * [cd72d59e] Use reinterpret casts when assigning 24-bit pixels
+  * [9906ca1e] Cleanup printf format warnings in VGA S3
+  * [a248993e] Convert and check the VGA clock speed before setting
+  * [dca54a60] Cleanup a double-to-float when passing FPS in for capture
+  * [a5ce4681] Add an explicit fallthrough when putting 4-bit pixels
+  * [0ee0d18f] Handle aspect-correction for specific VESA modes
+  * [95fa499d] Avoid goto: when finding VESA modes
+  * [fc6e92e1] Fix VGA overflow warnings flagged by LGTM and Codacity
+  * [123fe0dc] Eliminate dead branches for some EGA modes
+  * [abadc997] Enable only plane 0 for M_CGA2
+  * [f86270ac] Remove duplicate parents from vmemsize comparison
+  * [fdc9c90d] Collapse duplicate case when getting VESA display start
+  * [6cec0eeb] De-Bitu the VGA blinking function as it only is given an 8-bit value
+  * [570eff24] De-Bitu itermediate video properties
+  * [a5d2eb29] De-Bitu some VGA element sizes to fix some VS2019 warnings
+  * [7426ea69] De-Bitu setting and getting VGA clock frequencies
+  * [4af7983c] De-Bitu an 8-bit blink value to fix a VS2019 warning
+  * [a221192b] Initialize VGA struct elements with defaults
+  * [d7274032] Fix a warning initializing the VGA_Tandy struct member
+  * [c5760217] De-Bitu and refactor VGA_SetClock to fix LGTM warnings
+  * [82496a74] Improve comment regarding 24-bit color and ZMBV
+  * [b3455746] Set S3 fast-page-mode RAM register bits for 4MB+ configurations
+  * [37bd4de4] Make XGA independent of assumed VGA mode enum values
+  * [ba9e6fd5] Make VGAModes enum elements boolean-compatible
+  * [f8f8d35a] Add VESA mode compatilibity settings and prefer 70+ VESA refresh
+  * [3b915be0] Update formatting of VGA mode tables
+  * [f6c60d5a] Snip duplicate VESA mode 0x154
+
+  [ ykhwong ]
+  * [3d4868f4] Add Sierra SC1148x Hi-Color DAC modes for Tseng
+
+  [ kcgen ]
+  * [634bb3c2] Use original VGA SetClock algorithm with doubler flags
+  * [b7c82f23] Auto-size the IO delay cycle type variable
+  * [4b964d44] Add fixed-width IO handler interfaces
+  * [7fe4eb96] Add unit tests for the type-sized IO handler containers
+  * [957cd585] Tag Bitu-size handlers with [[deprecated]] and bump limits
+  * [bdff4666] Add fixed-width IO handler interfaces
+  * [1ab024be] Make fixed-width IO handlers available for use
+  * [2b12e08d] Use fixed-width IO handlers in the memory module
+  * [aa0d2147] Use fixed-width IO handlers in the timer module
+  * [35747285] Use fixed-width IO handlers in the PIC module
+  * [e4d6e487] Use fixed-width IO handlers in the DMA module
+  * [39878a21] Use fixed-width IO handlers in the PCI BUS module
+  * [20123743] Use fixed-width IO handlers in the CMOS module
+  * [88bf0e28] Use fixed-width IO handlers in the joystick module
+  * [9e2f4202] Use fixed-width IO handlers in the keyboard module
+  * [d1dd832f] Use fixed-width IO handlers in the NE2000 module
+  * [5a1c3910] Use fixed-width IO handlers in the serial ports module
+  * [a0c4711a] Use fixed-width IO handlers in the Adlib and OPL modules
+  * [cf553f78] Use fixed-width IO handlers in the Soundblaster module
+  * [30d6625d] Use fixed-width IO handlers in the Gameblaster module
+  * [da3b79b4] Use fixed-width IO handlers in the Disney module
+  * [ffb1ef1e] Use fixed-width IO handlers in the Gravis Ultrasound module
+  * [3612e26e] Use std::fill_n to zero rendering array in GUS
+  * [5f562566] Use fixed-width IO handlers in the Innovation SSI-2001 module
+  * [a6345f65] Use fixed-width IO handlers in the MPU-401 module
+  * [53ea2235] Use fixed-width IO handlers in the Tandy sound module
+  * [b9857392] Use fixed-width IO handlers in the PS/1 Audio module
+  * [7fc489d4] Use fixed-width IO handlers in the VGA memory module
+  * [152064d8] Use fixed-width IO handlers in the VGA Seq module
+  * [a5b8e07b] Use fixed-width IO handlers in the VGA DAC module
+  * [5f237e2e] Use fixed-width IO handlers in the VGA chipsets
+  * [d5a15955] Use fixed-width IO handlers in the VGA other module
+  * [29ffda98] Deprecate the Bitu-sized IO handler interfaces
+  * [253d1b36] Cleanup type-size warnings in VGA chipsets
+  * [b4550f1d] Replace a couple Bitu resolution variables in VGA draw
+  * [c82b920d] Replace a Bitu with uint32 in the Paging Fault handler
+  * [a4bbeb32] Use an 8-bit value to store the file-handle index
+  * [a7cd2358] Use an 8-bit index to track paging queue entries
+  * [d35b0146] Cleanup a printf-format warning in paging
+  * [55bc1b1a] Cleanup extraneous formatting in the debug module
+  * [5d76a0b9] De-Bitu the Soundblaster module and its interface
+  * [0da8c01f] Construct the sblaster env variable using sprintf
+  * [6b2c689b] Fix loss-of-data assigning int-values in MAME FM modules
+  * [cb319e2e] Add unit tests for the IO handlers
+  * [2fd579c7] De-Bitu the printf format tokens in put-pixel
+  * [c85feffb] Reconcile differences between composite patches
+  * [68ff2331] Slightly refactor VGA_Draw_CGA16_Line
+  * [972aff92] Cleanup VGA other by removing CGAModel and cga16_color_select
+  * [6cc38211] Add composite M_CGA16 cases to mode switches
+  * [f5e07550] adjust PCjr composite to use constexpr, consts, and floats
+  * [8a8e06d6] Make startup verbosity default to 'auto'
+  * [e2eaff89] Fix a potential overrun in MAME OPL flagged by Coverity
+  * [9410f0be] Add a check when accessing MAME OPL operators
+  * [be7bca91] Point to updated loguru submodule version
+  * [734baed9] Sync Loguru submodule with upstream
+  * [7da064a4] Sync loguru submodule with upstream
+  * [b25b7b21] Update the documented C++ standard to C++17
+  * [37ce6887] Use the C++17 standard in Meson's project settings
+  * [8e5cd743] Use VisualStudio's C17 standard in the solution settings
+  * [73ba9819] Cleanup fallthrough, printf, and unused variable level-3 warnings
+  * [48b98bff] Add a note about configuring git to always update submodules
+  * [d744d1a0] Work-around a GCC <9.3 bug regarding use of the maybe_unused attribute
+  * [11b4697c] Fix warnings on platforms where char is unsigned
+  * [649b299b] Set Meson to use level-3 warnings by default
+  * [69ba660b] Use \033 instead of \e to comply with ISO-standards
+  * [de658a80] Indent Markdown list by two-spaces for compliance
+  * [c64173ee] Make 'auto' the first startup verbosity choice
+  * [0dcf59e8] Improve the build notes
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 17 Sep 2021 04:17:25 +0000
+
 dosbox-staging (0.78.0~alpha~285~gda22e-1) unstable; urgency=medium
 
   * UNRELEASED
