@@ -1,3 +1,108 @@
+dosbox-staging (0.78.0~alpha~498~g1fe5-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @a385a02ffe360fd4694316af0d64da94dd703d2d **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [933de5a5] Add a case-insensitive string search
+  * [69aca71f] Make FluidSynth's chorus and reverb setting configurable
+  * [01060b27] Fix extra trailing new-line in MT-32 help
+  * [49f7fbc9] Add a support function to wrap a number in-range
+  * [eee78789] Fix loss-of-precision warning in VGA other
+  * [31452b27] Make composite video-mode setting configurable via conf file
+  * [05e23ce6] Format a COMPOSITE log message in VGA other
+  * [5b68adff] Rename the OUT lambda to fix a naming conflict
+  * [e9918df4] Move composite state control to an enum
+  * [db1bed09] Combine mapping of composite shortcuts
+  * [41bbceda] Move composite setup to a stand-alone function
+  * [4b22b3d8] Always apply composite after updating the palette
+  * [9b29ec75] Add selection of composite modes to Tandy_FindMode
+  * [2abb8e07] Always update color after finding PCjr composite mode
+  * [77214992] always apply color squash
+  * [bd44202a] Remove PCjr hue offet given now-correct palette
+  * [08f459dc] Collapse duplicate composite code into lambdas
+  * [fd2ded76] Manage composite adjustments in a simple knob class
+  * [3d3ce39c] Don't immediately exit after just starting
+  * [1f1ef3fa] Reformat shell autoexec loop content
+  * [67eb61f5] Make instant-launch imply the '-exit' argument
+  * [e492b9c3] Make verbosity enum natually ordered
+  * [c6c8c853] Add ability to get an AutoexecObject line
+  * [ded8608a] Fix pre-startup output suppression criteria
+  * [49b1efd7] Add a commented-out printout of autoexec
+  * [6a0f7845] Differentate between the EXIT command and general shutdown requests
+  * [ac4c8d72] Use safe string-length when possible in shell sources
+  * [5e7ab038] Use safe string-length when possible in debug sources
+  * [e15d4e4b] Use safe string-length when possible in dos sources
+  * [c788df68] Use safe string-length when possible in dos_execute sources
+  * [931495db] Use safe string-length when possible in dos_files sources
+  * [5c4760d8] Use safe string-length when possible in dos_keyboard_layout sources
+  * [9b456760] Use safe string-length when possible in dos_mscdex sources
+  * [e2990bf8] Use safe string-length when possible in drive_cache sources
+  * [a6f7b41e] Use safe string-length when possible in drive_local sources
+  * [5dea64ee] Use safe string-length when possible in drive_overlay sources
+  * [d9ef6640] Use safe string-length when possible in program_loadfix sources
+  * [36ad03d3] Use safe string-length when possible in libserial sources
+  * [3e630a3a] Use safe string-length when possible in serialport sources
+  * [41b7079b] Use safe string-length when possible in midi_fluidsynth sources
+  * [87bb6ce5] Use safe string-length when possible in cross sources
+  * [5787814f] Use safe string-length when possible in programs sources
+  * [edfc6810] Use safe string-length when possible in shell sources
+  * [4791609d] Use safe string-length when possible in shell_cmds sources
+  * [1f9c17d1] Use safe string-length when possible in shell_misc sources
+
+  [ GranMinigun ]
+  * [f232eeca] Fix typo describing mouse capture
+
+  [ kcgen ]
+  * [8bb83970] Move the program start time setting to shell-startup
+  * [3b2cdb6e] Add and log a new configuration-type argument in ParseConfigFile()
+  * [99d2fcd8] Layer-load the primary, -conf, and local conf files in that order
+  * [a554385c] Don't double-clock the 640x400 8-bit VESA mode
+  * [cab10618] Drop rapid-exit protection for normal-launch modes
+  * [c22a0e59] Add python3-pip to README.md Debian <= 10 and Ubuntu <= 20.04
+  * [516aa054] Used constexpr's in MPU-401 instead of defines
+  * [a16c0ef5] Use stdint types in MPU-401
+  * [5b5fdbc9] Move the MPU-401 EIO delay to a constexpr
+  * [7546ef4c] Fix MPU-401 8-bit counter handling
+  * [66440188] Eliminate a goto call in MPU-401
+  * [913f113b] Use 8-bit queue counters in MPU-401
+  * [f0a5b801] Simplify queue position decrementers in MPU-401
+  * [cc8692f7] Fix formatting of debug logging in MPU-401
+  * [e12ea09b] Cleanup formatting of MPU-401 sources
+  * [a3c1732e] Cleanup formatting of MPU-401 comments
+  * [b3909656] Up string-compares in MPU-401 setup
+  * [78410e22] Simplify send-now boolean in MPU-401
+  * [11b44434] Use clamp to bound range in MPU-401
+  * [e1f01f7e] Add 1280x960 to allowed S3 OEM modes
+
+  [ John Novak ]
+  * [bf128580] Add config option to toggle window decorations
+  * [e29fc460] Add config option to set initial window position
+  * [baca0bab] Add config option to restrict viewport resolution within screen/window
+  * [f1b1f0f5] Cleanup (remove unnecessary config value comment stripping)
+  * [8c2b067e] Cleanup (make use of already defined constants)
+  * [d8b8c958] Cleanup (make use of already defined constants)
+  * [6e111f6a] Cleanup (get rid of compiler warnings)
+
+  [ kcgen ]
+  * [0cca271f] Create the primary conf if permitted and no other conf was loaded
+  * [ac73fdd0] Make custom -conf settings apply last
+
+  [ John Novak ]
+  * [dc44c580] Use snake case for new config options
+  * [12f3a734] Improve warning message when max_resolution config is invalid
+  * [a63cbe12] Log warnings & errors at the correct log level
+  * [f188de9b] Use whitespace consistently after log message prefixes
+  * [93400140] Allow window_position of 0,0
+  * [f73c7d9d] Fix invalid max_resolution warning
+
+  [ kcgen ]
+  * [1fe5f398] Only suppress the SoundBlaster's first small DMA transfer
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 24 Sep 2021 04:17:20 +0000
+
 dosbox-staging (0.78.0~alpha~414~g0dcf5-1) unstable; urgency=medium
 
   [ Feignint ]
