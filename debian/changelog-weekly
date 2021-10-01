@@ -1,3 +1,71 @@
+dosbox-staging (0.78.0~alpha~545~g786a9-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @f3719aeecb2d843fdc2c7c54a6fbb3258ce7d97a **
+
+  * UNRELEASED
+
+  [ llm ]
+  * [23ce377d] Rollback two incorrect uses of safe_stren for Heavy Debug
+
+  [ kcgen ]
+  * [90c33e72] Apply GFX_UNITY_SCALE scaling constraint on conf parse (#1291)
+  * [f909255d] Allow seamless mouse capture on middle-click or hotkey
+  * [4e65eaf0] Query SDL to populate dimensions when fullresolution=desktop
+  * [f52478c6] Add a generalized PLACEHOLDER program
+  * [7944fcf9] Use placeholder for ATTRIB instead of special handling
+  * [831067dc] Simplify handling of joysticktype=none (#1241)
+  * [970cdd15] Use 0x0 dimensions when fullresolution is "desktop"
+  * [15cee69c] Take focus after screen resets
+
+  [ Kirk ]
+  * [99beb040] Revert to callback function for mixer
+  * [34a1ac77] Fix mixer thread-safety issues
+
+  [ kcgen ]
+  * [4a32cd19] Move defines to constant expressions in Sound Blaster
+  * [5b236d02] Move stepsize to a 16-bit type in Sound Blaster and drop INLINEs
+  * [8f28603e] Cleanup use of explicit (void) and INLINE in Sound Blaster
+  * [b1ae2963] Drop an unecessary cast of 8-bit data in Sound Blaster
+  * [daf200da] Refactor ADPCM routines in Sound Blaster
+  * [f1cc02ce] Use std::min in Sound Blaster FlushRemainingDMATransfer
+  * [3f134474] Add a dormant sampler silencer function to Sound Blaster
+  * [8c50f6b1] Improve PlayDMATransfer state vars in Sound Blaster
+  * [aefffafd] Use new state and silencing in SB 2-bit ADPCM
+  * [a4b81dbf] Use new state and silencing in SB 3-bit ADPCM
+  * [7811b229] Use new state and silencing in SB 4-bit ADPCM
+  * [99694de5] Use new state and silencing in SB 8-bit DMA
+  * [72b8593b] Use new state and silencing in SB 16-bit DMA
+  * [13d74b1b] Deprecate prior PlayDMATransfer state variables
+  * [782fda74] Use bytes_to_read name in Sound Blaster SuppressDMATransfer
+  * [3a56a16b] Simplify Sound Blaster DMA read calls
+  * [1c750558] Deprecate use of SuppressInitialDMATransfer in SB
+  * [e9a01a15] Only provide SB DMAModeNames in the Debugger
+  * [872abc38] Populate bytes, samples, and frames during SB DMA
+  * [394310ab] Use constexpr instead of defines in Joystick
+  * [d21928a0] Use double fake digital positions in Joystick
+  * [3a47a73b] Switch to doubles from float in Joystick
+  * [103a15ca] Move movement type outside the Joystick struct
+  * [4105a14f] Make the joystick last-write type match the PIC type
+  * [5234a8b7] Check the joystick counts before casting
+  * [27d403ae] Use SDL's native joystick axis values in function arguments
+  * [930a7638] De-Bitu joystick numebr and button counts
+  * [d4c8dbaf] Reformat a comment in Joystick
+  * [5bba33aa] Add and use a new visible_to_dos state for joysticks
+  * [5c2a8d0d] Use a lamda to calculate the joystick axis counts
+  * [cbc0b1e6] Adjust timed joystick position calculation
+  * [cea3ebb9] Assert validity of joystick selection
+  * [0a7fd47e] Use a uint8_t to hold the number of emulated buttons
+
+  [ Kirk ]
+  * [ef3cee21] Minor mixer tweaks
+  * [ce3c90a7] Revert mixer.work to non-atomic
+
+  [ kcgen ]
+  * [786a9398] Adjust SB DMA asserts to allow for zero-read
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 01 Oct 2021 04:17:24 +0000
+
 dosbox-staging (0.78.0~alpha~498~g1fe5-1) unstable; urgency=medium
 
   [ Feignint ]
