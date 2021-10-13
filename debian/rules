@@ -25,14 +25,12 @@ meson_flags    := --backend ninja
 meson_flags    += -Ddefault_library=static
 
 release_flags  := --buildtype=release
-debugger_flags := --buildtype=debugoptimized -Denable_debugger=heavy
 
 %:
 	dh $@ --buildsystem=meson
 
 override_dh_auto_clean:
 	dh_auto_clean -Bbuild-release
-	dh_auto_clean -Bbuild-debugger
 
 static-fluidsynth:
 	$(MAKE) -C $(fluidsynth_src)
@@ -43,20 +41,15 @@ override_dh_auto_configure: $(fluidsynth)
 	# set version
 	sed -i -E "s/^( +version : ')[^']+/\1$(subst ~,-,$(DEB_VERSION))/" $(CURDIR)/meson.build
 	dh_auto_configure -Bbuild-release  -- $(meson_flags) $(release_flags)
-	dh_auto_configure -Bbuild-debugger -- $(meson_flags) $(debugger_flags)
 
 override_dh_auto_build:
 	dh_auto_build -Bbuild-release
-	dh_auto_build -Bbuild-debugger
 
 override_dh_auto_test:
 #	dh_auto_test -Bbuild-release
-#	dh_auto_test -Bbuild-debugger
 
 override_dh_auto_install:
-	dh_auto_install -Bbuild-debugger
-	mv debian/tmp/usr/bin/dosbox debian/tmp/usr/bin/dosbox-debug
-	dh_auto_install -Bbuild-release
+	dh_auto_install -Bbuild-release -Pdebian/tmp
 
 override_dh_dwz:
 #

@@ -8,8 +8,6 @@ Build-Depends: debhelper-compat (= 13),
   libasound2-dev,
   libopusfile-dev,
   libpng-dev,
-# ncurses needed for debugger only.
-  libncurses-dev | libncurses5-dev,
   libfluidsynth-dev (>= 2.1.1),
   meson (>= 0.51),
 # Git required for Meson's subprojects feature
@@ -55,36 +53,3 @@ Description: DOS/x86 emulator focusing on ease of use
  .
    Hardware-accelerated video output including integer (pixel-perfect) scaling,
    sharp-bilinear scaling, OpenGL shaders, and more.
-
-Package: dosbox-staging-debug
-Architecture: any
-Multi-Arch: foreign
-Depends: ${shlibs:Depends}, ${misc:Depends}, dosbox-staging (= ${binary:Version})
-Conflicts: dosbox-debug
-Description: DOS/x86 emulator focusing on ease of use (debugger)
- DOSBox Staging is a full x86 CPU emulator (independent of host architecture),
- capable of running DOS programs that require real or protected mode.
- .
- It features:
- .
-   A built-in DOS-like console
- .
-   Emulation of several PC variants (IBM PC, IBM PCjr, Tandy 1000)
-   and CPUs (286, 386, 486, and Pentium I).
- .
-   Graphics chipsets: Hercules, CGA, EGA, VGA, and SVGA.
- .
-   Audio solutions: PC Speaker, Tandy Sound System, Disney Sound Source,
-   Sound Blaster series, and Gravis UltraSound.
- .
-   CDROM and CD Digital Audio with audio optionally encoded as FLAC, Opus,
-   OGG/Vorbis, MP3 or WAV.
- .
-   Joystick emulation working with modern game controllers.
- .
-   Serial port emulation including IPX over UDP and Telnet over TCP/IP.
- .
-   Hardware-accelerated video output including integer (pixel-perfect) scaling,
-   sharp-bilinear scaling, OpenGL shaders, and more.
- .
- This package contains the DOSBox Staging Debugger.
