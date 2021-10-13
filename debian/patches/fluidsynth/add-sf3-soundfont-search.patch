@@ -35,10 +35,10 @@ I think covers most, if not all distributions
  1 file changed, 17 insertions(+), 9 deletions(-)
 
 diff --git a/src/midi/midi_fluidsynth.cpp b/src/midi/midi_fluidsynth.cpp
-index b438643..c277311 100644
+index 8107b67..3a0e13b 100644
 --- a/src/midi/midi_fluidsynth.cpp
 +++ b/src/midi/midi_fluidsynth.cpp
-@@ -46,16 +46,18 @@ static void init_fluid_dosbox_settings(Section_prop &secprop)
+@@ -48,16 +48,18 @@ static void init_fluid_dosbox_settings(Section_prop &secprop)
  {
  	constexpr auto when_idle = Property::Changeable::WhenIdle;
  
@@ -63,9 +63,9 @@ index b438643..c277311 100644
 -	        "For example: 'soundfont.sf2 50' will attenuate it by 50 percent.\n"
 +	        "For example: 'soundfont 50' will attenuate it by 50 percent.\n"
  	        "The scaling percentage can range from 1 to 500.");
- }
  
-@@ -139,6 +141,7 @@ static std::deque<std::string> get_data_dirs()
+ 	str_prop = secprop.Add_string("chorus", when_idle, "auto");
+@@ -164,6 +166,7 @@ static std::deque<std::string> get_data_dirs()
  	        xdg_data_home + "/dosbox/soundfonts/",
  	        xdg_data_home + "/soundfonts/",
  	        xdg_data_home + "/sounds/sf2/",
@@ -73,7 +73,7 @@ index b438643..c277311 100644
  	};
  
  	// Second priority are the $XDG_DATA_DIRS
-@@ -154,6 +157,7 @@ static std::deque<std::string> get_data_dirs()
+@@ -179,6 +182,7 @@ static std::deque<std::string> get_data_dirs()
  		const auto resolved_dir = CROSS_ResolveHome(xdg_data_dir);
  		dirs.emplace_back(resolved_dir + "/soundfonts/");
  		dirs.emplace_back(resolved_dir + "/sounds/sf2/");
@@ -81,7 +81,7 @@ index b438643..c277311 100644
  	}
  
  	// Third priority is $XDG_CONF_HOME, for convenience
-@@ -170,7 +174,11 @@ static std::string find_sf_file(const std::string &name)
+@@ -195,7 +199,11 @@ static std::string find_sf_file(const std::string &name)
  	if (path_exists(sf_path))
  		return sf_path;
  	for (const auto &dir : get_data_dirs()) {

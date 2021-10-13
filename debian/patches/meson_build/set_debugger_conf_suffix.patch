@@ -18,10 +18,10 @@ it at least runs.
  1 file changed, 1 insertion(+)
 
 diff --git a/meson.build b/meson.build
-index 6c9ee88..23b6e40 100644
+index 9f0eabd..2828226 100644
 --- a/meson.build
 +++ b/meson.build
-@@ -69,6 +69,7 @@ endif
+@@ -66,6 +66,7 @@ endif
  
  if get_option('enable_debugger') == 'heavy'
    conf_data.set10('C_HEAVY_DEBUG', true)
