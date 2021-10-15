@@ -16,6 +16,7 @@ jobs:
           PPA_GPG_SSB_PK: ${{ secrets.PPA_GPG_SSB_PK }}
           DEBIAN_BRANCH: "debianish"
           UPSTREAM_REPO: "dosbox-staging/dosbox-staging"
+          UPSTREAM_BRANCH: "main"
           DEBFULLNAME: "Feignint"
           DEBEMAIL: "37488595+FeignInt@users.noreply.github.com"
           PPA_REPO: "feignint/dosbox-staging-weekly"
@@ -84,17 +85,18 @@ jobs:
           # i.e. I need the tag, so git describe returns something that can
           # be used as a debian version string
 
-          for envvar in       \
-               DEBIAN_BRANCH  \
-               UPSTREAM_REPO  \
-               DEBFULLNAME    \
-               DEBEMAIL       \
-               PPA_REPO       \
-               GPG_TTY        \
-               LP_API         \
-               MIN_UBUNTU     \
-               PPA_DISTROS    \
-               SHALLOW_SINCE  \
+          for envvar in        \
+               DEBIAN_BRANCH   \
+               UPSTREAM_REPO   \
+               UPSTREAM_BRANCH \
+               DEBFULLNAME     \
+               DEBEMAIL        \
+               PPA_REPO        \
+               GPG_TTY         \
+               LP_API          \
+               MIN_UBUNTU      \
+               PPA_DISTROS     \
+               SHALLOW_SINCE   \
           ;do
             declare -n envvar_nameref="$envvar"
             printf "%s=%s\n"            \
@@ -137,12 +139,12 @@ jobs:
           if [[ ${GITHUB_REPOSITORY} != ${UPSTREAM_REPO} ]]
           then
             # is it worth also doing release snapshots?
-            git remote add --track=master \
+            git remote add --track=${UPSTREAM_BRANCH} \
                 upstream https://github.com/${UPSTREAM_REPO}
             git fetch --tags upstream --shallow-since="${SHALLOW_SINCE}"
             git fetch --deepen=1 upstream
           fi
-          git describe upstream/master
+          git describe upstream/${UPSTREAM_BRANCH}
           # FIXME if we are upstream this script breaks
           # upstream needs to be set as origin, and other things..
       - name: package source
@@ -332,7 +334,7 @@ jobs:
           # e.g. 0.76.0~alpha~331~g53b1-1
           debVersion="$( sed 's/-/\~/g;s/^v//
                              ' < <( git describe --abbrev=4  \
-                                        upstream/master    ) )-1"
+                                        upstream/${UPSTREAM_BRANCH} ) )-1"
 
           weekly_changelog
           weekly_patches
