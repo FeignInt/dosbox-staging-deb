@@ -1,3 +1,122 @@
+dosbox-staging (0.78.0~alpha~620~gc626-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @99188d6c7f88d5bf1a4c7a31fe7900f2e24bc7c4 **
+
+  * [d0151294] Rediff patches.
+    Drop d/p/*-bash-completion.patch: applied upstream
+  * [cbb06a2e] debian/*: Stop building debugger
+
+  [ ripsaw8080 ]
+  * [6ff159a2] Small correction related to r4444.
+
+  [ kcgen ]
+  * [35a13d62] Refer to main branch in VC redist text file
+  * [db0aa1c9] Use main branch name in the contributing guide
+  * [5fa39b63] Update aspect and special flags for EGA modes
+  * [de7ccb2c] Add a mixer constexpr function to produce silent samples
+  * [a5b1c083] Fix 16-bit mono DMA reads
+  * [82052b8e] Add sanity checks and logging to Sound Blaster
+  * [420af3f9] Simplify signed-case in Mixer_GetSilentDOSSample
+  * [a5f004c1] Always initialize the Sound Blaster's speaker to 'off'
+  * [895d0e3f] Use warmup for initial SB16 DSP reset events
+
+  [ David Reid ]
+  * [203ac4cb] Sync dr_wav with upsteam (v0.13.2)
+
+  [ Kirk ]
+  * [6bd9313e] Remove sleeppattern logic
+  * [0d690959] Remove yield as it was causing latency spikes
+  * [9cc43745] Use spinwait instead of delay
+
+  [ kcgen ]
+  * [6d2c2efd] Revert "Sync dr_wav with upsteam (v0.13.2)"
+
+  [ Kirk ]
+  * [2a98f356] Revert to sleep
+  * [cd300c43] Remove precise delay
+  * [3a1b6fcc] Just use standard C++ 'inline' keyword for INLINE
+
+  [ kcgen ]
+  * [38f64806] Move loguru from submodule to src/libs
+
+  [ Kirk ]
+  * [69784fe2] Update entire system for C++17 support
+
+  [ shermp ]
+  * [92a05428] Test removing msvc (v)snprintf redefinition
+
+  [ Patryk Obara ]
+  * [41401456] Use Meson summary function
+  * [e65a2ae0] Avoid using libloguru as project include
+  * [e777236c] Reformat default meson options for readability
+  * [a3a00308] Use up-to-date nomenclature in README.md
+
+  [ kcgen ]
+  * [6676e070] Fix and expand the Meson notes regarding target directories
+
+  [ Kirk ]
+  * [81dc7e5d] Revert "experimental dynamic codegen optimization"
+  * [c7b7dd56] Fix new warning from revert
+
+  [ kcgen ]
+  * [a6456e4c] No longer pause placeholder commands
+  * [ab55ce47] Silence loss-of-precision warnings in MAME FM modules
+
+  [ Kirk ]
+  * [5a0ce2e7] Change GetTick functions to start from zero on startup
+
+  [ Илья Индиго ]
+  * [921f1c46] Update Russian (ru_RU) translation
+
+  [ Gregory Pakosz ]
+  * [217f126b] Add the whereami single-source library
+
+  [ kcgen ]
+  * [3e703c2d] Add whereami to the Meson and VS build systems
+  * [43630da2] De-Bitu some variables in Setup
+  * [a87275cd] Fix a sign-mismatch comparison warning in Setup
+  * [5c0629e6] Use the executable path to lookup bundled translations
+  * [ac5a9d2f] Workaround GCC 7 and 8 that require experimental::filesystem
+
+  [ Patryk Obara ]
+  * [aab26bad] Fix PVS issues in CreateAutoexec
+
+  [ kcgen ]
+  * [f7007566] Revert clock doubling logic in VGA_SetClock
+  * [f5e4edf3] Add a VESA compatible-mode denylist for Build Engine games
+  * [48343476] Log more DOS video-mode details
+
+  [ Gregory Pakosz ]
+  * [e050aa2b] Fix dead code flagged by Coverity
+
+  [ kcgen ]
+  * [e51545ad] Remove the optional suggestion to clean the ccache in README
+
+  [ Patryk Obara ]
+  * [efa0d6f7] Place old .icns icon with old .ico icon
+
+  [ kcgen ]
+  * [e900dc03] Fix a variable-shadowing warning in Setup
+  * [92dd14b4] Add a " [dosbox] autoexec_section" configurable setting
+  * [44a9b25d] Add getting and setting of the leading autoexec in Config
+  * [247ed698] Apply minor cleanup and formatting in Setup and Shell
+  * [9c91260a] Handle conf-autoexec sections last in Shell
+  * [416ca6b9] Keep track of the leading autoexec conf in Setup
+  * [b64c0162] Describe [autoexec] join vs overwrite in README
+  * [74f377d8] Adjust the fallback resolution based on aspect-correction
+  * [9680e080] Rename a variable to avoid shadowing the function
+  * [d4262960] Adjust the OpenGL window size after creation, if needed
+  * [544afc59] Keep track if we've already resized the initial window
+  * [5243a718] Enforce the lower-bound 640x400/480 windowresolution
+  * [f2b050ac] Trim the splash image dimensions from 480 to 400 lines
+  * [6f5cd6b7] Don't use view clipping to differentiate GL filter mode
+  * [055af868] Use GL's clamp-to-edge instead of the deprecated 'clamp'
+  * [0efec080] Exclude pixel-perfect from intial window resizing
+  * [c626e105] Use SDL's OpenGL extension lookup instead of direct calls
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 15 Oct 2021 09:11:39 +0000
+
 dosbox-staging (0.78.0~alpha~545~g786a9-1) unstable; urgency=medium
 
   [ Feignint ]
