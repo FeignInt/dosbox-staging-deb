@@ -1,3 +1,50 @@
+dosbox-staging (0.78.0~alpha~652~g2e9e-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @3aeacdd6ed9f2a4214dc99257e3288998dc52913 **
+
+  * [3aeacdd6] d/control: Build-Depends: meson (>= 0.54.2)
+
+  [ GranMinigun ]
+  * [c5912e90] Calculate texture dimensions individually
+  * [34d631cf] Add non-power-of-two texture support
+  * [07636cf2] De-Bitu width and height variables
+
+  [ kcgen ]
+  * [6fa63d35] Use standard VGA routines when mode matches
+  * [54b1a0a7] Reformat the RGB565 DAC translation value
+  * [e6b7ee9d] Use a more obvious 6-to-8 bit DAC calculation
+  * [9111b5d9] Use more consts in VGA_Draw_Linear_Line
+  * [3a2937ec] Use more consts in VGA_Draw_Xlat16_Linear_Line
+  * [6032ca3f] Use the previous video mode in change criteria
+
+  [ Kirk ]
+  * [258e4b64] Fix race condition in mapper autotype
+
+  [ ripsaw8080 ]
+  * [ce1fcd3f] Register values changed by the EXEC load overlay function; fixes FM music in a Chinese RPG. Improve stack check for wrap-around cases.
+
+  [ kcgen ]
+  * [ac16a9ab] Update mt32emu wrap dependency to 2.5.3
+  * [affcd486] Add range expressions and std::array to maintenance doc
+  * [e3ebb62f] Sync loguru with latest warnings fixes
+  * [2e0ab8cb] Minimize warning-level for subprojects, as these are out-of-scope
+  * [b65c0390] Add noautoexec, noprimaryconf, and nolocalconf to --help
+  * [78077ec3] Make more snprintf calls safe
+  * [7d5b8d06] Use safe_sprintf in safe_strcpy
+  * [3cdcabcf] Add checks for under-reading KCL file
+  * [5de23734] Increment codepage position based on read amount
+  * [333e05f8] Use strncat instead of strncpy in drive FAT
+  * [2bc6c275] Wrap debug-only if-statement with parens
+  * [f64988e2] Check for failed writes in MIDI OSS
+  * [f4651aa0] Use port type in Hercules write API
+  * [0667540a] Ensure all variables are initialized in do-string
+  * [16386c7f] Use literal sizes for io_width_t
+  * [4be27bc0] Add IO handler container tests to VS
+  * [c4a36ac2] Use a 64-bit type to accomodate a left-shift of 32
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 22 Oct 2021 04:17:33 +0000
+
 dosbox-staging (0.78.0~alpha~620~gc626-1) unstable; urgency=medium
 
   [ Feignint ]
