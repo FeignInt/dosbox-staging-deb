@@ -4,8 +4,27 @@ Upstream-Contact: Patryk Obara <dreamer.tan@gmail.com>
 Source: https://github.com/dosbox-staging/dosbox-staging
 
 Files: *
+Copyright: 1993-1996, (Kosta Kostis)
+           1993-1996, <kostis@acm.org>
+           2004, Aitor SANTAMARIA_MERINO
+           2000, Ben Rudiak-Gould
+           2021, DOSBox Staging Team
+           2002-2021, DOSBox Team
+           1989-1991, Free Software Foundation, Inc
+           2002-2019, Henrique Peron <hperon@terra.com.br>
+           Jarek Burczynski <bujar@mame.net>
+           2018-2021, Kevin R. Croft <krcroft@gmail.com>
+           2020-2021, Kirk Klobe <kklobe@gmail.com>
+           1996-2020, Markus Oberhumer, Laszlo Molnar & John Reiser
+           1993, Microsoft Corporation
+           2020-2021, Nikos Chantziaras <realnc@gmail.com>
+           2019-2021, Patryk Obara <patryk.obara@gmail.com>
+           2001-2017, Ryan C. Gordon <icculus@icculus.org>
+           2019-2021, The DOSBox Staging Team
+           2002-2021, The DOSBox Team
+           2020, The dosbox-staging team
+           2012-2021, sergm <sergm@bigmir.net>
 License: GPL-2+
-Copyright: 2002-2020, The DOSBox Team
 Comment: No explicit license found, using license(s) from:
  COPYING
 
@@ -41,47 +60,13 @@ Files: include/bios.h
        include/video.h
        src/cpu/callback.cpp
        src/cpu/core_dyn_x86.cpp
-       src/cpu/core_dyn_x86/decoder.h
-       src/cpu/core_dyn_x86/dyn_fpu.h
-       src/cpu/core_dyn_x86/dyn_fpu_dh.h
-       src/cpu/core_dyn_x86/helpers.h
-       src/cpu/core_dyn_x86/risc_x64.h
-       src/cpu/core_dyn_x86/risc_x86.h
-       src/cpu/core_dyn_x86/string.h
+       src/cpu/core_dyn_x86/*
        src/cpu/core_dynrec.cpp
-       src/cpu/core_dynrec/decoder.h
-       src/cpu/core_dynrec/decoder_basic.h
-       src/cpu/core_dynrec/decoder_opcodes.h
-       src/cpu/core_dynrec/dyn_fpu.h
-       src/cpu/core_dynrec/operators.h
-       src/cpu/core_dynrec/risc_armv4le-common.h
-       src/cpu/core_dynrec/risc_armv4le-o3.h
-       src/cpu/core_dynrec/risc_armv4le-thumb-iw.h
-       src/cpu/core_dynrec/risc_armv4le-thumb-niw.h
-       src/cpu/core_dynrec/risc_armv4le-thumb.h
-       src/cpu/core_dynrec/risc_armv4le.h
-       src/cpu/core_dynrec/risc_armv8le.h
-       src/cpu/core_dynrec/risc_mipsel32.h
-       src/cpu/core_dynrec/risc_x64.h
-       src/cpu/core_dynrec/risc_x86.h
+       src/cpu/core_dynrec/*
        src/cpu/core_full.cpp
-       src/cpu/core_full/ea_lookup.h
-       src/cpu/core_full/load.h
-       src/cpu/core_full/loadwrite.h
-       src/cpu/core_full/op.h
-       src/cpu/core_full/optable.h
-       src/cpu/core_full/save.h
-       src/cpu/core_full/string.h
-       src/cpu/core_full/support.h
+       src/cpu/core_full/*
        src/cpu/core_normal.cpp
-       src/cpu/core_normal/helpers.h
-       src/cpu/core_normal/prefix_0f.h
-       src/cpu/core_normal/prefix_66.h
-       src/cpu/core_normal/prefix_66_0f.h
-       src/cpu/core_normal/prefix_none.h
-       src/cpu/core_normal/string.h
-       src/cpu/core_normal/support.h
-       src/cpu/core_normal/table_ea.h
+       src/cpu/core_normal/*
        src/cpu/core_prefetch.cpp
        src/cpu/core_simple.cpp
        src/cpu/cpu.cpp
@@ -115,6 +100,28 @@ Files: include/bios.h
        src/dos/drive_overlay.cpp
        src/dos/drive_virtual.cpp
        src/dos/drives.cpp
+       src/dos/program_biostest.cpp
+       src/dos/program_biostest.h
+       src/dos/program_boot.cpp
+       src/dos/program_boot.h
+       src/dos/program_imgmount.cpp
+       src/dos/program_imgmount.h
+       src/dos/program_intro.cpp
+       src/dos/program_intro.h
+       src/dos/program_keyb.cpp
+       src/dos/program_keyb.h
+       src/dos/program_loadfix.cpp
+       src/dos/program_loadfix.h
+       src/dos/program_loadrom.cpp
+       src/dos/program_loadrom.h
+       src/dos/program_mem.cpp
+       src/dos/program_mem.h
+       src/dos/program_mount.cpp
+       src/dos/program_mount.h
+       src/dos/program_mount_common.cpp
+       src/dos/program_mount_common.h
+       src/dos/program_rescan.cpp
+       src/dos/program_rescan.h
        src/fpu/fpu.cpp
        src/fpu/fpu_instructions.h
        src/fpu/fpu_instructions_x86.h
@@ -148,19 +155,7 @@ Files: include/bios.h
        src/hardware/pci_bus.cpp
        src/hardware/pci_devices.h
        src/hardware/pic.cpp
-       src/hardware/serialport/directserial.cpp
-       src/hardware/serialport/directserial.h
-       src/hardware/serialport/libserial.cpp
-       src/hardware/serialport/libserial.h
-       src/hardware/serialport/misc_util.cpp
-       src/hardware/serialport/misc_util.h
-       src/hardware/serialport/nullmodem.cpp
-       src/hardware/serialport/nullmodem.h
-       src/hardware/serialport/serialdummy.cpp
-       src/hardware/serialport/serialdummy.h
-       src/hardware/serialport/serialport.cpp
-       src/hardware/serialport/softmodem.cpp
-       src/hardware/serialport/softmodem.h
+       src/hardware/serialport/*
        src/hardware/tandy_sound.cpp
        src/hardware/timer.cpp
        src/hardware/vga.cpp
@@ -204,7 +199,52 @@ Files: include/bios.h
        src/shell/shell.cpp
        src/shell/shell_batch.cpp
        src/shell/shell_misc.cpp
-Copyright: 2002-2020, The DOSBox Team
+Copyright: 2002-2021, The DOSBox Team
+License: GPL-2+
+
+Files: include/byteorder.h
+       include/compiler.h
+       include/fs_utils.h
+       include/mem_host.h
+       include/mem_unaligned.h
+       include/rwqueue.h
+       include/std_filesystem.h
+       include/string_utils.h
+       include/types.h
+       src/config.h.in
+       src/cpu/string_ops.h
+       src/dos/dos_keyboard_layout.h
+       src/dos/program_autotype.cpp
+       src/dos/program_autotype.h
+       src/dos/program_choice.cpp
+       src/dos/program_choice.h
+       src/dos/program_help.cpp
+       src/dos/program_help.h
+       src/dos/program_ls.cpp
+       src/dos/program_ls.h
+       src/dos/program_placeholder.cpp
+       src/dos/program_placeholder.h
+       src/gui/gui_msgs.h
+       src/gui/render_crt_glsl.h
+       src/hardware/innovation.h
+       src/midi/midi_lasynth_model.cpp
+       src/midi/midi_lasynth_model.h
+       src/midi/midi_oss.cpp
+       src/misc/fs_utils_posix.cpp
+       src/misc/fs_utils_win32.cpp
+       src/misc/rwqueue.cpp
+       src/platform/visualc/version.cpp
+       src/version.cpp.in
+       tests/example_tests.cpp
+       tests/fs_utils_tests.cpp
+       tests/iohandler_containers_tests.cpp
+       tests/rwqueue_tests.cpp
+       tests/setup_tests.cpp
+       tests/soft_limiter_tests.cpp
+       tests/string_utils_tests.cpp
+       tests/stubs.cpp
+       tests/support_tests.cpp
+Copyright: 2019-2021, The DOSBox Staging Team
 License: GPL-2+
 
 Files: include/dos_inc.h
@@ -227,11 +267,15 @@ Files: include/dos_inc.h
        src/gui/sdl_mapper.cpp
        src/gui/sdlmain.cpp
        src/hardware/gus.cpp
+       src/hardware/innovation.cpp
        src/hardware/iohandler.cpp
+       src/hardware/iohandler_containers.cpp
        src/hardware/mame/emu.h
        src/hardware/mixer.cpp
        src/hardware/pcspeaker.cpp
+       src/hardware/ps1audio.cpp
        src/midi/midi.cpp
+       src/midi/midi_alsa.cpp
        src/midi/midi_alsa.h
        src/midi/midi_coreaudio.h
        src/midi/midi_coremidi.h
@@ -241,57 +285,35 @@ Files: include/dos_inc.h
        src/misc/support.cpp
        src/shell/shell_cmds.cpp
 Copyright: 2019-2021, The DOSBox Staging Team
-           2002-2020, The DOSBox Team
+           2002-2021, The DOSBox Team
 License: GPL-2+
 
-Files: configure.ac
-       include/byteorder.h
-       include/compiler.h
-       include/fs_utils.h
-       include/mem_host.h
-       include/mem_unaligned.h
-       include/string_utils.h
-       include/types.h
-       src/dos/program_autotype.cpp
-       src/dos/program_autotype.h
-       src/dos/program_ls.cpp
-       src/dos/program_ls.h
-       src/gui/gui_msgs.h
-       src/gui/render_crt_glsl.h
-       src/misc/fs_utils_posix.cpp
-       src/misc/fs_utils_win32.cpp
-       tests/example.cpp
-       tests/fs_utils.cpp
-       tests/soft_limiter.cpp
-       tests/string_utils.cpp
-       tests/support.cpp
-Copyright: 2019-2021, The DOSBox Staging Team
+Files: src/libs/residfp/*
+Copyright: 2007-2010, Antti Lankila
+           2004-2010, Dag Lem <resid@nimrod.no>
+           2011-2021, Leandro Nini <drfiemost@users.sourceforge.net>
 License: GPL-2+
 
-Files: .github/scripts/build-and-run-sanitizers.sh
-       .github/scripts/build-autofdo.sh
+Files: .github/scripts/build-autofdo.sh
        .github/scripts/download-and-build-macports.sh
        .github/scripts/fetch-and-merge-afdo.sh
        .github/scripts/fetch-and-merge-profraw.sh
        .github/scripts/install-and-update-macports.sh
        .github/scripts/prepare-for-macports-cachehit.sh
-       .github/scripts/reset-brew.sh
-       .github/scripts/shrink-brew.sh
+       .github/scripts/run-sanitizers.sh
        .github/scripts/shrink-macports.sh
        .github/scripts/shrink-msys2.sh
-       scripts/automator/main.sh
-       scripts/build.sh
        scripts/count-pvs-bugs.py
        scripts/dump-preprocessor-defines.sh
        scripts/fetch-workflows.sh
        scripts/has-commits-since.sh
-       scripts/list-build-dependencies.sh
        scripts/verify-ctype-algorithm-include-order.sh
        scripts/verify-markdown.sh
 Copyright: 2019-2021, Kevin R. Croft <krcroft@gmail.com>
 License: GPL-2+
 
 Files: contrib/translations/encode.sh
+       contrib/translations/update-sources.sh
        scripts/count-clang-bugs.py
        scripts/count-warnings.py
        scripts/count-xsan-issues.py
@@ -301,6 +323,7 @@ Files: contrib/translations/encode.sh
        scripts/import-from-svn/import-svn-ignore.sh
        scripts/msys-bash.py
        scripts/verify-bash.sh
+       scripts/verify-macos-dylibs.py
        scripts/verify-python.sh
 Copyright: 2019-2021, Patryk Obara <patryk.obara@gmail.com>
 License: GPL-2+
@@ -313,8 +336,22 @@ Files: include/envelope.h
        src/libs/decoders/mp3_seek_table.cpp
        src/libs/decoders/mp3_seek_table.h
        src/libs/decoders/opus.cpp
+       src/misc/soft_limiter.cpp
 Copyright: 2018-2021, Kevin R. Croft <krcroft@gmail.com>
            2020-2021, The DOSBox Staging Team
+License: GPL-2+
+
+Files: src/libs/residfp/OpAmp.cpp
+       src/libs/residfp/Spline.cpp
+       src/libs/residfp/Spline.h
+       src/libs/residfp/WaveformCalculator.cpp
+       src/libs/residfp/WaveformCalculator.h
+       src/libs/residfp/resample/Resampler.h
+       src/libs/residfp/resample/TwoPassSincResampler.h
+       src/libs/residfp/resample/ZeroOrderResampler.h
+       src/libs/residfp/resample/test.cpp
+Copyright: 2007-2010, Antti Lankila
+           2011-2020, Leandro Nini <drfiemost@users.sourceforge.net>
 License: GPL-2+
 
 Files: src/libs/decoders/SDL_sound.c
@@ -336,43 +373,100 @@ Files: contrib/icons/dosbox-staging.svg
 Copyright: 2020-2021, The DOSBox Staging Team
 License: CC-BY-SA-4
 
-Files: contrib/fedora/dosbox-staging.spec
-Copyright: 2020, Patryk Obara (pbo) <dreamer.tan@gmail.com>
+Files: src/libs/residfp/FilterModelConfig6581.cpp
+       src/libs/residfp/FilterModelConfig6581.h
+       src/libs/residfp/FilterModelConfig8580.cpp
+       src/libs/residfp/FilterModelConfig8580.h
+       src/libs/residfp/OpAmp.h
+Copyright: 2007-2010, Antti Lankila
+           2004-2010, Dag Lem
+           2011-2020, Leandro Nini <drfiemost@users.sourceforge.net>
+License: GPL-2+
+
+Files: src/libs/residfp/AUTHORS
+       src/libs/residfp/README
+       src/libs/residfp/meson.build
+Copyright: 2007-2010, Antti Lankila
+           2004-2010, Dag Lem
+           1999-2010, Dag Lem <resid@nimrod.no>
+           1989-1991, Free Software Foundation, Inc
+           2011-2014, Leandro Nini
+           2011-2021, Leandro Nini <drfiemost@users.sourceforge.net>
+           2018, VICE Project
+License: GPL-2+
+Comment: No explicit license found, using license(s) from:
+ src/libs/residfp/COPYING
+
+Files: src/libs/residfp/siddefs-fp.h
+       src/libs/residfp/siddefs-fp.h.in
+       src/libs/residfp/version.cc
+Copyright: 1999-2004, Dag Lem <resid@nimrod.no>
+License: GPL-2+
+
+Files: include/ne2000.h
+       src/hardware/ne2000.cpp
+Copyright: 2004-2008, Dean Beeler <canadacow@users.sourceforge.net>
+           2001-2004, MandrakeSoft S.A
+           2001-2004, Peter Grehan <grehan@iprg.nokia.com>
+           2008-2010, Ralf Grillenberger <h-a-l-9000@users.sourceforge.net>
+           2021, The DOSBox Staging Team
+License: LGPL-2.1+
+
+Files: src/libs/residfp/EnvelopeGenerator.cpp
+       src/libs/residfp/EnvelopeGenerator.h
+Copyright: 2007-2010, Antti Lankila
+           2004-2010, Dag Lem <resid@nimrod.no>
+           2011-2020, Leandro Nini <drfiemost@users.sourceforge.net>
+           2018, VICE Project
 License: GPL-2+
 
 Files: src/midi/midi_fluidsynth.cpp
        src/midi/midi_fluidsynth.h
-Copyright: 2020-2021, Nikos Chantziaras <realnc@gmail.com>
+Copyright: 2020, Nikos Chantziaras <realnc@gmail.com>
            2020-2021, The DOSBox Staging Team
            2002-2011, The DOSBox Team
 License: GPL-2+
-
-Files: src/hardware/opl.cpp
-       src/hardware/opl.h
-Copyright: 1998-2001, Ken Silverman
-           2002-2020, The DOSBox Team
-License: LGPL-2.1+
-
-Files: src/libs/decoders/dr_flac.h
-       src/libs/decoders/dr_wav.h
-Copyright: 2020, David Reid
-License: MIT/X11 or Unlicense
 
 Files: src/libs/decoders/stb.h
        src/libs/decoders/stb_vorbis.h
 Copyright: 2017, Sean Barrett
 License: Expat or Unlicense
 
+Files: src/hardware/opl.cpp
+       src/hardware/opl.h
+Copyright: 1998-2001, Ken Silverman
+           2002-2021, The DOSBox Team
+License: LGPL-2.1+
+
+Files: include/pacer.h
+       src/misc/pacer.cpp
+Copyright: 2020-2021, Kirk Klobe <kklobe@gmail.com>
+           2020-2021, The DOSBox Staging Team
+License: GPL-2+
+
+Files: src/libs/decoders/dr_flac.h
+       src/libs/decoders/dr_wav.h
+Copyright: 2020, David Reid
+License: MIT/X11 or Unlicense
+
 Files: src/libs/zmbv/drvproc.cpp
        src/libs/zmbv/zmbv_vfw.cpp
 Copyright: 1993, Microsoft Corporation
-           2002-2020, The DOSBox Team
+           2002-2021, The DOSBox Team
 License: GPL-2+
 
-Files: src/libs/nuked/opl3.c
-       src/libs/nuked/opl3.h
-Copyright: 2013-2020, Nuke.YKT
-License: LGPL-2.1+
+Files: src/libs/loguru/README.txt
+       src/libs/loguru/loguru.hpp
+Copyright: None (in the public domain)
+License: public-domain
+ The files tagged with this license contains the following paragraphs:
+ .
+ This software is in the public domain. Where that dedication is not
+ recognized, you are granted a perpetual, irrevocable license to copy,
+ modify and distribute it as you see fit.
+ That being said, I would appreciate credit!
+ If you find Loguru useful, tweet me at @ernerfeldt
+ mail me at emil.ernerfeldt@gmail.com
 
 Files: src/libs/gui_tk/gui_tk.cpp
        src/libs/gui_tk/gui_tk.h
@@ -384,61 +478,61 @@ Files: src/libs/ppscale/ppscale.c
 Copyright: 2018-2020, Anton Shepelev <anton.txt@gmail.com>
 License: Fair
 
-Files: m4/ax_cxx_compile_stdcxx.m4
-Copyright: 2008, Benjamin Kosnik <bkoz@redhat.com>
-           2014-2015, Google Inc.; contributed by Alexey Sokolov <sokolov@google.com>
-           2016-2018, Krzesimir Nowak <qdlacz@gmail.com>
-           2015, Moritz Klammler <moritz@klammler.eu>
-           2015, Paul Norman <penorman@mac.com>
-           2013, Roy Stogner <roystgnr@ices.utexas.edu>
-           2012, Zack Weinberg <zackw@panix.com>
-License: FSFAP
+Files: src/libs/decoders/docs/*
+Copyright: 1991-1999, Free Software Foundation, Inc
+License: LGPL-2.1+
+
+Files: src/libs/whereami/*
+Copyright: 2015-2021, Gregory Pakosz <@gpakosz>
+License: Expat or WTFPL-2
+Comment: No explicit license found, using license(s) from:
+ src/libs/whereami/LICENSE.MIT
+ src/libs/whereami/LICENSE.WTFPLv2
+
+Files: src/libs/nuked/opl3.c
+       src/libs/nuked/opl3.h
+Copyright: 2013-2020, Nuke.YKT
+License: LGPL-2.1+
+
+Files: src/libs/residfp/Integrator6581.cpp
+       src/libs/residfp/Integrator8580.cpp
+Copyright: 2014-2016, Leandro Nini <drfiemost@users.sourceforge.net>
+License: GPL-2+
 
 Files: src/dos/dos_codepages.h
-Copyright: 1993-1996, Kosta Kostis <kostis@acm.org>
+Copyright: 1993-1996, (Kosta Kostis)
+           1993-1996, <kostis@acm.org>
            2002-2019, Henrique Peron <hperon@terra.com.br>
            1996-2020, Markus Oberhumer, Laszlo Molnar & John Reiser
            2020-2021, The DOSBox Staging Team
 License: GPL-2+
 
 Files: src/midi/midi_mt32.cpp
-Copyright: 2020-2021, Nikos Chantziaras <realnc@gmail.com>
+Copyright: 2020-2021, (settings)
+           2020-2021, Nikos Chantziaras <realnc@gmail.com>
            2020-2021, The DOSBox Staging Team
            2012-2021, sergm <sergm@bigmir.net>
 License: GPL-2+
 
 Files: src/dos/dos_keyboard_layout_data.h
-Copyright: 2006-2019, Henrique Peron
+Copyright: 2004, Aitor SANTAMARIA_MERINO
+           2006-2019, Henrique Peron
            2020-2021, The DOSBox Staging Team
 License: GPL-2+
 
-Files: m4/ax_pthread.m4
-Copyright: 2011, Daniel Richard G <skunk@iSKUNK.ORG>
-           2019, Marc Stevens <marc.stevens@cwi.nl>
-           2008, Steven G. Johnson <stevenj@alum.mit.edu>
-License: GPL-3+ with AutoConf exception
-
 Files: src/hardware/mame/fmopl.cpp
-       src/hardware/mame/fmopl.h
 Copyright: Jarek Burczynski <bujar@mame.net>
-           Tatsuyuki Satoh
-License: GPL-2+
-
-Files: src/hardware/mame/ymdeltat.cpp
-       src/hardware/mame/ymdeltat.h
-       src/hardware/mame/ymf262.cpp
-       src/hardware/mame/ymf262.h
-Copyright: Jarek Burczynski
+           Tatsuyuki Satoh , MultiArcadeMachineEmulator development
 License: GPL-2+
 
 Files: src/hardware/sblaster.cpp
-Copyright: 1992, CREATIVE TECHNOLOGY LTD
-           2002-2020, The DOSBox Team
+Copyright: CREATIVE TECHNOLOGY LTD
+           2002-2021, The DOSBox Team
 License: GPL-2+
 
 Files: src/libs/decoders/dr_mp3.h
 Copyright: 2020, David Reid
-License: MIT-0 or Unlicense
+License: CC0 or MIT/X11 or Unlicense
 
 Files: src/midi/midi_mt32.h
 Copyright: 2020-2021, The DOSBox Staging Team
@@ -447,13 +541,10 @@ License: GPL-2+
 
 Files: scripts/git-prehook-whitespace.sh
 Copyright: Oldman <imoldman.com@gmail.com>
+           https://github.com/imoldman/config
 License: GPL-2+
 Comment: No explicit license found, using license(s) from:
  COPYING
-
-Files: src/libs/decoders/docs/*
-Copyright: 1991-1999, Free Software Foundation, Inc
-License: LGPL-2.1+
 
 Files: src/libs/decoders/archive.h
 Copyright: laws, the author or authors
@@ -463,35 +554,43 @@ Files: src/libs/decoders/xxhash.h
 Copyright: 2012-2020, Yann Collet
 License: BSD-2-clause
 
-Files: src/libs/zmbv/zmbv_vfw.h
-Copyright: 2000, Ben Rudiak-Gould
-License: GPL-2+
-Comment: No explicit license found, using license(s) from:
- COPYING
-
-Files: src/winres.rc
-Copyright: 2020, DOSBox Staging Team
-License: GPL-2+
-Comment: No explicit license found, using license(s) from:
- COPYING
-
-Files: m4/ax_cxx_compile_stdcxx_14.m4
-Copyright: 2015, Moritz Klammler <moritz@klammler.eu>
-License: FSFAP
-
 Files: contrib/linux/dosbox-staging.metainfo.xml
 Copyright: 2020-2021, The DOSBox Staging Team
 License: CC0-1.0
 
-Files: scripts/dosbox-installer.nsi
-Copyright: 2002-2020, DOSBox Team
+Files: src/debug/debug_disasm.cpp
+Copyright: 1992, Robin Hilliard
+License: GPL
+
+Files: src/hardware/mame/ymf262.cpp
+Copyright: Jarek Burczynski
+License: GPL-2+
+
+Files: src/libs/zmbv/zmbv_vfw.h
+Copyright: 2000, Ben Rudiak-Gould, and distributed under
 License: GPL-2+
 Comment: No explicit license found, using license(s) from:
  COPYING
 
-Files: src/debug/debug_disasm.cpp
-Copyright: 1992, Robin Hilliard
-License: GPL
+Files: src/libs/residfp/array.h
+Copyright: 2011-2014, Leandro Nini
+License: GPL-2+
+
+Files: src/winres.rc
+Copyright: 2021, DOSBox Staging Team
+License: GPL-2+
+Comment: No explicit license found, using license(s) from:
+ COPYING
+
+Files: src/main.cpp
+Copyright: 2020, The dosbox-staging team
+License: GPL-2+
+
+Files: scripts/dosbox-installer.nsi
+Copyright: 2002-2021, DOSBox Team
+License: GPL-2+
+Comment: No explicit license found, using license(s) from:
+ COPYING
 
 Files: debian/*
 Copyright: 2020-2021, Feignint <feignint@gmail.com>
@@ -949,6 +1048,9 @@ License: CC-BY-SA-4
  .
  Creative Commons may be contacted at creativecommons.org.
 
+License: CC0
+Comment: Add the corresponding license text here
+
 License: CC0-1.0
  To the extent possible under law, the author(s) have dedicated all copyright
  and related and neighboring rights to this software to the public domain
@@ -978,29 +1080,6 @@ License: Expat
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
-
-License: MIT-0
- Permission is hereby granted, free of charge, to any person obtaining a copy of
- this software and associated documentation files (the "Software"), to deal in
- the Software without restriction, including without limitation the rights to
- use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
- of the Software, and to permit persons to whom the Software is furnished to do
- so.
- .
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
-
-License: FSFAP
- Copying and distribution of this file,
- with or without modification,
- are permitted in any medium without royalty
- provided the copyright notice and this notice are preserved.
- This file is offered as-is, without any warranty.
 
 License: Fair
  Usage of the works is permitted provided that this instrument is retained
@@ -1060,30 +1139,6 @@ License: GPL-3+
  .
  On Debian systems, the complete text of the GNU General Public
  License, version 3 can be found in "/usr/share/common-licenses/GPL-3".
-
-License: GPL-3+ with AutoConf exception
- This file is free software; you can redistribute it and/or modify it
- under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 3 of the License, or
- (at your option) any later version.
- .
- This program is distributed in the hope that it will be useful, but
- WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- General Public License for more details.
- .
- You should have received a copy of the GNU General Public License
- along with this program; if not, see <http://www.gnu.org/licenses/>.
- .
- As a special exception to the GNU General Public License, if you
- distribute this file as part of a program that contains a
- configuration script generated by Autoconf, you may include it under
- the same distribution terms that you use for the rest of that
- program.  This Exception is an additional permission under section 7
- of the GNU General Public License, version 3 ("GPLv3").
- .
- On Debian GNU/Linux systems, the complete text of the GNU General Public
- License can be found in /usr/share/common-licenses/GPL-3.
 
 License: LGPL-2.1+
  This library is free software; you can redistribute it and/or
@@ -1152,4 +1207,22 @@ License: Unlicense
  OTHER DEALINGS IN THE SOFTWARE.
  .
  For more information, please refer to <http://unlicense.org/>
+
+License: WTFPL
+Comment: Add the corresponding license text here
+
+License: WTFPL-2
+ DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+ Version 2, December 2004
+ .
+ Copyright (C) 2004 Sam Hocevar <sam@hocevar.net>
+ .
+ Everyone is permitted to copy and distribute verbatim or modified
+ copies of this license document, and changing it is allowed as long
+ as the name is changed.
+ .
+ DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+ TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
+ .
+ 0. You just DO WHAT THE FUCK YOU WANT TO.
 
