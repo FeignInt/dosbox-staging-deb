@@ -1,3 +1,34 @@
+dosbox-staging (0.78.0~alpha~672~g3572d-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @0b2d037d396a14ab69e1197cb84bcec49c7d9eec **
+
+  * [0df41ab4] d/control: Build-Depends: libmt32emu2-dev (>= 2.5.3)
+  * [0b2d037d] Update debian/copyright
+
+  [ kcgen ]
+  * [53493c20] Include debugger-build with Windows package
+  * [09c42f9f] Try harder to exclude DEBUG.COM for non-debug-mode
+  * [7c1f93e8] Add DBXDEBUG.COM as an alternative debugger
+
+  [ llm ]
+  * [ff874aff] Revert use of safe_sprintf in the debugger log
+
+  [ kcgen ]
+  * [f03e24ac] Collapse duplicate string operation enums into one
+  * [43117449] Update GoogleTest framework to 1.11
+  * [4b92afc4] Make GoogleMock available to the unit tests
+  * [949395db] Expand macOS build instructions
+  * [0fddbad0] Enable debugger ahead of BIOSTEST
+  * [fd9bff9b] Remove extraneous DEBUG_EnableDebugger() prototypes
+  * [d268ad7f] Add messages for executable and path length errors
+  * [88cf93a6] Inform the user if an executable failed to open during debug
+  * [8a43585c] Inform the user if an executable path exceeds the DOS maximum
+  * [89ae112e] Include a post-DSP-reset transfer warmup period
+  * [b9f62767] Add mt32emu to Meson's try-static-libs
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 29 Oct 2021 04:17:40 +0000
+
 dosbox-staging (0.78.0~alpha~652~g2e9e-1) unstable; urgency=medium
 
   [ Feignint ]
