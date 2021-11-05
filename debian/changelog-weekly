@@ -1,3 +1,86 @@
+dosbox-staging (0.78.0~alpha~748~g08655-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @af9de7d657cce162e4381ea67beb145e008a1c3f **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [e324b646] Update FluidSynth wrap to 2.2.3-1
+  * [8a6ef3d0] Check the usability of Apple's audio headers in Meson
+  * [894cbd8b] Use stdint types in S3 struct
+  * [4e8b7e69] Reference the S3 width and color in XGA
+  * [ac03cafb] Name the S3 PLL Control 2 register accordingly
+  * [78f66886] Use lamda functions to set PLL M, N, and R values
+  * [eac4fc2d] Be more selective when S3 changes mode
+  * [3b4395f3] Store and return the S3 sequence register 18
+  * [3b3fd4d8] Drop S3 double-width criteria in 16-bit mode
+  * [7e0adb23] Improve log descriptions of a couple video modes
+  * [5dfe3b46] Make VESA mode 216 (512x384-15bit) use pixel-doubling
+  * [b66b9c51] Add leak and usage assertions for gfx options
+  * [01d66fbc] Set the OpenGL context to null after deleting
+  * [cec91d57] Destroy the SDL Window on exit, don't leak it
+  * [82b204c9] Destroy the splash screen surface; don't leak it
+  * [6a865fbf] Drop unecessary initial assigment to gfx objects
+  * [30c60222] Set the SDL window to null after destroying
+  * [34c846ce] Localize a couple variables to the point of use
+  * [5c6fab01] Adjust the SetWindowMode window-mode logic
+  * [57950639] Clarify GL Shader's need for forced rendering
+  * [1d44f336] Make SDL redraw on window-mode changes
+  * [14d510ae] Initialize render struct members with defaults
+  * [f95f5647] Drop unused VGA_SetOverride() and associated member
+  * [7766a080] Add a Reset() member function to the Pacer class
+  * [700833c2] Reset the rendering pacer after adjusting the window mode
+  * [238376f8] Allow setting vsync_skip to 0 to disable this feature
+  * [86e4eb70] Log when the rendering pacer skips in non-vsync mode
+  * [eb08676b] Limit verbosity number when populating the warning level string
+  * [754cf0f9] Drop unnecessary 16-casts from x86 FPU instructions
+  * [5eef417e] Explicitly cast data Fetch return values
+  * [f76fd3b5] Drop useless casts in normal core prefix none
+  * [d96f0c3d]  Drop useless casts in full core loadwrite
+  * [d260e4fb] Drop useless casts in full core instruction loader
+  * [52476dc2] Drop useless casts in dynamic FPU memory ops
+  * [c4f9e935] Drop useless casts in dynamic core decoder
+  * [43ef2d1a] Use constexpr and default initializers in lazyflags
+  * [ad76546c] Set initial values in CPU structs
+  * [c6153b38] Moved all CPU_SetFlags calls inside CPU
+  * [f4ac8c12] Set initial values for register structs
+  * [7035cae4] Use constexpr for lookup calls in register header
+  * [6171dbde] Drop useless casts in inout header
+  * [d0a4016e] Drop useless casts and use constexpr in byte order
+  * [3d3afc68] Add uninitialized warnings to meson
+  * [91f19df3] Drop useless casts in normal core prefix 66
+  * [b4024198] Drop useless casts in normal core table EA
+  * [fa8b2daa] Drop useless casts in IDIVW instruction
+  * [c3e22ef0] Drop useless casts in RCLD instruction
+  * [fb528a6d] Drop useless casts in RCRD instruction
+  * [af4385a6] Drop useless casts in DIMULD instruction
+  * [dab7eb9d] Drop useless casts in DIMULW instruction
+  * [68697a46] Drop useless casts in IMULD instruction
+  * [e59b1f13] Adjust debug print formatters for uint32_t flags
+  * [667da53f] Assign new CPU regs and mem segments in BIOSTEST
+  * [36f8fe1d] Expand variables to 64-bit to accommodate shift
+  * [94c69646] Collapse redundant cases in dynamic FPU
+  * [4c4d4e6e] Collapse redundant cases in prefix 66_0
+  * [126cc2b3] Add detection of potential negative shift scenarios
+  * [389b7329] Collapse multiple do-nothing catches in support to_finite
+  * [042cd6af] Drop unreachable code in CPU
+  * [b8e21aa9] Allow selection of CPU_ARCHTYPE_486OLDSLOW
+  * [1727d621] Turn always-true CPU condition into assert
+  * [2db4adbb] Collapse duplicate cases in flags
+  * [c794fe27] Collapse redundant cases in prefix 0f
+  * [fe4b20de] Use a 32-bit type for readdata
+  * [e7512253] Drop useless casts in CPU
+  * [419a2431] Use io_port_t types in decoder calls
+  * [3ab8503e] Eliminate implied PhysPt casts in CPU
+  * [13f11b75] DeBitu PageHandler's memory read and write ops
+  * [fd33ab7b] Check and cast phys_page in InvalidateRange
+  * [b2234159] Check and cast lin_addr in MakeCodePage
+  * [4403b8f7] Make CPU printf formatter match type
+  * [669a1f06] Make debugger printf formatter match type
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 05 Nov 2021 04:17:33 +0000
+
 dosbox-staging (0.78.0~alpha~672~g3572d-1) unstable; urgency=medium
 
   [ Feignint ]
