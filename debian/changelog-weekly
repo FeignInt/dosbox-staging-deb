@@ -1,3 +1,57 @@
+dosbox-staging (0.78.0~alpha~784~g02b68-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @fefce433dbc67386764ac8f2c5b9bdc89980b595 **
+
+  * UNRELEASED
+
+  [ Dan Church ]
+  * [6540e928] Fix syntax error
+
+  [ Christer Solskogen ]
+  * [5149a0c6] Fix typo in man-page regarding cycle adjustment
+
+  [ Wengier ]
+  * [e0a693c6] Add proper help message for PATH command
+  * [fc7b6190] Add full help message for SET command
+  * [5a911429] Add help message for COPY command
+  * [54fdd47b] Add help message for ECHO command
+  * [0f615d99] Add help message for RD/RMDIR command
+  * [2b4af785] Fix help messages as suggested
+  * [92829cbc] Add help message for REN/RENAME command
+  * [00966f4b] Add help message for SUBST command
+  * [54b5f079] Add help message for TYPE command
+
+  [ kcgen ]
+  * [4355d726] Temporarily disable FluidSynth in Windows (#1354)
+  * [98ae032c] Revert "Temporarily disable FluidSynth in Windows (#1354)"
+  * [12a7599d] Reset the ALSA snd sequence after halting
+
+  [ Wengier ]
+  * [0e4142fb] Add help message for RESCAN command
+  * [72cc9145] Add help message for MD/MKDIR command
+  * [3be69640] Add help message for HELP command
+  * [050989dc] Fix wording on help messages
+  * [36fb448c] Add help message for CALL command
+  * [d33fe8cb] Add help message for LS command
+  * [2fa44330] Add help message for EXIT command
+  * [bd663e76] Add help message for BOOT command
+  * [554953a2] Add help message for MEM command
+  * [083fc5b8] Add help message for GOTO command
+
+  [ kcgen ]
+  * [eb2c96be] Sync STB voris with upstream fixes
+  * [a22003ca] Use clamp function in STB vorbis
+  * [46665635] Don't shadow local 'n' variable in STB vorbis
+  * [f25bba0e] Don't shadow local 'm' pointer in STB vorbis
+  * [1a28c911] Comment out dead non-EMS ROM population code
+  * [5d69af9c] Let the ftell return type determine the variable type
+  * [970d15a8] Assert string arithmetic in drive overlay
+  * [0d586f5f] Assert and reuse 'dirp' variable in drive overlay
+  * [02b68084] Rename and remove using std::filesystem in drive overlay
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 12 Nov 2021 04:17:59 +0000
+
 dosbox-staging (0.78.0~alpha~748~g08655-1) unstable; urgency=medium
 
   [ Feignint ]
