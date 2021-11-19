@@ -1,3 +1,76 @@
+dosbox-staging (0.78.0~alpha~838~gb3330-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @79354bb5cc8cbd7e87b15315bc7cc625e671a696 **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [62ae2209] Add help message for CLS command
+  * [6cceaac8] Add help message for IF command
+  * [3ad99a7f] Add help message for SHIFT command
+
+  [ kcgen ]
+  * [f18a9df4] Fix sign-extension in the normal core's MULW
+  * [fa4e1f94] Fix sign-extension in the normal core's MULD
+  * [389fc69e] Fix sign-extension in the normal core's IMULW
+  * [b53ca22c] Use host read and write "at" calls in VGA memory
+  * [fa120840] Cleanup 16-bit and 32-bit VGA returns
+  * [c0fcd47b] Check FindCommand return value in boot program
+  * [c5b4767b] Correct white-space formatting in program-boot
+  * [6a3b2506] Assert that the OPL wave select is valid
+  * [44fdede1] Assert that file handles are accessed in-bounds
+  * [59afcfae] Add a unique_ptr support function to handle FILEs
+  * [8f1cdc25] Make use of the unique_ptr FILE handler in keyboard layout
+  * [8529cca4] Simplify the population of the command tail in shell misc
+  * [0da9c187] Add a destructor to ZMBV to release its buffers
+  * [0222b39f] Fix use-after-free in SDL sound
+  * [8558599d] Drop dead check in int10 modes
+  * [2f489003] Use the index value after checking in in DOS shell
+  * [a375d54a] Check the path length before using it in DOS files
+  * [094c0b55] Assert the expected length in keyboard layout
+  * [31417eb6] Assert an always-true state in keyboard layout
+  * [ddfdfef2] Adjust the test to avoid subtracting from an unsigned character
+  * [ac85899f] Drop an unecessary assignment in keyboard layout
+  * [38d0ad76] Make control page condition Windows-specific
+  * [5426a0df] Cast the ZMBV format type from enum to variable type
+  * [12a4f9ce] Assert that pathenv is always populated in shell misc
+
+  [ Sjoerd van der Berg ]
+  * [39619da0] Add proper opl3 handling of the waveform select to dbopl
+
+  [ kcgen ]
+  * [2c97eb05] Set default Initialize for the Adlib chip's array members
+  * [f1b763cd] Avoid right-shifting a potentially negative VibratoTable value
+  * [7ead9b55] Update author identifier
+
+  [ Sjoerd van der Berg ]
+  * [58f40d07] don't do dual writes to opl2
+
+  [ Wengier ]
+  * [4800e640] Add help message for REM command
+  * [741313f4] Add help message for LOADFIX command
+  * [01cbfa7a] Add help message for MIXER command
+  * [f5e7245e] Add help message for PAUSE command
+  * [324436df] Add help message for COMMAND command
+  * [dcf14e0e] Add help message for LOADROM command
+
+  [ ripsaw8080 ]
+  * [719322c4] Correct disassembly of some FPU instructions.
+
+  [ kcgen ]
+  * [2dec5d45] Reduce DOS's change-dir criteria for success
+  * [ae93844b] Use a 32-bit frequency when creating the channel
+  * [ed9c378e] Use default initializers in mixer and channels
+  * [5c93468a] Manage the mixer channels using a map and mutex
+  * [62893bb4] Use simple 'int' types in the audio Envelope class
+  * [a98d7563] Use simple 'int' types in the Mixer for all counters
+  * [5cb7f3d2] Reduce the type-size of requested samples in PC speaker
+  * [2ec11fe5] Make the Disney used count type match the length type
+  * [b333047a] Let the right-hand-side determine the sample type
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 19 Nov 2021 04:17:54 +0000
+
 dosbox-staging (0.78.0~alpha~784~g02b68-1) unstable; urgency=medium
 
   [ Feignint ]
