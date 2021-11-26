@@ -1,3 +1,38 @@
+dosbox-staging (0.78.0~alpha~868~g4f869-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @a1a37bac43de520aeeeadbf5f75bce1f4f5535f8 **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [373325a2] Add help message for LH/LOADHIGH command
+  * [9df68ee9] Clean up the help message for TIME command
+  * [ffb7aa17] Clean up the help message for DATE command
+  * [0a3881be] Address issues as in the discussion
+
+  [ shermp ]
+  * [ac34a73c] Change 'ncurses' dependency to newer 'curses'
+  * [2014cf9a] Add Windows resources file compiling to meson
+  * [19e02091] Don't redefine ftruncate in mingw environments
+  * [0e2019ac] Remove SDL2 dependencies in tests
+
+  [ kcgen ]
+  * [c90d3cd5] Initialize the PC Speaker's idle timer
+  * [033be502] Switch the PC Speaker's counters to basic integers
+
+  [ Wengier ]
+  * [e05d1879] Cleanup HELP message for DIR command
+  * [1f5b8452] Cleanup help message for KEYB command
+  * [2b14ba01] Cleanup help message for AUTOTYPE command
+  * [3b5b0f93] Makes the option list more readable
+
+  [ kcgen ]
+  * [9a865c4f] Manage VGA modes using vectors
+  * [4f869159] Log the number of modes supported by each card
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 26 Nov 2021 04:18:02 +0000
+
 dosbox-staging (0.78.0~alpha~838~gb3330-1) unstable; urgency=medium
 
   [ Feignint ]
