@@ -1,3 +1,88 @@
+dosbox-staging (0.78.0~alpha~957~ge753-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @f3fda49979341447b59d3e45252b7ea9101a41b0 **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [db558a8b] Add help message for INTRO command
+  * [941b1849] Cleanup help message for CHOICE command
+  * [b9772cd5] Cleanup options for DIR and CHOICE commands
+
+  [ Brandon Roberts ]
+  * [43796ba0] Tests for libdos, C++17 strings for WildFileCmp
+  * [0a35d951] DOS Drives Set_Label unit tests
+  * [6d6c4569] Add edge case tests around Set_Label
+  * [37e06f88] Modernize Set_Label + Unit Tests
+  * [d4063f5c] Clean up and refactor drives tests
+  * [645d2594] Add dos files tests + cleanup
+  * [c2b8e3bc] Bootstrap DOS tests needing real init
+  * [1655cd84] Use a GTEST fixture class to instantiate DOSBox
+  * [5a57db65] Make DOS Devices clean up properly
+  * [2fd40322] Tests for DOS_MakeName
+  * [59ee4b4a] DOS_FindFirst Tests
+  * [b3abad1e] Tests for DTAExtendName
+  * [9d00d8db] Fix libdosbox testing dependency loguru
+  * [cb904a8b] DOS_Shell tests and mocks, refactor fixture
+  * [06ff96a1] Complete tests for DOS_Shell::DoCommand
+  * [01fe9b5d] Tests for CMD_ECHO and allow Mock WriteOut
+  * [b471c738] Add PROGRAMS_Destroy cleanup function
+
+  [ kcgen ]
+  * [cada67f6] Disable some warning flags for unit tests
+  * [c7813f54] Avoid using SDL's main wrapper in the unit tests
+  * [a2d4167b] Setup the config path first in the test fixture
+
+  [ Brandon Roberts ]
+  * [96ad18e0] Fix redundant const cast in test
+  * [a8bdb77e] Fix dead assignment LGTM complaints
+
+  [ David Reid ]
+  * [4082381a] Sync dr_wav with upstream (v0.13.3)
+
+  [ kcgen ]
+  * [e7c8995c] Sync Nuked OPL with upstream
+  * [64f04d6b] Strictly manage ZMBV format using an enum class
+  * [2a04c65f] Debitu CAPTURE_AddImage's interface
+  * [96ebd203] Debitu and initialize the capture structure
+  * [fe76a31f] Use auto types in CAPTURE_AddImage loops
+  * [77f5a3fb] Capture 24-bit data as 32-bit in all cases
+  * [5b81a3e6] Manage ZMBV buffers using vectors
+  * [e8fea05d] Manage the video index and buffer with vectors
+  * [c15fcc04] Hoist common logic out of video processing loop
+  * [8ec6f23b] Reinterpret cast the video data
+  * [d830a1a2] Make more use of auto and cleanup zmbv formatting
+  * [608d1722] Call FinishVideo when stopping video capture
+  * [cafb1719] Use size_t when resizing th zmbv buffers
+  * [1ef0b66d] Selectively use unsigned types in ZMBV sizes
+  * [93f6a79f] Drop unecessary casts processing video data
+  * [cc408316] Add the top include path to the ZMBV solution
+  * [355899e2] Reinterpret cast up to higher bit-depths
+  * [f2f2d73d] Avoid left-shifting negative vx and vy ZMBV values
+  * [50357d2f] Cast Windows buffers to API format
+  * [dae32f60] Avoid overflowing operand before assignment in ZMBV
+  * [52299ba1] Adjust ZMBV's zlib comression settings
+  * [0fbdd8cb] Check zlib return values in ZMBV (CWE-252)
+  * [44037fb3] Document that numlock and caplock are off on startup
+  * [3f2a5630] Move GetExecutablePath() to a support function
+  * [2b035465] Add support for portable configuration layouts
+  * [76148c1b] Unify all IO port write interfaces
+  * [08824271] Use FluidSynth wrap version 2.2.3-2
+  * [7b7eca54] Let xxHash use asserts for non-release builds
+  * [42bf381a] Be more robust when xxHash'ing the mp3 data
+  * [392f29de] Ensure sys/socket.h has necessary functions
+  * [6cbde034] Update the translation writer with new -lang syntax
+  * [44a026fe] Update English language source files for 0.78
+  * [89c064ba] Add new messages for translation to German sources
+  * [d80c05e9] Add new messages for translation to Spanish sources
+  * [a00be637] Add new messages for translation to French sources
+  * [2bd57c8d] Add new messages for translation to Italian sources
+  * [0124c8aa] Add new messages for translation to Polish sources
+  * [e753c041] Add new messages for translation to Russian sources
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 03 Dec 2021 04:18:31 +0000
+
 dosbox-staging (0.78.0~alpha~868~g4f869-1) unstable; urgency=medium
 
   [ Feignint ]
