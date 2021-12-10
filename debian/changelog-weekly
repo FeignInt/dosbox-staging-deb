@@ -1,3 +1,24 @@
+dosbox-staging (0.78.0~alpha~962~gae74-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @ad969fdf24b3504327810b6f155571088c13582e **
+
+  * UNRELEASED
+
+  [ Yann Collet ]
+  * [5aae0200] Sync xxHash with upstream (0.8.1)
+
+  [ Kappa971 ]
+  * [49838fdb] Update Italian (it_IT) translation
+
+  [ kcgen ]
+  * [07593d1c] Sync loguru with upstream (snapshot 2021-12-03)
+
+  [ Burrito78 ]
+  * [ae743819] Update German (de_DE) translation
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 10 Dec 2021 04:18:05 +0000
+
 dosbox-staging (0.78.0~alpha~957~ge753-1) unstable; urgency=medium
 
   [ Feignint ]
