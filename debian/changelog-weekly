@@ -1,3 +1,111 @@
+dosbox-staging (0.78.0~alpha~1049~ga3f05-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @553375f4700db98f02bdb1d0c483db44173bb92b **
+
+  * UNRELEASED
+
+  [ GranMinigun ]
+  * [21c1a5f8] Fix some shaders not working with NN-output
+
+  [ ripsaw8080 ]
+  * [83e3fa2c] Improve BIOS FDD motor timeout counter, most notably for earlier PCs. Fixes a Chinese variant of Space Harrier.
+
+  [ kcgen ]
+  * [97fbb8d6] Prioritize language per: command-line, conf, env LANG=
+  * [28dca706] Improve comments and var names in messages
+  * [ff2fb6a8] Setup the translations in Meson's build-dir
+
+  [ shermp ]
+  * [60d38843] Add '-Wno-pedantic-ms-format' on all supporting windows compilers
+  * [5bb4d165] Use 'PRIuPTR' instead of 'zu' format specifier
+  * [478b65c6] Default init MidiHandler_win32 member variables
+  * [740a717a] Delete copy assignment operator & constructor
+  * [8c50ac48] Fix incorrect debugger format specifiers
+  * [8ed30c48] Fix msys2 compiler warnings in risc_x86.h
+  * [90d83879] Use FARPROC as function pointer type
+  * [9dbaa890] Set dllimport on msys2 clang as well
+
+  [ kcgen ]
+  * [54a1cdbb] Query macOS for the locale
+  * [af4aeaf8] Clear dangling Sound Blaster DMA samples from the prior transfer
+  * [8d39bdc2] Update FluidSynth wrap to version 2.2.4 revision 1
+
+  [ David Reid ]
+  * [f3fb0c6e] Sync dr_wav with upstream (v0.13.4)
+
+  [ kcgen ]
+  * [7a8eef70] Check macOS's locale before using it
+  * [0f3aa55b] Sync loguru with upstream (snapshot 2021-12-12)
+  * [8bf2812b] Update FluidSynth wrap to version 2.2.4 revision 2
+  * [b407875d] Update FluidSynth wrap to version 2.2.4 revision 3
+
+  [ Jookia ]
+  * [1525ba6f] Correct name of pcap package in Meson
+  * [6f7d61be] Add EthernetConnection interface
+  * [7ebecae9] Use EthernetConnection in NE2000 and drop pcap
+  * [658a7471] Add the libslirp EthernetConnection backend
+  * [f01091b7] Add libslirp build documentation
+  * [d3031cf1] Add configuration for SlirpEthernetConnection
+  * [374cdca2] Add slirp to Visual Studio solution
+  * [7a945832] Enable slirp in CI release builds
+
+  [ kcgen ]
+  * [0729ae38] Fix typo in copyright for slirp-related sources
+  * [40860067] Cleanup initializer warnings in slirp sources
+  * [6999e098] Make NE2000s base IRQ type match its APIs
+  * [859ee62b] Manage the NE2000 base port using an io_port_t
+  * [bc382430] Standardize and check NE2000 IO port types
+  * [5952e2d3] Check that NE2000 are no greater than jumbo
+  * [5d182e5a] Check NE2000 MAC values after parsing
+  * [927be3ad] Check that NE2000 packet length-hi fits in 8-bits
+  * [3f2c4505] Check that NE2000's next-page is really 8-bits
+  * [8c5c75f4] Use uint8_t instead of unsigned char in NE2000
+  * [a254a1c6] Check that NE2000's remote DMA address is 16-bit
+  * [8d53d342] Clarify that NE2000 rx_frame receives N bytes
+  * [a51e788b] More safely cast the NE2000's remote bytes
+  * [717ac44f] Use a double for NE2000 PIC_AddEvent timing
+  * [744f73cf] Cleanup a couple whitespace typos in NE2000
+  * [1afc31cf] Bounds-check a constructed NE2000 value
+  * [1454d6c3] Address slirp PR review feedback
+  * [9c45485f] Cleanup formatting in NE2000 transmission loop
+  * [0070b9e8] Initialize NE2000 struct values with defaults
+  * [630dd30f] Add conf settings for slirp port-forwarding
+  * [9ad554e9] Process port-forward conf settings
+  * [4a5c3fef] Add preemptive transmit in NE2000 to retain order
+  * [4b0920ef] Replace C-style clock duration with timer call
+  * [17708c9e] Drop realnic from NE2K because we're no longer bridging
+  * [4ba52bb6] Improve description of Ethernet settings
+  * [064cd92e] Return bytes read from the packet receive callback
+  * [5a0e3f35] Clear NE2000 members in reset using struct defaults
+  * [1062eb27] Check if NE2000 available bytes are fewer than requested
+  * [ff9dcfbe] Use a constexpr to create the bind address in slirp
+  * [76c18c5c] Add ability to get maximum packet size to slirp class
+  * [d237b65c] Add sentinel checks to slirp routines
+  * [3cd16c9c] Adjust whitespace formatting in NE2000
+  * [8f4afafe] Drop unless casts in NE2000
+  * [724a7d8d] Map NE2000 logging to Loguru
+
+  [ Eli Schwartz ]
+  * [9ba8d20e] Drop extraneous includes in Ethernet_slirp
+
+  [ kcgen ]
+  * [b98e2b96] Refactor ETHERNET_OpenConnection
+  * [843cfeea] Cleanup SOCKET and in_addr warnings in Ethernet slirp
+  * [8775ff28] Add slirp and glib meson wraps
+  * [a4a5f72f] Cleanup unecessary (void)s
+  * [513acd6a] Improve network description in conf
+  * [115b0a4e] Use conservative FluidSynth build defaults
+  * [e365aa85] Apply stdlibs and fPIC flags in meson
+  * [e1b02c2b] merge Cleanup SOCKET and in_addr warning
+  * [9b953f70] Use const-return values when possible
+  * [80286cdf] Query the locale for potential language setting
+  * [eb0026a4] Improve NE2000 conf wording
+  * [007f9a2c] Fix typo in the NE2000 IRQ conf wording
+  * [a3f058a0] Hide brew's dynamic libintl from glib on macOS
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 17 Dec 2021 04:18:20 +0000
+
 dosbox-staging (0.78.0~alpha~962~gae74-1) unstable; urgency=medium
 
   [ Feignint ]
