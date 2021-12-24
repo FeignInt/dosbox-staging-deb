@@ -22,7 +22,7 @@ endif
 endif
 
 meson_flags    := --backend ninja
-meson_flags    += -Ddefault_library=static
+meson_flags    += -Ddefault_library=shared
 
 release_flags  := --buildtype=release
 
