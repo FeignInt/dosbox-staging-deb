@@ -1,3 +1,150 @@
+dosbox-staging (0.78.0~alpha~1163~g972ad-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @47d75bcb718b742b79ada163b6abd8975f55f2fd **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [0d5fe2ee] Refactor mount handling with std::filesystem routines (#223)
+  * [3db56fb1] Add extra mount path handling for GCC on Windows
+  * [7ce42936] Ensure provided mount path ends with a slash
+
+  [ Scott Duensing ]
+  * [0e530213] Add enet support to the softmodem with new AT command "+SOCK" to switch between it and TCP
+  * [8e115e5d] Fix warnings
+  * [5198b930] Move enet to libs
+  * [d0ae7a22] Add enet support to nullmodem
+  * [26f21adb] Add conditional compilation checks to serial port code
+  * [997c6c7f] Fix using %ld instead of %zu for size_t
+  * [8c03d040] Change ENET to SOCK in configuration. Fix range bug in program_serial.cpp.
+  * [50f58185] Add more help and use format-commit.sh
+
+  [ kcgen ]
+  * [e5cb8ed0] Adjust the serial port type enum and string names
+  * [d58abe98] Convert the serial port number to array index
+  * [beb3def6] Use a default case to warn about unknown port types
+  * [aa04d846] Indicate that socket-type is required by both parties
+  * [8b0ad81e] Use nullptr in NETClientSocket
+  * [30d77d10] Use ticks to keep track of time in NETClientSocket
+  * [c9ccb5c0] Manage the NETClientSocket's buffer with a vector
+  * [961fba06] Prefix all NETClientSocket log messages with "NET:"
+  * [53d46157] Set the initialized state after deinitializing ENet
+  * [8cf4ba98] Set the client to the nullptr after destroying it
+  * [54f696ea] Sanity check the isopen state on failed host creation
+  * [2e035cdf] Sanity check the isopen state when destroying the host
+  * [132a46e9] Set the host to the nullptr after destroying it
+  * [f1420bf0] Assert the host pointer is valid before using it
+  * [a73f2f1b] Add return-code checks to ENETClientSocket's Putchar
+  * [6ecc8190] Avoid a double-negative when checking buffer size
+  * [467e0e7e] Add return-code checks to ENETClientSocket's SendArray
+  * [31b8e1c6] Assert and reinterpret_cast buffer in GetRemoteAddressString
+  * [a789db75] Check the Enet connection and client before using it
+  * [53de29d6] Sanity check the Enet packet before using it
+  * [fc432cb0] Make Enet client open message similar to close message
+  * [78c4a186] Add SERIAL.COM to the VisualStudio solution
+  * [45b98988] Adjust wording and line-count of SERIAL help screen
+  * [f469c2ee] Check ENet's multi-byte packet size before send
+  * [f8b97f52] Strongly type the user type as SERIAL_PORT_TYPE
+  * [9635a70b] Log ENet connection details include IP and port
+  * [cf08b681] Destroy existing ENet connections if needed
+  * [76784b52] Fix typo in ENet version log line
+
+  [ Sherman Perry ]
+  * [00bfb814] Wiki: update MSYS2 build instructions
+  * [528caea3] Shorten lines
+
+  [ kcgen ]
+  * [91d3d200] Revert "Refactor mount handling with std::filesystem routines (#223)"
+
+  [ Wengier ]
+  * [598de870] Support WFW networking from internal DOS shell
+
+  [ kcgen ]
+  * [74dc49a6] Initialize DOS_ExtDevice member with default
+  * [b3350812] Add winsock include for gethostname
+  * [96381075] Reinterpret cast the ioctl to a DOS Device
+  * [e1b7be6c] Add prefix to NE2000 log messages
+  * [b41fdbd7] Suppress logging of subsequent unhandled port IO calls
+  * [77a6ee60] Fix typo in IO byte-reader
+
+  [ Wengier ]
+  * [1698dc60] Import IDE support from DOSBox-X
+  * [ba5dd2b0] Add IDE to the VisualStudio project and Meson build system
+
+  [ kcgen ]
+  * [5fc43f39] Rename IDE conf sections to meet standard
+  * [ce3e9c8f] Prevent IDE classes from being copied or assigned
+  * [d0b1ab37] Cleanup unused and construct order in CDROM and MSCDEX
+  * [10cfdc37] Initialize IDEDevice members in-place
+  * [9c5140e0] Comment out unused IDE parameters and variables
+  * [932e3574] Fix assigment of IDE lower-bound LBA
+  * [6b2298c8] Use safe_sprintf when getting the IDE position
+  * [29b45919] Reformat IDE without Windows line-endings
+  * [d40dfb0b] De-Bitu IDE and cleaning up logging
+  * [62888bcf] Adapt IDE to fixed-width IO handlers
+  * [2fe02bd0] Drop warning exclusions from IDE
+  * [ad2a48b8] Use std::min instead of a local macro
+  * [396d52c0] Drop unnecessary casts in IDE
+  * [d3ad256b] Avoid using zero-length gnu_printf format strings
+  * [327df360] Avoid shadowing the IDE drive_index member variable
+  * [69b8d9ce] Avoid shadowing the IDE count member variable
+  * [1b145a70] Initialize IDEATAPICDROMDevice members with defaults
+  * [c281414f] Initialize IDEATADevice members with defaults
+  * [b725d716] Initialize IDEController members with defaults
+  * [faf51463] Avoid overflowing 32-bit return values in IDE
+  * [be1cf048] Use standard 8-bit ints in IDE
+  * [deb12923] Use standard 16-bit ints in IDE
+  * [54d2e0f7] Use standard 32-bit ints in IDE
+  * [9ae917a2] Check larger IDE values before assigning into 8-bit variables
+  * [b3370b22] Check larger IDE values before assigning into 16-bit variables
+  * [8ca9f09a] Check larger IDE values before assigning into 32-bit variables
+  * [7d4b856a] Use a smaller loop index type in IDE
+  * [08e6db4a] Check and cast before assigning drive-head in IDE
+  * [d2d58f77] Use the smaller IO port type as the loop type
+  * [13fb5826] Avoid casting to determine IDE sector count
+  * [55619b6f] Construct IDE drive speed with the lower-byte
+  * [a22fccde] Use the lower-byte constructing ATAPI commands
+  * [474daf65] Drop caseless switch in IDE
+  * [a7947494] Collapse duplicate ATAPI HDD sector read cases
+  * [4be9c12f] Collapse duplicate ATAPI CDROM sector read cases
+  * [dc1b7882] Don't assign the same value twice in IDE
+  * [a51f7a07] Use std::fill_n to write a subset of an array
+  * [9557c019] Cleanup info string handling in IDE
+  * [da0e0839] Collapse duplicate ATA IO cases
+  * [5daea681] Don't check new result in IDE because it throws
+  * [24819917] Cleanup whitespace formatting in IDE
+  * [6f404e53] Standardize logging messages in IDE
+  * [e2dc1860] Use std::fill_n to write a subset of an array
+  * [62260cef] Use nullptr in IDE
+  * [b6848690] Use standard int types in IDE interfaces
+  * [dc7edafa] Remove IDE from conf system
+  * [616e0ae8] Add support function to check if container has item
+  * [07f40806] Add port uninstall routine to IDE Controller class
+  * [684ec54f] Add IDE detach routine with returned properties
+  * [fa133ed0] Automatically manage IDE controllers
+  * [3a3f9a65] Describe the -ide flag in the IMGMOUNT help page
+  * [090e39c4] Cleanup minor LGTM and Coverity issues in IDE
+  * [86255875] Paramaterize the SB speaker warm-up duration
+  * [29aa4e33] Always use dosbox-staging.conf regardless of build type
+
+  [ NicknineTheEagle ]
+  * [6b06cfea] Re-apply current video mode on CLS
+  * [188864aa] Fix CLS command in VESA modes
+  * [da79faa2] Omit 320x200x15/16/24 modes from compatible VESA set
+
+  [ kcgen ]
+  * [f0150065] Don't line-double EGA 320x200 mode 00Dh
+  * [fca74aff] Always mirror the CRT index and data registers
+
+  [ Wengier ]
+  * [65b5878b] Fix CHOICE command return code
+
+  [ kcgen ]
+  * [972ad1f7] Flag the IO handler size as maybe unused
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 24 Dec 2021 04:18:56 +0000
+
 dosbox-staging (0.78.0~alpha~1049~ga3f05-1) unstable; urgency=medium
 
   [ Feignint ]
