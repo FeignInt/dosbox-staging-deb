@@ -14,6 +14,7 @@ Build-Depends: debhelper-compat (= 13),
   git,
   cmake,
   libmt32emu2-dev (>= 2.5.3),
+  libslirp-dev (>= 4.6.1),
 Standards-Version: 4.5.0
 Homepage: https://dosbox-staging.github.io/about/
 Vcs-Git: https://github.com/feignint/dosbox-staging-deb.git
