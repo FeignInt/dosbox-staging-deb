@@ -1,3 +1,19 @@
+dosbox-staging (0.78.0-1) unstable; urgency=medium
+
+  * [d0151294] Rediff patches.
+    Drop d/p/*-bash-completion.patch: applied upstream
+  * [cbb06a2e] debian/*: Stop building debugger
+  * [3aeacdd6] d/control: Build-Depends: meson (>= 0.54.2)
+  * [0df41ab4] d/control: Build-Depends: libmt32emu2-dev (>= 2.5.3)
+  * [0b2d037d] Update debian/copyright
+  * [812e691a] d/control: Build-Depends: libslirp-dev (>= 4.6.1)
+  * [09378bed] debian/rules: Switch from static to shared
+
+  * DOSBox Staging 0.78.0 release
+  - https://dosbox-staging.github.io/v0-78-0/
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Sun, 26 Dec 2021 03:38:56 +0000
+
 dosbox-staging (0.77.1-1) unstable; urgency=medium
 
   * DOSBox Staging 0.77.1
