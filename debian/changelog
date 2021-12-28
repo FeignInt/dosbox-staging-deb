@@ -1,3 +1,10 @@
+dosbox-staging (0.78.1-1) unstable; urgency=medium
+
+  * DOSBox Staging 0.78.1 maintenance release
+
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Tue, 28 Dec 2021 03:37:35 +0000
+
 dosbox-staging (0.78.0-1) unstable; urgency=medium
 
   * [d0151294] Rediff patches.
