@@ -1,3 +1,74 @@
+dosbox-staging (0.79.0~alpha~31~g5352-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @5c7e0a3d516a9152df1f5e32b8c3e6121fede2de **
+
+  * [812e691a] d/control: Build-Depends: libslirp-dev (>= 4.6.1)
+  * [09378bed] debian/rules: Switch from static to shared
+  * [d51a1866] Update changelog for 0.78.0-1 release
+  * [5c7e0a3d] Update changelog for 0.78.1-1 release
+
+  [ kcgen ]
+  * [891b8ae0] Revert "Don't line-double EGA 320x200 mode 00Dh" (#1463)
+
+  [ GranMinigun ]
+  * [656e98ed] Update Russian (ru_RU) translation
+
+  [ kcgen ]
+  * [2371a9ad] Bump v0.78.0 version strings to v0.79.0
+  * [5c9caccb] Sync loguru with upstream (snapshot 2021-12-26)
+  * [c8c3fb97] Manage the global Config record using a unique_ptr
+  * [cf61810a] Only query the shader type if control is still valid
+
+  [ NicknineTheEagle ]
+  * [b8f3cf96] Split modem echo into separate function
+  * [85dd14ed] Use modem registers for control characters in command
+  * [e244447d] Ignore everything in modem command mode until "AT" sequence
+  * [08a49e8d] Only re-open modem socket when actually changing mode with AT+SOCK
+
+  [ kcgen ]
+  * [65c7d697] Update whitespace formatting in softmodem do-command call
+  * [ff280a88] Sync loguru with upstream (snapshot 2021-12-27)
+  * [381fc218] Remove filename-based versioning from the language files
+
+  [ Kappa971 ]
+  * [e3ca1aba] Update Italian (it_IT) translation
+
+  [ Otto Urpelainen ]
+  * [851b9140] Document gmock dependency installation for Fedora
+
+  [ Burrito78 ]
+  * [55f4c21c] Update German (de_DE) translation
+
+  [ kcgen ]
+  * [7b28148f] Check that /dev/input is accessible with kmsdrm
+  * [8edd1495] Limit window resolution to the framebuffer for kmsdrm
+  * [efc209e5] Prevent callback activation during SetWindowSize calls
+  * [b5c30531] Fix typo in GNUC define
+  * [e2e8750f] Make dosbox-staging version the first logged message
+  * [5d7deb00] Log the initialization of Loguru
+  * [b60e4ebb] Log SDL's initialization and driver types
+
+  [ arrowgent ]
+  * [0b4a80c9] GUI remove conflict "-v" with --version / verbosity
+
+  [ kcgen ]
+  * [9f55d7ca] Only use std::filesystem for clang 12.x and up
+  * [6ae6508d] Sync loguru with upstream (snapshot 2021-12-30
+
+  [ NicknineTheEagle ]
+  * [68284781] Fix VS project files
+  * [ec50cb4f] Fix DTR drop action delay
+
+  [ gulrak ]
+  * [18d1622f] Add the ghc::filesystem to libs
+
+  [ kcgen ]
+  * [e6fb28e9] Add the ghc::filesystem to the build system
+  * [5352e8e6] Revert allowance to increase VESA refresh to host rate
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 31 Dec 2021 04:19:14 +0000
+
 dosbox-staging (0.78.0~alpha~1163~g972ad-1) unstable; urgency=medium
 
   [ Feignint ]
