@@ -1,3 +1,54 @@
+dosbox-staging (0.79.0~alpha~64~g6628a-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @2b8d55494e22cba5e5d41814694552429405d145 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [4499e456] Remove the project's main to prevent masking gmock's main (#1476)
+  * [a0880cde] Use more direct test for VGA double-height (#1485)
+  * [1169991c] Account for aspect-correction when calculating window height
+  * [9df544c3] Avoid changing locales when in the ncurses debugger (#1487)
+  * [51cc38fd] Add VS solution filter for ghc::filesystem source
+
+  [ Kirk ]
+  * [9a1b1d77] Short-circuit the dynamic core's code-page reset routine
+
+  [ kcgen ]
+  * [1609588b] Avoid FlushInstructionCache as a speed-mod on Windows
+  * [f78922fd] Use RWX VirtualAlloc permissions as a speed-mod on Windows
+  * [b1df673c] Avoid per-page VirtualProtect as a speed-mods on Windows
+  * [68ddbc76] Halt compilation for hosts lacking page-protection
+  * [bab2fc2e] Use nullptr to reset the register pointers
+  * [4728a6f8] Initialize state_info members
+  * [793efa53] Handle exit requst(s) after processing autoexec calls
+  * [34c03343] Move command-line exit requests to the end of autoexec
+
+  [ Wengier ]
+  * [64138c27] Support for -set option to start DOSBox Staging with specified config option(s)
+  * [282e56f3] Add/organize help messages
+  * [e190f775] Fix issues as suggested
+  * [6848fa59] Improve help messages for SERIAL command
+  * [78e06b31] Improve help message for CD/CHDIR command
+
+  [ kcgen ]
+  * [911684a9] Fix a performance warning in shell copy
+  * [69e2543c] Assert an array will not underrun in shell copy
+  * [c7115601] Increment history using prefix-form in shell
+  * [08351dff] Slightly improve argument presence check in shell execute
+  * [d432174e] Simplify AutoexecObject by using the default constructor
+  * [9ac42e3c] Always process the populated section in ProcessConfigFileAutoexec
+  * [0852a999] Avoid repeated pointer dereferences in autoexec
+  * [5ca780f9] Increment autoexec string using prefix-form in destructor
+  * [1d69dc7b] Add a safe C-string reset utility function
+  * [0acf34d2] Use string termination routines in Shell misc
+  * [fc776c8d] Improve documentation for the ScanCMDBool support function
+  * [d220fc03] Replace 0 with the string terminator in ScanCMDBool
+  * [658b2dfa] Explicitly ignore some ScanCMDBool return values
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 07 Jan 2022 04:18:59 +0000
+
 dosbox-staging (0.79.0~alpha~31~g5352-1) unstable; urgency=medium
 
   [ Feignint ]
