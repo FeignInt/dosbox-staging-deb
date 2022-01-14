@@ -1,3 +1,69 @@
+dosbox-staging (0.79.0~alpha~115~gc34a-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @3f2709a77fc638ec5a1dc5a8591fe8578fcf2827 **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [973a090c] Allow read-only access to disk images
+  * [31069535] Cleanup help messages for IMGMOUNT command
+
+  [ Kevin Croft ]
+  * [7671e8e1] Refactor the read-only fallback to a separate function
+
+  [ kcgen ]
+  * [625ba6b1] Delete DOS devices on shutdown
+  * [95f22f96] Report unparsable UPX-unpacked code-page data (#1506 mitigation)
+
+  [ Wengier ]
+  * [44a9aa1b] Revert "Increment codepage position based on read amount" (#1506 fix)
+
+  [ kcgen ]
+  * [350b2f91] Refactor code-page parsing of UPX id and version
+
+  [ Wengier ]
+  * [252af66e] Fix multi-line command lines
+  * [e05214e3] Rename and cleanup the cursor move function
+
+  [ shermp ]
+  * [4a0a8956] Add ansi_code_markup header
+  * [f3dc3b39] Add ansi_code_markup implementation
+  * [7f89d533] Add ansi_code_markup tests
+  * [c8a34152] Integrate ansi_code_markup with MSG_Add/MSG_Replace
+  * [c6704783] Cleanup static variables
+  * [40e8421b] Allow escaping tag. Minor regex improvements
+  * [664d315f] Implement suggested fixes from review
+
+  [ kcgen ]
+  * [89de2cb7] Revert the mixer latency settings on Windows platforms
+  * [4edcf768] Revert the mixer's default negotiation setting on Windows platforms
+  * [665f050b] Indicate the project team can be contact via Discord
+  * [4c8dad90] Update our security contact information and clearsign the document
+
+  [ shermp ]
+  * [0d6f0d3f] Add erase screen/line ANSI tags
+  * [edaf210a] Add Tag class and related enum classes
+  * [ab99636f] Add get_ansi_code function which uses new Tag class
+  * [a3f172b5] Use new get_ansi_code in convert_ansi_markup
+  * [5221a08b] Remove old *Parser classes
+  * [e036f22b] Add Regex documentation clarification
+  * [0d321f7c] Encapsulate enums/structs in Tag class
+  * [e4a1b67d] Rename enum classes
+  * [ef8a857e] Rename invalid enum values
+  * [c46d4da1] Rename 'Name' enum to type
+  * [caddf092] Use getters instead of exposing internal structs
+  * [4850a8d3] Assign ANSI numbers to enum values directly
+  * [9f1dcb70] Move enum_val to support.h, and improve it
+
+  [ kcgen ]
+  * [7876e3ce] Replace enum casts in NE2000 with enum_val() helper
+  * [87e90591] Use size_t to manage the two code-page sizes
+  * [761af4fc] Use a std::array to manage the CPI buffer data
+  * [c34a9f3c] Check array indexes when reading the CPI buffer
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 14 Jan 2022 04:19:00 +0000
+
 dosbox-staging (0.79.0~alpha~64~g6628a-1) unstable; urgency=medium
 
   [ Feignint ]
