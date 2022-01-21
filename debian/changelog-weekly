@@ -1,3 +1,50 @@
+dosbox-staging (0.79.0~alpha~140~ge4e3-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @2c4ea194b78126c895ce87e6fb6bc1c5c418fa77 **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [af2913ae] Add country support for different date, time, and decimal formats
+  * [e9a98692] Adjust help messages for DATE and TIME accordingly
+  * [647a1db5] Rewrite country data as arrays
+  * [59093965] Try to map keyboard layout to country code
+  * [22214b30] Remove unnecessary default date format
+  * [7a1f8ce7] Fix warnings for string literals
+  * [2d16d00e] Rewrite country codes as enum class and std::array
+  * [8a41edc2] Rewrite dos.tables.country magic numbers as chars
+  * [177e54b0] Refactor the code to use is_date_valid and is_time_valid functions
+  * [7ddb134f] Refactor time format code and rename formatting functions
+  * [659a975c] Rewrite DOS country mappings
+  * [669ed8f4] Addresses issues as suggested
+
+  [ kcgen ]
+  * [d57136a7] Revert "Use more direct test for VGA double-height" (#1526)
+
+  [ Wengier ]
+  * [d4db73ed] Support for window transparency
+
+  [ kcgen ]
+  * [388442b7] Sync loguru with upstream (snapshot 2022-01-15)
+  * [50cb670e] Use the draw flags to determine axis-doubling
+  * [5c037a69] Add a helper to determine if draw size is doubled
+  * [c1f31532] Manage the pixel-perfect calls and results using a class
+  * [12a093e8] Use the pp_scale_t class instead of the previous SDL point
+
+  [ IPeluchito ]
+  * [e2183150] Update spanish (es_ES) translation
+
+  [ Wengier Wu ]
+  * [8fab5bd0] Convert ANSI codes to markups in help messages
+
+  [ kcgen ]
+  * [1d8af4fb] Scale the desktop size fairly without extra aspect allowances
+  * [1d2acd41] Deduct the border decorations from the desktop size
+  * [e4e35149] Give the "medium" window present space for one PP step
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 21 Jan 2022 04:19:24 +0000
+
 dosbox-staging (0.79.0~alpha~115~gc34a-1) unstable; urgency=medium
 
   [ Feignint ]
