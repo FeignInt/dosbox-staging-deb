@@ -1,3 +1,26 @@
+dosbox-staging (0.79.0~alpha~148~gaf80-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @fe4a04112d0f1b4e4f05e527ef43868c78e91ffb **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [f2aa5e76] Set joystick illuminator color based on status (#1248)
+
+  [ Wengier Wu ]
+  * [265383c6] Add support for setting file attributes
+  * [6b27520b] Implement ATTRIB command
+  * [5b2d9a2a] Add help message for ATTRIB command
+  * [470e8652] Add program_attrib as external program
+  * [77500898] Refactor the attrib_recursive function
+
+  [ Wengier ]
+  * [9cbabd0c] Address issues as suggested
+  * [af80a144] Refactor the nested attribute code
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 28 Jan 2022 04:17:31 +0000
+
 dosbox-staging (0.79.0~alpha~140~ge4e3-1) unstable; urgency=medium
 
   [ Feignint ]
