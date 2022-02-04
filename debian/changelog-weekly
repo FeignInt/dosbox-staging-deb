@@ -1,3 +1,75 @@
+dosbox-staging (0.79.0~alpha~193~g725ff-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @50d3e22b7440a03aa4e64e95816c17b0e4501df6 **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [b5c57e53] IMGMOUNT command to show disk image status
+  * [5189653b] Address PR feedback in IMGMOUNT and MOUNT commands
+
+  [ kcgen ]
+  * [787c9a82] Document how to make a sanitizer build with Meson
+
+  [ Wengier ]
+  * [56ffb136] Fix return code in FileOpen
+
+  [ kcgen ]
+  * [9cbfcd67] Move package lists out of GitHub CI directory
+  * [d052db6b] Add toolchain groups to the MSYS2 package lists
+  * [0efd3dae] Refer to the MSY2 install notes in the sanitizer instructions
+  * [eeac2833] Fix typo when disabling FluidSynth effects
+
+  [ Wengier ]
+  * [cca00844] Support for piping from the command-line
+  * [2873b9eb] Try C: root directory for temporary piping file too
+  * [a0629955] Refactor the GetRedirection code
+  * [fc6c5da6] Add unit tests for shell redirections
+  * [00f54da7] Create helper functions to make the code easier to read
+  * [8d373e83] Rewrite rand() to address Coverity issue
+  * [2c05c1a7] Add message for piping
+  * [b3c4532e] Add/cleanup units tests for redirections
+  * [51e79e75] Address PR feedback in redirections
+
+  [ kcgen ]
+  * [e9fed3c7] Fix an array overrun issue in shell
+  * [56f85c1c] Allow GUS to use IRQs up to 12
+  * [213dc94a] Refactor GUS GetSample to use a 16-bit check instead of 8-bit
+  * [fb5487a0] Keep track of the GUS's remaining DMA nibble
+  * [7cb5ba1c] Fix intermediate names in the GUS Read16BitSample function
+  * [56377d61] Fix GUS handling of the next address when interpolating
+  * [6d7674f0] Refactor the GUS's DMA read/write section
+  * [324b2727] Update GUS DMA address after transfering
+  * [07ad5594] Assert the GUS DMA channel's terminal-count on end
+  * [63eb383a] Hold the GUS playback rate in a normal integer
+
+  [ Peter Ferrie ]
+  * [fba92d41] Make DMA block read and writes behave like emm386.exe
+
+  [ kcgen ]
+  * [41ec7e7c] Refactor the new DMA block read and write routines
+  * [c7c83ada] Collapse duplicate DMA::Read and Write calls into one
+  * [44a8161b] Avoid a potential null-dereference in DMA_Write_Port
+  * [0616f968] Avoid a potential null-dereference in DMA_Read_Port
+  * [03297c85] Limit the DMA wrap size to 32-bit
+  * [819a984a] Adjust the DMA size to use 16-bit per the count-size
+  * [6a29bc10] Make the audio enveloper directional
+  * [1099006c] Use a 12% expansion envelope for the GUS
+  * [1e50f8a0] Make the machine-type enum a bitmask
+  * [6f764a98] Add bit-operations helper functions
+  * [d7700180] Document ports 61h and 62h of the Intel 8255 PPI device
+  * [7dedc3a2] Add port 61h keyboard buffer clearing for XT
+  * [f272aee3] Differentiate time 2 for XT and AT on port 61h reads
+  * [ca9d1189] Slightly refactor port 62h reads with bit-ops calls
+  * [27f65e88] Add bit-operations helper functions
+  * [df4add04] Update bit operation in keyboard to new format
+
+  [ Wengier ]
+  * [725ffbd1] Fix bug in redirection
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 04 Feb 2022 04:14:20 +0000
+
 dosbox-staging (0.79.0~alpha~148~gaf80-1) unstable; urgency=medium
 
   [ Feignint ]
