@@ -1,3 +1,15 @@
+dosbox-staging (0.79.0~alpha~194~g50abad-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @85543ac84faa1638a24a5c9c25338a0fe93736c6 **
+
+  * UNRELEASED
+
+  [ Eonfge ]
+  * [50abadd8] Update latest release info
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 11 Feb 2022 04:17:03 +0000
+
 dosbox-staging (0.79.0~alpha~193~g725ff-1) unstable; urgency=medium
 
   [ Feignint ]
