@@ -1,3 +1,28 @@
+dosbox-staging (0.79.0~alpha~205~g1ecda-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @cc4a73481450324ba4fcbc3c4709c5a411156c92 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [21d1f42d] Fix range-check in bitops
+  * [5cfcb7c6] Revert to physical memory calls for DMA transfers (#1563)
+
+  [ Patryk Obara ]
+  * [df93249f] Assure gtest and gmock in the same version
+
+  [ shermp ]
+  * [ec3d7188] Use std::filesystem in Config::ParseConfigFile()
+  * [24d0e41c] Prevent loading duplicate config files
+  * [8b237e89] Close 'ClCompile' entry correctly
+
+  [ kcgen ]
+  * [8d4fae8f] Improve compile-time bit operations type checks
+  * [1ecdaae0] Improve the bit operation set-to and mask-to ordering
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 18 Feb 2022 04:18:13 +0000
+
 dosbox-staging (0.79.0~alpha~194~g50abad-1) unstable; urgency=medium
 
   [ Feignint ]
