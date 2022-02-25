@@ -1,3 +1,31 @@
+dosbox-staging (0.79.0~alpha~222~g8da4e-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @878c9fda49c878502e88c3d24d338ed05e26e27e **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [32d882d4] Add SDL_CDROM support from SDL1
+  * [8a0ea7c6] Add back CDROM interface from DOSBox
+  * [2046b258] Add/restore documentation for SDL CD support
+  * [c502af56] Remove outdated ASPI interface
+  * [4275bceb] Add SDL CD header file
+  * [088d93b7] Remove lowest IOCTL support to shorten code
+  * [0de96f8c] Re-format the code for better styles
+  * [0eb66de8] Address PR feedback
+  * [012f67cb] Reinstall Linux IOCTL support
+  * [3df32099] Use direct file inclusion for Meson
+  * [324219f1] Use direct file inclusion for VS
+  * [45b0e232] Address PR feedback as suggested
+
+  [ kcgen ]
+  * [6b34088b] Revert "Use a 12% expansion envelope for the GUS"
+  * [8b8f4f4c] Revert "Make the audio enveloper directional"
+  * [a2df53e0] Revert "Assure gtest and gmock in the same version"
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 25 Feb 2022 04:17:55 +0000
+
 dosbox-staging (0.79.0~alpha~205~g1ecda-1) unstable; urgency=medium
 
   [ Feignint ]
