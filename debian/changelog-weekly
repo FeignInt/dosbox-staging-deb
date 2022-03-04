@@ -1,3 +1,37 @@
+dosbox-staging (0.79.0~alpha~236~g9dab9-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @0a49de8bbc5907b392cbd4018055f34e88d64dd5 **
+
+  * UNRELEASED
+
+  [ ripsaw8080 ]
+  * [83e3fa2c] Improve BIOS FDD motor timeout counter, most notably for earlier PCs. Fixes a Chinese variant of Space Harrier.
+
+  [ kcgen ]
+  * [5bfcb0a5] Add build failure notes to the build document (#1582)
+  * [c8ccfcf2] Remove FluidSynth as a brew dependency: use the wrap
+
+  [ Wengier ]
+  * [75c7e3bf] Update feature section in README.md
+
+  [ ripsaw8080 ]
+  * [d6752d65] Fix execution of small COM programs on PCjr machine type.
+  * [7f976e79] Indicate in BIOS memory when keyboard ACK received. Fixes Soko-ban Revenge.
+
+  [ Patryk Obara ]
+  * [021185d6] Fortify sprintf usage in shell_cmds
+  * [f888a42d] Rely on gmock dependency setting up gtest
+
+  [ Wengier ]
+  * [70f2499e] Add wilcard support functions
+  * [06c451ec] Add wildcard support for IMGMOUNT command
+  * [466cc301] Merge WildFileCmp and LWildFileCmp functions
+  * [402abc5d] Add more unit tests for WildFileCmp
+  * [5f415dfe] Address PR feedbacks as suggested
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 04 Mar 2022 04:18:02 +0000
+
 dosbox-staging (0.79.0~alpha~222~g8da4e-1) unstable; urgency=medium
 
   [ Feignint ]
