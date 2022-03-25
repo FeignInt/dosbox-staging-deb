@@ -1,3 +1,28 @@
+dosbox-staging (0.79.0~alpha~249~gab6e-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @a08bd32982f7db3ab507459ad243c2b14f53d43d **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [a1d3a663] Allow compile-time evaluation of DOS date and time pack calls
+
+  [ Wengier ]
+  * [906e8a60] Allow Z drive rescanning
+  * [bd5fc2a3] Add directory support on Z drive
+  * [f7abfbdf] Allow Z drive customization
+  * [f957bb0a] Rewrite 8.3 name generation function
+  * [36eb7dd5] Add unit tests for file name functions
+  * [0fd64016] Address PR feedbacks as suggested
+  * [bccef7f2] Rewrite z_drive_register function using std_fs
+  * [703f97ca] Fix memory leak issue
+  * [8c40ccd8] Rebase the code and address Coverity issues
+  * [7e52c190] Support for changing output options at run-time
+  * [ab6e6f1a] Address PR feedback as suggested
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 25 Mar 2022 04:19:11 +0000
+
 dosbox-staging (0.79.0~alpha~236~g9dab9-1) unstable; urgency=medium
 
   * UNRELEASED
