@@ -1,3 +1,65 @@
+dosbox-staging (0.79.0~alpha~288~gfe511-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @9ec0b7f0d8eca5c7ca55e6d5cc69ec3400dbc0c2 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [0d711ee1] Add get resource support functions
+  * [ae9ce849] Move the translation files into resources
+
+  [ Leandro Nini ]
+  * [c85e162b] Sync reSIDfp from upstream
+
+  [ kcgen ]
+  * [45c9e783] Explicitly exit DOSBox from the test fixture
+  * [30fc718b] Add DOS refresh rate handling variables and routines
+  * [c0830b51] Drop the concept of forced updates from the video chain
+  * [8b1caa9e] Initialize remaining VGA struct members
+  * [efa817bb] Add host refresh rate handling variables and routines
+  * [1b05ca03] Always log overages with the pacer
+  * [b71ab3ed] Add vsync management and determination routines
+  * [bb709a16] Add frame buffer update and presentation routines per backend
+  * [65bb6f98] Employ the CFR and VFR presentation modes
+  * [e4e50d3c] Clarify that a pointer is used to end the GFX update
+  * [94bdd2e5] Add an enum for left and right audio indexes to the mixer
+  * [51ab6e81] Manage the channels' stereo mapping using line indexes
+  * [345fd0a6] Let the mixer map the channels' line out
+  * [11bf7230] Update FluidSynth wrap to version 2.2.6 revision 1
+  * [6003c6c9] Update mt32emu wrap to version 2.6.1 revision 1
+
+  [ David Reid ]
+  * [7f3e0465] Sync dr_flac with upstream (v0.12.37)
+  * [698f4ac5] Sync dr_mp3 with upstream (v0.6.32)
+
+  [ Sean Barrett ]
+  * [3c3b9b64] Sync stb_vorbis with upstream (v1.22)
+
+  [ kcgen ]
+  * [ba3e3df1] Let VFILE_Register handle vector blobs
+
+  [ FeralChild64 ]
+  * [1ae448a5] Sync keyboard.sys, ega.cpi, and related with upstream
+  * [e69dfc6a] Address PR feedback as suggested
+
+  [ kcgen ]
+  * [5e168a58] Check the return-code when reading the vorbis header
+  * [5898e49a] Initialize all FilterModel non-const members
+
+  [ Jonathan Campbell ]
+  * [72e3292e] Make last pixel conditional in S3 polygon routines
+
+  [ kcgen ]
+  * [c3c4e52a] Hoist S3 last pixel skip determination up and use bitops
+  * [b52a7433] Log failed lookups for mandatory resources
+  * [f46aee34] Copy the resources into VisualStudio's output area
+  * [c10ef19d] Describe the resources directory in a README document
+  * [9330edf0] Drop accidental debug logging in the mouse
+  * [fe5119b1] Don't reassign a static container
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 01 Apr 2022 04:21:14 +0000
+
 dosbox-staging (0.79.0~alpha~249~gab6e-1) unstable; urgency=medium
 
   [ Feignint ]
