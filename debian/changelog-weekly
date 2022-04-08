@@ -1,3 +1,28 @@
+dosbox-staging (0.79.0~alpha~303~g4c510-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @ed737d38b7adf7e0ab4c692f07784323375da057 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [7f18d3d3] Check the return value from seek in keyboard layout (CWE-252)
+  * [37cb7b30] Check the return value from seek in keyboard layout (CWE-252)
+  * [bfa0e948] Catch out of bounds array access in keyboard layout (CWE-125)
+  * [1325390c] Check an untrusted loop bound in keyboard layout (CWE-606)
+  * [f447abda] Check an untrushed loop bound in keyboard layout (CWE-606)
+  * [a37ece8e] Check an untrusted loop bound in keyboard layout (CWE-606)
+  * [dd959104] Remove an unused function to eliminate an unchecked rcode warning (CWE-252)
+  * [04102f57] Only process the fixed cycles string if present (CWE-252)
+  * [c24853d7] Collapse duplicate CPU cycle parsing with lambda
+  * [b9fa5615] Use the mersenne twister to generate random values
+  * [a87581ca] Use the new random generator in DOS_CreateTempFile (CWE-676)
+  * [7a708427] Use the new random generator in the OPL drum synth (CWE-676)
+  * [6d9b44cc] Add std::filesystem permission support functions
+  * [bbdd2421] Refactor setting attributes on local files (CWE-367)
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 08 Apr 2022 04:18:32 +0000
+
 dosbox-staging (0.79.0~alpha~288~gfe511-1) unstable; urgency=medium
 
   [ Feignint ]
