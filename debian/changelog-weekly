@@ -1,3 +1,43 @@
+dosbox-staging (0.79.0~alpha~325~gf25a1c-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @83d9cde9669923b8de403827009c0d03b3a69c80 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [be5747a4] Check parallel port with bool OR instead of bitwise OR
+  * [f2a6f067] Rename the state indicator when an exact win size is set
+  * [a0974016] Rename the state indicator when the viewport is limited
+  * [e39eebdf] Rename the viewport resolution related items
+  * [5448940f] Rename a function to be consitent with others
+  * [c9b5d722] Refactor the viewport restriction setting function
+  * [2a348caf] Reorder the viewport_resolution setting after window_resolution
+  * [1e3fa538] Add percentage handling to the viewport conf parser
+  * [5ed5d6ee] Correct the handling of limits when calculating the viewport
+  * [52c287d7] Let the window size be exactly as specified
+  * [5f38b8eb] Always save the window dimensions after resizing
+  * [1b5fafc6] Log the viewport output size and pixel-aspect
+  * [b78c032e] Let the minimum window size be less than the draw area
+
+  [ David Reid ]
+  * [8a6997e6] Sync dr_flac with upstream (v0.12.38)
+  * [aedd10f4] Sync dr_mp3 with upstream (v0.6.33)
+  * [01225553] Sync dr_wav with upstream (v0.13.6)
+
+  [ Wengier ]
+  * [b4282aea] Mass replace int types with cstdint types
+  * [64daf8f6] Disallow deprecated int type conversion
+
+  [ ripsaw8080 ]
+  * [6d43bd91] As in r4371 for writing characters, use real pointer with font data for reading characters. Also ignore page number for modes with only one page, which fixes https://www.pouet.net/prod.php?which=65584
+
+  [ kcgen ]
+  * [d75c6424] Sync loguru with upstream (snapshot 2022-04-14)
+  * [f3e1a6d6] Prevent Loguru from using std::locale (#1561)
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 15 Apr 2022 04:34:15 +0000
+
 dosbox-staging (0.79.0~alpha~303~g4c510-1) unstable; urgency=medium
 
   [ Feignint ]
