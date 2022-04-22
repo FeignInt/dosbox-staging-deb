@@ -1,3 +1,18 @@
+dosbox-staging (0.79.0~alpha~332~gd13f-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @99348f9ef36583626e206eaa15074d243a384234 **
+
+  * UNRELEASED
+
+  [ kcgen ]
+  * [d7d068fd] Create log aliases into the debugger
+  * [eeead793] Set initial values for debugger struct members
+  * [586a25c6] Only use the debugger window after creation
+  * [748e3231] Sync loguru from upstream
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 22 Apr 2022 04:44:01 +0000
+
 dosbox-staging (0.79.0~alpha~325~gf25a1c-1) unstable; urgency=medium
 
   [ Feignint ]
