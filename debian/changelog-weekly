@@ -1,3 +1,45 @@
+dosbox-staging (0.79.0~alpha~364~g08cc-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @f6e8441252b7ba0b4d1cfdcdf122e36d26c086bc **
+
+  * UNRELEASED
+
+  [ Wengier ]
+  * [905c8754] Add /T option for CHOICE command
+  * [9f6fdfc1] Update help message for CHOICE command
+  * [843bee9b] Separate class definitions in SDLmain to header file
+  * [3b8a9a80] Add DOSBox Staging header
+  * [2058ddff] Move PPScale class to ppscale.h
+
+  [ kcgen ]
+  * [cb0632dd] Remove Windows line-endings from sdlmain header
+  * [186d1d17] Avoid a potential divide-by-zero in rate calculation
+  * [57f2517f] Check seek and tell return values in drive overlay (CWE-252), (CWE-687)
+  * [831ffcdf] Avoid iterating past a container end in drive overlay (CWE-119)
+  * [fc2c55a2] Check that a buffer index will stay in-bounds (CWE-129)
+  * [00782707] Check for a potential null deference in pcjr boot (CWE-476)
+  * [a38d6587] Check the return value from seek in pcjr boot (CWE-252)
+  * [b7d18db6] Clarify that output level is not floating-point in sn76496
+  * [5abed120] Collapse identical code for different branches in mf262 CWE-398)
+  * [05c8e356] Check the return value from seek in keyboard layout (CWE-252)
+  * [ba45f614] Check an untrusted loop bound in keyboard layout (CWE-606)
+  * [64160ea8] Check the return value from seek in BIOS disk (CWE-252)
+  * [83df1b11] Ensure we don't overrun a fixed string buffer in shell cmds (CWE-120)
+  * [fbecf0a8] Check the return value from FindCommand in shell cmds (CWE-252)
+  * [ac3bedf8] Only close the serial port handle if it's valid (CWE-687)
+  * [325acb41] Initialize MAME device rate with default value
+  * [27ef74c8] Prevent copying and assiment of the MAME device
+  * [7a927e9c] Make use of the MAME device tag string
+  * [0c4197ab] Add null-deference checks to MAME's sn96496 device
+  * [c7007273] Set the default gain in MAME's sn96496 device
+  * [88d61efd] Increase the sn96496's maximum sample rate
+  * [648c3452] Avoid underflow and overflow in the Mixer
+  * [d0c9b109] Refactor the Tandy sound sources
+  * [08cce173] Drop the tandyrate conf-file setting
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 29 Apr 2022 04:29:13 +0000
+
 dosbox-staging (0.79.0~alpha~332~gd13f-1) unstable; urgency=medium
 
   [ Feignint ]
