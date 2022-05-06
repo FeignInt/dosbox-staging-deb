@@ -1,3 +1,60 @@
+dosbox-staging (0.79.0~alpha~398~g23d9a-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @3f38618fd83dfc0643ce25f79c5458dfdca7bed2 **
+
+  * UNRELEASED
+
+  [ John Novak ]
+  * [e2e13f50] Support gamma-correct interpolation in the 'sharp' OpenGL shader
+
+  [ kcgen ]
+  * [856951ea] Add a support function to remove duplicates from a container
+  * [e31721d2] Rename AutoType's End to StopImmediately
+  * [399fd388] Add upper-case handling to the Auto Typer
+  * [47524c5e] Cleanup whitespace formatting in the Auto Typer
+  * [9148ed41] Refactor the shell's CHOICE command with regular expressions
+
+  [ William McBrine ]
+  * [0c55fa59] Embed latest needed PDCurses files
+
+  [ Kirk ]
+  * [4449a672] Add PDCurses modifications
+  * [cad45c01] Integrate modified PDCurses for debugger
+  * [477465b0] Fix some PVS-Studio warnings
+  * [40f1be0b] Incorporate PR feedback
+  * [d45bac3e] Fix name typo
+  * [3289457f] Apply clang-format to debugger changes
+
+  [ kcgen ]
+  * [d6bab8cb] Check the debugger event using a constexpr array
+
+  [ Kirk ]
+  * [1a289f5c] Enable high DPI for debugger window
+
+  [ kcgen ]
+  * [7a10a026] Fix debug window-event ID check
+  * [26f79006] Render Innovation SSI-2001 samples after write (#1640)
+  * [7dfdb2db] Assign the MPU-401 Reset command to a named value
+  * [9cafb8a3] Halt MIDI playback during MPU-401 resets
+  * [993e7702] Halt MIDI playback when requested via MPU UART mode
+  * [0f60a0dd] Retain and lazy-convert markup messages
+  * [4560933b] Update English source translation strings
+  * [e536969a] Update German message sources for translation
+  * [aab2dda0] Update Spanish message sources for translation
+  * [ee72a8c6] Update French message sources for translation
+  * [5e717c66] Update Italian message sources for translation
+  * [3d7ce35a] Update Polish message sources for translation
+  * [8ee0df4e] Update Russian message sources for translation
+
+  [ Kappa971 ]
+  * [dffdcfa3] Update Italian (it) translation
+
+  [ kcgen ]
+  * [23d9a0a5] Remove language strings no longer used
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 06 May 2022 04:20:05 +0000
+
 dosbox-staging (0.79.0~alpha~364~g08cc-1) unstable; urgency=medium
 
   [ Feignint ]
