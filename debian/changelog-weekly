@@ -1,3 +1,86 @@
+dosbox-staging (0.79.0~alpha~449~g0801-1) unstable; urgency=medium
+
+  [ Feignint ]
+  ** SNAPSHOT build @ade7fbcc010e8adcd149ffa63c6c858a400a5e30 **
+
+  * UNRELEASED
+
+  [ shermp ]
+  * [38b4e820] Move WIKI defines to programs header
+  * [b2d71046] Move messages out of DOS_SetupPrograms to individual program constructors
+
+  [ John Novak ]
+  * [1a81738d] Update MacPorts dependency names
+  * [3e075f0b] Fix MIXER indentation
+  * [601d399e] Shaders can now use sRGB texture or framebuffer via pragmas
+
+  [ kcgen ]
+  * [67e412eb] Add zlib as a dependency of ZMBV
+
+  [ shermp ]
+  * [afbe4f86] Refactor _ProgramStart funcs to template function
+  * [ea378480] Remove uneeded _ProgramStart functions
+  * [35b236a8] Rename PROGRAMS_Main & ProgramStart to reflect behaviour
+  * [97e39208] Add message to static assert, Review changes
+
+  [ kcgen ]
+  * [eaed0ae0] Flag an assert-only bitops argument as unused
+  * [bd1a5253] Ask compilers to ignore unknown pragmas
+  * [925470ed] Remove unused pixel aspect-ratio from log args
+  * [fd498b53] Remove unused argument name from enet clock_gettime
+  * [c84052db] Add a negative-char support check function
+  * [f0b44e1e] Use a lamda to tighten up a drive cache function
+  * [f09ea427] Don't print every resource load in non-release builds
+
+  [ hunterk ]
+  * [2122e987] Migrate built-in CRT shaders to resources
+
+  [ kcgen ]
+  * [4d3af41a] Migrate built-in DOSBox shaders to resources
+  * [5880f0d0] Cleanup GLSL shader formatting
+  * [9be47dd5] Load GLSL shaders only from file and on-demand
+  * [e0aa336a] DeBitu and auto-ify the existing RENDER_GetShader code
+  * [11e98db3] Remove a duplicate GLSL load path
+  * [3e914a46] Remove the built-in GLSL shaders
+  * [1ad34717] Scan for resources in portable configurations
+  * [2f48506a] Add support function to get available resources
+  * [c11e4121] Log all available GLSL shaders when requested not found
+  * [6bb598e8] Add --list-glshaders command line flags
+  * [67866082] Store the glshader source in a std::string
+
+  [ Kappa971 ]
+  * [d56f0313] Update Italian (it) translation
+
+  [ shermp ]
+  * [b261a41c] Fix autotype starting when running BOOT or BIOSTEST
+
+  [ kcgen ]
+  * [4b81044b] Make SAA-1099 LUTs compile-time expressions
+  * [c9f04ca3] Avoid duplicate SAA-1099 calculations
+  * [526e0900] Use register-size data types in SAA-1099 channel
+  * [c0fea2ac] Assert that SAA-1099 samples are in-bounds
+  * [5384daa3] Refactor the GameBlaster sourcs into a C++ class
+  * [9dfa40f2] Run the GameBlaster's channel at the mixer's rate
+  * [f55cb5f7] Add the gameblaster.h to the VS solution
+
+  [ John Novak ]
+  * [0a97bfc0] Use gamma-correct interpolation in shaders that benefit from it
+
+  [ kcgen ]
+  * [5811c714] Allow adjustment of the Soft Limiter's bounds
+  * [87e634ca] Soft-limit the GameBlaster stream to avoid clipping/wrapping
+  * [0b315c8c] Assign the SAA-1099's sample rate as a floating point value
+
+  [ Kappa971 ]
+  * [65485557] Fix typo in Italian translations
+
+  [ kcgen ]
+  * [380486ef] Use CFR in text modes if requested
+  * [88a3ba25] Initialize the shader source before SDL main starts
+  * [0801bc7f] Only exit-early when launching with an executable
+
+ -- Feignint <37488595+FeignInt@users.noreply.github.com>  Fri, 13 May 2022 04:52:32 +0000
+
 dosbox-staging (0.79.0~alpha~398~g23d9a-1) unstable; urgency=medium
 
   [ Feignint ]
